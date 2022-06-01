@@ -4,8 +4,9 @@ const jwt = require("jsonwebtoken");
 const { options } = require("../routes/users");
 
 const signup = async (req, res) => {
+  const email = req.body.email.toLowerCase();
+
   const {
-    email,
     password,
     username,
     first_name,
