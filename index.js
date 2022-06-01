@@ -12,21 +12,19 @@ const app = express();
 //here we will import the routers
 
 const roleRouter = require("./routes/roles");
+const permissionRouter = require("./routes/permission");
 
 //built-in middleware
 app.use(express.json());
 
 // router middleware
-
+//=================================================================================================================
 app.use("/roles", roleRouter);
-
- 
-const permissionRouter = require("./routes/permission")
-
-app.use("/permissions" , permissionRouter);
+app.use("/permissions", permissionRouter);
  
 
 
+//=================================================================================================================
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
