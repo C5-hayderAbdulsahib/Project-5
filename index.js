@@ -8,6 +8,19 @@ require("./models/db");
 
 const app = express();
 
+//here we will import the routers
+
+const roleRouter = require("./routes/roles");
+
+//built-in middleware
+app.use(express.json());
+
+// router middleware
+
+app.use("/roles", roleRouter);
+
+
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
