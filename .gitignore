@@ -1,3 +1,6 @@
+# we will add also the .env file because we don't need to upload it to the cloud because it holds sensitive data, and we only save in in the server that we want to host and upload our website on it
+# .env
+
 # Logs
 logs
 *.log
