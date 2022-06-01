@@ -1,3 +1,4 @@
+//create connection with the database
 const mysql = require("mysql2");
 
 const connection = mysql.createConnection({
