@@ -2,8 +2,9 @@ const connection = require("../models/db");
 const bcrypt = require("bcrypt");
 
 const signup = async (req, res) => {
+  const email = req.body.email.toLowerCase();
+
   const {
-    email,
     password,
     username,
     first_name,
@@ -41,7 +42,7 @@ const signup = async (req, res) => {
     }
     //const findingUserName = `SELECT FROM users WHERE user`
 
-   return res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "Account Created Successfully",
       user: result,
