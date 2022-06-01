@@ -8,6 +8,11 @@ require("./models/db");
 
 const app = express();
 
+const permissionRouter = require("./routes/permission")
+
+app.use("/permissions" , permissionRouter);
+
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
