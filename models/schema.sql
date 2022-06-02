@@ -54,7 +54,7 @@ CREATE TABLE categories(
 CREATE TABLE rooms(
     id INT AUTO_INCREMENT NOT NULL,
     name VARCHAR(255) NOT NULL,
-    room_image VARCHAR(255) NOT NULL,
+    room_image VARCHAR(255),
     is_group BOOLEAN DEFAULT false,
     is_deleted TINYINT DEFAULT 0,
     category_id INT,
