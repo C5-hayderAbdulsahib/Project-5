@@ -9,8 +9,9 @@ const { createNewRoomCategory ,getAllCategories ,updateCategoryById,deleteCatego
 
 const categoryRouter = express.Router();
 
+//categories routes
 categoryRouter.post("/", authentication,authorization("CREATE_CATEGORIES"),createNewRoomCategory);
-categoryRouter.put("/:id",authentication, authorization("UPDATE_Categories"), updateCategoryById);
+categoryRouter.put("/:id",authentication, authorization("UPDATE_CATEGORIES"), updateCategoryById);
 categoryRouter.get("/" , authentication,getAllCategories);
 categoryRouter.delete("/:id",authentication, authorization("DELETE_CATEGORIES"), deleteCategoryById);
 
