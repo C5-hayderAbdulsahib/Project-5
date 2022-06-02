@@ -14,7 +14,7 @@ const createNewPermission = (req, res) => {
     }
     if (result) {
       const permission_id = result.insertId;
-      const command = `INSERT INTO role_permission (permission_id ,role_id ) VALUES (? , ?)`;
+      const command = `INSERT INTO roles_permissions (permission_id ,role_id ) VALUES (? , ?)`;
 
       const data = [permission_id, role_id];
       connection.query(command, data, (err, result) => {
