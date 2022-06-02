@@ -16,7 +16,7 @@ categoryRouter.post("/", authentication,authorization("CREATE_CATEGORIES"),creat
 categoryRouter.put("/:id",authentication, authorization("UPDATE_CATEGORIES"), updateCategoryById);
 categoryRouter.get("/" , authentication,getAllCategories);
 categoryRouter.delete("/:id",authentication, authorization("DELETE_CATEGORIES"), deleteCategoryById);
-categoryRouter.post("/:id/rooms", createNewRoom);
+categoryRouter.post("/:id/rooms",authentication , createNewRoom);
 
 
 module.exports = categoryRouter;

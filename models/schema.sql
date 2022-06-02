@@ -69,7 +69,7 @@ CREATE TABLE users_rooms (
     FOREIGN KEY (user_id) REFERENCES users (id),
     is_deleted TINYINT DEFAULT 0,
     is_blocked BOOLEAN DEFAULT false,
-    send_follow_request BOOLEAN DEFAULT true,
+    send_follow_request BOOLEAN DEFAULT false,
     is_member BOOLEAN DEFAULT false,
     PRIMARY KEY (id)
 );
