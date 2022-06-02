@@ -1,12 +1,10 @@
 const connection = require("../models/db");
- 
-const mysql = require("mysql2/promise")
 
- 
+const mysql = require("mysql2/promise");
+
 //===============================================================================================================
 
 // cerate function to create new room
- 
 
 const createNewRoom = (req, res) => {
   const { name, room_image } = req.body;
@@ -126,18 +124,17 @@ const getRoomById = (req, res) => {
   });
 };
 
- 
 ///////updateRoomById/////////////
 
 const updateRoomById = async (req, res) => {
-   try { 
+  try {
     const { name, room_image } = req.body;
     const id = req.params.id;
 
     const findRoom = `SELECT * FROM rooms where id=? `;
 
     const roomData = [id];
-     const asyncConnection = await mysql.createConnection({
+    const asyncConnection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
@@ -161,11 +158,11 @@ const updateRoomById = async (req, res) => {
     //this query will select spicific room by it's id  and update it's name and it's photo
     connection.query(command, data, (err, result) => {
       console.log(result);
-      if (result.affectedRows ) {
+      if (result.affectedRows) {
         res.status(200).json({
           success: true,
           message: `Room Updated `,
-          room: {id:id,name:updatedNAme,room_image:updatedimg},
+          room: { id: id, name: updatedNAme, room_image: updatedimg },
         });
       } else {
         res.status(404).json({
@@ -182,14 +179,14 @@ const updateRoomById = async (req, res) => {
         });
       }
     });
-   } catch (err) {
+  } catch (err) {
     res.status(500).json({
       success: false,
       message: "Server Error",
       err: err.message,
     });
-  } 
- 
+  }
+};
 //===============================================================================================================
 
 // create function to delete room by id
@@ -215,17 +212,13 @@ const deleteRoomById = (req, res) => {
     }
     res.status(200).json({ success: true, message: "Room Deleted" });
   });
- 
 };
 
 module.exports = {
   createNewRoom,
   getAllGroupRooms,
- 
+
   updateRoomById,
- 
- 
-  deleteRoomById
+
+  deleteRoomById,
 };
- 
- 
