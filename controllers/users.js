@@ -43,6 +43,11 @@ const signup = async (req, res) => {
         .json({ success: false, message: "The UserName Already Exists" });
     }
 
+if (err?.sqlMessage.includes(`'username' cannot be null`)) {
+  return res
+    .status(409)
+    .json({ success: false, message: "The UserName Cannot Be Null" });
+}
 
     return res.status(201).json({
       success: true,
