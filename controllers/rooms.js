@@ -43,4 +43,64 @@ const createNewRoom = (req, res) => {
   });
 };
 
-module.exports = { createNewRoom };
+////////////git all rooms////////////////////////
+
+const getAllGroupRooms = (req, res) => {
+  const command = `SELECT * FROM rooms WHERE is_deleted=0 AND is_group=true ;`;
+
+  connection.query(command, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "All The Room",
+        categories: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "No Room Were Created Yet",
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+//////////////getRoomById////////////////////////
+
+const getRoomById = (req, res) => {
+  const id = req.params.id;
+
+  const command = `SELECT * FROM rooms WHERE is_deleted=0 AND id=? ;`;
+  data = [id];
+  connection.query(command, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: `The Room For The Specified Id `,
+        room: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "The Room Is Not Found",
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+module.exports = { createNewRoom, getAllGroupRooms, getRoomById };
