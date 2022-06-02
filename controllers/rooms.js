@@ -91,6 +91,8 @@ const getRoomById = (req, res) => {
 console.log(id);
   const command = `SELECT * FROM rooms WHERE is_deleted=0 AND id=? ;`;
   data = [id];
+
+  //this query will select spicific room by it's id 
   connection.query(command,data, (err, result) => {
     console.log(result);
     if (result.length > 0) {
@@ -117,18 +119,4 @@ console.log(id);
 };
 
 module.exports = { createNewRoom, getAllGroupRooms, getRoomById };
-
-/*
-    const room_id = result.insertId;
-      const command_three = `SELECT * FROM rooms WHERE id = ? `;
-      const data = [room_id];
-   
-   connection.query(command_three, data, (err, result) => {
-        if (err) {
-          return res
-            .status(500)
-            .json({ success: false, message: "Server Error", err: err });
-        }
-         
-        res.status(201).json({ message: "Room Post Created", room: result[0] });
-      });*/
+ 
