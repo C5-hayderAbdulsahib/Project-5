@@ -2,7 +2,7 @@ const connection = require("../models/db");
 
 //===============================================================================================================
 
-// this function to create new Category 
+// this function to create new Category
 const createNewRoomCategory = (req, res) => {
   const { name } = req.body;
 
@@ -35,7 +35,6 @@ const createNewRoomCategory = (req, res) => {
 
 //===============================================================================================================
 
-
 // this function to get all Categories
 const getAllCategories = (req, res) => {
   const command = `SELECT * FROM categories WHERE is_deleted=0;`;
@@ -66,7 +65,6 @@ const getAllCategories = (req, res) => {
 
 //===============================================================================================================
 
-
 // this function to update Category
 const updateCategoryById = (req, res) => {
   const { name } = req.body;
@@ -80,7 +78,7 @@ const updateCategoryById = (req, res) => {
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
-    const updatedName = name || result[0].name
+    const updatedName = name || result[0].name;
     const command_tow = ` UPDATE categories SET name = ? WHERE id = ?`;
     const data = [updatedName, id];
     connection.query(command_tow, data, (err, result) => {
@@ -102,5 +100,33 @@ const updateCategoryById = (req, res) => {
     });
   });
 };
- 
-module.exports = { createNewRoomCategory ,getAllCategories , updateCategoryById};
+
+//===============================================================================================================
+
+// create function  to delete Category
+const deleteCategoryById = (req, res) => {
+  const id = req.params.id;
+  const command = `UPDATE categories SET is_deleted = 1 where id = ? `;
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Category Is Not Found" });
+    }
+    res.status(200).json({ success: true, message: "Category Deleted" });
+  });
+};
+
+module.exports = {
+  createNewRoomCategory,
+  getAllCategories,
+  updateCategoryById,
+  deleteCategoryById,
+};
