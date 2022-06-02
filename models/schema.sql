@@ -43,3 +43,22 @@ CREATE TABLE users(
     is_deleted TINYINT DEFAULT 0,
     PRIMARY KEY (id)
 );
+
+CREATE TABLE categories(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    is_deleted TINYINT DEFAULT 0,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE rooms(
+    id INT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    room_image VARCHAR(255) NOT NULL,
+    is_group BOOLEAN DEFAULT false,
+    is_deleted TINYINT DEFAULT 0,
+    category_id INT,
+    FOREIGN KEY (category_id) REFERENCES categories(id),
+    PRIMARY KEY (id)
+);
+
