@@ -21,11 +21,50 @@ const createNewRoomCategory = (req, res) => {
           .json({ success: false, message: "Server Error", err: err });
       }
 
-      res
-        .status(201)
-        .json({ success: true, message: "Category Created", category: result });
+      res.status(201).json({
+        success: true,
+        message: "Category Created",
+        category: result[0],
+      });
     });
   });
 };
 
-module.exports = { createNewRoomCategory };
+//===============================================================================================================
+
+const updateCategoryById = (req, res) => {
+  const { name } = req.body;
+  const id = req.params.id;
+  const command = `SELECT * FROM categories WHERE id = ? `;
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    const updatedName = name || result[0].name
+    const command_tow = ` UPDATE categories SET name = ? WHERE id = ?`;
+    const data = [updatedName, id];
+    connection.query(command_tow, data, (err, result) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ success: false, message: "Server Error", err: err });
+      }
+      if (!result.affectedRows) {
+        return res
+          .status(404)
+          .json({ success: false, message: "The Category Is Not Found" });
+      }
+      res.status(201).json({
+        success: true,
+        message: "Category Updated",
+        category: { id: id, name: updatedName },
+      });
+    });
+  });
+};
+
+module.exports = { createNewRoomCategory, updateCategoryById };

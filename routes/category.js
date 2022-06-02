@@ -1,10 +1,12 @@
-const express  = require("express")
-const { createNewRoomCategory } = require("../controllers/category")
-
+const express = require("express");
+const {
+  createNewRoomCategory,
+  updateCategoryById,
+} = require("../controllers/category");
 
 const categoryRouter = express.Router();
 
+categoryRouter.post("/", createNewRoomCategory);
+categoryRouter.put("/:id", updateCategoryById);
 
- categoryRouter.post("/" , createNewRoomCategory)
-
- module.exports = categoryRouter;
+module.exports = categoryRouter;
