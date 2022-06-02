@@ -13,6 +13,7 @@ const app = express();
 const roleRouter = require("./routes/roles");
 const permissionRouter = require("./routes/permission");
 const usersRouter = require("./routes/users");
+const categoryRouter = require("./routes/category")
 
 //built-in middleware
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use("/roles", roleRouter);
 app.use("/permissions", permissionRouter);
 app.use("/users", usersRouter);
+app.use("/categories", categoryRouter);
 
 //=================================================================================================================
 const PORT = process.env.PORT;
