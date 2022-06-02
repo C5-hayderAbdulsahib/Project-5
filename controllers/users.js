@@ -2,7 +2,6 @@ const connection = require("../models/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-
 const signup = async (req, res) => {
   const email = req.body.email.toLowerCase();
 
@@ -43,11 +42,11 @@ const signup = async (req, res) => {
         .json({ success: false, message: "The UserName Already Exists" });
     }
 
-if (err?.sqlMessage.includes(`'username' cannot be null`)) {
-  return res
-    .status(409)
-    .json({ success: false, message: "The UserName Cannot Be Null" });
-}
+    if (err?.sqlMessage.includes(`'username' cannot be null`)) {
+      return res
+        .status(409)
+        .json({ success: false, message: "The UserName Cannot Be Null" });
+    }
 
     return res.status(201).json({
       success: true,
@@ -104,4 +103,33 @@ const signIn = (req, res) => {
   });
 };
 
-module.exports = { signup, signIn };
+/////////////////////////////
+
+const getAllUsernames = (req, res) => {
+  const command = `SELECT * FROM users WHERE is_deleted=0  ;`;
+
+  connection.query(command, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "All The Usernames",
+        categories: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "No User Have Signedin To The Website",
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+module.exports = { signup, signIn, getAllUsernames };
