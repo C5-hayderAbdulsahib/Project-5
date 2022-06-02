@@ -10,10 +10,19 @@ const {
   deleteRoomById,
 } = require("../controllers/rooms");
 
-const roomRouter = express.Router();
+ const {getAllGroupRooms,getRoomById,updateRoomById}=require("../controllers/rooms")
 
-roomRouter.get("/group", getAllGroupRooms);
-roomRouter.get("/:id", getRoomById);
+const roomRouter =express.Router();
+
+
+roomRouter.get("/group",getAllGroupRooms)
+roomRouter.get("/:id",getRoomById)
+roomRouter.put("/:id",updateRoomById)
 roomRouter.delete("/:id",authentication ,authorization(`DELETE_ROOMS`),  deleteRoomById);
+
+
+
+ 
+ 
 
 module.exports = roomRouter;
