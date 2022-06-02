@@ -219,6 +219,6 @@ module.exports = {
   getAllGroupRooms,
 
   updateRoomById,
-
+  getRoomById,
   deleteRoomById,
 };
