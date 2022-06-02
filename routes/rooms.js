@@ -14,11 +14,13 @@ const {
 
 const roomRouter = express.Router();
 
-roomRouter.get("/group", getAllGroupRooms);
+//////////// build roomRoutes////////
+
+roomRouter.get("/group",authentication, getAllGroupRooms);
 roomRouter.get("/my_rooms", authentication, getAllMyRooms);
 
-roomRouter.get("/:id", getRoomById);
-roomRouter.put("/:id", updateRoomById);
+roomRouter.get("/:id",authentication, getRoomById);
+roomRouter.put("/:id",authentication, authorization('UPDATE_ROOMS'), updateRoomById);
 roomRouter.delete(
   "/:id",
   authentication,
