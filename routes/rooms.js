@@ -2,7 +2,7 @@ const express = require("express");
 
  
 
-//create room router
+//room routes 
 
 const {getAllGroupRooms,getRoomById}=require("../controllers/rooms")
 
