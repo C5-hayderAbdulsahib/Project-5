@@ -1,4 +1,7 @@
 const connection = require("../models/db");
+//===============================================================================================================
+
+// cerate function to create new room
 
 const createNewRoom = (req, res) => {
   const { name, room_image } = req.body;
@@ -55,7 +58,7 @@ const createNewRoom = (req, res) => {
   });
 };
 
-////////////git all rooms////////////////////////
+//===============================================================================================================
 
 const getAllGroupRooms = (req, res) => {
   const command = `SELECT * FROM rooms WHERE is_deleted=0 AND is_group=true ;`;
@@ -84,7 +87,7 @@ const getAllGroupRooms = (req, res) => {
   });
 };
 
-//////////////getRoomById////////////////////////
+//===============================================================================================================
 
 const getRoomById = (req, res) => {
   const id = req.params.id;
@@ -118,5 +121,37 @@ console.log(id);
   });
 };
 
-module.exports = { createNewRoom, getAllGroupRooms, getRoomById };
+//===============================================================================================================
+
+// create function to delete room by id
+
+const deleteRoomById = (req, res) => {
+  const id = req.params.id;
+
+  const command = `UPDATE rooms SET is_deleted = 1 where id = ?`;
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res.status(200).json({ success: true, message: "Room Deleted" });
+  });
+};
+
+module.exports = {
+  createNewRoom,
+  getAllGroupRooms,
+  getRoomById,
+  deleteRoomById,
+};
  
