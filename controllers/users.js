@@ -42,7 +42,7 @@ const signup = async (req, res) => {
         .status(409)
         .json({ success: false, message: "The UserName Already Exists" });
     }
-    //const findingUserName = `SELECT FROM users WHERE user`
+
 
     return res.status(201).json({
       success: true,
