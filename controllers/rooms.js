@@ -214,11 +214,38 @@ const deleteRoomById = (req, res) => {
   });
 };
 
+//===============================================================================================================
+
+//create function to get all user room
+const getAllMyRooms =  (req, res) => {
+  const id = req.token.userId
+
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ?`;
+  const data = [id];
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+console.log(result);
+    if (!result.length) {
+      return res
+        .status(200)
+        .json({ success: false, message: "No Room Were Created Yet" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "All The Room", rooms: result });
+  });
+};
+
 module.exports = {
   createNewRoom,
   getAllGroupRooms,
-
   updateRoomById,
   getRoomById,
   deleteRoomById,
+  getRoomById,
+  getAllMyRooms,
 };
