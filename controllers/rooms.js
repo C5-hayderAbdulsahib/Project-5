@@ -244,6 +244,7 @@ module.exports = {
   createNewRoom,
   getAllGroupRooms,
   updateRoomById,
+  getRoomById,
   deleteRoomById,
   getRoomById,
   getAllMyRooms,
