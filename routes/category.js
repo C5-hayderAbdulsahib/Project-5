@@ -1,10 +1,12 @@
 const express  = require("express")
-const { createNewRoomCategory } = require("../controllers/category")
+const { createNewRoomCategory ,getAllCategories } = require("../controllers/category")
 
 
 const categoryRouter = express.Router();
 
 
  categoryRouter.post("/" , createNewRoomCategory)
+
+ categoryRouter.get("/" , getAllCategories)
 
  module.exports = categoryRouter;
