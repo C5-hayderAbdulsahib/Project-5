@@ -4,11 +4,7 @@ const authentication = require('../middleware/authentication')
 const authorization = require('../middleware/authorization')
 //room routes
 
-const {
-  getAllGroupRooms,
-  getRoomById,
-  deleteRoomById,
-} = require("../controllers/rooms");
+ 
 
  const {getAllGroupRooms,getRoomById,updateRoomById}=require("../controllers/rooms")
 
