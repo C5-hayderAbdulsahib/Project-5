@@ -1,4 +1,6 @@
 const connection = require("../models/db");
+const mysql = require("mysql2/promise")
+
 
 const createNewRoom = (req, res) => {
   const { name, room_image } = req.body;
@@ -88,12 +90,12 @@ const getAllGroupRooms = (req, res) => {
 
 const getRoomById = (req, res) => {
   const id = req.params.id;
-console.log(id);
+  console.log(id);
   const command = `SELECT * FROM rooms WHERE is_deleted=0 AND id=? ;`;
   data = [id];
 
-  //this query will select spicific room by it's id 
-  connection.query(command,data, (err, result) => {
+  //this query will select spicific room by it's id
+  connection.query(command, data, (err, result) => {
     console.log(result);
     if (result.length > 0) {
       res.status(200).json({
@@ -118,5 +120,73 @@ console.log(id);
   });
 };
 
-module.exports = { createNewRoom, getAllGroupRooms, getRoomById };
- 
+///////updateRoomById/////////////
+
+const updateRoomById = async (req, res) => {
+   try { 
+    const { name, room_image } = req.body;
+    const id = req.params.id;
+
+    const findRoom = `SELECT * FROM rooms where id=? `;
+
+    const roomData = [id];
+     const asyncConnection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    const [rows, fields] = await asyncConnection.execute(findRoom, roomData);
+    console.log(rows);
+    if (rows.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The room is not found" });
+    }
+    console.log("hi");
+    const updatedNAme = name || rows[0].name;
+    const updatedimg = room_image || rows[0].room_image;
+
+    const command = `UPDATE rooms SET name=?, room_image=? WHERE id=? AND is_deleted=0;`;
+    const data = [updatedNAme, updatedimg, id];
+
+    //this query will select spicific room by it's id  and update it's name and it's photo
+    connection.query(command, data, (err, result) => {
+      console.log(result);
+      if (result.affectedRows ) {
+        res.status(200).json({
+          success: true,
+          message: `Room Updated `,
+          room: {id:id,name:updatedNAme,room_image:updatedimg},
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "The Room Is Not Found",
+        });
+      }
+
+      if (err) {
+        res.status(500).json({
+          success: false,
+          message: "Server Error",
+          err: err,
+        });
+      }
+    });
+   } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      err: err.message,
+    });
+  } 
+};
+
+module.exports = {
+  createNewRoom,
+  getAllGroupRooms,
+  getRoomById,
+  updateRoomById,
+};
