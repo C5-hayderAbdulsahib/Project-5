@@ -88,10 +88,11 @@ const getAllGroupRooms = (req, res) => {
 
 const getRoomById = (req, res) => {
   const id = req.params.id;
-
+console.log(id);
   const command = `SELECT * FROM rooms WHERE is_deleted=0 AND id=? ;`;
   data = [id];
-  connection.query(command, (err, result) => {
+  connection.query(command,data, (err, result) => {
+    console.log(result);
     if (result.length > 0) {
       res.status(200).json({
         success: true,
