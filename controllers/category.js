@@ -1,7 +1,8 @@
 const connection = require("../models/db");
 
-/////////create new Category
+//===============================================================================================================
 
+// this function to create new Category 
 const createNewRoomCategory = (req, res) => {
   const { name } = req.body;
 
@@ -34,6 +35,39 @@ const createNewRoomCategory = (req, res) => {
 
 //===============================================================================================================
 
+
+// this function to get all Categories
+const getAllCategories = (req, res) => {
+  const command = `SELECT * FROM categories WHERE is_deleted=0;`;
+
+  connection.query(command, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "All The Categories",
+        categories: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "No Categories Yet",
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+//===============================================================================================================
+
+
+// this function to update Category
 const updateCategoryById = (req, res) => {
   const { name } = req.body;
   const id = req.params.id;
@@ -68,35 +102,5 @@ const updateCategoryById = (req, res) => {
     });
   });
 };
-
-///////////////////git all Categories
-
-const getAllCategories = (req, res) => {
-  const command = `SELECT * FROM categories WHERE is_deleted=0;`;
-
-  connection.query(command, (err, result) => {
-    if (result.length > 0) {
-      res.status(200).json({
-        success: true,
-        message: "All The Categories",
-        categories: result,
-      });
-    } else {
-      res.status(200).json({
-        success: false,
-        message: "No Categories Yet",
-      });
-    }
-
-    if (err) {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        err: err,
-      });
-    }
-  });
-};
-
  
 module.exports = { createNewRoomCategory ,getAllCategories , updateCategoryById};
