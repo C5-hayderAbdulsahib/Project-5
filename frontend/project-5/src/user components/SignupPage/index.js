@@ -18,7 +18,8 @@ export const SignupPage = () => {
   const [message, setMessage] = useState("");
   const role_id = 3;
 
-  const signup = () => {
+  const signup = (e) => {
+    e.preventDefault()
     axios
       .post(`http://localhost:5000/users/signup`, {
         email,
@@ -42,49 +43,51 @@ export const SignupPage = () => {
     <>
       <h1>this signup</h1>
       <div>
-        <input
-          type={"text"}
-          placeholder="Email"
-          onChange={(e) => {
-            serEmail(e.target.value);
-          }}
-        />
-        <br></br>
-        <input
-          type={"text"}
-          placeholder="User Name"
-          onChange={(e) => {
-            setUserName(e.target.value);
-          }}
-        />
-        <br></br>
-        <input
-          type={"password"}
-          placeholder="Password"
-          onChange={(e) => {
-            serPassword(e.target.value);
-          }}
-        />
-        <br></br>
-        <input
-          type={"text"}
-          placeholder="First Name"
-          onChange={(e) => {
-            setFirst_name(e.target.value);
-          }}
-        />
-        <br></br>
-        <input
-          type={"text"}
-          placeholder="Last Name"
-          onChange={(e) => {
-            setLast_name(e.target.value);
-          }}
-        />
-        <br></br>
-        <button onClick={signup}>Signup</button>
-        <br></br>
-        <p>{message}</p>
+        <form onSubmit={signup}>
+          <input
+            type={"text"}
+            placeholder="Email"
+            onChange={(e) => {
+              serEmail(e.target.value);
+            }}
+          />
+          <br></br>
+          <input
+            type={"text"}
+            placeholder="User Name"
+            onChange={(e) => {
+              setUserName(e.target.value);
+            }}
+          />
+          <br></br>
+          <input
+            type={"password"}
+            placeholder="Password"
+            onChange={(e) => {
+              serPassword(e.target.value);
+            }}
+          />
+          <br></br>
+          <input
+            type={"text"}
+            placeholder="First Name"
+            onChange={(e) => {
+              setFirst_name(e.target.value);
+            }}
+          />
+          <br></br>
+          <input
+            type={"text"}
+            placeholder="Last Name"
+            onChange={(e) => {
+              setLast_name(e.target.value);
+            }}
+          />
+          <br></br>
+          <button>Signup</button>
+          <br></br>
+          <p>{message}</p>
+        </form>
       </div>
     </>
   );
