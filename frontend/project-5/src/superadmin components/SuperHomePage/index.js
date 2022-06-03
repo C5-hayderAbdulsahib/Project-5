@@ -1,16 +1,18 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory } from "../../redux/reducers/categories";
+import { addCategory, setCategories } from "../../redux/reducers/categories";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
-  const { token } = useSelector((state) => {
-    return { token: state.auth.token };
+  const { token ,categories} = useSelector((state) => {
+    return { token: state.auth.token, categories: state.categories.categories };
   });
 
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
+
+  ///////////createCategory////////////////////
 
   const createCategory = (e) => {
     e.preventDefault();
@@ -36,6 +38,30 @@ const SuperHomePage = () => {
       });
   };
 
+  /////////getAllCategories/////////////
+
+  const getAllCategories = () => {
+    axios
+      .get(`http://localhost:5000/categories`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        console.log(categories);
+        if (result.data.success) {
+          dispatch(setCategories(result.data.categories));
+        }
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+      });
+  };
+
+  useEffect(() => {
+    getAllCategories();
+  }, []);
+
   return (
     <>
       <h1>super home admin</h1>
@@ -52,6 +78,19 @@ const SuperHomePage = () => {
           <br></br>
           {message ? <p>{message}</p> : ""}
         </form>
+<div>
+        {categories &&
+          categories.map((element, index) => {
+            console.log(element);
+
+         return   <div key={index}>
+              <p>{element.name}</p>
+              <button>update</button>
+              <button>delete</button>
+              <hr></hr>
+            </div>;
+          })}
+          </div>
       </div>
     </>
   );
