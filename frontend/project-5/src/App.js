@@ -8,6 +8,7 @@ import { SigninPage } from "./user components/SigninPage"; //since we used expor
 import { SignupPage } from "./user components/SignupPage"; //since we used export directly then we have to use the {} when importing
 import HomePage from "./user components/HomePage";
 import Navbar from "./user components/Navbar";
+import SuperHomePage from "./superadmin components/SuperHomePage";
 
 //styling
 import "./App.css";
@@ -17,7 +18,9 @@ function App() {
     // this is for testing
     <div className="App">
       <Navbar />
+
       <Routes>
+        <Route path="/super_admin/home" element={<SuperHomePage />} />
         <Route path="/super_admin/signin" element={<SuperSigninPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
