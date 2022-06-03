@@ -94,13 +94,11 @@ const getAllGroupRooms = (req, res) => {
 
 const getRoomById = (req, res) => {
   const id = req.params.id;
-  console.log(id);
   const command = `SELECT * FROM rooms WHERE is_deleted=0 AND id=? ;`;
   data = [id];
 
   //this query will select spicific room by it's id
   connection.query(command, data, (err, result) => {
-    console.log(result);
     if (result.length > 0) {
       res.status(200).json({
         success: true,
@@ -142,13 +140,13 @@ const updateRoomById = async (req, res) => {
     });
 
     const [rows, fields] = await asyncConnection.execute(findRoom, roomData);
-    console.log(rows);
+
     if (rows.length === 0) {
       return res
         .status(404)
         .json({ success: false, message: "The room is not found" });
     }
-    console.log("hi");
+
     const updatedNAme = name || rows[0].name;
     const updatedimg = room_image || rows[0].room_image;
 
@@ -157,7 +155,6 @@ const updateRoomById = async (req, res) => {
 
     //this query will select spicific room by it's id  and update it's name and it's photo
     connection.query(command, data, (err, result) => {
-      console.log(result);
       if (result.affectedRows) {
         res.status(200).json({
           success: true,
@@ -217,8 +214,8 @@ const deleteRoomById = (req, res) => {
 //===============================================================================================================
 
 //create function to get all user room
-const getAllMyRooms =  (req, res) => {
-  const id = req.token.userId
+const getAllMyRooms = (req, res) => {
+  const id = req.token.userId;
 
   const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ?`;
   const data = [id];
@@ -228,7 +225,7 @@ const getAllMyRooms =  (req, res) => {
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
-console.log(result);
+
     if (!result.length) {
       return res
         .status(200)

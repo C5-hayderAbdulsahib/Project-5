@@ -2,8 +2,8 @@ const express = require("express");
 //============================================
 const { createNewPermission } = require("../controllers/permission");
 
-const permissionRouter = express.Router()
+const permissionRouter = express.Router();
 
-permissionRouter.post("/:id" , createNewPermission);
+permissionRouter.post("/:id", createNewPermission);
 
 module.exports = permissionRouter;
