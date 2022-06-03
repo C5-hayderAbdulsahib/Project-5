@@ -16,11 +16,16 @@ const roomRouter = express.Router();
 
 //////////// build roomRoutes////////
 
-roomRouter.get("/group",authentication, getAllGroupRooms);
+roomRouter.get("/group", authentication, getAllGroupRooms);
 roomRouter.get("/my_rooms", authentication, getAllMyRooms);
 
-roomRouter.get("/:id",authentication, getRoomById);
-roomRouter.put("/:id",authentication, authorization('UPDATE_ROOMS'), updateRoomById);
+roomRouter.get("/:id", authentication, getRoomById);
+roomRouter.put(
+  "/:id",
+  authentication,
+  authorization("UPDATE_ROOMS"),
+  updateRoomById
+);
 roomRouter.delete(
   "/:id",
   authentication,
