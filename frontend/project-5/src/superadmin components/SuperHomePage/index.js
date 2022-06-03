@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector, } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   addCategory,
   setCategories,
-  updateCategory,deleteCategory
+  updateCategory,
+  deleteCategory,
 } from "../../redux/reducers/categories";
 
 const SuperHomePage = () => {
@@ -81,31 +82,23 @@ const SuperHomePage = () => {
       });
   };
 
-////////////deleteCategory///////////////
+  ////////////deleteCategory///////////////
 
-const deleteCategoryFun = (id) => {
-  console.log(id);
-  axios
-    .delete(`http://localhost:5000/categories/${id}`,{   headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-    .then((result) => {
-      dispatch(deleteCategory(id));
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-
-
-
-
-
-
-
-
+  const deleteCategoryFun = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/categories/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(deleteCategory(id));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   useEffect(() => {
     getAllCategories();
@@ -146,9 +139,13 @@ const deleteCategoryFun = (id) => {
                   >
                     update
                   </button>
-                  <button   onClick={() => {
+                  <button
+                    onClick={() => {
                       deleteCategoryFun(element.id);
-                    }}>delete</button>
+                    }}
+                  >
+                    delete
+                  </button>
                   <hr></hr>
                 </div>
               );
