@@ -13,7 +13,7 @@ import "./style.css";
 export const SigninPage = () => {
   const dispatch = useDispatch();
 
-  const { auth } = useSelector((state) => {
+  const  {isLoggedIn}  = useSelector((state) => {
     return {
       isLoggedIn: state.auth.isLoggedIn,
     };
@@ -50,9 +50,15 @@ export const SigninPage = () => {
     }
   };
 
-  /*      useEffect(() => {
-   
-  });  */
+  useEffect(() => {
+    {
+      //this is to redirect the user to the home page if he was already logged in
+    }
+    if (isLoggedIn) {
+      console.log(isLoggedIn);
+      navigate("/");
+    }
+  }, []);
 
   return (
     <>
@@ -72,13 +78,7 @@ export const SigninPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button
-          /*     onClick={(e) => {
-              login(e);
-            }} */
-          >
-            Login
-          </button>
+          <button>Login</button>
         </form>
 
         {message && <div className="ErrorMessage">{message}</div>}
