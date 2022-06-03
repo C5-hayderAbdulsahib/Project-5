@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 // import the actions
-import { login } from "../../redux/reducers/auth";
+import { signin } from "../../redux/reducers/auth";
 
 //import styling
 import "./style.css";
@@ -42,7 +42,9 @@ const SuperSigninPage = () => {
     }
   }, []);
 
-  const loginFun = () => {
+  const loginFun = (e) => {
+    e.preventDefault();
+
     axios
       .post("http://localhost:5000/users/signin", {
         // the data that is entered in the object that is dent using axios must have the same key name as the name in postman(the same field name in the DB) or an error will occur
@@ -51,7 +53,7 @@ const SuperSigninPage = () => {
         password, //the key has to be the same key in the backend
       })
       .then((result) => {
-        dispatch(login(result.data.token));
+        dispatch(signin(result.data.token));
         navigate("/super_admin/home"); //we used the navigate in order to change the path to / automatically without the user need to enter it in the browser url field
       })
       .catch((err) => {
@@ -65,19 +67,21 @@ const SuperSigninPage = () => {
       <h3>Login Form:</h3>
       <br />
 
-      <input
-        type={"email"}
-        placeholder="Email"
-        onChange={(e) => setEmail(e.target.value)}
-      />
+      <form onSubmit={loginFun}>
+        <input
+          type={"email"}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-      <input
-        type={"password"}
-        placeholder="Password"
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <input
+          type={"password"}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
-      <button onClick={loginFun}>Log in</button>
+        <button>Signin</button>
+      </form>
 
       {message ? <p className="login-err">{message}</p> : ""}
     </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { login } from "../../redux/reducers/auth";
+import { signin } from "../../redux/reducers/auth";
 
 ////import for styling //
 
@@ -13,7 +13,7 @@ import "./style.css";
 export const SigninPage = () => {
   const dispatch = useDispatch();
 
-  const  {isLoggedIn}  = useSelector((state) => {
+  const { isLoggedIn } = useSelector((state) => {
     return {
       isLoggedIn: state.auth.isLoggedIn,
     };
@@ -39,7 +39,7 @@ export const SigninPage = () => {
       if (res) {
         setMessage("");
 
-        dispatch(login(res.data.token));
+        dispatch(signin(res.data.token));
         navigate("/");
       } else throw Error;
     } catch (error) {
@@ -78,7 +78,7 @@ export const SigninPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button>Login</button>
+          <button>Signin</button>
         </form>
 
         {message && <div className="ErrorMessage">{message}</div>}
