@@ -16,7 +16,7 @@ export const SignupPage = () => {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [message, setMessage] = useState("");
-  const role_id = 3;
+  const role_id = 1;
 
   const signup = (e) => {
     e.preventDefault()
