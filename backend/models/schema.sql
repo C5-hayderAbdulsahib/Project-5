@@ -95,10 +95,22 @@ INSERT INTO roles (role) VALUES ('USER');
 INSERT INTO permissions (permission) VALUES ("CREATE_CATEGORIES");
 INSERT INTO permissions (permission) VALUES ("UPDATE_CATEGORIES");
 INSERT INTO permissions (permission) VALUES ("DELETE_CATEGORIES");
+INSERT INTO permissions (permission) VALUES ("UPDATE_ROOMS");
+INSERT INTO permissions (permission) VALUES ("DELETE_ROOMS");
+
 
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 1);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 2);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 3);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 4);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 5);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 4);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 5);
+
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'superadmin', 'hayder', 'hayder', 'jordan', 1);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'admin', 'hayder', 'hayder', 'jordan', 2);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'user', 'hayder', 'hayder', 'jordan', 3);
+
 
 INSERT INTO categories (name) VALUES ('developers');
 INSERT INTO categories (name) VALUES ('anime fans');

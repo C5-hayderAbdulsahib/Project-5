@@ -30,6 +30,29 @@ app.use("/categories", categoryRouter);
 app.use("/rooms", roomRouter);
 
 //=================================================================================================================
+
+//////////////////////////////////////////////////////////////////////////////////
+// Handles any other endpoints [unassigned - endpoints]
+
+// this is an Error-handling middleware and it has to be at the bottom of the page before the app.listen
+//it job is to print an error if the user enter a wrong endpoint(url)
+
+// the reason that this code work is because it is at the end of the file so first it will go and check the routes above and if it found a matching route then it will go inside it and if there is a response then it will stop the execution of the file and it will never reach this middleware,
+//but if it did not found any matching routes then it will reach this middleware and execute it
+
+app.use("*", (req, res, next) => {
+  //it is true that we don't need to specify an (endpoint or next parameter) in this task, but it is better to give it an endpoint and if it is going to affect all the routes then we give it "*" as an endpoint, so that why each middleware should have an endpoint and the next parameter so that it does not get confused with a request handling function(or a controller) because there is no request handling function(or a controller) that have an endpoint of "*"
+
+  const error = new Error("NO content at this path");
+  error.status = 404;
+  res.status(404).json({
+    error: {
+      message: error.message,
+      status: error.status,
+    },
+  });
+});
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
