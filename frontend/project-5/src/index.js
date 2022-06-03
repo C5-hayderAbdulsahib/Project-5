@@ -2,10 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+//this is for react routers
+import { BrowserRouter as Router } from "react-router-dom";
+
+// import Provider from redux package
+import { Provider } from "react-redux";
+// import the store from redux folder
+import store from "./redux/store";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      {/* wrap the App with the Provider and pass the store, all the components that are nested in the Provider will have access to the store and can use it */}
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   </React.StrictMode>
 );
 
