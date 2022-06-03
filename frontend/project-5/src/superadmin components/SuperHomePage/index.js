@@ -1,17 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory, setCategories } from "../../redux/reducers/categories";
+import {
+  addCategory,
+  setCategories,
+  updateCategory,
+} from "../../redux/reducers/categories";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
-  const { token ,categories} = useSelector((state) => {
+  const { token, categories } = useSelector((state) => {
     return { token: state.auth.token, categories: state.categories.categories };
   });
 
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-
+  const [updateName, setUpdateName] = useState("");
   ///////////createCategory////////////////////
 
   const createCategory = (e) => {
@@ -30,7 +34,6 @@ const SuperHomePage = () => {
         if (result.data.success) {
           setMessage(result.data.message);
           dispatch(addCategory(result.data.category));
-          console.log(result.data.category);
         }
       })
       .catch((err) => {
@@ -48,7 +51,6 @@ const SuperHomePage = () => {
         },
       })
       .then((result) => {
-        console.log(categories);
         if (result.data.success) {
           dispatch(setCategories(result.data.categories));
         }
@@ -56,8 +58,28 @@ const SuperHomePage = () => {
       .catch((err) => {
         console.log(err.response.data.message);
       });
-  };
+    //===============================================
 
+    //======================================================================================================
+  };
+  const updateCategoryFun = (id) => {
+    axios
+      .put(
+        `http://localhost:5000/categories/${id}`,
+        { name: updateName },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        dispatch(updateCategory({ id, name: updateName }));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     getAllCategories();
   }, []);
@@ -78,19 +100,31 @@ const SuperHomePage = () => {
           <br></br>
           {message ? <p>{message}</p> : ""}
         </form>
-<div>
-        {categories &&
-          categories.map((element, index) => {
-            console.log(element);
-
-         return   <div key={index}>
-              <p>{element.name}</p>
-              <button>update</button>
-              <button>delete</button>
-              <hr></hr>
-            </div>;
-          })}
-          </div>
+        <div>
+          {categories &&
+            categories.map((element, index) => {
+              return (
+                <div key={index}>
+                  <p>{element.name}</p>
+                  <input
+                    type={"text"}
+                    onChange={(e) => {
+                      setUpdateName(e.target.value);
+                    }}
+                  />
+                  <button
+                    onClick={() => {
+                      updateCategoryFun(element.id);
+                    }}
+                  >
+                    update
+                  </button>
+                  <button>delete</button>
+                  <hr></hr>
+                </div>
+              );
+            })}
+        </div>
       </div>
     </>
   );
