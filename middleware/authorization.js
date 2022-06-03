@@ -8,8 +8,7 @@ const authorization = (string) => {
     const data = [user_id];
     const command = `SELECT * FROM users U WHERE U.id = (?)`;
     connection.query(command, data, (err, result) => {
-      console.log(result);
-      const command2 = `SELECT * FROM role_permission RP INNER JOIN permissions P ON RP.permission_id = P.id WHERE RP.role_id = (?) AND P.permission = (?)`;
+      const command2 = `SELECT * FROM roles_permissions RP INNER JOIN permissions P ON RP.permission_id = P.id WHERE RP.role_id = (?) AND P.permission = (?)`;
 
       const data = [result[0].role_id, string];
 
