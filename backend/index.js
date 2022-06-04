@@ -18,6 +18,7 @@ const permissionRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
 const categoryRouter = require("./routes/categories");
 const roomRouter = require("./routes/rooms");
+const messagesRouter=require("./routes/messages");
 //built-in middleware
 app.use(express.json());
 
@@ -28,6 +29,7 @@ app.use("/permissions", permissionRouter);
 app.use("/users", usersRouter);
 app.use("/categories", categoryRouter);
 app.use("/rooms", roomRouter);
+
 
 //=================================================================================================================
 
