@@ -54,7 +54,7 @@ const createNewRoom = (req, res) => {
             .status(500)
             .json({ success: false, message: "Server Error", err: err });
         }
-        const command_five = ` UPDATE users SET role_id = 2 WHERE id = ? `;
+        const command_five = ` UPDATE users SET role_id = 2 WHERE id = ? AND role_id != 1`;
         const data = [userId];
         connection.query(command_five, data, (err, result) => {
            if (err) {
