@@ -1,4 +1,4 @@
-import React ,{ useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { RiCloseLine } from "react-icons/ri";
 
@@ -12,17 +12,16 @@ const CreateNewAdminModel = (props) => {
   const [last_name, setLast_name] = useState("");
   const [country, setCountry] = useState("");
 
-  const createNewAdmin = () => {
-    axios
-      .post(`http://localhost:5000/users/signup/superadmin`, {
-        email,
-        password,
-        username,
-        first_name,
-        last_name,
-        country,
-      })
-     ;
+  const createNewAdmin = (e) => {
+    e.preventDefault();
+    axios.post(`http://localhost:5000/users/signup/superadmin`, {
+      email,
+      password,
+      username,
+      first_name,
+      last_name,
+      country,
+    });
   };
 
   return (
@@ -42,67 +41,62 @@ const CreateNewAdminModel = (props) => {
             {/* ///////////////////////////////the body f the model */}
             You Can Create New Admin
             <div className="push-down"></div>
-            <form
-              onSubmit={() => {
+            <input
+              type={"text"}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type={"password"}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br></br>
+            <input
+              type={"text"}
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <br></br>
+            <input
+              type={"text"}
+              placeholder="First Name"
+              onChange={(e) => setFirst_name(e.target.value)}
+            />
+            <br></br>
+            <input
+              type={"text"}
+              placeholder="Last Name"
+              onChange={(e) => setLast_name(e.target.value)}
+            />
+            <br></br>
+            <input
+              type={"text"}
+              placeholder="Country"
+              onChange={(e) => setCountry(e.target.value)}
+            />
+            <div className="push-down"></div>
+            {/* the update button */}
+            <button
+              // onClick={() => {
+              //   updateCategoryFun(id);
+              //   setIsOpen(false);
+              // }}
+              className="deleteBtn"
+              //onClick={createNewAdmin}
+              onClick={createNewAdmin}
+            >
+              Create New Admin
+            </button>
+            {/* the cancel model button */}
+            <button
+              className="cancelBtn"
+              onClick={() => {
                 setIsOpenAdmin(false);
               }}
             >
-              <input
-                type={"text"}
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <input
-                type={"text"}
-                placeholder="Password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                placeholder="Username"
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                placeholder="First Name"
-                onChange={(e) => setFirst_name(e.target.value)}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                placeholder="Last Name"
-                onChange={(e) => setLast_name(e.target.value)}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                placeholder="Country"
-                onChange={(e) => setCountry(e.target.value)}
-              />
-              <div className="push-down"></div>
-              {/* the update button */}
-              <button
-                // onClick={() => {
-                //   updateCategoryFun(id);
-                //   setIsOpen(false);
-                // }}
-                className="deleteBtn"
-                onClick={createNewAdmin}
-              >
-                Create New Admin
-              </button>
-              {/* the cancel model button */}
-              <button
-                className="cancelBtn"
-                onClick={() => {
-                  setIsOpenAdmin(false);
-                }}
-              >
-                Cancel
-              </button>
-            </form>
+              Cancel
+            </button>
           </div>
 
           {/* // ... */}
