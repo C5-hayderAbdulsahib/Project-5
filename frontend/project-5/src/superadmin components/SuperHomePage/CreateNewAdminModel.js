@@ -11,7 +11,8 @@ const CreateNewAdminModel = (props) => {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [country, setCountry] = useState("");
-
+const [message , setMessage] =useState("")
+  
   const createNewAdmin = (e) => {
     e.preventDefault();
     axios.post(`http://localhost:5000/users/signup/superadmin`, {
@@ -21,6 +22,12 @@ const CreateNewAdminModel = (props) => {
       first_name,
       last_name,
       country,
+    }).then(result=>{
+        if(result.data.success){
+            setMessage(result.data.message)
+        }
+    }).catch(err=>{
+        setMessage(err.response.data.message)
     });
   };
 
@@ -84,7 +91,7 @@ const CreateNewAdminModel = (props) => {
               // }}
               className="deleteBtn"
               //onClick={createNewAdmin}
-              onClick={createNewAdmin}
+              onClick={(e)=>{createNewAdmin(e);}}
             >
               Create New Admin
             </button>
@@ -97,6 +104,7 @@ const CreateNewAdminModel = (props) => {
             >
               Cancel
             </button>
+            <p>{message}</p>
           </div>
 
           {/* // ... */}
