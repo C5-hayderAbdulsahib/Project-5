@@ -153,10 +153,7 @@ const SuperHomePage = () => {
           {message ? <p>{message}</p> : ""}
         </form>
 
-        <div>
-          {categories.length && categoriesList}
-         
-        </div>
+        <div>{categories.length && categoriesList}</div>
       </div>
     </>
   );
