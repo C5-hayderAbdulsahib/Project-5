@@ -132,4 +132,30 @@ const getAllUsernames = (req, res) => {
   });
 };
 
-module.exports = { signup, signIn, getAllUsernames };
+//////////git My Info/////////////
+
+const getUserInfo = (req, res) => {
+  const id = req.token.userId;
+  console.log(id);
+  const command = `SELECT id,email,username ,first_name,last_name,country,profile_image,role_id FROM users WHERE is_deleted=0 AND id=? ;`;
+  const data = [id];
+  connection.query(command, data, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "The User Exists",
+        user: result,
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+module.exports = { signup, signIn, getAllUsernames, getUserInfo };
