@@ -6,8 +6,11 @@ import "./style.css";
 // import component
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-// create function to signup user
+//import action
+import { signin } from "../../redux/reducers/auth";
 
 export const SignupPage = () => {
   const [email, serEmail] = useState("");
@@ -18,8 +21,11 @@ export const SignupPage = () => {
   const [message, setMessage] = useState("");
   const role_id = 1;
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const signup = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     axios
       .post(`http://localhost:5000/users/signup`, {
         email,
@@ -31,11 +37,15 @@ export const SignupPage = () => {
       })
       .then((result) => {
         if (result.data.success) {
-          setMessage(result.data.message);
+          dispatch(signin(result.data.token));
+          navigate("/");
         }
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
+        if (!err.response.data.success) {
+          return setMessage(err.response.data.message);
+        }
+        setMessage("Error happened while Login, please try again");
       });
   };
 
@@ -86,7 +96,7 @@ export const SignupPage = () => {
           <br></br>
           <button>Signup</button>
           <br></br>
-          <p>{message}</p>
+          {message && <p>{message}</p>}
         </form>
       </div>
     </>
