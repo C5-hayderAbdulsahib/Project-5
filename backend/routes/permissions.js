@@ -1,6 +1,6 @@
 const express = require("express");
 //============================================
-const { createNewPermission } = require("../controllers/permission");
+const { createNewPermission } = require("../controllers/permissions");
 
 const permissionRouter = express.Router();
 

@@ -1,6 +1,6 @@
 const connection = require("../models/db");
 
-//this function build to check if the user has the authorati to make some function or not
+//this function build to check if the user has the authorization to make some function or not
 
 const authorization = (string) => {
   return function (req, res, next) {
