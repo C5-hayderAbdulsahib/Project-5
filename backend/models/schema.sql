@@ -58,6 +58,8 @@ CREATE TABLE rooms(
     is_deleted TINYINT DEFAULT 0,
     category_id INT,
     FOREIGN KEY (category_id) REFERENCES categories(id),
+    admin_id INT,
+    FOREIGN KEY (admin_id) REFERENCES users (id),
     PRIMARY KEY (id)
 );
 
@@ -116,7 +118,7 @@ INSERT INTO categories (name) VALUES ('developers');
 INSERT INTO categories (name) VALUES ('anime fans');
 INSERT INTO categories (name) VALUES ('gamers');
 
-INSERT INTO rooms (name, category_id) VALUES ('pirates', 1);
-INSERT INTO rooms (name, category_id) VALUES ('one piece fans', 2);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('pirates', 1, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('one piece fans', 2, 1);
 
 

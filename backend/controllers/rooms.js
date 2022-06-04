@@ -26,8 +26,8 @@ const createNewRoom = (req, res) => {
         .status(404)
         .json({ success: false, message: "The Category Is Not Found" });
     }
-    const command_tow = `INSERT INTO rooms (name ,room_image , category_id ) VALUES (?,?,?)`;
-    const data = [name, room_image, category_id];
+    const command_tow = `INSERT INTO rooms (name ,room_image , category_id, admin_id) VALUES (?,?,?,?)`;
+    const data = [name, room_image, category_id, userId];
 
     connection.query(command_tow, data, (err, result) => {
       if (err) {
@@ -57,11 +57,11 @@ const createNewRoom = (req, res) => {
         const command_five = ` UPDATE users SET role_id = 2 WHERE id = ? AND role_id != 1`;
         const data = [userId];
         connection.query(command_five, data, (err, result) => {
-           if (err) {
-             return res
-               .status(500)
-               .json({ success: false, message: "Server Error", err: err });
-           }
+          if (err) {
+            return res
+              .status(500)
+              .json({ success: false, message: "Server Error", err: err });
+          }
         });
 
         res.status(201).json({ message: "Room Post Created", room: result[0] });
@@ -137,10 +137,11 @@ const updateRoomById = async (req, res) => {
   try {
     const { name, room_image } = req.body;
     const id = req.params.id;
+    const userId = req.token.userId;
 
-    const findRoom = `SELECT * FROM rooms where id=? `;
+    const findRoom = `SELECT * FROM rooms where id=? AND admin_id=? `;
 
-    const roomData = [id];
+    const roomData = [id, userId];
     const asyncConnection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
@@ -199,9 +200,10 @@ const updateRoomById = async (req, res) => {
 
 const deleteRoomById = (req, res) => {
   const id = req.params.id;
+  const userId = req.token.userId;
 
-  const command = `UPDATE rooms SET is_deleted = 1 where id = ?`;
-  const data = [id];
+  const command = `UPDATE rooms SET is_deleted = 1 where id = ? AND admin_id=?`;
+  const data = [id, userId];
 
   connection.query(command, data, (err, result) => {
     if (err) {
