@@ -6,10 +6,11 @@ const authentication = require("../middleware/authentication");
 
 
 
-const{getAllMessages}=require("../controllers/messages")
+const{getAllMessages,updateMessageById}=require("../controllers/messages")
 
 messagesRouter.get("/", authentication, getAllMessages);
-
+messagesRouter.get("/", authentication, getAllMessages);
+messagesRouter.put("/:id", authentication, updateMessageById);
 module.exports = messagesRouter;
 
 

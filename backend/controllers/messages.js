@@ -1,4 +1,5 @@
 const connection = require("../models/db");
+const mysql = require("mysql2/promise");
 
 const createNewMessage = (req, res) => {
   const room_Id = req.params.id;
@@ -42,7 +43,7 @@ const createNewMessage = (req, res) => {
   });
 };
 
-//////////getAllMessages//////////////
+//////////getAllMessages///////////////////////////////////////
 
 const getAllMessages = (req, res) => {
   const command = `SELECT * FROM messages WHERE is_deleted=0 `;
@@ -71,4 +72,73 @@ const getAllMessages = (req, res) => {
   });
 };
 
-module.exports = { createNewMessage ,getAllMessages};
+
+
+//////////////updateMessageById/////////////////
+
+const updateMessageById =async(req,res)=>{
+
+  try {
+    const {  description, message_image, document  } = req.body;
+    const id = req.params.id;
+
+    const findMessage = `SELECT * FROM messages where id=? `;
+
+    const messageData = [id];
+    const asyncConnection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    const [rows, fields] = await asyncConnection.execute(findMessage, messageData);
+
+    if (rows.length === 0) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The message is not found" });
+    }
+
+    const updatedDescription = description || rows[0].description;
+    const updatedMessage_image= message_image || rows[0].message_image;
+    const updatedDocument= document || rows[0].document
+
+    const command = `UPDATE messages SET description=?, message_image=? ,document=? WHERE id=? AND is_deleted=0;`;
+    const data = [updatedDescription, updatedMessage_image,updatedDocument ,id];
+
+    //this query will select specific message by it's id  and update it's description and it's photo and it's document
+
+    connection.query(command, data, (err, result) => {
+      if (result.affectedRows) {
+        res.status(200).json({
+          success: true,
+          message: `Message Updated `,
+          room: { id: id, description: updatedDescription, message_image: updatedMessage_image ,document:updatedDocument},
+        });
+      } else {
+        res.status(404).json({
+          success: false,
+          message: "The Message Is Not Found",
+        });
+      }
+
+      if (err) {
+        res.status(500).json({
+          success: false,
+          message: "Server Error",
+          err: err,
+        });
+      }
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Server Error",
+      err: err.message,
+    });
+  }
+};
+
+
+module.exports = { createNewMessage ,getAllMessages,updateMessageById};
