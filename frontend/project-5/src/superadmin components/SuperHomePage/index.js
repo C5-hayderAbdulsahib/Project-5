@@ -14,6 +14,7 @@ import {
 
 //import Components
 import SingleCategory from "./SingleCategory";
+import CreateCategoryModal from "./CreateCategoryModal";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
@@ -27,10 +28,12 @@ const SuperHomePage = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
   const [updateName, setUpdateName] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   ///////////createCategory////////////////////
 
   const createCategory = (e) => {
     e.preventDefault();
+    console.log(name);
     axios
       .post(
         `http://localhost:5000/categories`,
@@ -134,22 +137,28 @@ const SuperHomePage = () => {
 
   return (
     <>
+      {isOpen && (
+        <CreateCategoryModal
+          setName={setName}
+          createCategory={createCategory}
+          setIsOpen={setIsOpen}
+        />
+      )}
+
       <h1>super home admin</h1>
       <div>
-        <form onSubmit={createCategory}>
-          <input
-            type={"text"}
-            placeholder="Category Name"
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
-          ></input>
+     
 
-          <button>Create Category</button>
-          <br></br>
+        <button
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
+          Create Category
+        </button>
+        <br></br>
 
-          {message ? <p>{message}</p> : ""}
-        </form>
+        {message ? <p>{message}</p> : ""}
 
         <div>{categories.length && categoriesList}</div>
       </div>
