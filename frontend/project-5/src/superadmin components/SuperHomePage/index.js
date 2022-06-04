@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   addCategory,
   setCategories,
@@ -10,6 +11,9 @@ import {
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
+
+  const navigate = useNavigate();
+
   const { token, categories } = useSelector((state) => {
     return { token: state.auth.token, categories: state.categories.categories };
   });
@@ -101,6 +105,10 @@ const SuperHomePage = () => {
   };
 
   useEffect(() => {
+    if (!token) {
+      navigate("/super_admin/signin");
+    }
+
     getAllCategories();
   }, []);
 
@@ -116,10 +124,13 @@ const SuperHomePage = () => {
               setName(e.target.value);
             }}
           ></input>
+
           <button>Create Category</button>
           <br></br>
+
           {message ? <p>{message}</p> : ""}
         </form>
+
         <div>
           {categories &&
             categories.map((element, index) => {
