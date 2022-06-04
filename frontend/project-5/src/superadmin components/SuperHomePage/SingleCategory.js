@@ -10,7 +10,7 @@ const SingleCategory = (props) => {
     props; //we used destructuring to make it easier to use them
 
   const [isOpen, setIsOpen] = useState(false); //the reason that we created this state is for showing or hiding the model
-
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
   return (
     <>
       <p>{name}</p>
@@ -31,17 +31,18 @@ const SingleCategory = (props) => {
       <button onClick={() => setIsOpen(true)}>update</button>
 
       {/* the model component for delete category */}
-      {isOpen && (
+      {isOpenDelete && (
         <DeleteCategoryModal
           deleteCategoryFun={deleteCategoryFun}
           id={id}
+          name={name}
           // logout={logout}
-          setIsOpen={setIsOpen} //the reason that we send this state is to be able to close the model in the model component
+          setIsOpenDelete={setIsOpenDelete} //the reason that we send this state is to be able to close the model in the model component
           // token={token}
         />
       )}
       <button
-        onClick={() => setIsOpen(true)}
+        onClick={() => setIsOpenDelete(true)}
         /*   onClick={() => {
           deleteCategoryFun(id);
         }} */
