@@ -10,7 +10,10 @@ const {
   updateRoomById,
   getAllMyRooms,
   deleteRoomById,
+
 } = require("../controllers/rooms");
+
+ const{createNewMessage}=require("../controllers/messages") 
 
 const roomRouter = express.Router();
 
@@ -32,5 +35,7 @@ roomRouter.delete(
   authorization(`DELETE_ROOMS`),
   deleteRoomById
 );
+
+ roomRouter.post("/:id/messages" , authentication,createNewMessage) 
 
 module.exports = roomRouter;
