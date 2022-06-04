@@ -1,6 +1,10 @@
+//import packages
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+//import actions
 import {
   addCategory,
   setCategories,
@@ -8,8 +12,14 @@ import {
   deleteCategory,
 } from "../../redux/reducers/categories";
 
+//import Components
+import SingleCategory from "./SingleCategory";
+
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
+
+  const navigate = useNavigate();
+
   const { token, categories } = useSelector((state) => {
     return { token: state.auth.token, categories: state.categories.categories };
   });
@@ -101,8 +111,28 @@ const SuperHomePage = () => {
   };
 
   useEffect(() => {
+    if (!token) {
+      navigate("/super_admin/signin");
+    }
+
     getAllCategories();
   }, []);
+  console.log("the testing is");
+
+  //the reason the we render each single element in another component is for performance wise
+  const categoriesList = categories?.map((element) => {
+    console.log("the unique index is", element.id);
+    return (
+      <SingleCategory
+        key={element.id}
+        name={element.name}
+        id={element.id}
+        setUpdateName={setUpdateName}
+        updateCategoryFun={updateCategoryFun}
+        deleteCategoryFun={deleteCategoryFun}
+      />
+    ); //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it has to be unique or an error will also occur so that why we usually  give it the value of the index, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
+  });
 
   return (
     <>
@@ -116,12 +146,16 @@ const SuperHomePage = () => {
               setName(e.target.value);
             }}
           ></input>
+
           <button>Create Category</button>
           <br></br>
+
           {message ? <p>{message}</p> : ""}
         </form>
+
         <div>
-          {categories &&
+          {categoriesList && categoriesList}
+          {/* {categories &&
             categories.map((element, index) => {
               return (
                 <div key={index}>
@@ -149,7 +183,7 @@ const SuperHomePage = () => {
                   <hr></hr>
                 </div>
               );
-            })}
+            })} */}
         </div>
       </div>
     </>

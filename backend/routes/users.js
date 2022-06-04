@@ -2,7 +2,7 @@ const express = require("express");
 
 const { signup, signIn, getAllUsernames } = require("../controllers/users");
 
-////////////Middelware////////
+////////////Middleware////////
 const authentication = require("../middleware/authentication");
 
 //===================================================

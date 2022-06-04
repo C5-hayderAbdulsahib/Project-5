@@ -14,9 +14,9 @@ app.use(cors()); //we created an application-level middleware and invoke it the 
 //here we will import the routers
 
 const roleRouter = require("./routes/roles");
-const permissionRouter = require("./routes/permission");
+const permissionRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
-const categoryRouter = require("./routes/category");
+const categoryRouter = require("./routes/categories");
 const roomRouter = require("./routes/rooms");
 //built-in middleware
 app.use(express.json());

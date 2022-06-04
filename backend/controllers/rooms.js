@@ -64,7 +64,7 @@ const createNewRoom = (req, res) => {
 //===============================================================================================================
 
 const getAllGroupRooms = (req, res) => {
-  const command = `SELECT * FROM rooms WHERE is_deleted=0 AND is_group=true ;`;
+  const command = `SELECT * FROM rooms WHERE is_deleted=0 AND is_group=true;`;
 
   connection.query(command, (err, result) => {
     if (result.length > 0) {
@@ -148,18 +148,18 @@ const updateRoomById = async (req, res) => {
     }
 
     const updatedNAme = name || rows[0].name;
-    const updatedimg = room_image || rows[0].room_image;
+    const updatedImg = room_image || rows[0].room_image;
 
     const command = `UPDATE rooms SET name=?, room_image=? WHERE id=? AND is_deleted=0;`;
-    const data = [updatedNAme, updatedimg, id];
+    const data = [updatedNAme, updatedImg, id];
 
-    //this query will select spicific room by it's id  and update it's name and it's photo
+    //this query will select specific room by it's id  and update it's name and it's photo
     connection.query(command, data, (err, result) => {
       if (result.affectedRows) {
         res.status(200).json({
           success: true,
           message: `Room Updated `,
-          room: { id: id, name: updatedNAme, room_image: updatedimg },
+          room: { id: id, name: updatedNAme, room_image: updatedImg },
         });
       } else {
         res.status(404).json({
