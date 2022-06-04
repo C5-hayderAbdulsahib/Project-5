@@ -8,7 +8,7 @@ const {
   getAllCategories,
   updateCategoryById,
   deleteCategoryById,
-} = require("../controllers/category");
+} = require("../controllers/categories");
 
 const { createNewRoom } = require("../controllers/rooms");
 
