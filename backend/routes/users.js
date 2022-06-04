@@ -1,6 +1,12 @@
 const express = require("express");
 
-const { signup, signIn, getAllUsernames ,getUserInfo} = require("../controllers/users");
+const {
+  signup,
+  signIn,
+  getAllUsernames,
+  getUserInfo,
+  createNewAdmin,
+} = require("../controllers/users");
 
 ////////////Middleware////////
 const authentication = require("../middleware/authentication");
@@ -11,5 +17,5 @@ const usersRouter = express.Router();
 usersRouter.post("/signup", signup);
 usersRouter.post("/signIn", signIn);
 usersRouter.get("/usernames", authentication, getAllUsernames);
-
+usersRouter.post(`/signup/superadmin`, createNewAdmin);
 module.exports = usersRouter;
