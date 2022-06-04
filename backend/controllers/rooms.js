@@ -54,6 +54,15 @@ const createNewRoom = (req, res) => {
             .status(500)
             .json({ success: false, message: "Server Error", err: err });
         }
+        const command_five = ` UPDATE users SET role_id = 2 WHERE id = ? `;
+        const data = [userId];
+        connection.query(command_five, data, (err, result) => {
+           if (err) {
+             return res
+               .status(500)
+               .json({ success: false, message: "Server Error", err: err });
+           }
+        });
 
         res.status(201).json({ message: "Room Post Created", room: result[0] });
       });
