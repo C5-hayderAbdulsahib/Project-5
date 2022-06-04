@@ -72,14 +72,11 @@ const getAllMessages = (req, res) => {
   });
 };
 
-
-
 //////////////updateMessageById/////////////////
 
-const updateMessageById =async(req,res)=>{
-
+const updateMessageById = async (req, res) => {
   try {
-    const {  description, message_image, document  } = req.body;
+    const { description, message_image, document } = req.body;
     const id = req.params.id;
 
     const findMessage = `SELECT * FROM messages where id=? `;
@@ -92,7 +89,10 @@ const updateMessageById =async(req,res)=>{
       database: process.env.DB_NAME,
     });
 
-    const [rows, fields] = await asyncConnection.execute(findMessage, messageData);
+    const [rows, fields] = await asyncConnection.execute(
+      findMessage,
+      messageData
+    );
 
     if (rows.length === 0) {
       return res
@@ -101,11 +101,16 @@ const updateMessageById =async(req,res)=>{
     }
 
     const updatedDescription = description || rows[0].description;
-    const updatedMessage_image= message_image || rows[0].message_image;
-    const updatedDocument= document || rows[0].document
+    const updatedMessage_image = message_image || rows[0].message_image;
+    const updatedDocument = document || rows[0].document;
 
     const command = `UPDATE messages SET description=?, message_image=? ,document=? WHERE id=? AND is_deleted=0;`;
-    const data = [updatedDescription, updatedMessage_image,updatedDocument ,id];
+    const data = [
+      updatedDescription,
+      updatedMessage_image,
+      updatedDocument,
+      id,
+    ];
 
     //this query will select specific message by it's id  and update it's description and it's photo and it's document
 
@@ -114,7 +119,12 @@ const updateMessageById =async(req,res)=>{
         res.status(200).json({
           success: true,
           message: `Message Updated `,
-          room: { id: id, description: updatedDescription, message_image: updatedMessage_image ,document:updatedDocument},
+          room: {
+            id: id,
+            description: updatedDescription,
+            message_image: updatedMessage_image,
+            document: updatedDocument,
+          },
         });
       } else {
         res.status(404).json({
@@ -140,5 +150,34 @@ const updateMessageById =async(req,res)=>{
   }
 };
 
+//////////////////deleteMessageById////////////////////
 
-module.exports = { createNewMessage ,getAllMessages,updateMessageById};
+const deleteMessageById = (req, res) => {
+  const id = req.params.id;
+
+  const command = `UPDATE messages SET is_deleted = 1 where id = ?`;
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Message Is Not Found" });
+    }
+    res.status(200).json({ success: true, message: "Message Deleted" });
+  });
+};
+
+module.exports = {
+  createNewMessage,
+  getAllMessages,
+  updateMessageById,
+  deleteMessageById,
+};
