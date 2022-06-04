@@ -117,11 +117,9 @@ const SuperHomePage = () => {
 
     getAllCategories();
   }, []);
-  console.log("the testing is");
 
   //the reason the we render each single element in another component is for performance wise
   const categoriesList = categories?.map((element) => {
-    console.log("the unique index is", element.id);
     return (
       <SingleCategory
         key={element.id}
