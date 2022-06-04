@@ -18,8 +18,9 @@ import CreateCategoryModal from "./CreateCategoryModal";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
-
   const navigate = useNavigate();
+
+  //======================================================================================================
 
   const { token, categories } = useSelector((state) => {
     return { token: state.auth.token, categories: state.categories.categories };
@@ -29,32 +30,8 @@ const SuperHomePage = () => {
   const [message, setMessage] = useState("");
   const [updateName, setUpdateName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  ///////////createCategory////////////////////
 
-  const createCategory = (e) => {
-    e.preventDefault();
-    console.log(name);
-    axios
-      .post(
-        `http://localhost:5000/categories`,
-        { name },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((result) => {
-        if (result.data.success) {
-          setMessage(result.data.message);
-          dispatch(addCategory(result.data.category));
-        }
-      })
-      .catch((err) => {
-        setMessage(err.response.data.message);
-      });
-  };
-
+  //======================================================================================================
   /////////getAllCategories/////////////
 
   const getAllCategories = () => {
@@ -72,8 +49,6 @@ const SuperHomePage = () => {
       .catch((err) => {
         console.log(err.response.data.message);
       });
-    //===============================================
-
     //======================================================================================================
   };
   const updateCategoryFun = (id) => {
@@ -95,6 +70,7 @@ const SuperHomePage = () => {
       });
   };
 
+  //======================================================================================================
   ////////////deleteCategory///////////////
 
   const deleteCategoryFun = (id) => {
@@ -137,18 +113,10 @@ const SuperHomePage = () => {
 
   return (
     <>
-      {isOpen && (
-        <CreateCategoryModal
-          setName={setName}
-          createCategory={createCategory}
-          setIsOpen={setIsOpen}
-        />
-      )}
+      {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
 
       <h1>super home admin</h1>
       <div>
-     
-
         <button
           onClick={() => {
             setIsOpen(true);
