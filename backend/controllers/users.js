@@ -2,7 +2,7 @@ const connection = require("../models/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const email = req.body.email.toLowerCase();
 
   const {
@@ -48,11 +48,12 @@ const signup = async (req, res) => {
         .json({ success: false, message: "The UserName Cannot Be Null" });
     }
 
-    return res.status(201).json({
-      success: true,
-      message: "Account Created Successfully",
-      user: result,
-    });
+    // return res.status(201).json({
+    //   success: true,
+    //   message: "Account Created Successfully",
+    //   user: result,
+    // });
+    next();
   });
 };
 
