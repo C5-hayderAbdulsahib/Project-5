@@ -42,4 +42,33 @@ const createNewMessage = (req, res) => {
   });
 };
 
-module.exports = { createNewMessage };
+//////////getAllMessages//////////////
+
+const getAllMessages = (req, res) => {
+  const command = `SELECT * FROM messages WHERE is_deleted=0 `;
+
+  connection.query(command, (err, result) => {
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "All The Messages",
+        All_Messages: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "No Message Has Been Send Yet",
+      });
+    }
+
+    if (err) {
+      res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+  });
+};
+
+module.exports = { createNewMessage ,getAllMessages};

@@ -1,7 +1,15 @@
 const express = require("express");
 
-const messagesRouter = express.Router;
+const messagesRouter = express.Router();
 
 const authentication = require("../middleware/authentication");
 
-module.export = messagesRouter;
+
+
+const{getAllMessages}=require("../controllers/messages")
+
+messagesRouter.get("/", authentication, getAllMessages);
+
+module.exports = messagesRouter;
+
+

@@ -29,6 +29,8 @@ app.use("/permissions", permissionRouter);
 app.use("/users", usersRouter);
 app.use("/categories", categoryRouter);
 app.use("/rooms", roomRouter);
+app.use("/messages", messagesRouter);
+
 
 
 //=================================================================================================================
