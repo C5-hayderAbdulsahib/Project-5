@@ -1,21 +1,26 @@
 import React from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { addCategory } from "../../redux/reducers/categories/index";
 import axios from "axios";
 
 const CreateCategoryModal = (props) => {
+  const dispatch = useDispatch("");
   const { token } = useSelector((state) => {
     return {
       token: state.auth.token,
     };
   });
-  const dispatch = useDispatch("");
+  //======================================================================================================
+
   const { setIsOpen } = props;
   const [name, setName] = useState("");
 
+  //======================================================================================================
+
+  //Create Category
   const createCategory = () => {
     axios
       .post(
@@ -32,8 +37,12 @@ const CreateCategoryModal = (props) => {
           dispatch(addCategory(result.data.category));
         }
       })
-      .catch((err) => {});
+      .catch(err=>{
+          console.log(err);
+      });
   };
+
+  //======================================================================================================
 
   return (
     <>
@@ -50,7 +59,7 @@ const CreateCategoryModal = (props) => {
 
           <div className="modalContent">
             {/* ///////////////////////////////the body f the model */}
-            Are you sure you want to Create New Category
+            You Can Create New Category
             <div className="push-down"></div>
             <form
               onSubmit={() => {
