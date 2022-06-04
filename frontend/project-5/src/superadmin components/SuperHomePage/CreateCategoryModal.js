@@ -79,9 +79,7 @@ const CreateCategoryModal = (props) => {
                 //   setIsOpen(false);
                 // }}
                 className="deleteBtn"
-                onClick={() => {
-                  createCategory();
-                }}
+                onClick={ createCategory  }
               >
                 Create Category
               </button>

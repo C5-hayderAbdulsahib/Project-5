@@ -158,4 +158,60 @@ const getUserInfo = (req, res) => {
   });
 };
 
-module.exports = { signup, signIn, getAllUsernames, getUserInfo };
+//============================================================================================================
+
+// create function for super admin signup
+const createNewAdmin = async (req, res) => {
+  const email = req.body.email.toLowerCase();
+  const role_id = 1;
+  const { password, username, first_name, last_name, country, profile_image } =
+    req.body;
+
+  const SALT = Number(process.env.SALT);
+  const hashPassword = await bcrypt.hash(password, SALT);
+
+  const command = `INSERT INTO users (email ,password ,username , first_name , last_name , country , profile_image , role_id) VALUES (? , ?,? , ?, ? , ?, ? , ?)`;
+  const data = [
+    email,
+    hashPassword,
+    username,
+    first_name,
+    last_name,
+    country,
+    profile_image,
+    role_id,
+  ];
+  connection.query(command, data, (err, result) => {
+    if (err?.sqlMessage.includes(`for key 'users.email`)) {
+      return res
+        .status(409)
+        .json({ success: false, message: "The Email Already Exists" });
+    }
+
+    if (err?.sqlMessage.includes(`for key 'users.username`)) {
+      return res
+        .status(409)
+        .json({ success: false, message: "The UserName Already Exists" });
+    }
+
+    if (err?.sqlMessage.includes(`'username' cannot be null`)) {
+      return res
+        .status(409)
+        .json({ success: false, message: "The UserName Cannot Be Null" });
+    }
+
+    return res.status(201).json({
+      success: true,
+      message: "Account Created Successfully",
+      user: result,
+    });
+  });
+};
+
+module.exports = {
+  signup,
+  signIn,
+  getAllUsernames,
+  getUserInfo,
+  createNewAdmin,
+};
