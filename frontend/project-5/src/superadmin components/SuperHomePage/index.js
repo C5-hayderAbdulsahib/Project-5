@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 //import actions
 import {
-  addCategory,
   setCategories,
   updateCategory,
   deleteCategory,
@@ -15,6 +14,7 @@ import {
 //import Components
 import SingleCategory from "./SingleCategory";
 import CreateCategoryModal from "./CreateCategoryModal";
+import CreateNewAdminModel from "./CreateNewAdminModel";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
@@ -30,7 +30,7 @@ const SuperHomePage = () => {
   const [message, setMessage] = useState("");
   const [updateName, setUpdateName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-
+  const [isOpenAdmin, setIsOpenAdmin] = useState(false);
   //======================================================================================================
   /////////getAllCategories/////////////
 
@@ -114,7 +114,7 @@ const SuperHomePage = () => {
   return (
     <>
       {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
-
+      {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
       <h1>super home admin</h1>
       <div>
         <button
@@ -125,7 +125,13 @@ const SuperHomePage = () => {
           Create Category
         </button>
         <br></br>
-
+        <button
+          onClick={() => {
+            setIsOpenAdmin(true);
+          }}
+        >
+          Create New Admin
+        </button>
         {message ? <p>{message}</p> : ""}
 
         <div>{categories.length && categoriesList}</div>
