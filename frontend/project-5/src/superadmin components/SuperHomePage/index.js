@@ -154,36 +154,8 @@ const SuperHomePage = () => {
         </form>
 
         <div>
-          {categoriesList && categoriesList}
-          {/* {categories &&
-            categories.map((element, index) => {
-              return (
-                <div key={index}>
-                  <p>{element.name}</p>
-                  <input
-                    type={"text"}
-                    onChange={(e) => {
-                      setUpdateName(e.target.value);
-                    }}
-                  />
-                  <button
-                    onClick={() => {
-                      updateCategoryFun(element.id);
-                    }}
-                  >
-                    update
-                  </button>
-                  <button
-                    onClick={() => {
-                      deleteCategoryFun(element.id);
-                    }}
-                  >
-                    delete
-                  </button>
-                  <hr></hr>
-                </div>
-              );
-            })} */}
+          {categories.length && categoriesList}
+         
         </div>
       </div>
     </>
