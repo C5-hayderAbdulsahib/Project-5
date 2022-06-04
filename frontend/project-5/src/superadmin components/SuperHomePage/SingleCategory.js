@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 //import components
 import UpdateCategoryModal from "./UpdateCategoryModal";
+import DeleteCategoryModal from "./DeleteCategoryModal";
 
 const SingleCategory = (props) => {
   const { name, id, setUpdateName, updateCategoryFun, deleteCategoryFun } =
@@ -14,7 +15,7 @@ const SingleCategory = (props) => {
     <>
       <p>{name}</p>
 
-      {/* the model component */}
+      {/* the model component for update category */}
       {/* we make a condition if the state is false then dont show the model else show it */}
       {isOpen && (
         <UpdateCategoryModal
@@ -27,13 +28,23 @@ const SingleCategory = (props) => {
           // token={token}
         />
       )}
-
       <button onClick={() => setIsOpen(true)}>update</button>
 
+      {/* the model component for delete category */}
+      {isOpen && (
+        <DeleteCategoryModal
+          deleteCategoryFun={deleteCategoryFun}
+          id={id}
+          // logout={logout}
+          setIsOpen={setIsOpen} //the reason that we send this state is to be able to close the model in the model component
+          // token={token}
+        />
+      )}
       <button
-        onClick={() => {
+        onClick={() => setIsOpen(true)}
+        /*   onClick={() => {
           deleteCategoryFun(id);
-        }}
+        }} */
       >
         delete
       </button>
