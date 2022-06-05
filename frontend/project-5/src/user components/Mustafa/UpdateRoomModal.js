@@ -18,7 +18,7 @@ export const UpdateRoomModal = (props) => {
      
 
     // logout,
-    setIsOpen,
+    setIsOpenUpdate,
     // token,
   } = props;
 
@@ -56,13 +56,13 @@ export const UpdateRoomModal = (props) => {
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="darkBG" onClick={() => setIsOpen(false)} />
+      <div className="darkBG" onClick={() => setIsOpenUpdate(false)} />
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
             <h5 className="heading">Dialog</h5>
           </div>
-          <button className="closeBtn" onClick={() => setIsOpen(false)}>
+          <button className="closeBtn" onClick={() => setIsOpenUpdate(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
 
@@ -73,7 +73,7 @@ export const UpdateRoomModal = (props) => {
             <form
               onSubmit={() => {
                 UpdateRoomFun();
-                setIsOpen(false);
+                setIsOpenUpdate(false);
               }}
             >
               <input
@@ -87,14 +87,14 @@ export const UpdateRoomModal = (props) => {
               <button
                 // onClick={() => {
                 //   updateCategoryFun(id);
-                //   setIsOpen(false);
+                //   setIsOpenUpdate(false);
                 // }}
                 className="deleteBtn"
               >
                 Update Room
               </button>
               {/* the cancel model button */}
-              <button className="cancelBtn" onClick={() => setIsOpen(false)}>
+              <button className="cancelBtn" onClick={() => setIsOpenUpdate(false)}>
                 Cancel
               </button>
             </form>
