@@ -228,7 +228,7 @@ const deleteRoomById = (req, res) => {
 const getAllMyRooms = (req, res) => {
   const id = req.token.userId;
 
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ?`;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0`;
   const data = [id];
   connection.query(command, data, (err, result) => {
     if (err) {
