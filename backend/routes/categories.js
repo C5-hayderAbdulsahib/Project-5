@@ -10,7 +10,7 @@ const {
   deleteCategoryById,
 } = require("../controllers/categories");
 
-const { createNewRoom } = require("../controllers/rooms");
+const { createNewGroupRoom } = require("../controllers/rooms");
 
 const categoryRouter = express.Router();
 
@@ -34,6 +34,6 @@ categoryRouter.delete(
   authorization("DELETE_CATEGORIES"),
   deleteCategoryById
 );
-categoryRouter.post("/:id/rooms", authentication, createNewRoom);
+categoryRouter.post("/:id/rooms", authentication, createNewGroupRoom);
 
 module.exports = categoryRouter;

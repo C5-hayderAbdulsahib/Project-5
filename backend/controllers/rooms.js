@@ -6,7 +6,7 @@ const mysql = require("mysql2/promise");
 
 // cerate function to create new room
 
-const createNewRoom = (req, res) => {
+const createNewGroupRoom = (req, res) => {
   const { name, room_image } = req.body;
   const category_id = req.params.id;
   const userId = req.token.userId;
@@ -26,7 +26,7 @@ const createNewRoom = (req, res) => {
         .status(404)
         .json({ success: false, message: "The Category Is Not Found" });
     }
-    const command_tow = `INSERT INTO rooms (name ,room_image , category_id, admin_id) VALUES (?,?,?,?)`;
+    const command_tow = `INSERT INTO rooms (name ,room_image , category_id, admin_id,is_group) VALUES (?,?,?,?,1)`;
     const data = [name, room_image, category_id, userId];
 
     connection.query(command_tow, data, (err, result) => {
@@ -250,7 +250,7 @@ const getAllMyRooms = (req, res) => {
 };
 
 module.exports = {
-  createNewRoom,
+  createNewGroupRoom,
   getAllGroupRooms,
   updateRoomById,
   getRoomById,
