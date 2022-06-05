@@ -1,42 +1,37 @@
 //import packages
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+ 
 
 //import actions
 
-import { updateRoom } from "../../redux/reducers/rooms";
+
 
 //import Components
-
+import  DeleteRoomModal  from "./DeleteRoomModal";
 import UpdateRoomModal from "./UpdateRoomModal";
 
 const Mustafa = () => {
-  const dispatch = useDispatch("");
+ 
 
   //======================================================================================================
 
-  const { token, rooms } = useSelector((state) => {
-    return { token: state.auth.token, rooms: state.rooms.rooms };
-  });
-
+   
+  const [isOpenUpdate, setIsOpenUpdate] = useState(false);
   const [message, setMessage] = useState("");
   const [updateName, setUpdateName] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [id, setId] = useState("");
-  /* const UpdateRoomFun = (id = 1) => {
+
+/*   const deleteRoomFun = (id=1) => {
     axios
-      .put(
-        `http://localhost:5000/rooms/${id}`,
-        { name: updateName },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .delete(`http://localhost:5000/rooms/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((result) => {
-        dispatch(updateRoom({ id, name: updateName }));
+        dispatch(deleteRoom(id));
       })
       .catch((err) => {
         console.log(err);
@@ -45,22 +40,35 @@ const Mustafa = () => {
 
   return (
     <>
-      {isOpen && (
-        <UpdateRoomModal
-          setIsOpen={setIsOpen}
-         
-        />
-      )}
+      {isOpenUpdate && <UpdateRoomModal setIsOpenUpdate={setIsOpenUpdate} />}
 
       <div>
         <button
           onClick={() => {
-            setIsOpen(true);
+            setIsOpenUpdate(true);
           }}
         >
           Update
         </button>
+
         <br></br>
+        <button
+          onClick={() => {
+            setIsOpenDelete(true);
+          }}
+        >
+          Delete
+        </button>
+
+
+        {isOpenDelete && 
+          <DeleteRoomModal
+             setIsOpenDelete={setIsOpenDelete} 
+           
+        
+          />
+        }
+  
 
         {message ? <p>{message}</p> : ""}
       </div>
