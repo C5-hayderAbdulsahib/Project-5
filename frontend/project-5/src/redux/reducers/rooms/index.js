@@ -56,11 +56,17 @@ export const roomsSlice = createSlice({
       state.rooms = action.payload;
       //   console.log(action);
     },
+    deleteRoom: (state, action) => {
+      state.rooms = state.rooms.filter((element) => {
+        return element.id !== action.payload;
+      });
+    },
   },
 });
 
 // action creator functions are generated for each case reducer function
 // action creator is a function that creates an action which is an object that has 2 keys type and payload, the type is used to identify what the reducer is supposed to do, and the payload is the information that the reducer will use to complete the process.
-export const { setRooms, addRoom, updateRoom, deleteRoom } = roomsSlice.actions;
+export const { setRooms, addRoom, updateRoom, getAllMyRooms, deleteRoom ,getRoomById} =
+  roomsSlice.actions;
 
 export default roomsSlice.reducer;

@@ -14,7 +14,7 @@ import LeftMyRooms from "./user components/LeftMyRooms";
 import { RightThisRoom } from "./user components/RightThisRoom"; //since we used export directly then we have to use the {} when importing
 
 import { UpdateRoomModal } from "./user components/Mustafa/UpdateRoomModal";
-import { DeleteRoomModal } from "./user components/Mustafa/DeleteRoomModal";
+//import { DeleteRoomModal } from "./user components/Mustafa/DeleteRoomModal";
 import { CreateRoomModal } from "./user components/Mosa/CreateRoomModal";
 import { GetAllMyRooms } from "./user components/Mosa/GetAllMyRooms";
 import { GetRoomId } from "./user components/Mosa/GetRoomId";
@@ -33,7 +33,7 @@ function App() {
         <Routes>
         <Route path="/Mustafa" element={<Mustafa />} />
           <Route path="/update" element={<UpdateRoomModal />} />
-          <Route path="/delete" element={<DeleteRoomModal />} />
+         {/*  <Route path="/delete" element={<DeleteRoomModal />} /> */}
           <Route path="/create" element={<CreateRoomModal />} />
           <Route path="/getAllRoom" element={<GetAllMyRooms />} />
           <Route path="/getRoomId" element={<GetRoomId />} />
