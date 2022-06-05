@@ -104,7 +104,7 @@ const getAllGroupRooms = (req, res) => {
 const getRoomById = (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?   And user_id = ?  `;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ?  `;
   data = [id, userId];
 
   //this query will select spicific room by it's id
