@@ -208,6 +208,52 @@ const createNewAdmin = async (req, res) => {
     });
   });
 };
+//=================================================================================================================
+
+const updateUserInfo = (req, res) => {
+  const id = req.token.userId;
+  const { first_name, last_name, country, profile_image } = req.body;
+
+  const command = `SELECT * FROM users WHERE id = ?`;
+  const data = [id];
+  connection.query(command, data, (err, result) => {
+    if (err) {
+return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    console.log(result);
+    const update_first_name = first_name || result[0].first_name;
+    const update_last_name = last_name || result[0].last_name;
+    const update_country = country || result[0].country;
+    const update_profile_image = profile_image || result[0].profile_image;
+
+    const command_tow = `UPDATE users SET first_name= ? ,last_name=? , country = ? ,profile_image =? WHERE id = ? `;
+    const data = [
+      update_first_name,
+      update_last_name,
+      update_country,
+      update_profile_image,
+      id
+    ];
+    connection.query(command_tow, data, (err, result) => {
+      if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+      }
+   return res.status(201).json({
+     message: "Account updated",
+     user: {
+       first_name: update_first_name,
+       last_name: update_last_name,
+       country: update_country,
+       profile_image: update_profile_image,
+     },
+   });
+    });
+  });
+};
 
 module.exports = {
   signup,
@@ -215,4 +261,5 @@ module.exports = {
   getAllUsernames,
   getUserInfo,
   createNewAdmin,
+  updateUserInfo,
 };
