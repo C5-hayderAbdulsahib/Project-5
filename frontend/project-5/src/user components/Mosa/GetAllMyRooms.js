@@ -1,13 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { setRooms } from "../../redux/reducers/rooms";
 
+//===============================================================================================================
+
+//* cerate function to get all room that user created 
 export const GetAllMyRooms = () => {
+  //============================================================
   const dispatch = useDispatch();
   const { token, rooms } = useSelector((state) => {
     return { token: state.auth.token, rooms: state.rooms.rooms };
   });
+  //============================================================
   const getAllRooms = () => {
     axios
       .get(`http://localhost:5000/rooms/my_rooms`, {
@@ -19,7 +24,7 @@ export const GetAllMyRooms = () => {
         dispatch(setRooms(result.data.rooms));
       });
   };
-
+  //============================================================
   useEffect(() => {
     getAllRooms();
   }, []);
