@@ -10,7 +10,7 @@ const {
   updateRoomById,
   getAllMyRooms,
   deleteRoomById,
-
+  createNewChatRoom
 } = require("../controllers/rooms");
 
  const{createNewMessage}=require("../controllers/messages") 
@@ -37,5 +37,9 @@ roomRouter.delete(
 );
 
  roomRouter.post("/:id/messages" , authentication,createNewMessage) 
+
+ ///:userid/individual_room
+
+ roomRouter.post("/:userId/individual_room",authentication,createNewChatRoom)
 
 module.exports = roomRouter;
