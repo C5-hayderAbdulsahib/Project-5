@@ -3,17 +3,22 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRoom } from "../../redux/reducers/rooms";
 import { RiCloseLine } from "react-icons/ri";
+//*==============================================================================================================
 
+// create model to create new room
 export const CreateRoomModal = () => {
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
+  //*=================================================================================
 
+  const dispatch = useDispatch();
   const { token } = useSelector((state) => {
     return { token: state.auth.token };
   });
+  //*=================================================================================
+
   const createRoom = (id = 1) => {
     axios
       .post(
@@ -33,6 +38,8 @@ export const CreateRoomModal = () => {
         setMessage(err.response.data.message);
       });
   };
+
+  //*=================================================================================
 
   return (
     <>
