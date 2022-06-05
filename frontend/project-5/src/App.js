@@ -10,6 +10,15 @@ import HomePage from "./user components/HomePage";
 import Navbar from "./user components/Navbar";
 import SuperHomePage from "./superadmin components/SuperHomePage";
 
+import LeftMyRooms from "./user components/LeftMyRooms";
+import { RightThisRoom } from "./user components/RightThisRoom"; //since we used export directly then we have to use the {} when importing
+
+import { UpdateRoomModal } from "./user components/Mustafa/UpdateRoomModal";
+import { DeleteRoomModal } from "./user components/Mustafa/DeleteRoomModal";
+import { CreateRoomModal } from "./user components/Mosa/CreateRoomModal";
+import { GetAllMyRooms } from "./user components/Mosa/GetAllMyRooms";
+import { GetRoomId } from "./user components/Mosa/GetRoomId";
+
 //styling
 import "./App.css";
 
@@ -18,17 +27,30 @@ function App() {
     // this is for testing
     <div className="App">
       <Navbar />
+      <div className="display-grid">
+        <LeftMyRooms />
 
-      <Routes>
-        <Route path="/super_admin/home" element={<SuperHomePage />} />
-        <Route path="/super_admin/signin" element={<SuperSigninPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/signin" element={<SigninPage />} />
-        <Route path={"/"} element={<HomePage />} />
+        <Routes>
+          <Route path="/update" element={<UpdateRoomModal />} />
+          <Route path="/delete" element={<DeleteRoomModal />} />
+          <Route path="/create" element={<CreateRoomModal />} />
+          <Route path="/getAllRoom" element={<GetAllMyRooms />} />
+          <Route path="/getRoomId" element={<GetRoomId />} />
+        </Routes>
 
-        {/* this is the not found page component in case the user entered a path that is not defined in the routes above it will send him to this route, and that's why we put the "*" so we tell the code that if the entered path is nothing like the above path's then it means that it is something else and "*" means anything so it will choose this route and render the not found component */}
-        <Route path="*" element={<h1>Page Was Not Found</h1>} />
-      </Routes>
+        <Routes>
+          <Route path="/super_admin/home" element={<SuperHomePage />} />
+          <Route path="/super_admin/signin" element={<SuperSigninPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/signin" element={<SigninPage />} />
+          {/* <Route path={"/"} element={<HomePage />} /> */}
+          {/* <Route path="/" element={<LeftMyRooms />} /> */}
+          <Route path="/room/:id" element={<RightThisRoom />} />
+
+          {/* this is the not found page component in case the user entered a path that is not defined in the routes above it will send him to this route, and that's why we put the "*" so we tell the code that if the entered path is nothing like the above path's then it means that it is something else and "*" means anything so it will choose this route and render the not found component */}
+          <Route path="*" element={<h1>Page Was Not Found</h1>} />
+        </Routes>
+      </div>
     </div>
   );
 }

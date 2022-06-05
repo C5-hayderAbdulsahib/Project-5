@@ -1,0 +1,16 @@
+/* .home-page .grid-split-components {
+  display: grid;
+  grid-template-columns: 20% auto;
+  border: 5px solid black;
+}
+
+.home-page .left-my-rooms {
+  border: 5px solid black;
+  height: 94vh;
+}
+
+.home-page .right-this-room {
+  border: 5px solid black;
+  height: 94vh;
+  display: none;
+} */
