@@ -8,8 +8,8 @@ import { signin } from "../../redux/reducers/auth";
 ////import for styling //
 
 import "./style.css";
-//since we used export directly then when we import we have to add the {} or an error will occur
 
+//since we used export directly then when we import we have to add the {} or an error will occur
 export const SigninPage = () => {
   const dispatch = useDispatch();
 
