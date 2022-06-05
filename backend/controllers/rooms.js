@@ -99,11 +99,94 @@ const getAllGroupRooms = (req, res) => {
   });
 };
 
+////////////////////createNewChatRoom///////////////////////////
+
+const createNewChatRoom = async (req, res) => {
+  try {
+    const userIdFromParams = req.params.userId;
+    const thisUserId = req.token.userId;
+
+    const command = `SELECT * FROM USERS WHERE id =?`;
+    const data = [userIdFromParams];
+
+    const asyncConnection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    const [rows, fields] = await asyncConnection.execute(command, data);
+    if (!rows[0]) {
+      return res.status(404).json({
+        success: false,
+        message: "This User Is Not Found",
+      });
+    }
+
+    const command_2 = `INSERT INTO rooms  (name ,room_image ) VALUES ( ? , ?)`;
+    const data_2 = [rows[0].username, rows[0].profile_image];
+    connection.query(command_2, data_2, async (err, result) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ success: false, message: "Server Error", err: err });
+      } else {
+        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
+        const data2 = [result.insertId, rows[0].id];
+
+        const asyncConnection = await mysql.createConnection({
+          host: process.env.DB_HOST,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASS,
+          database: process.env.DB_NAME,
+        });
+
+        const [rows2, fields2] = await asyncConnection.execute(
+          command_3,
+          data2
+        );
+
+        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
+        const data3 = [result.insertId, thisUserId];
+
+        const asyncConnection2 = await mysql.createConnection({
+          host: process.env.DB_HOST,
+          user: process.env.DB_USER,
+          password: process.env.DB_PASS,
+          database: process.env.DB_NAME,
+        });
+
+        const [rows3, fields] = await asyncConnection2.execute(
+          command_4,
+          data3
+        );
+
+        return res.status(201).json({
+          success: true,
+          message: "Room Post Created",
+          room: {
+            id: result.insertId,
+            name: rows[0].username,
+            room_image: rows[0].profile_image,
+            is_group: 0,
+            is_deleted: 0,
+          },
+        });
+      }
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Server Error", err: err.message });
+  }
+};
+
 //===============================================================================================================
 
 const getRoomById = (req, res) => {
   const id = req.params.id;
-  const userId = req.token.userId
+  const userId = req.token.userId;
   const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ?  `;
   data = [id, userId];
 
@@ -116,7 +199,7 @@ const getRoomById = (req, res) => {
         room: result,
       });
     } else {
-      res.status(200).json({
+      res.status(404).json({
         success: false,
         message: "The Room Is Not Found",
       });
@@ -250,6 +333,7 @@ const getAllMyRooms = (req, res) => {
 };
 
 module.exports = {
+  createNewChatRoom,
   createNewGroupRoom,
   getAllGroupRooms,
   updateRoomById,
