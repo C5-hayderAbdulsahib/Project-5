@@ -32,7 +32,8 @@ export const UpdateRoomModel = (props) => {
     return { token: state.auth.token };
   });
 
-  const UpdateRoomFun = (id) => {
+  const UpdateRoomFun = (e, id) => {
+    e.preventDefault();
     axios
       .put(
         `http://localhost:5000/rooms/${id}`,
@@ -70,8 +71,8 @@ export const UpdateRoomModel = (props) => {
             Are you sure you want to update the name of this Room?
             <div className="push-down"></div>
             <form
-              onSubmit={() => {
-                UpdateRoomFun(id);
+              onSubmit={(e) => {
+                UpdateRoomFun(e, id);
                 setIsOpenUpdate(false);
               }}
             >
