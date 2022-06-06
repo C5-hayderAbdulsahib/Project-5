@@ -332,6 +332,37 @@ const getAllMyRooms = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+const getAllUsersInRooms = (req, res) => {
+  const userId = req.token.userId;
+  const room_id = req.params.id;
+
+console.log(room_id);
+
+  const command = `SELECT * FROM users_rooms INNER JOIN users ON users_rooms.user_id = users.id WHERE users_rooms.room_id = ? And is_member = 1 `;
+
+  const data = [ room_id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+       return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+
+if(!result){
+  return res.status(404).json({ success: false, message :`This User Has ` });
+}
+
+    res.status(200).json({
+      success: true,
+      message: "All The Users In This Room",
+      roomUsers: result,
+    });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -341,4 +372,5 @@ module.exports = {
   deleteRoomById,
   getRoomById,
   getAllMyRooms,
+  getAllUsersInRooms,
 };
