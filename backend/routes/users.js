@@ -6,7 +6,7 @@ const {
   getAllUsernames,
   getUserInfo,
   updateUserInfo,
-  createNewAdmin,
+  createNewAdmin,changePassword
 } = require("../controllers/users");
 
 ////////////Middleware////////
@@ -20,4 +20,6 @@ usersRouter.post("/signIn", signIn);
 usersRouter.get("/usernames", authentication, getAllUsernames);
 usersRouter.post(`/signup/superadmin`, createNewAdmin);
 usersRouter.put(`/change_info`, authentication, updateUserInfo);
+usersRouter.put(`/change_password`, authentication, changePassword);
+
 module.exports = usersRouter;
