@@ -103,6 +103,16 @@ export const SigninPage = () => {
                   />
                 </div>
               </div>
+              <div className="password-container">
+                <Link to={"/signup"} className="link">
+                  Need to create a new account?
+                </Link>
+              </div>
+              <div className="btn-position">
+                <button className="btn" onClick={signIn}>
+                  login
+                </button>
+              </div>
             </div>
           </div>
         </form>

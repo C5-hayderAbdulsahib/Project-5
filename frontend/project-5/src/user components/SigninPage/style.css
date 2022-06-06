@@ -126,3 +126,119 @@ body {
   cursor: default;
 }
 
+.error-message {
+  color: #ec4846;
+  font-style: italic;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  transition: all 0.2s linear;
+}
+
+.form-style {
+  position: relative;
+  padding: 10px;
+  height: 40px;
+  width: 414px;
+  max-width: 80vw;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  color: #c4c3ca;
+  background-color: #323338;
+  border: 1px solid #282a2e;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-style:hover {
+  border-color: #000;
+}
+
+.form-style:focus,
+.form-style:active {
+  border-color: #7289d9;
+}
+
+.form-style:active .input-placeholder {
+  color: #7289d9;
+}
+
+.btn-position {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.btn {
+  text-decoration: none;
+  border-radius: 4px;
+  height: 44px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: all 200ms linear;
+  letter-spacing: 1px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #677bc4;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+.password-container {
+  display: block;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 20px;
+  margin-top: 4px;
+  width: 100%;
+  height: auto;
+  padding: 2px 90% 2px 0px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.link {
+  color: #7289da;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0 auto;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
