@@ -34,7 +34,7 @@ body {
   background-image: url("https://wallpaperaccess.com/full/3053366.png");
   font-family: "Whitney", sans-serif;
   text-rendering: optimizeLegibility;
-  /*use this property to prevent the user from blurring the texts*/
+  /*use this proparity to prevent the user from blurring the speech*/
   user-select: none;
 }
 
@@ -241,4 +241,80 @@ body {
 .link:hover {
   text-decoration: underline;
 }
+
+.horizontalSeparator {
+  margin: 0 2.5vw;
+  border: 1px solid #363940;
+}
+
+.logo-login {
+  width: 240px;
+  height: 344px;
+  overflow: hidden;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  align-items: center;
+  vertical-align: baseline;
+  margin-left: 55px;
+}
+
+.logo-container {
+  display: flex;
+  width: 176px;
+  height: 176px;
+  border-radius: 2px;
+  background: #fff;
+  position: relative;
+  margin: 30px 0px 32px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 176px;
+  height: 176px;
+  position: absolute;
+  background-blend-mode: overlay;
+}
+
+.logo-code {
+  position: absolute;
+}
+
+.logo-pheader {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #677bc4;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.logo-sheader {
+  font-size: 16px;
+  line-height: 20px;
+  color: #a2a3a7;
+}
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-position: 0px 0px;
+  }
+  svgBlob {
+    top: 50;
+    left: 0;
+    transform: translate(0, -50%);
+  }
+  .logo-login {
+    display: none;
+  }
+  .horizontalSeparator {
+    display: none;
+  }
+  .container {
+    padding: 20px;
+  }
+}
+
 
