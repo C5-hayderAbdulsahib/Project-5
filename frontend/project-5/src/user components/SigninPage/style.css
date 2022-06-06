@@ -36,6 +36,7 @@ body {
   text-rendering: optimizeLegibility;
   /*use this proparity to prevent the user from blurring the speech*/
   user-select: none;
+  transition : 0.3s
 }
 
 .container {
