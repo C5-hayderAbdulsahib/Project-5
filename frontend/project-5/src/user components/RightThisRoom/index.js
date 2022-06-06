@@ -10,9 +10,7 @@ import "./style.css";
 //import component
 import { CreateNewRoomModal } from "./CreateNewRoomModal";
 import { UpdateRoomModel } from "./UpdateRoomModel";
-
-//import actions
-import { getRoomById } from "../../redux/reducers/rooms";
+import { DeleteRoomModal } from "./DeleteRoomModal";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -65,43 +63,61 @@ export const RightThisRoom = () => {
     <>
       <div className="right-this-room">
         <div className="specific-size-for-right">
-          <div className="room-navbar">
-            <button
-              onClick={() => {
-                setIsOpen(true);
-              }}
-            >
-              create room
-            </button>
+          {!errMessage ? (
+            <>
+              <div className="room-navbar">
+                <button
+                  onClick={() => {
+                    setIsOpen(true);
+                  }}
+                >
+                  create room
+                </button>
 
-            <button
-              onClick={() => {
-                setIsOpenUpdate(true);
-              }}
-            >
-              update room
-            </button>
+                <button
+                  onClick={() => {
+                    setIsOpenUpdate(true);
+                  }}
+                >
+                  update room
+                </button>
 
-            <button>delete room</button>
-          </div>
+                <button
+                  onClick={() => {
+                    setIsOpenDelete(true);
+                  }}
+                >
+                  delete room
+                </button>
+              </div>
+              <div>
+                <p>{roomName}</p>
 
-          <div>
-            <p>{roomName}</p>
+                {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
 
-            {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
+                {isOpenUpdate && (
+                  <UpdateRoomModel
+                    setIsOpenUpdate={setIsOpenUpdate}
+                    roomName={roomName}
+                    id={id}
+                    setRenderPage={setRenderPage}
+                    renderPage={renderPage}
+                  />
+                )}
 
-            {isOpenUpdate && (
-              <UpdateRoomModel
-                setIsOpenUpdate={setIsOpenUpdate}
-                roomName={roomName}
-                id={id}
-                setRenderPage={setRenderPage}
-                renderPage={renderPage}
-              />
-            )}
-          </div>
-
-          <div>{errMessage && <p>{errMessage}</p>}</div>
+                {isOpenDelete && (
+                  <DeleteRoomModal
+                    setIsOpenDelete={setIsOpenDelete}
+                    id={id}
+                    setRenderPage={setRenderPage}
+                    renderPage={renderPage}
+                  />
+                )}
+              </div>
+            </>
+          ) : (
+            <div>{errMessage && <p>{errMessage}</p>}</div>
+          )}
         </div>
       </div>
     </>

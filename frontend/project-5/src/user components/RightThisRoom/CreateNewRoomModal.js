@@ -30,7 +30,7 @@ export const CreateNewRoomModal = (props) => {
   });
   //*=================================================================================
 
-  const createRoom = (categoryId = 1) => {
+  const createRoom = (categoryId) => {
     axios
       .post(
         `http://localhost:5000/categories/${categoryId}/rooms`,
