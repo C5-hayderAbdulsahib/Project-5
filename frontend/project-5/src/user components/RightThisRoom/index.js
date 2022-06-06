@@ -7,6 +7,9 @@ import { useNavigate, useParams } from "react-router-dom";
 //importing css
 import "./style.css";
 
+//import component
+import { CreateNewRoomModal } from "./CreateNewRoomModal";
+
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
   const { token } = useSelector((state) => {
@@ -15,8 +18,9 @@ export const RightThisRoom = () => {
 
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
   const [errMessage, setErrMessage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
 
   // `useParams` returns an object that contains the URL parameters
   const { id } = useParams();
@@ -53,12 +57,22 @@ export const RightThisRoom = () => {
       <div className="right-this-room">
         <div className="specific-size-for-right">
           <div className="room-navbar">
-            <button>update room</button>
+            <button
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              create room
+            </button>
+
             <button>update room</button>
             <button>update room</button>
           </div>
+
           <div>
             <p>{name}</p>
+
+            {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
           </div>
 
           <div>{errMessage && <p>{errMessage}</p>}</div>
