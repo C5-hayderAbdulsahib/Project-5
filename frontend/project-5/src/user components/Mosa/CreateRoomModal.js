@@ -7,10 +7,9 @@ import { RiCloseLine } from "react-icons/ri";
 
 // create model to create new room
 export const CreateRoomModal = () => {
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
   const [message, setMessage] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
   //*=================================================================================
 
   const dispatch = useDispatch();
