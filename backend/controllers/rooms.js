@@ -187,7 +187,7 @@ const createNewChatRoom = async (req, res) => {
 const getRoomById = (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId;
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ?  `;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ? And rooms.is_deleted = 0 `;
   data = [id, userId];
 
   //this query will select spicific room by it's id
@@ -312,7 +312,7 @@ const deleteRoomById = (req, res) => {
 const getAllMyRooms = (req, res) => {
   const id = req.token.userId;
 
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0`;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_deleted = 0`;
   const data = [id];
   connection.query(command, data, (err, result) => {
     if (err) {
@@ -338,22 +338,24 @@ const getAllUsersInRooms = (req, res) => {
   const userId = req.token.userId;
   const room_id = req.params.id;
 
-console.log(room_id);
+  console.log(room_id);
 
   const command = `SELECT * FROM users_rooms INNER JOIN users ON users_rooms.user_id = users.id WHERE users_rooms.room_id = ? And is_member = 1 `;
 
-  const data = [ room_id];
+  const data = [room_id];
 
   connection.query(command, data, (err, result) => {
     if (err) {
-       return res
+      return res
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
 
-if(!result){
-  return res.status(404).json({ success: false, message :`This User Has ` });
-}
+    if (!result) {
+      return res
+        .status(404)
+        .json({ success: false, message: `This User Has ` });
+    }
 
     res.status(200).json({
       success: true,
