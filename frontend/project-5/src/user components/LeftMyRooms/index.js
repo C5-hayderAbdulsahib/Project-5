@@ -1,10 +1,26 @@
+//import packages
+import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import axios from "axios";
+import { getAllMyRooms } from "../../redux/reducers/rooms";
+
+//import component
+
+import { RightThisRoom } from "../RightThisRoom";
+
 import "./style.css";
 
 const LeftMyRooms = () => {
+  const dispatch = useDispatch();
+  const { token, rooms } = useSelector((state) => {
+    return { token: state.auth.token, rooms: state.rooms.rooms };
+  });
+
   return (
     <>
-      <div className="left-my-rooms">
-        <div className="specific-size">
+      <div className="display-grid">
+        <div>
           <p>this is the left side with all my rooms</p>
           <p>this is the left side with all my rooms</p>
           <p>this is the left side with all my rooms</p>
@@ -25,6 +41,11 @@ const LeftMyRooms = () => {
           <p>this is the left side with all my rooms</p>
           <p>this is the left side with all my rooms</p>
           <p>this is the left side with all my rooms</p>
+        </div>
+        <div>
+          <Routes>
+            <Route path="/:id" element={<RightThisRoom />} />
+          </Routes>
         </div>
       </div>
     </>
