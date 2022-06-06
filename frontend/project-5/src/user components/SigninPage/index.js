@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -62,26 +63,49 @@ export const SigninPage = () => {
 
   return (
     <>
-      <div className="signIn">
-        <form onSubmit={signIn}>
-          <br />
+      <canvas className="svgBlob"></canvas>
 
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <br />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <br />
-          <button>Signin</button>
+      <div className="position">
+        <form className="container">
+          <div className="centering-wrapper">
+            <div className="section1 text-center">
+              <p className="primary-header">Welcome back!</p>
+              <p className="secondary-header">
+                We're so excited to see you again!
+              </p>
+              <div className="input-position">
+                <div className="form-group">
+                  <h5 className="input-placeholder">Email</h5>
+                  <input
+                    type="email"
+                    required={true}
+                    name="logemail"
+                    className="form-style"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">
+                    Password <span className="error-message">{message}</span>
+                  </h5>
+                  <input
+                    type="password"
+                    required={true}
+                    name="logpass"
+                    className="form-style"
+                    autoComplete={"on"}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </form>
-
-        {message && <div className="ErrorMessage">{message}</div>}
       </div>
     </>
   );
