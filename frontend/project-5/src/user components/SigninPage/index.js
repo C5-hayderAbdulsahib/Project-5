@@ -114,6 +114,19 @@ export const SigninPage = () => {
                 </button>
               </div>
             </div>
+            <div className="logo-login">
+              <div className="logo-container">
+                <img
+                  className="logo"
+                  src="https://sparkcdnwus2.azureedge.net/sparkimageassets/XPDC2RH70K22MN-08afd558-a61c-4a63-9171-d3f199738e9f"
+                />
+                <canvas className="logo-code"></canvas>
+              </div>
+              <div className="logo-pheader">Discord</div>
+              <div className="logo-sheader">
+                <strong>Create an invite-only place where you belong </strong>
+              </div>
+            </div>
           </div>
         </form>
       </div>
