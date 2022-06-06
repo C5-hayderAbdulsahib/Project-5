@@ -132,21 +132,14 @@ export const CreateNewRoomModal = (props) => {
                         id="categories"
                         onChange={(e) => setChooseCategory(e.target.value)}
                       >
-                        <option value="">Choose A Type</option>
+                        <option value="">Choose A Category</option>
 
                         {categoriesList}
-                        {/* {categories.map((element) => {
-                          return (
-                            <>
-                              <option value={element.id}>{element.name}</option>
-                            </>
-                          );
-                        })} */}
                       </select>
                     </>
                   )}
                   <div className="push-down"></div>
-                  {/* the update button */}
+                  {/* the create button */}
                   <button
                     className="deleteBtn"
                     onClick={() => {
@@ -172,14 +165,6 @@ export const CreateNewRoomModal = (props) => {
               </div>
             </div>
           </>
-
-          {/* <button
-            onClick={() => {
-              setIsOpen(true);
-            }}
-          >
-            create room
-          </button> */}
         </div>
       </div>
     </>
