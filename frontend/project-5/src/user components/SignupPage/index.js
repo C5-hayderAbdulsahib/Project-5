@@ -48,7 +48,7 @@ export const SignupPage = () => {
         if (!err.response.data.success) {
           return setMessage(err.response.data.message);
         }
-        setMessage("Error happened while Login, please try again");
+        return setMessage("Error happened while Login, please try again");
       });
   };
 
@@ -60,8 +60,8 @@ export const SignupPage = () => {
         <form className="container-signup">
           <div className="centering-wrapper-signup">
             <div className="section1 text-center">
-              <p className="primary-header">Create an account</p>
-              <div className="input-position">
+              <p className="primary-header-signup">Create an account</p>
+              <div className="input-position-signup">
                 <div className="form-group">
                   <h5 className="input-placeholder">Email</h5>
                   <input
