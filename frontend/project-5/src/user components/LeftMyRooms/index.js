@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getAllMyRooms } from "../../redux/reducers/rooms";
+import { useNavigate } from "react-router-dom";
 
 //import component
 
@@ -18,6 +19,7 @@ const LeftMyRooms = () => {
   });
 
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
   //============================================================
   const getAllRooms = () => {
@@ -35,31 +37,38 @@ const LeftMyRooms = () => {
   };
   //============================================================
   useEffect(() => {
-    getAllRooms();
+    if (!token) {
+      navigate("/signin");
+    } else {
+      getAllRooms();
+    }
   }, []);
 
   return (
     <>
-      <div className="display-grid">
-        <div>
+      <div className="left-my-rooms">
+        <div className="display-grid">
           <div>
-            {rooms &&
-              rooms.map((element) => {
-                return (
-                  <div key={element.id}>
-                    <Link to={`/rooms/${element.id}`}>
-                      <p>{element.name}</p>
-                    </Link>
-                  </div>
-                );
-              })}
+            <div>
+              {rooms &&
+                rooms.map((element) => {
+                  return (
+                    <div key={element.id}>
+                      <Link to={`/rooms/${element.id}`}>
+                        <p>{element.name}</p>
+                      </Link>
+                    </div>
+                  );
+                })}
+            </div>
+            {message && <p>{message}</p>}
           </div>
-          {message && <p>{message}</p>}
-        </div>
-        <div>
-          <Routes>
-            <Route path="/:id" element={<RightThisRoom />} />
-          </Routes>
+          <div>
+            {/* the reason that i added this part because the RightThisRoom is nested route of this route   */}
+            <Routes>
+              <Route path="/:id" element={<RightThisRoom />} />
+            </Routes>
+          </div>
         </div>
       </div>
     </>
