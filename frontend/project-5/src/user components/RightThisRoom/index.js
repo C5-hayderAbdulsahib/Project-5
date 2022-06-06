@@ -16,6 +16,7 @@ export const RightThisRoom = () => {
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
   // `useParams` returns an object that contains the URL parameters
   const { id } = useParams();
@@ -30,6 +31,11 @@ export const RightThisRoom = () => {
       .then((result) => {
         console.log(result.data.room[0].name);
         setName(result.data.room[0].name);
+        setErrMessage("");
+      })
+      .catch((err) => {
+        console.log(err.response.data.message);
+        setErrMessage(err.response.data.message);
       });
   };
 
@@ -46,7 +52,16 @@ export const RightThisRoom = () => {
     <>
       <div className="right-this-room">
         <div className="specific-size-for-right">
-          <p>{name}</p>
+          <div className="room-navbar">
+            <button>update room</button>
+            <button>update room</button>
+            <button>update room</button>
+          </div>
+          <div>
+            <p>{name}</p>
+          </div>
+
+          <div>{errMessage && <p>{errMessage}</p>}</div>
         </div>
       </div>
     </>

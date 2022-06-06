@@ -2,3 +2,9 @@
   border: 5px solid green;
   height: 93.5vh;
 }
+
+.right-this-room .room-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
