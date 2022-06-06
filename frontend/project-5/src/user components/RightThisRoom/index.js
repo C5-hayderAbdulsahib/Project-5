@@ -1,7 +1,7 @@
 //import packages
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 //importing css
@@ -9,18 +9,27 @@ import "./style.css";
 
 //import component
 import { CreateNewRoomModal } from "./CreateNewRoomModal";
+import { UpdateRoomModel } from "./UpdateRoomModel";
+
+//import actions
+import { getRoomById } from "../../redux/reducers/rooms";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
-  const { token } = useSelector((state) => {
-    return { token: state.auth.token };
+  const { token, rooms } = useSelector((state) => {
+    return { token: state.auth.token, rooms: state.rooms.rooms };
   });
 
   const navigate = useNavigate();
 
   const [errMessage, setErrMessage] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [name, setName] = useState("");
+  const [isOpen, setIsOpen] = useState(false); //this state is for showing the the create room model
+  const [roomName, setRoomName] = useState("");
+
+  const [isOpenUpdate, setIsOpenUpdate] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+
+  const [renderPage, setRenderPage] = useState(false);
 
   // `useParams` returns an object that contains the URL parameters
   const { id } = useParams();
@@ -34,7 +43,7 @@ export const RightThisRoom = () => {
       })
       .then((result) => {
         console.log(result.data.room[0].name);
-        setName(result.data.room[0].name);
+        setRoomName(result.data.room[0].name);
         setErrMessage("");
       })
       .catch((err) => {
@@ -50,7 +59,7 @@ export const RightThisRoom = () => {
     } else {
       getRoomById();
     }
-  }, [id]);
+  }, [id, renderPage]);
 
   return (
     <>
@@ -65,14 +74,31 @@ export const RightThisRoom = () => {
               create room
             </button>
 
-            <button>update room</button>
-            <button>update room</button>
+            <button
+              onClick={() => {
+                setIsOpenUpdate(true);
+              }}
+            >
+              update room
+            </button>
+
+            <button>delete room</button>
           </div>
 
           <div>
-            <p>{name}</p>
+            <p>{roomName}</p>
 
             {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
+
+            {isOpenUpdate && (
+              <UpdateRoomModel
+                setIsOpenUpdate={setIsOpenUpdate}
+                roomName={roomName}
+                id={id}
+                setRenderPage={setRenderPage}
+                renderPage={renderPage}
+              />
+            )}
           </div>
 
           <div>{errMessage && <p>{errMessage}</p>}</div>

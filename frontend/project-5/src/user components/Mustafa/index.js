@@ -1,29 +1,23 @@
 //import packages
 import axios from "axios";
 import { useEffect, useState } from "react";
- 
 
 //import actions
 
-
-
 //import Components
-import  DeleteRoomModal  from "./DeleteRoomModal";
+import DeleteRoomModal from "./DeleteRoomModal";
 import UpdateRoomModal from "./UpdateRoomModal";
 
 const Mustafa = () => {
- 
-
   //======================================================================================================
 
-   
   const [isOpenUpdate, setIsOpenUpdate] = useState(false);
   const [message, setMessage] = useState("");
-  const [updateName, setUpdateName] = useState("");
+  // const [updateName, setUpdateName] = useState("");
   const [isOpenDelete, setIsOpenDelete] = useState(false);
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
 
-/*   const deleteRoomFun = (id=1) => {
+  /*   const deleteRoomFun = (id=1) => {
     axios
       .delete(`http://localhost:5000/rooms/${id}`, {
         headers: {
@@ -60,15 +54,7 @@ const Mustafa = () => {
           Delete
         </button>
 
-
-        {isOpenDelete && 
-          <DeleteRoomModal
-             setIsOpenDelete={setIsOpenDelete} 
-           
-        
-          />
-        }
-  
+        {isOpenDelete && <DeleteRoomModal setIsOpenDelete={setIsOpenDelete} />}
 
         {message ? <p>{message}</p> : ""}
       </div>

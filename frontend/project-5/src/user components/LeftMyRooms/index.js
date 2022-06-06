@@ -18,6 +18,8 @@ const LeftMyRooms = () => {
     return { token: state.auth.token, rooms: state.rooms.rooms };
   });
 
+  console.log(rooms);
+
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
