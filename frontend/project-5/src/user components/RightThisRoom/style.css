@@ -1,4 +1,10 @@
 .right-this-room .specific-size-for-right {
   border: 5px solid green;
-  height: 94vh;
+  height: 93.5vh;
+}
+
+.right-this-room .room-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

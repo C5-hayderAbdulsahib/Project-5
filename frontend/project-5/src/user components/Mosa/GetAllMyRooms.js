@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
-import { setRooms } from "../../redux/reducers/rooms";
+import { getAllMyRooms } from "../../redux/reducers/rooms";
 
 //===============================================================================================================
 
-//* cerate function to get all room that user created 
+//* cerate function to get all room that user created
 export const GetAllMyRooms = () => {
   //============================================================
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const GetAllMyRooms = () => {
         },
       })
       .then((result) => {
-        dispatch(setRooms(result.data.rooms));
+        dispatch(getAllMyRooms(result.data.rooms));
       });
   };
   //============================================================

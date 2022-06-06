@@ -10,10 +10,11 @@ const {
   updateRoomById,
   getAllMyRooms,
   deleteRoomById,
-  createNewChatRoom
+  createNewChatRoom,
+  getAllUsersInRooms,
 } = require("../controllers/rooms");
 
- const{createNewMessage}=require("../controllers/messages") 
+const { createNewMessage } = require("../controllers/messages");
 
 const roomRouter = express.Router();
 
@@ -36,10 +37,11 @@ roomRouter.delete(
   deleteRoomById
 );
 
- roomRouter.post("/:id/messages" , authentication,createNewMessage) 
+roomRouter.post("/:id/messages", authentication, createNewMessage);
 
- ///:userid/individual_room
+///:userid/individual_room
 
- roomRouter.post("/:userId/individual_room",authentication,createNewChatRoom)
+roomRouter.post("/:userId/individual_room", authentication, createNewChatRoom);
+roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
 
 module.exports = roomRouter;

@@ -1,6 +1,7 @@
 const connection = require("../models/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mysql = require("mysql2/promise");
 
 const signup = async (req, res, next) => {
   const email = req.body.email.toLowerCase();
@@ -119,7 +120,7 @@ const getAllUsernames = (req, res) => {
     } else {
       res.status(200).json({
         success: false,
-        message: "No User Have Signedin To The Website",
+        message: "No User Have Signed To The Website",
       });
     }
 
@@ -218,7 +219,7 @@ const updateUserInfo = (req, res) => {
   const data = [id];
   connection.query(command, data, (err, result) => {
     if (err) {
-return res
+      return res
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
@@ -234,25 +235,95 @@ return res
       update_last_name,
       update_country,
       update_profile_image,
-      id
+      id,
     ];
     connection.query(command_tow, data, (err, result) => {
       if (err) {
-      return res
-        .status(500)
-        .json({ success: false, message: "Server Error", err: err });
+        return res
+          .status(500)
+          .json({ success: false, message: "Server Error", err: err });
       }
-   return res.status(201).json({
-     message: "Account updated",
-     user: {
-       first_name: update_first_name,
-       last_name: update_last_name,
-       country: update_country,
-       profile_image: update_profile_image,
-     },
-   });
+      return res.status(201).json({
+        message: "Account updated",
+        user: {
+          first_name: update_first_name,
+          last_name: update_last_name,
+          country: update_country,
+          profile_image: update_profile_image,
+        },
+      });
     });
   });
+};
+
+//////////////////////changePassword////////////////////////////////
+
+const changePassword = async (req, res) => {
+  try {
+    const id = req.token.userId;
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+
+    const command = `SELECT * FROM users where id=? `;
+
+    const data = [id];
+    const asyncConnection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    const [rows, fields] = await asyncConnection.execute(command, data);
+
+    bcrypt.compare(oldPassword, rows[0].password, async (err, result1) => {
+      if (!result1) {
+        return res.status(403).json({
+          success: false,
+          message: "The Old Password You Have Entered Is Incorrect",
+        });
+      }
+
+      if (result1) {
+        bcrypt.compare(newPassword, rows[0].password, async (err, result2) => {
+          if (result2) {
+            return res.status(400).json({
+              success: false,
+              message:
+                "Your New Password Must Not Be the Same As Your Old Password ",
+            });
+          }
+
+          if (!result2) {
+            if (newPassword !== confirmPassword) {
+              return res.status(400).json({
+                success: false,
+                message: "The New Password Does Not Match Confirm Password ",
+              });
+            } else {
+              const command_tow = `UPDATE USERS SET password= ?  WHERE id = ?; `;
+              const SALT = Number(process.env.SALT);
+              const hashPassword = await bcrypt.hash(newPassword, SALT);
+
+              const data2 = [hashPassword, id];
+
+              const [rows, fields] = await asyncConnection.execute(
+                command_tow,
+                data2
+              );
+              return res.status(201).json({
+                success: true,
+                message: "Password Changed",
+              });
+            }
+          }
+        });
+      }
+    });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Server Error", err: err.message });
+  }
 };
 
 module.exports = {
@@ -262,4 +333,5 @@ module.exports = {
   getUserInfo,
   createNewAdmin,
   updateUserInfo,
+  changePassword,
 };

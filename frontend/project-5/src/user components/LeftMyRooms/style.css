@@ -1,5 +1,6 @@
-/* .left-my-rooms .specific-size {
-  border: 5px solid black;
+.left-my-rooms .display-grid {
+  display: grid;
+  grid-template-columns: 200px auto;
   height: 94vh;
-  width: 200px;
-} */
+  border: 5px solid red;
+}
