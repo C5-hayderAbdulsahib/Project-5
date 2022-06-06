@@ -110,7 +110,7 @@ export const SigninPage = () => {
               </div>
               <div className="btn-position">
                 <button className="btn" onClick={signIn}>
-                  login
+                  Signin
                 </button>
               </div>
             </div>

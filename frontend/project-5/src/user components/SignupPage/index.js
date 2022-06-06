@@ -8,6 +8,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 //import action
 import { signin } from "../../redux/reducers/auth";
@@ -18,6 +19,7 @@ export const SignupPage = () => {
   const [password, serPassword] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
+  const [country , setCountry] = useState("")
   const [message, setMessage] = useState("");
   const role_id = 1;
 
@@ -33,6 +35,7 @@ export const SignupPage = () => {
         username,
         first_name,
         last_name,
+        country,
         role_id,
       })
       .then((result) => {
@@ -45,58 +48,111 @@ export const SignupPage = () => {
         if (!err.response.data.success) {
           return setMessage(err.response.data.message);
         }
-        setMessage("Error happened while Login, please try again");
+        return setMessage("Error happened while Login, please try again");
       });
   };
 
   return (
     <>
-      <h1>this signup</h1>
-      <div>
-        <form onSubmit={signup}>
-          <input
-            type={"text"}
-            placeholder="Email"
-            onChange={(e) => {
-              serEmail(e.target.value);
-            }}
-          />
-          <br></br>
-          <input
-            type={"text"}
-            placeholder="User Name"
-            onChange={(e) => {
-              setUserName(e.target.value);
-            }}
-          />
-          <br></br>
-          <input
-            type={"password"}
-            placeholder="Password"
-            onChange={(e) => {
-              serPassword(e.target.value);
-            }}
-          />
-          <br></br>
-          <input
-            type={"text"}
-            placeholder="First Name"
-            onChange={(e) => {
-              setFirst_name(e.target.value);
-            }}
-          />
-          <br></br>
-          <input
-            type={"text"}
-            placeholder="Last Name"
-            onChange={(e) => {
-              setLast_name(e.target.value);
-            }}
-          />
-          <br></br>
-          <button>Signup</button>
-          <br></br>
-          {message && <p>{message}</p>}
+      <canvas className="svgBlob"></canvas>
+
+      <div className="position-signup">
+        <form className="container-signup">
+          <div className="centering-wrapper-signup">
+            <div className="section1 text-center">
+              <p className="primary-header-signup">Create an account</p>
+              <div className="input-position-signup">
+                <div className="form-group">
+                  <h5 className="input-placeholder">Email</h5>
+                  <input
+                    type="email"
+                    required={true}
+                    name="logemail"
+                    className="form-style-signup"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      serEmail(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">Password</h5>
+                  <input
+                    type="password"
+                    required={true}
+                    name="logpass"
+                    className="form-style-signup"
+                    autoComplete={"on"}
+                    onChange={(e) => {
+                      serPassword(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">User Name</h5>
+                  <input
+                    type="text"
+                    required={true}
+                    name="logemail"
+                    className="form-style-signup"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">First Name</h5>
+                  <input
+                    type="text"
+                    required={true}
+                    name="logemail"
+                    className="form-style-signup"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      setFirst_name(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">last name</h5>
+                  <input
+                    type="text"
+                    required={true}
+                    name="logemail"
+                    className="form-style-signup"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      setLast_name(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="form-group">
+                  <h5 className="input-placeholder">country</h5>
+                  <input
+                    type="text"
+                    required={true}
+                    name="logemail"
+                    className="form-style-signup"
+                    autoComplete={"off"}
+                    onChange={(e) => {
+                      setCountry(e.target.value);
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="password-container">
+                <Link to={"/signin"} className="link">
+                  Already have an account?
+                </Link>
+              </div>
+              <div className="btn-position">
+                <button className="btn" onClick={signup}>
+                  Signup
+                </button>
+              </div>
+            </div>
+          </div>
         </form>
       </div>
     </>
