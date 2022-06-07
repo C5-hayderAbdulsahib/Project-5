@@ -1,6 +1,7 @@
 const connection = require("../models/db");
 
 const mysql = require("mysql2/promise");
+const res = require("express/lib/response");
 
 //===============================================================================================================
 
@@ -80,7 +81,7 @@ const getAllGroupRooms = (req, res) => {
       res.status(200).json({
         success: true,
         message: "All The Room",
-        categories: result,
+        rooms: result,
       });
     } else {
       res.status(200).json({
@@ -365,6 +366,189 @@ const getAllUsersInRooms = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+// create function to make admin block user in his room
+
+const blockUserFromRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.body.userId;
+
+  const command = `UPDATE users_rooms SET is_blocked =1 WHERE room_id = ? AND user_id = ? `;
+
+  const data = [room_id, userId];
+  connection.query(command, data, (err, result) => {
+    console.log(result);
+
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "The User Was Block From This Chat" });
+  });
+};
+
+//=========================================================================================================
+
+// create function to make admin of room  unblock user
+
+const unBlockUserFromRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.body.userId;
+
+  const command = `UPDATE users_rooms SET is_blocked = 0 WHERE room_id = ? AND user_id = ? `;
+
+  const data = [room_id, userId];
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res.status(201).json({
+      success: true,
+      message:
+        "You Have Unblocked This User And He Will Have Access To this Room",
+    });
+  });
+};
+
+//=========================================================================================================
+
+// create function to send follow for specific room
+
+const sendFollowRequestToTheRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `INSERT INTO users_rooms (room_id , user_id ,send_follow_request ) VALUES (? , ? , 1)`;
+
+  const data = [room_id, userId];
+
+  connection.query(command, data, (err, result) => {
+    if (result == undefined) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    res.status(201).json({
+      success: true,
+      message: "Follow Request Has Been Send",
+      follow_request: result,
+    });
+  });
+};
+
+//=========================================================================================================
+
+// cerate function that make admin get all follow request
+
+const getAllFollowRequests = (req, res) => {
+  const room_id = req.params.id;
+
+  const command = `SELECT * from users_rooms WHERE room_id = ? AND send_follow_request = 1 AND is_deleted = 0 AND is_member = 0  `;
+
+  const data = [room_id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.length) {
+      return res.status(200).json({
+        success: false,
+        message: "No Follow Request Has Been Send Yet",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "All The Follow Requests",
+      follow_requests: result,
+    });
+  });
+};
+
+//=========================================================================================================
+
+// create function to make admin of room delete follow request for specific user
+
+const deleteUserFollowRequest = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `UPDATE users_rooms SET is_deleted = 1 WHERE user_id = ? AND room_id = ? `;
+
+  const data = [userId, room_id];
+
+  connection.query(command, data, (err, result) => {
+    console.log(result);
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "The Follow Request Was Deleted" });
+  });
+};
+
+//=========================================================================================================
+
+const unFollowThisRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `UPDATE users_rooms SET send_follow_request = 0 WHERE user_id = ? AND room_id = ? `;
+
+  const data = [userId, room_id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(400)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Follow Request Has Been Removed",
+        follow_request: result,
+      });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -375,4 +559,10 @@ module.exports = {
   getRoomById,
   getAllMyRooms,
   getAllUsersInRooms,
+  blockUserFromRoom,
+  unBlockUserFromRoom,
+  sendFollowRequestToTheRoom,
+  getAllFollowRequests,
+  deleteUserFollowRequest,
+  unFollowThisRoom,
 };

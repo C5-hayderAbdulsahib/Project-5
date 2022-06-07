@@ -109,9 +109,11 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 5);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 4);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 5);
 
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'superadmin', 'hayder', 'hayder', 'jordan', 1);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'admin', 'hayder', 'hayder', 'jordan', 2);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'user', 'hayder', 'hayder', 'jordan', 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'hayder', 'hayder', 'hayder', 'jordan', 1);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa', 'mosa', 'hayder', 'jordan', 2);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa', 'mustafa', 'hayder', 'jordan', 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('mosa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa a', 'mo s', 'hayder', 'jordan', 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('mustafa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa a', 'mus a', 'hayder', 'jordan', 3);
 
 
 INSERT INTO categories (name) VALUES ('developers');
@@ -120,5 +122,25 @@ INSERT INTO categories (name) VALUES ('gamers');
 
 INSERT INTO rooms (name, category_id, admin_id) VALUES ('pirates', 1, 1);
 INSERT INTO rooms (name, category_id, admin_id) VALUES ('one piece fans', 2, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('DBZ fans', 2, 2);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('attack on titans fans', 2, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('call of duties fans', 3, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('devil may cry fans', 3, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('react developer', 1, 2);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('javascript developer', 1, 2);
 
 
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (3, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (4, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (5, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (6, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 2);
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 3);
+INSERT INTO users_rooms (room_id, user_id) VALUES (5, 4);
+
+
+INSERT INTO messages (description, room_id, user_id) VALUES ('hello', 1, 1);
+INSERT INTO messages (description, room_id, user_id) VALUES ('have you seen the new movie', 1, 2);
+INSERT INTO messages (description, room_id, user_id) VALUES ('no i have not', 1, 1);
+INSERT INTO messages (description, room_id, user_id) VALUES ('you should', 1, 2);

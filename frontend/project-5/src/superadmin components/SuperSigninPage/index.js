@@ -90,14 +90,12 @@ const SuperSigninPage = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-
               </div>
               <span className="error-message">{message}</span>
               <br></br>
               <div className="btn-positionS">
                 <button className="btnS">Signin</button>
               </div>
-           
             </div>
 
             <div className="logo-loginS">
@@ -115,10 +113,7 @@ const SuperSigninPage = () => {
               </div>
             </div>
           </div>
-        {/*   {message ? <p className="login-err">{message}</p> : ""} */}
         </form>
-
-     
       </div>
     </>
   );
