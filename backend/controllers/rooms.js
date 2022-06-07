@@ -459,7 +459,7 @@ const sendFollowRequestToTheRoom = (req, res) => {
 
 //=========================================================================================================
 
-// cerate function that make admin get all follow request
+// create function that make admin get all follow request
 
 const getAllFollowRequests = (req, res) => {
   const room_id = req.params.id;
@@ -539,15 +539,43 @@ const unFollowThisRoom = (req, res) => {
         .status(400)
         .json({ success: false, message: "The Room Is Not Found" });
     }
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "Follow Request Has Been Removed",
-        follow_request: result,
-      });
+    res.status(201).json({
+      success: true,
+      message: "Follow Request Has Been Removed",
+      follow_request: result,
+    });
   });
 };
+
+///////////////
+
+const addUserToTheRoom = (req, res) => {
+  const id = req.params.id;
+console.log(id);
+  const command = `UPDATE users_rooms SET send_follow_request = 0 AND is_member =1 WHERE  room_id = ? `;
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(400)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res.status(201).json({
+      success: true,
+      message: "User Was Added To the Group Successfully",
+      user: result,
+    });
+  });
+};
+
+
+
 
 module.exports = {
   createNewChatRoom,
@@ -565,4 +593,5 @@ module.exports = {
   getAllFollowRequests,
   deleteUserFollowRequest,
   unFollowThisRoom,
+  addUserToTheRoom,
 };
