@@ -1,6 +1,6 @@
 /* @src/components/Modal.module.css ////////////////////////////////////////////////////////////////////////////////////// */
 
-.darkBG {
+.super-admin-modal .darkBG {
   background-color: rgba(0, 0, 0, 0.2);
   width: 100vw;
   height: 100vh;
@@ -12,14 +12,14 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
-.centered {
+.super-admin-modal .centered {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-.modal {
+.super-admin-modal .modal {
   width: 350px;
   height: 350px;
   background: white;
@@ -27,9 +27,10 @@
   z-index: 10;
   border-radius: 16px;
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: red;
 }
 
-.modalHeader {
+.super-admin-modal .modalHeader {
   height: 50px;
   background: white;
   overflow: hidden;
@@ -37,7 +38,7 @@
   border-top-right-radius: 16px;
 }
 
-.heading {
+.super-admin-modal .heading {
   margin: 0;
   padding: 10px;
   color: #2c3e50;
@@ -46,27 +47,27 @@
   text-align: center;
 }
 
-.modalContent {
+.super-admin-modal .modalContent {
   padding: 10px;
   font-size: 14px;
   color: #2c3e50;
   text-align: center;
 }
 
-.modalActions {
+.super-admin-modal .modalActions {
   position: absolute;
   bottom: 2px;
   margin-bottom: 10px;
   width: 100%;
 }
 
-.actionsContainer {
+.super-admin-modal .actionsContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.closeBtn {
+.super-admin-modal .closeBtn {
   cursor: pointer;
   font-weight: 500;
   padding: 4px 8px;
@@ -85,7 +86,7 @@
   margin-right: -7px;
 }
 
-.closeBtn:hover {
+.super-admin-modal .closeBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   transform: translate(-4px, 4px);
 }
@@ -103,7 +104,7 @@
   transition: all 0.25s ease;
 }
 
-.deleteBtn:hover {
+.super-admin-modal .deleteBtn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
   /* background: #ff3e4e; */
@@ -122,7 +123,7 @@
   transition: all 0.25s ease;
 }
 
-.updateBtn:hover {
+.super-admin-modal .updateBtn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
   /* background: #ff3e4e; */
@@ -142,12 +143,11 @@
   transition: all 0.25s ease;
 }
 
-.createBtn:hover {
+.super-admin-modal .createBtn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
   /* background: #ff3e4e; */
 }
-
 
 /* create-admin-Btn */
 
@@ -164,20 +164,13 @@
   transition: all 0.25s ease;
 }
 
-.create-admin-Btn:hover {
+.super-admin-modal .create-admin-Btn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
   /* background: #ff3e4e; */
 }
 
-
-
-
-
-
-
-
-.cancelBtn {
+.super-admin-modal .cancelBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -190,26 +183,15 @@
   transition: all 0.25s ease;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-.cancelBtn:hover {
+.super-admin-modal .cancelBtn:hover {
   box-shadow: none;
   transform: none;
   background: whitesmoke;
   color: var(--primary-black-color);
 }
 
-.push-down {
+ .super-admin-modal .push-down {
   margin-bottom: 20px;
 }
+
+/* ////////////////The End of the Model ////////// */
