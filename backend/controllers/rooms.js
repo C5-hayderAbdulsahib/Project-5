@@ -518,6 +518,37 @@ const deleteUserFollowRequest = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+const unFollowThisRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `UPDATE users_rooms SET send_follow_request = 0 WHERE user_id = ? AND room_id = ? `;
+
+  const data = [userId, room_id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(400)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(201)
+      .json({
+        success: true,
+        message: "Follow Request Has Been Removed",
+        follow_request: result,
+      });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -533,4 +564,5 @@ module.exports = {
   sendFollowRequestToTheRoom,
   getAllFollowRequests,
   deleteUserFollowRequest,
+  unFollowThisRoom,
 };
