@@ -1,6 +1,7 @@
 const connection = require("../models/db");
 
 const mysql = require("mysql2/promise");
+const res = require("express/lib/response");
 
 //===============================================================================================================
 
@@ -456,6 +457,39 @@ const sendFollowRequestToTheRoom = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+// cerate function that make admin get all follow request
+
+const getAllFollowRequests = (req, res) => {
+  const room_id = req.params.id;
+
+  const command = `SELECT * from users_rooms WHERE room_id = ? AND send_follow_request = 1 AND is_deleted = 0 AND is_member = 0  `;
+
+  const data = [room_id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.length) {
+      return res.status(200).json({
+        success: false,
+        message: "No Follow Request Has Been Send Yet",
+      });
+    }
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "All The Follow Requests",
+        follow_requests: result,
+      });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -469,4 +503,5 @@ module.exports = {
   blockUserFromRoom,
   unBlockUserFromRoom,
   sendFollowRequestToTheRoom,
+  getAllFollowRequests,
 };

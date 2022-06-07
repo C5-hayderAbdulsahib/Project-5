@@ -15,6 +15,7 @@ const {
   blockUserFromRoom,
   unBlockUserFromRoom,
   sendFollowRequestToTheRoom,
+  getAllFollowRequests,
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -49,5 +50,6 @@ roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
 roomRouter.delete("/:id/users/block", authentication, blockUserFromRoom);
 roomRouter.put("/:id/users/unblock", authentication, unBlockUserFromRoom);
 roomRouter.post("/:id/follow" , authentication , sendFollowRequestToTheRoom);
+roomRouter.get("/:id/follow_list" , authentication ,getAllFollowRequests);
 
 module.exports = roomRouter;
