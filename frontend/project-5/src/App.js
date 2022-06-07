@@ -9,6 +9,7 @@ import { SignupPage } from "./user components/SignupPage"; //since we used expor
 import HomePage from "./user components/HomePage";
 import Navbar from "./user components/Navbar";
 import SuperHomePage from "./superadmin components/SuperHomePage";
+import SearchPage from "./user components/SearchPage";
 
 import LeftMyRooms from "./user components/LeftMyRooms";
 import { RightThisRoom } from "./user components/RightThisRoom"; //since we used export directly then we have to use the {} when importing
@@ -33,6 +34,7 @@ function App() {
       <Routes>
         <Route path="/super_admin/home" element={<SuperHomePage />} />
         <Route path="/super_admin/signin" element={<SuperSigninPage />} />
+        <Route path="/rooms/search" element={<SearchPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
 
