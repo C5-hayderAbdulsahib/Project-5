@@ -17,7 +17,9 @@ const UpdateCategoryModal = (props) => {
 
   return (
     <>
+     
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
+      <div className="super-admin-modal">
       <div className="darkBG" onClick={() => setIsOpen(false)} />
       <div className="centered">
         <div className="modal">
@@ -64,6 +66,7 @@ const UpdateCategoryModal = (props) => {
 
           {/* // ... */}
         </div>
+      </div>
       </div>
     </>
   );

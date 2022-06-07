@@ -16,7 +16,9 @@ const DeleteCategoryModal = (props) => {
 
   return (
     <>
+      
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
+      <div className="super-admin-modal">
       <div className="darkBG" onClick={() => setIsOpenDelete(false)} />
       <div className="centered">
         <div className="modal">
@@ -52,7 +54,10 @@ const DeleteCategoryModal = (props) => {
           {/* // ... */}
         </div>
       </div>
+
+      </div>
     </>
+
   );
 };
 
