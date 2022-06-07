@@ -28,13 +28,7 @@ function App() {
     <div className="App">
       <Navbar />
 
-      {/* <Routes>
-          <Route path="/Mustafa" element={<Mustafa />} />
-          <Route path="/update" element={<UpdateRoomModal />} />
-          <Route path="/create" element={<CreateRoomModal />} />
-          <Route path="/getAllRoom" element={<GetAllMyRooms />} />
-          <Route path="/getRoomId" element={<GetRoomId />} />
-        </Routes> */}
+     
 
       <Routes>
         <Route path="/super_admin/home" element={<SuperHomePage />} />

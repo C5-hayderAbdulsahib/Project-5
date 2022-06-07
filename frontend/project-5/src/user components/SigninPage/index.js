@@ -63,8 +63,6 @@ export const SigninPage = () => {
 
   return (
     <>
-      <canvas className="svgBlob"></canvas>
-
       <div className="position">
         <form className="container">
           <div className="centering-wrapper">
@@ -88,9 +86,7 @@ export const SigninPage = () => {
                   />
                 </div>
                 <div className="form-group">
-                  <h5 className="input-placeholder">
-                    Password <span className="error-message">{message}</span>
-                  </h5>
+                  <h5 className="input-placeholder">Password</h5>
                   <input
                     type="password"
                     required={true}
@@ -102,6 +98,7 @@ export const SigninPage = () => {
                     }}
                   />
                 </div>
+                <span className="error-message">{message}</span>
               </div>
               <div className="password-container">
                 <Link to={"/signup"} className="link">
@@ -120,7 +117,6 @@ export const SigninPage = () => {
                   className="logo"
                   src="https://sparkcdnwus2.azureedge.net/sparkimageassets/XPDC2RH70K22MN-08afd558-a61c-4a63-9171-d3f199738e9f"
                 />
-                <canvas className="logo-code"></canvas>
               </div>
               <div className="logo-pheader">Discord</div>
               <div className="logo-sheader">
