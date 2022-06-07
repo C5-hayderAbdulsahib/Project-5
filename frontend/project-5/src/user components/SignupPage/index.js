@@ -54,8 +54,6 @@ export const SignupPage = () => {
 
   return (
     <>
-      <canvas className="svgBlob"></canvas>
-
       <div className="position-signup">
         <form className="container-signup">
           <div className="centering-wrapper-signup">
