@@ -115,7 +115,7 @@ const getAllUsernames = (req, res) => {
       res.status(200).json({
         success: true,
         message: "All The Usernames",
-        categories: result,
+        users: result,
       });
     } else {
       res.status(200).json({

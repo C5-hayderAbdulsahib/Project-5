@@ -6,7 +6,8 @@ const {
   getAllUsernames,
   getUserInfo,
   updateUserInfo,
-  createNewAdmin,changePassword
+  createNewAdmin,
+  changePassword,
 } = require("../controllers/users");
 
 ////////////Middleware////////

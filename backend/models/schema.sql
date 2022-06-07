@@ -120,5 +120,14 @@ INSERT INTO categories (name) VALUES ('gamers');
 
 INSERT INTO rooms (name, category_id, admin_id) VALUES ('pirates', 1, 1);
 INSERT INTO rooms (name, category_id, admin_id) VALUES ('one piece fans', 2, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('DBZ fans', 2, 2);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('attack on titans fans', 2, 1);
+INSERT INTO rooms (name, category_id, admin_id) VALUES ('call of duties fans', 3, 1);
 
 
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (3, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (4, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (2, 1);
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 2);
+INSERT INTO users_rooms (room_id, user_id) VALUES (1, 3);
