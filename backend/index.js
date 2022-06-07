@@ -1,5 +1,5 @@
 const express = require("express");
-//adding the cores package
+//adding the cores package to make the api accessible
 const cors = require("cors");
 
 //since the require is inside the index.js it will affect all the files of the project
@@ -18,7 +18,7 @@ const permissionRouter = require("./routes/permissions");
 const usersRouter = require("./routes/users");
 const categoryRouter = require("./routes/categories");
 const roomRouter = require("./routes/rooms");
-const messagesRouter=require("./routes/messages");
+const messagesRouter = require("./routes/messages");
 //built-in middleware
 app.use(express.json());
 
@@ -30,8 +30,6 @@ app.use("/users", usersRouter);
 app.use("/categories", categoryRouter);
 app.use("/rooms", roomRouter);
 app.use("/messages", messagesRouter);
-
-
 
 //=================================================================================================================
 

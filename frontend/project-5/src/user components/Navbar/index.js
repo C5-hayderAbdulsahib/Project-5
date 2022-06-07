@@ -41,7 +41,7 @@ const Navbar = () => {
               </button>
             </Link>
 
-            <Link to="/">Search</Link>
+            <Link to="/rooms/search">Search</Link>
           </>
         ) : (
           ""
