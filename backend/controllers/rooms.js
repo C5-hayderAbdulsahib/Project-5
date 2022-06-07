@@ -376,9 +376,8 @@ const blockUserFromRoom = (req, res) => {
   const command = `UPDATE users_rooms SET is_blocked =1 WHERE room_id = ? AND user_id = ? `;
 
   const data = [room_id, userId];
-  connection.query(command, data, (err, result) => 
-  {
-      console.log(result);
+  connection.query(command, data, (err, result) => {
+    console.log(result);
 
     if (err) {
       return res
@@ -396,6 +395,38 @@ const blockUserFromRoom = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+// create function to make admin of room  unblock user
+
+const unBlockUserFromRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.body.userId;
+
+  const command = `UPDATE users_rooms SET is_blocked = 0 WHERE room_id = ? AND user_id = ? `;
+
+  const data = [room_id, userId];
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(201)
+      .json({
+        success: true,
+        message:
+          "You Have Unblocked This User And He Will Have Access To this Room",
+      });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -407,4 +438,5 @@ module.exports = {
   getAllMyRooms,
   getAllUsersInRooms,
   blockUserFromRoom,
+  unBlockUserFromRoom,
 };
