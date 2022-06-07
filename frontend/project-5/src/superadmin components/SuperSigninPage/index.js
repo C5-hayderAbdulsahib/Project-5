@@ -63,28 +63,64 @@ const SuperSigninPage = () => {
   };
 
   return (
-    <div>
-      <h3>Login Form:</h3>
-      <br />
+    <>
+      <div className="positionS">
+        <br />
 
-      <form onSubmit={loginFun}>
-        <input
-          type={"email"}
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <form className="containerS" onSubmit={loginFun}>
+          <div className="centering-wrapperS">
+            <div className="section1S text-center">
+              <div className="input-positionS">
+                <div className="form-groupS">
+                  <h5 className="input-placeholderS">Email</h5>
+                  <input
+                    className="form-styleS"
+                    type={"email"}
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
 
-        <input
-          type={"password"}
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+                <div className="form-groupS">
+                  <h5 className="input-placeholderS">Password</h5>
+                  <input
+                    className="form-styleS"
+                    type={"password"}
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
 
-        <button>Signin</button>
-      </form>
+              </div>
+              <span className="error-message">{message}</span>
+              <br></br>
+              <div className="btn-positionS">
+                <button className="btnS">Signin</button>
+              </div>
+           
+            </div>
 
-      {message ? <p className="login-err">{message}</p> : ""}
-    </div>
+            <div className="logo-loginS">
+              <div className="logo-containerS">
+                <img
+                  className="logoS"
+                  src="https://sparkcdnwus2.azureedge.net/sparkimageassets/XPDC2RH70K22MN-08afd558-a61c-4a63-9171-d3f199738e9f
+                  "
+                />
+                <canvas className="logo-codeS"></canvas>
+              </div>
+              <div className="logo-pheaderS"> Manger</div>
+              <div className="logo-sheaderS">
+                <strong>You can mange your system here </strong>
+              </div>
+            </div>
+          </div>
+        {/*   {message ? <p className="login-err">{message}</p> : ""} */}
+        </form>
+
+     
+      </div>
+    </>
   );
 };
 

@@ -1,5 +1,264 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
+/* use this wib kit to hide scrollbar*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+.svgBlobS {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  background: transparent;
+  transition: 1s;
+}
+
+.positionS {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-image: url("https://wallpaperaccess.com/full/3053366.png");
+  font-family: "Whitney", sans-serif;
+  text-rendering: optimizeLegibility;
+  /*use this proparity to prevent the user from blurring the speech*/
+  user-select: none;
+  background-size: cover;
+}
+
+.containerS {
+  width: 784px;
+  max-width: 90vw;
+  padding: 32px;
+  background-color: #2a2b38;
+  background: #363940;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-grow: 1;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.centering-wrapperS {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.section1S {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.input-positionS {
+  margin-top: 20px;
+}
+
+.form-groupS {
+  width: 100%;
+  text-align: left;
+}
+
+.input-placeholderS {
+  color: #919296;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  text-transform: uppercase;
+  flex: 1;
+  cursor: default;
+}
+
+.error-messageS {
+  color: #ec4846;
+  font-style: italic;
+  text-transform: none;
+  font-size: 12px;
+  font-weight: 100;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  transition: all 0.2s linear;
+}
+
+
+
+
+
+
+
+.form-styleS {
+  position: relative;
+  padding: 10px;
+  height: 40px;
+  width: 414px;
+  max-width: 80vw;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 22px;
+  letter-spacing: 0.5px;
+  color: #c4c3ca;
+  background-color: #323338;
+  border: 1px solid #282a2e;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-styleS:hover {
+  border-color: #000;
+}
+
+.form-styleS:focus,
+.form-style:active {
+  border-color: #7289d9;
+}
+
+.form-styleS:active .input-placeholder {
+  color: #7289d9;
+}
+
+.btn-positionS {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.btnS {
+  text-decoration: none;
+  border-radius: 4px;
+  height: 44px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: capitalize;
+  transition: all 200ms linear;
+  letter-spacing: 1px;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  outline: none;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
+}
+
+.btnS:hover {
+  background-color: #677bc4;
+  box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}
+
+.logo-loginS {
+  width: 240px;
+  height: 344px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: baseline;
+  margin-left: 55px;
+}
+
+.logo-containerS {
+  display: flex;
+  width: 176px;
+  height: 176px;
+  border-radius: 2px;
+  background: #fff;
+  position: relative;
+  margin: 30px 0px 32px 0px;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoS {
+  width: 176px;
+  height: 176px;
+  position: absolute;
+  background-blend-mode: overlay;
+}
+
+.logo-codeS {
+  position: absolute;
+}
+
+.logo-pheaderS {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #677bc4;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.logo-sheaderS {
+  font-size: 16px;
+  line-height: 20px;
+  color: #a2a3a7;
+}
+
 .login-err {
   background-color: red;
-  width: fit-content; /* this means that the width will be equal to the content and not bigger and if we removed this line the width will be equal to the whole screen because p in a block element */
+  height: 44px;
+  width: 100%; /* this means that the width will be equal to the content and not bigger and if we removed this line the width will be equal to the whole screen because p in a block element */
   padding: 10px; /* we add the padding because we don't want the background to be exactly as the text but a little bigger */
+}
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+  body {
+    background-position: 0px 0px;
+  }
+ 
+  .logo-loginS {
+    display: none;
+  }
+  .horizontalSeparator {
+    display: none;
+  }
+  .containerS {
+    padding: 20px;
+  }
 }
