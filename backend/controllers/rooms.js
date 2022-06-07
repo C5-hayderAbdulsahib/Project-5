@@ -80,7 +80,7 @@ const getAllGroupRooms = (req, res) => {
       res.status(200).json({
         success: true,
         message: "All The Room",
-        categories: result,
+        rooms: result,
       });
     } else {
       res.status(200).json({
