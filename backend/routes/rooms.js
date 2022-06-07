@@ -14,6 +14,7 @@ const {
   getAllUsersInRooms,
   blockUserFromRoom,
   unBlockUserFromRoom,
+  sendFollowRequestToTheRoom,
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -47,5 +48,6 @@ roomRouter.post("/:userId/individual_room", authentication, createNewChatRoom);
 roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
 roomRouter.delete("/:id/users/block", authentication, blockUserFromRoom);
 roomRouter.put("/:id/users/unblock", authentication, unBlockUserFromRoom);
+roomRouter.post("/:id/follow" , authentication , sendFollowRequestToTheRoom);
 
 module.exports = roomRouter;

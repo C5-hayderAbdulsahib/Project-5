@@ -417,13 +417,42 @@ const unBlockUserFromRoom = (req, res) => {
         .status(404)
         .json({ success: false, message: "The Room Is Not Found" });
     }
-    res
-      .status(201)
-      .json({
-        success: true,
-        message:
-          "You Have Unblocked This User And He Will Have Access To this Room",
-      });
+    res.status(201).json({
+      success: true,
+      message:
+        "You Have Unblocked This User And He Will Have Access To this Room",
+    });
+  });
+};
+
+//=========================================================================================================
+
+// create function to send follow for specific room
+
+const sendFollowRequestToTheRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `INSERT INTO users_rooms (room_id , user_id ,send_follow_request ) VALUES (? , ? , 1)`;
+
+  const data = [room_id, userId];
+
+  connection.query(command, data, (err, result) => {
+    if (result == undefined) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    res.status(201).json({
+      success: true,
+      message: "Follow Request Has Been Send",
+      follow_request: result,
+    });
   });
 };
 
@@ -439,4 +468,5 @@ module.exports = {
   getAllUsersInRooms,
   blockUserFromRoom,
   unBlockUserFromRoom,
+  sendFollowRequestToTheRoom,
 };
