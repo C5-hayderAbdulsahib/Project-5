@@ -12,6 +12,7 @@ const {
   deleteRoomById,
   createNewChatRoom,
   getAllUsersInRooms,
+  blockUserFromRoom,
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -43,5 +44,6 @@ roomRouter.post("/:id/messages", authentication, createNewMessage);
 
 roomRouter.post("/:userId/individual_room", authentication, createNewChatRoom);
 roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
+roomRouter.delete("/:id/users/block", authentication, blockUserFromRoom);
 
 module.exports = roomRouter;

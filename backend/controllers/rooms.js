@@ -365,6 +365,37 @@ const getAllUsersInRooms = (req, res) => {
   });
 };
 
+//=========================================================================================================
+
+// create function to make admin block user in his room
+
+const blockUserFromRoom = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.body.userId;
+
+  const command = `UPDATE users_rooms SET is_blocked =1 WHERE room_id = ? AND user_id = ? `;
+
+  const data = [room_id, userId];
+  connection.query(command, data, (err, result) => 
+  {
+      console.log(result);
+
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res
+      .status(200)
+      .json({ success: true, message: "The User Was Block From This Chat" });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -375,4 +406,5 @@ module.exports = {
   getRoomById,
   getAllMyRooms,
   getAllUsersInRooms,
+  blockUserFromRoom,
 };
