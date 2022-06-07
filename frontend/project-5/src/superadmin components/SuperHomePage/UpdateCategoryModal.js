@@ -3,6 +3,7 @@ import "./style.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
+import { MdCreate } from "react-icons/md";
 
 const UpdateCategoryModal = (props) => {
   const {
@@ -23,7 +24,7 @@ const UpdateCategoryModal = (props) => {
         <div className="centered">
           <div className="modal">
             <div className="modalHeader">
-              <h5 className="heading">Dialog</h5>
+              <h5 className="heading">Update a category</h5>
             </div>
             <button className="closeBtn" onClick={() => setIsOpen(false)}>
               <RiCloseLine style={{ marginBottom: "-3px" }} />
@@ -54,7 +55,7 @@ const UpdateCategoryModal = (props) => {
                   // }}
                   className="updateBtn"
                 >
-                  Update Category
+                  Update Category <MdCreate/> 
                 </button>
                 {/* the cancel model button */}
                 <button className="cancelBtn" onClick={() => setIsOpen(false)}>

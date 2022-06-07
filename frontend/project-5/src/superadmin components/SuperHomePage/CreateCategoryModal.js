@@ -54,7 +54,7 @@ const CreateCategoryModal = (props) => {
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
-            <h5 className="heading">Dialog</h5>
+            <h5 className="heading">Create a category</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpen(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
@@ -69,13 +69,17 @@ const CreateCategoryModal = (props) => {
                 setIsOpen(false);
               }}
             >
-              <input
+              <input className="Create-Category"
                 type={"text"}
                 placeholder="Create Category"
                 onChange={(e) => setName(e.target.value)}
               />
               <div className="push-down"></div>
               {/* the update button */}
+              <div className="shiftingToLeft" >
+{/* 
+<div className="shiftingToLeft"> */}
+
               <button
                 // onClick={() => {
                 //   updateCategoryFun(id);
@@ -86,6 +90,8 @@ const CreateCategoryModal = (props) => {
               >
                 Create Category
               </button>
+
+             {/*  </div> */}
               {/* the cancel model button */}
               <button
                 className="cancelBtn"
@@ -95,6 +101,7 @@ const CreateCategoryModal = (props) => {
               >
                 Cancel
               </button>
+              </div>
             </form>
           </div>
 
