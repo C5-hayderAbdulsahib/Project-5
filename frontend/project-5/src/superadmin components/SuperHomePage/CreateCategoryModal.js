@@ -81,7 +81,7 @@ const CreateCategoryModal = (props) => {
                 //   updateCategoryFun(id);
                 //   setIsOpen(false);
                 // }}
-                className="deleteBtn"
+                className="createBtn"
                 onClick={ createCategory  }
               >
                 Create Category

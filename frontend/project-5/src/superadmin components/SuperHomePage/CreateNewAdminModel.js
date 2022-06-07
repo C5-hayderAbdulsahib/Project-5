@@ -90,7 +90,7 @@ const [message , setMessage] =useState("")
               //   updateCategoryFun(id);
               //   setIsOpen(false);
               // }}
-              className="deleteBtn"
+              className="create-admin-Btn"
               //onClick={createNewAdmin}
               onClick={(e)=>{createNewAdmin(e);}}
             >
