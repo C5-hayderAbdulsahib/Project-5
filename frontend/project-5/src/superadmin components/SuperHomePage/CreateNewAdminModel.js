@@ -39,7 +39,7 @@ const [message , setMessage] =useState("")
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
-            <h5 className="heading">Dialog</h5>
+            <h5 className="heading">Create an admin</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpenAdmin(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />

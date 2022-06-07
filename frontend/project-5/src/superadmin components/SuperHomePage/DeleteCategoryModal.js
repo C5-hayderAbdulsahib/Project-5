@@ -3,6 +3,7 @@ import "./style.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
+import { BsTrashFill } from "react-icons/bs";
 
 const DeleteCategoryModal = (props) => {
   const {
@@ -23,7 +24,7 @@ const DeleteCategoryModal = (props) => {
       <div className="centered">
         <div className="modal">
           <div className="modalHeader">
-            <h5 className="heading">Dialog</h5>
+            <h5 className="heading">Delete a category     </h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpenDelete(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
@@ -40,7 +41,7 @@ const DeleteCategoryModal = (props) => {
               }}
             >
               {/* the delete button */}
-              <button className="deleteBtn">Delete Category</button>
+              <button className="deleteBtn">Delete Category <BsTrashFill/> </button>
               {/* the cancel model button */}
               <button
                 className="cancelBtn"
