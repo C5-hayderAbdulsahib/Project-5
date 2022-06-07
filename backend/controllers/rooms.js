@@ -480,13 +480,41 @@ const getAllFollowRequests = (req, res) => {
         message: "No Follow Request Has Been Send Yet",
       });
     }
+    res.status(200).json({
+      success: true,
+      message: "All The Follow Requests",
+      follow_requests: result,
+    });
+  });
+};
+
+//=========================================================================================================
+
+// create function to make admin of room delete follow request for specific user
+
+const deleteUserFollowRequest = (req, res) => {
+  const room_id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `UPDATE users_rooms SET is_deleted = 1 WHERE user_id = ? AND room_id = ? `;
+
+  const data = [userId, room_id];
+
+  connection.query(command, data, (err, result) => {
+    console.log(result);
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
     res
       .status(200)
-      .json({
-        success: true,
-        message: "All The Follow Requests",
-        follow_requests: result,
-      });
+      .json({ success: true, message: "The Follow Request Was Deleted" });
   });
 };
 
@@ -504,4 +532,5 @@ module.exports = {
   unBlockUserFromRoom,
   sendFollowRequestToTheRoom,
   getAllFollowRequests,
+  deleteUserFollowRequest,
 };
