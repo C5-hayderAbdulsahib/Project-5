@@ -115,30 +115,35 @@ const SuperHomePage = () => {
 
   return (
     <>
-      {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
-      {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
-      <h1 className="superTitle">super home admin</h1>
-      <div>
-        <button
-          onClick={() => {
-            setIsOpen(true);
-          }}
-          className="CreateCategoryBtn"
-        >
-          Create Category <IoCreateOutline />
-        </button>
-        <br></br>
-        <button
-          onClick={() => {
-            setIsOpenAdmin(true);
-          }}
-          className="CreateCategoryAdminBtn"
-        >
-           Create New Admin <IoCreateOutline />
-        </button>
-        {message ? <p>{message}</p> : ""}
+      <div className="superadminMain">
+        {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
+        {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
 
-        <div className="CategoryBody">{categories.length && categoriesList}</div>
+        <h1 className="superTitle">super home admin</h1>
+        <div>
+          <button
+            onClick={() => {
+              setIsOpen(true);
+            }}
+            className="CreateCategoryBtn"
+          >
+            Create Category <IoCreateOutline />
+          </button>
+          <br></br>
+          <button
+            onClick={() => {
+              setIsOpenAdmin(true);
+            }}
+            className="CreateCategoryAdminBtn"
+          >
+            Create New Admin <IoCreateOutline />
+          </button>
+          {message ? <p>{message}</p> : ""}
+
+          <div className="CategoryBody">
+            {categories.length && categoriesList}
+          </div>
+        </div>
       </div>
     </>
   );
