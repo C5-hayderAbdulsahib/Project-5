@@ -550,18 +550,22 @@ const unFollowThisRoom = (req, res) => {
 ///////////////
 
 const addUserToTheRoom = (req, res) => {
+
   const id = req.params.id;
+  const {userId}=req.body;
+
 console.log(id);
-  const command = `UPDATE users_rooms SET send_follow_request = 0 AND is_member =1 WHERE  room_id = ? `;
-  const data = [id];
+  const command = `UPDATE users_rooms SET send_follow_request = 0 , is_member =1 WHERE  room_id = ? AND user_id=? `;
+  const data = [id,userId];
 
   connection.query(command, data, (err, result) => {
     if (err) {
       return res
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
-    }
+    }    console.log(result);
     if (!result.affectedRows) {
+  
       return res
         .status(400)
         .json({ success: false, message: "The Room Is Not Found" });
