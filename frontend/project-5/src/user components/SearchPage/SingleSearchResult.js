@@ -3,7 +3,12 @@ const SingleSearchResult = (props) => {
 
   console.log(search);
 
-  return <>{search.username ? <h1>{search.username}</h1> : ""}</>;
+  return (
+    <>
+      {search?.username ? <h1>{search.username}</h1> : ""}
+      {search?.name ? <h1>{search.name}</h1> : ""}
+    </>
+  );
 };
 
 export default SingleSearchResult;
