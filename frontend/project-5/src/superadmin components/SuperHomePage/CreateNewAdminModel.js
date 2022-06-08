@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import { RiCloseLine } from "react-icons/ri";
 
+// import style
+import "./CreateNewAdminModel.css"
+
 const CreateNewAdminModel = (props) => {
   const { setIsOpenAdmin } = props;
 
@@ -38,53 +41,65 @@ const [message , setMessage] =useState("")
       <div className="darkBG" onClick={() => setIsOpenAdmin(false)} />
       <div className="centered">
         <div className="modal">
+
+
+
           <div className="modalHeader">
-            <h5 className="heading">Create an admin</h5>
+            <h5 className="heading">Create A Super Admin</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpenAdmin(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
 
+          <div className="superAdmin"    >
           <div className="modalContent">
             {/* ///////////////////////////////the body f the model */}
-            You Can Create New Admin
+            You Can Create A New Super Admin
             <div className="push-down"></div>
-            <input
+
+            <input className="admin-input"
               type={"text"}
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <input
+             <br></br>
+            <input className="admin-input"
               type={"password"}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
             />
             <br></br>
-            <input
+            <input className="admin-input"
               type={"text"}
               placeholder="Username"
               onChange={(e) => setUsername(e.target.value)}
             />
             <br></br>
-            <input
+            <input className="admin-input"
               type={"text"}
               placeholder="First Name"
               onChange={(e) => setFirst_name(e.target.value)}
             />
             <br></br>
-            <input
+            <input className="admin-input"
               type={"text"}
               placeholder="Last Name"
               onChange={(e) => setLast_name(e.target.value)}
             />
             <br></br>
-            <input
+            <input className="admin-input"
               type={"text"}
               placeholder="Country"
               onChange={(e) => setCountry(e.target.value)}
             />
             <div className="push-down"></div>
+           
+           
             {/* the update button */}
+
+
+<div className="shiftingToLeft"     >
+
             <button
               // onClick={() => {
               //   updateCategoryFun(id);
@@ -96,6 +111,7 @@ const [message , setMessage] =useState("")
             >
               Create New Admin
             </button>
+          
             {/* the cancel model button */}
             <button
               className="cancelBtn"
@@ -105,8 +121,11 @@ const [message , setMessage] =useState("")
             >
               Cancel
             </button>
+            </div>
+            </div>
             <p>{message}</p>
-          </div>
+            </div>
+          
 
           {/* // ... */}
         </div>

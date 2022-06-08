@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IoCreateOutline } from "react-icons/io5";
 
+//import style
+import "./style.css"
+
 //import actions
 import {
   setCategories,

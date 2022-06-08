@@ -1,9 +1,10 @@
 //import styling
-import "./style.css";
+import "./DeleteCategoryModal.css"
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 import { BsTrashFill } from "react-icons/bs";
+
 
 const DeleteCategoryModal = (props) => {
   const {
@@ -29,7 +30,7 @@ const DeleteCategoryModal = (props) => {
           <button className="closeBtn" onClick={() => setIsOpenDelete(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
-
+          <div className="superAdmin"    >  
           <div className="modalContent">
             {/* ///////////////////////////////the body f the model */}
             Are you sure you want to delete {name}?
@@ -50,6 +51,7 @@ const DeleteCategoryModal = (props) => {
                 Cancel
               </button>
             </form>
+          </div>
           </div>
 
           {/* // ... */}
