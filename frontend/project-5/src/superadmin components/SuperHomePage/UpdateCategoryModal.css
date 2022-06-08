@@ -1,0 +1,18 @@
+.super-admin-modal .darkBG {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed; /* Stay in place which means that the background will cover all the page */
+    overflow: auto; /* Enable scroll if needed */
+  }
+  
+  .super-admin-modal .centered {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
