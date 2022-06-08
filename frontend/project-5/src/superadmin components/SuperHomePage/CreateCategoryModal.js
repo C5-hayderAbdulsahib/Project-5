@@ -64,14 +64,16 @@ const CreateCategoryModal = (props) => {
             <div className="modalContent">
               <div className="fixed-width">
               {/* ///////////////////////////////the body f the model */}
+              
               You can create a new category 
 
               <div className="push-down"></div>
               <form
+            
                 onSubmit={() => {
                   setIsOpen(false);
                 }}
-              >
+              >    <div  className="Category-label">  <label>Category Name</label></div> 
                 <input
                   className="Create-Category"
                   type={"text"}

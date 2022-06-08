@@ -67,6 +67,15 @@ width: 250px;
 }
 
 
+
+/* Category-label */
+.CreateCategoryModal .Category-label{
+font-weight: bold;
+  justify-self: start;
+}
+
+
+
 /* modalContent-input */
 
 .CreateCategoryModal .Create-Category {
@@ -80,13 +89,26 @@ width: 250px;
   margin-bottom: 20px;
   line-height: 22px;
   letter-spacing: 0.5px;
-  color: #c4c3ca;
-  background-color: white;
-  border: 1px solid #282a2e;
+  color: black;
+  background-color: #E3E5E8 ;
+  border: none;
   border-radius: 3px;
   outline: none;
   transition: border-color 0.2s ease-in-out;
 }
+
+
+
+/* .CreateCategoryModal .Create-Category:focus,
+
+.Create-Category:active {
+  border: none;
+ 
+}
+  */
+
+
+
 
 /* .shiftingToLeft */
 
