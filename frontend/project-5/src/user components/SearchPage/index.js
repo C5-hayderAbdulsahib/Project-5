@@ -106,21 +106,26 @@ const SearchPage = () => {
   //the first iteration is used to search depending on the input search bar to search by title or category or country
   if (inputSearch) {
     const concatArray = groupRooms.concat(allUserNames);
-    console.log(concatArray);
+    // console.log(concatArray);
 
-    roomsList = allUserNames
+    roomsList = concatArray
       .filter((element) => {
+        // console.log(element);
         //we add the filter to make the filtration but since our item will be view in another component thats why we add the map to send our component item by item to the other component that will view it, because using filter alone will not work because our return will be an array of the filtered item and that is not we want we want each item to be separated and not inside an array so that why we added that map to bring each array alone
-        if (element?.username) {
+        if (
+          element?.username?.toLowerCase().includes(inputSearch.toLowerCase())
+        ) {
           // console.log(element);
-          return element.username
-            .toLowerCase()
-            .includes(inputSearch.toLowerCase());
+          return element;
+        }
+        if (element?.name?.toLowerCase().includes(inputSearch.toLowerCase())) {
+          // console.log(element);
+          return element;
         }
       })
-      .map((element) => {
-        console.log(element);
-        return <SingleSearchResult key={element.id} search={element} />; //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it value has to be unique or an error will also occur so that why we usually  give it the value of the id, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
+      .map((element, index) => {
+        // console.log(element);
+        return <SingleSearchResult key={index} search={element} />; //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it value has to be unique or an error will also occur so that why we usually  give it the value of the id, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
       });
   }
 
@@ -160,8 +165,8 @@ const SearchPage = () => {
                 id="search - bar"
                 placeholder={"Search By Room"}
                 onChange={(e) => {
+                  setChooseCategory("");
                   setInputSearch(e.target.value);
-                  setCategoriesSearch("");
                 }}
               />
             </div>
