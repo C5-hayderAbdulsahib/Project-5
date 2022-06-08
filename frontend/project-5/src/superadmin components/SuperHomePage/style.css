@@ -154,7 +154,7 @@
 .super-admin-modal .deleteBtn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
-  /* background: #ff3e4e; */
+   
 }
 
 .super-admin-modal .updateBtn {
