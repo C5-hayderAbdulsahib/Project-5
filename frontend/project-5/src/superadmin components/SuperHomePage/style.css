@@ -49,13 +49,11 @@
 }
 
 .super-admin-modal .modalContent {
-
   padding: 10px;
   padding-top: 20px;
   font-size: 18px;
   color: #2c3e50;
   text-align: center;
-  
 }
 
 .super-admin-modal .Create-Category {
@@ -69,19 +67,16 @@
   margin-bottom: 20px;
   line-height: 22px;
   letter-spacing: 0.5px;
-  color: #c4c3ca;
+  color: black;
   background-color: white;
   border: 1px solid #282a2e;
   border-radius: 3px;
   outline: none;
   transition: border-color 0.2s ease-in-out;
-  
 }
 
 .super-admin-modal .Create-Category:hover {
-  background-color:#ebedef
-
-  ;
+  background-color: #ebedef;
   border-color: #000;
 }
 
@@ -90,16 +85,12 @@
   border-color: #7288d95b;
 }
 
-
-.super-admin-modal .Create-Category ,::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: black;
+.super-admin-modal .Create-Category,
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   opacity: 1; /* Firefox */
-  color:#bcbcbc ;
+  color: #bcbcbc;
 }
-
-
-
-
 
 .super-admin-modal .modalActions {
   position: absolute;
@@ -154,7 +145,6 @@
 .super-admin-modal .deleteBtn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
-   
 }
 
 .super-admin-modal .updateBtn {
@@ -241,7 +231,7 @@
 .super-admin-modal .cancelBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background: #4f545c;
- color: white;
+  color: white;
 }
 
 .super-admin-modal .push-down {
@@ -249,3 +239,87 @@
 }
 
 /* ////////////////The End of the Model ////////// */
+
+/* Super Admin Page */
+
+.superTitle {
+  font-family: "Whitney", sans-serif;
+  margin-left: 10px;
+}
+
+.CreateCategoryBtn {
+  font-size: 20px;
+  margin-top: 35px;
+  padding: 5px 23px;
+  font-family: "Whitney", sans-serif;
+  font-weight: 900;
+  margin-left: 10px;
+}
+
+.CreateCategoryAdminBtn {
+  font-size: 20px;
+  margin-top: 30px;
+  padding: 5px 11px;
+  font-family: "Whitney", sans-serif;
+  font-weight: 900;
+  margin-left: 10px;
+}
+
+.categoryelemnt {
+  display: grid;
+  grid-template-columns: auto 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryName {
+  font-size: 26px;
+  margin-top: 25px;
+  font-weight: bold;
+  text-align: center;
+  margin-left: 10px;
+  font-family: "Whitney", sans-serif;
+}
+
+.DeleteCategoryBtn {
+  width: 80px;
+  padding: 5px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
+  font-family: "Whitney", sans-serif;
+}
+
+.UpdateCategoryBtn {
+  width: 80px;
+  padding: 5px 30px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
+  font-family: "Whitney", sans-serif;
+}
+
+.DeleteCategoryBtn:hover {
+  background-color: #677bc4;
+}
+
+.UpdateCategoryBtn:hover {
+  background-color: #677bc4;
+}
+
+.categoryBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
