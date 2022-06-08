@@ -223,7 +223,6 @@ const updateUserInfo = (req, res) => {
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
-    console.log(result);
     const update_first_name = first_name || result[0].first_name;
     const update_last_name = last_name || result[0].last_name;
     const update_country = country || result[0].country;

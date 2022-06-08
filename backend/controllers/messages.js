@@ -34,8 +34,8 @@ const createNewMessage = (req, res) => {
           description,
           message_image,
           document,
-          room_id: room_Id,
-          user_id: userId,
+          room_id: +room_Id,
+          user_id: +userId,
           is_deleted: 0,
         },
       });

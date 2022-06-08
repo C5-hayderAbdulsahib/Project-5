@@ -37,7 +37,7 @@ const createNewGroupRoom = (req, res) => {
           .json({ success: false, message: "Server Error", err: err });
       }
       const room_id = result.insertId;
-      const command_three = `INSERT INTO users_rooms (room_id , user_id) VALUES (?,?)`;
+      const command_three = `INSERT INTO users_rooms (room_id , user_id, is_member) VALUES (?,?,1)`;
       const data_1 = [room_id, userId];
       connection.query(command_three, data_1, (err, result) => {
         if (err) {
@@ -378,8 +378,6 @@ const blockUserFromRoom = (req, res) => {
 
   const data = [room_id, userId];
   connection.query(command, data, (err, result) => {
-    console.log(result);
-
     if (err) {
       return res
         .status(500)
@@ -464,7 +462,9 @@ const sendFollowRequestToTheRoom = (req, res) => {
 const getAllFollowRequests = (req, res) => {
   const room_id = req.params.id;
 
-  const command = `SELECT * from users_rooms WHERE room_id = ? AND send_follow_request = 1 AND is_deleted = 0 AND is_member = 0  `;
+  // const command = `SELECT * from users_rooms WHERE room_id = ? AND send_follow_request = 1 AND is_deleted = 0 AND is_member = 0  `;
+
+  const command = `SELECT * FROM users_rooms INNER JOIN users ON users_rooms.user_id = users.id WHERE users_rooms.room_id = ? AND users_rooms.send_follow_request = 1 AND users_rooms.is_deleted = 0 AND users_rooms.is_member = 0`;
 
   const data = [room_id];
 
@@ -550,22 +550,21 @@ const unFollowThisRoom = (req, res) => {
 ///////////////
 
 const addUserToTheRoom = (req, res) => {
-
   const id = req.params.id;
-  const {userId}=req.body;
+  const { userId } = req.body;
 
-console.log(id);
+  console.log(id);
   const command = `UPDATE users_rooms SET send_follow_request = 0 , is_member =1 WHERE  room_id = ? AND user_id=? `;
-  const data = [id,userId];
+  const data = [id, userId];
 
   connection.query(command, data, (err, result) => {
     if (err) {
       return res
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
-    }    console.log(result);
+    }
+    console.log(result);
     if (!result.affectedRows) {
-  
       return res
         .status(400)
         .json({ success: false, message: "The Room Is Not Found" });
@@ -577,9 +576,6 @@ console.log(id);
     });
   });
 };
-
-
-
 
 module.exports = {
   createNewChatRoom,
