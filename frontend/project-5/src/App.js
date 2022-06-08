@@ -12,6 +12,8 @@ import SuperHomePage from "./superadmin components/SuperHomePage";
 import SearchPage from "./user components/SearchPage";
 
 import LeftMyRooms from "./user components/LeftMyRooms";
+import AccountPage from "./user components/AccountPage";
+
 import { RightThisRoom } from "./user components/RightThisRoom"; //since we used export directly then we have to use the {} when importing
 
 import { UpdateRoomModal } from "./user components/Mustafa/UpdateRoomModal";
@@ -29,12 +31,11 @@ function App() {
     <div className="App">
       <Navbar />
 
-     
-
       <Routes>
         <Route path="/super_admin/home" element={<SuperHomePage />} />
         <Route path="/super_admin/signin" element={<SuperSigninPage />} />
         <Route path="/rooms/search" element={<SearchPage />} />
+        <Route path="/account_page" element={<AccountPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
 
