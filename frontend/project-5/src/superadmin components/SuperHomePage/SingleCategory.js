@@ -1,6 +1,9 @@
 //import packages
 import React, { useState } from "react";
 
+//import style 
+import "./SingleCategory.css";
+
 //import components
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";

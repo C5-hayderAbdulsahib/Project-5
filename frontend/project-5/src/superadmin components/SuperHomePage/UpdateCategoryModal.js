@@ -1,9 +1,10 @@
 //import styling
-import "./style.css";
+import "./UpdateCategoryModal.css"
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 import { MdCreate } from "react-icons/md";
+
 
 const UpdateCategoryModal = (props) => {
   const {
