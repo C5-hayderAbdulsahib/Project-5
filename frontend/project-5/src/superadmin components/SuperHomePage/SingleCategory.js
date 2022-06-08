@@ -42,7 +42,9 @@ const SingleCategory = (props) => {
         />
       )}
       <div className="categoryelemnt">
-        <p className="categoryName">{name}</p>
+        <div>
+          <p className="categoryName">{name}</p>
+        </div>
 
         <div className="categoryBtn">
           <button onClick={() => setIsOpen(true)} className="UpdateCategoryBtn">

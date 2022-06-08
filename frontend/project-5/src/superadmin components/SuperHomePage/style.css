@@ -242,9 +242,16 @@
 
 /* Super Admin Page */
 
+.superadminMain {
+  background-color: #2a2b38;
+  width: 100vw;
+  height: 100vh;
+}
+
 .superTitle {
   font-family: "Whitney", sans-serif;
   margin-left: 10px;
+  color: white;
 }
 
 .CreateCategoryBtn {
@@ -254,6 +261,9 @@
   font-family: "Whitney", sans-serif;
   font-weight: 900;
   margin-left: 10px;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
 }
 
 .CreateCategoryAdminBtn {
@@ -263,6 +273,9 @@
   font-family: "Whitney", sans-serif;
   font-weight: 900;
   margin-left: 10px;
+  background-color: #7289d9;
+  color: white;
+  cursor: pointer;
 }
 
 .categoryelemnt {
@@ -279,6 +292,7 @@
   text-align: center;
   margin-left: 10px;
   font-family: "Whitney", sans-serif;
+  color: white;
 }
 
 .DeleteCategoryBtn {
@@ -290,7 +304,7 @@
   justify-content: center;
   align-items: center;
   margin-right: 10px;
-  background-color: #7289d9;
+  background-color: red;
   color: white;
   cursor: pointer;
   font-family: "Whitney", sans-serif;
@@ -304,7 +318,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #7289d9;
+  background-color: #16edfccd;
   color: white;
   cursor: pointer;
   font-family: "Whitney", sans-serif;
@@ -315,6 +329,12 @@
 }
 
 .UpdateCategoryBtn:hover {
+  background-color: #677bc4;
+}
+.CreateCategoryAdminBtn:hover {
+  background-color: #677bc4;
+}
+.CreateCategoryBtn:hover {
   background-color: #677bc4;
 }
 
