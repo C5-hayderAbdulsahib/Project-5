@@ -5,6 +5,9 @@ import React, { useState } from "react";
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
 
+//import icons
+import { GrUpdate } from "react-icons/gr";
+
 const SingleCategory = (props) => {
   const { name, id, setUpdateName, updateCategoryFun, deleteCategoryFun } =
     props; //we used destructuring to make it easier to use them
@@ -13,8 +16,6 @@ const SingleCategory = (props) => {
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   return (
     <>
-      <p>{name}</p>
-
       {/* the model component for update category */}
       {/* we make a condition if the state is false then dont show the model else show it */}
       {isOpen && (
@@ -28,7 +29,6 @@ const SingleCategory = (props) => {
           // token={token}
         />
       )}
-      <button onClick={() => setIsOpen(true)}>update</button>
 
       {/* the model component for delete category */}
       {isOpenDelete && (
@@ -41,14 +41,27 @@ const SingleCategory = (props) => {
           // token={token}
         />
       )}
-      <button
-        onClick={() => setIsOpenDelete(true)}
-        /*   onClick={() => {
+      <div className="categoryelemnt">
+        <div>
+          <p className="categoryName">{name}</p>
+        </div>
+
+        <div className="categoryBtn">
+          <button onClick={() => setIsOpen(true)} className="UpdateCategoryBtn">
+            Update
+          </button>
+
+          <button
+            onClick={() => setIsOpenDelete(true)}
+            /*   onClick={() => {
           deleteCategoryFun(id);
         }} */
-      >
-        delete
-      </button>
+            className="DeleteCategoryBtn"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
       <hr></hr>
     </>
   );

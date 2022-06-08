@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { IoCreateOutline } from "react-icons/io5";
 
 //import actions
 import {
@@ -15,6 +16,7 @@ import {
 import SingleCategory from "./SingleCategory";
 import CreateCategoryModal from "./CreateCategoryModal";
 import CreateNewAdminModel from "./CreateNewAdminModel";
+import "./style.css";
 
 const SuperHomePage = () => {
   const dispatch = useDispatch("");
@@ -113,28 +115,35 @@ const SuperHomePage = () => {
 
   return (
     <>
-      {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
-      {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
-      <h1>super home admin</h1>
-      <div>
-        <button
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
-          Create Category
-        </button>
-        <br></br>
-        <button
-          onClick={() => {
-            setIsOpenAdmin(true);
-          }}
-        >
-          Create New Admin
-        </button>
-        {message ? <p>{message}</p> : ""}
+      <div className="superadminMain">
+        {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
+        {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
 
-        <div>{categories.length && categoriesList}</div>
+        <h1 className="superTitle">super home admin</h1>
+        <div>
+          <button
+            onClick={() => {
+              setIsOpen(true);
+            }}
+            className="CreateCategoryBtn"
+          >
+            Create Category <IoCreateOutline />
+          </button>
+          <br></br>
+          <button
+            onClick={() => {
+              setIsOpenAdmin(true);
+            }}
+            className="CreateCategoryAdminBtn"
+          >
+            Create New Admin <IoCreateOutline />
+          </button>
+          {message ? <p>{message}</p> : ""}
+
+          <div className="CategoryBody">
+            {categories.length && categoriesList}
+          </div>
+        </div>
       </div>
     </>
   );
