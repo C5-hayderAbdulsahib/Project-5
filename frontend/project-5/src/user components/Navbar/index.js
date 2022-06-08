@@ -42,6 +42,8 @@ const Navbar = () => {
             </Link>
 
             <Link to="/rooms/search">Search</Link>
+
+            <Link to="/account_page">User Profile</Link>
           </>
         ) : (
           ""
