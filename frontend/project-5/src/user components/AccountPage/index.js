@@ -9,12 +9,13 @@ import { useSelector, useDispatch } from "react-redux";
 //import actions
 import { getUserInfo } from "../../redux/reducers/user";
 
+//import Model
+import UpdatePasswordModal from "./UpdatePasswordModal";
+
 const AccountPage = () => {
   const { token, user } = useSelector((state) => {
     return { token: state.auth.token, user: state.user.user };
   });
-
-  console.log("the user value from the store", user);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +27,8 @@ const AccountPage = () => {
   const [country, setCountry] = useState("");
   const [profile_image, setProfile_image] = useState("");
   const [imgUrl, setImgUrl] = useState("");
-  const [show, setShow] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState("");
 
   const getUserInfoFunc = () => {
     axios
@@ -58,7 +60,7 @@ const AccountPage = () => {
         }
       )
       .then((result) => {
-        setShow(true);
+        setMessage(`update information`);
       })
       .catch((err) => {
         console.log(err);
@@ -89,56 +91,61 @@ const AccountPage = () => {
       .catch((err) => console.log(err));
   };
 
+  setTimeout(function () {
+    setMessage("");
+  }, 3000);
+
   return (
     <>
       {user?.username ? (
         <>
           <h1> account page </h1>
 
-          {show ? (
-            <>
-              <input
-                type={"text"}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={first_name}
-                onChange={(e) => {
-                  setFirst_name(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={last_name}
-                onChange={(e) => {
-                  setLast_name(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={country}
-                onChange={(e) => {
-                  setCountry(e.target.value);
-                }}
-              />
-              <br></br>
-            </>
-          ) : (
-            <>
-              <p> Email : {info.email}</p>
-              <p>First Name : {info.first_name}</p>
-              <p>Last Name : {info.last_name}</p>
-              <p>Country : {info.country}</p>
-            </>
-          )}
-          <button onClick={updateUserInfo}>update profile</button>
+          <>
+            <label>Email : </label>
+            <input
+              type={"text"}
+              placeholder="Email"
+              defaultValue={info.email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+            <br></br>
+            <label>First name : </label>
+            <input
+              type={"text"}
+              placeholder="First name"
+              defaultValue={info.first_name}
+              onChange={(e) => {
+                setFirst_name(e.target.value);
+              }}
+            />
+            <br></br>
+            <label>Last name : </label>
+            <input
+              type={"text"}
+              placeholder="Last Name"
+              defaultValue={info.last_name}
+              onChange={(e) => {
+                setLast_name(e.target.value);
+              }}
+            />
+            <br></br>
+            <label>Country : </label>
+            <input
+              type={"text"}
+              placeholder="Country"
+              defaultValue={info.country}
+              onChange={(e) => {
+                setCountry(e.target.value);
+              }}
+            />
+            <br></br>
+            <p>{message}</p>
+            <button onClick={updateUserInfo}>update profile</button>
+          </>
+
           <br></br>
           {imgUrl ? (
             <img src={imgUrl} alt="profile_image" />
@@ -146,7 +153,13 @@ const AccountPage = () => {
             <img src={profile_image} alt="profile image" />
           )}
           <br></br>
-          <button onClick={uploadImage}>Upload Image</button>
+          <button
+            onClick={() => {
+              uploadImage();
+            }}
+          >
+            Upload Image
+          </button>
           <br></br>
           <input
             type={"file"}
@@ -158,6 +171,9 @@ const AccountPage = () => {
       ) : (
         ""
       )}
+      <br></br>
+      {isOpen && <UpdatePasswordModal setIsOpen={setIsOpen} />}
+      <button onClick={()=>{setIsOpen(true)}}>Update Password</button>
     </>
   );
 };
