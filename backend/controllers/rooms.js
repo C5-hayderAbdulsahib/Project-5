@@ -577,6 +577,41 @@ const addUserToTheRoom = (req, res) => {
   });
 };
 
+///////////////getAllRoomsForCategory//////////////////
+
+const  getAllRoomsForCategory = (req, res) => {
+  const id = req.params.id;
+
+  const command = `SELECT * FROM rooms   WHERE category_id =?`;
+
+  const data = [id];
+
+
+  connection.query(command, data, (err, result) => {
+    console.log(result);
+    if (result.length > 0) {
+      res.status(200).json({
+        success: true,
+        message: "All The Room That Belong To This Category",
+        rooms: result,
+      });
+    } else {
+      res.status(200).json({
+        success: false,
+        message: "No Room Were Created Yet For This Category",
+      });
+    }
+
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "false",
+        err: err.message,
+      });
+    }
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -594,4 +629,5 @@ module.exports = {
   deleteUserFollowRequest,
   unFollowThisRoom,
   addUserToTheRoom,
+  getAllRoomsForCategory,
 };
