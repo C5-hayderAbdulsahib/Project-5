@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./reducers/auth";
 import categoriesReducer from "./reducers/categories";
 import roomsReducer from "./reducers/rooms";
+import userReducer from "./reducers/user";
 
 export default configureStore({
   reducer: {
@@ -11,5 +12,6 @@ export default configureStore({
     auth: authReducer,
     categories: categoriesReducer,
     rooms: roomsReducer,
+    user: userReducer,
   },
 });
