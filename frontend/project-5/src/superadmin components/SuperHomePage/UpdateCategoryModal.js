@@ -20,7 +20,7 @@ const UpdateCategoryModal = (props) => {
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="super-admin-modal">
+      <div className="UpdateCategoryModal">
         <div className="darkBG" onClick={() => setIsOpen(false)} />
         <div className="centered">
           <div className="modal">
@@ -41,7 +41,7 @@ const UpdateCategoryModal = (props) => {
                   setIsOpen(false);
                 }}
               >
-                <input
+                <input className="Update-Category"
                   type={"text"}
                   placeholder="Update Category"
                   defaultValue={name}
@@ -49,6 +49,8 @@ const UpdateCategoryModal = (props) => {
                 />
                 <div className="push-down"></div>
                 {/* the update button */}
+
+                <div className="shiftingToLeft"     > 
                 <button
                   // onClick={() => {
                   //   updateCategoryFun(id);
@@ -56,12 +58,13 @@ const UpdateCategoryModal = (props) => {
                   // }}
                   className="updateBtn"
                 >
-                  Update Category <MdCreate/> 
+                  Update Category {/* <MdCreate/>  */}
                 </button>
                 {/* the cancel model button */}
                 <button className="cancelBtn" onClick={() => setIsOpen(false)}>
                   Cancel
                 </button>
+                </div>
               </form>
             </div>
           </div>

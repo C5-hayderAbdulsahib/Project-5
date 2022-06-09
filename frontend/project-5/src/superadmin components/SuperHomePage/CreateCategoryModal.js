@@ -63,53 +63,54 @@ const CreateCategoryModal = (props) => {
 
             <div className="modalContent">
               <div className="fixed-width">
-              {/* ///////////////////////////////the body f the model */}
-              
-              You can create a new category 
-
-              <div className="push-down"></div>
-              <form
-            
-                onSubmit={() => {
-                  setIsOpen(false);
-                }}
-              >    <div  className="Category-label">  <label>Category Name</label></div> 
-                <input
-                  className="Create-Category"
-                  type={"text"}
-                  placeholder="Create Category"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              
-                {/* the update button */}
-                <div className="shiftingToLeft">
-                  {/* 
+                {/* ///////////////////////////////the body f the model */}
+                You can create a new category
+                <div className="push-down"></div>
+                <form
+                  onSubmit={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  {" "}
+                  <div className="Category-label">
+                    {" "}
+                    <label>Category Name</label>
+                  </div>
+                  <input
+                    className="Create-Category"
+                    type={"text"}
+                    placeholder="Create Category"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  {/* the update button */}
+                  <div className="shiftingToLeft">
+                    {/* 
 <div className="shiftingToLeft"> */}
 
-                  <button
-                    // onClick={() => {
-                    //   updateCategoryFun(id);
-                    //   setIsOpen(false);
-                    // }}
-                    className="createBtn"
-                    onClick={createCategory}
-                  >
-                    Create Category
-                  </button>
+                    <button
+                      // onClick={() => {
+                      //   updateCategoryFun(id);
+                      //   setIsOpen(false);
+                      // }}
+                      className="createBtn"
+                      onClick={createCategory}
+                    >
+                      Create Category
+                    </button>
 
-                  {/*  </div> */}
-                  {/* the cancel model button */}
-                  <button
-                    className="cancelBtn"
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
+                    {/*  </div> */}
+                    {/* the cancel model button */}
+                    <button
+                      className="cancelBtn"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
             {/* // ... */}
           </div>

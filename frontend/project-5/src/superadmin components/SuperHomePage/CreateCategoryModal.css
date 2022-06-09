@@ -1,10 +1,8 @@
 .CreateCategoryModal {
   background-color: white;
   border-radius: 4px;
-/*   display: flex; */
+  /*   display: flex; */
 }
-
-
 
 .CreateCategoryModal .modal {
   width: 350px;
@@ -54,7 +52,7 @@
 .CreateCategoryModal .modalContent {
   display: grid;
   justify-content: center;
-align-items: center; 
+  align-items: center;
   text-align: center;
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -62,19 +60,14 @@ align-items: center;
 }
 
 .CreateCategoryModal .fixed-width {
-width: 250px;
-
+  width: 250px;
 }
-
-
 
 /* Category-label */
-.CreateCategoryModal .Category-label{
-font-weight: bold;
+.CreateCategoryModal .Category-label {
+  font-weight: bold;
   justify-self: start;
 }
-
-
 
 /* modalContent-input */
 
@@ -90,14 +83,12 @@ font-weight: bold;
   line-height: 22px;
   letter-spacing: 0.5px;
   color: black;
-  background-color: #E3E5E8 ;
+  background-color: #e3e5e8;
   border: none;
   border-radius: 3px;
   outline: none;
   transition: border-color 0.2s ease-in-out;
 }
-
-
 
 /* .CreateCategoryModal .Create-Category:focus,
 
@@ -107,9 +98,6 @@ font-weight: bold;
 }
   */
 
-
-
-
 /* .shiftingToLeft */
 
 .CreateCategoryModal .shiftingToLeft {
@@ -117,7 +105,6 @@ font-weight: bold;
   justify-content: center;
   align-items: center;
   gap: 10px;
- 
 }
 
 /* create button */

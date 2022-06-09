@@ -37,7 +37,7 @@ const [message , setMessage] =useState("")
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="super-admin-modal">
+      <div className="CreateNewAdminModel">
       <div className="darkBG" onClick={() => setIsOpenAdmin(false)} />
       <div className="centered">
         <div className="modal">
@@ -51,7 +51,7 @@ const [message , setMessage] =useState("")
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
 
-          <div className="superAdmin"    >
+         {/*  <div className="superAdmin"    > */}
           <div className="modalContent">
             {/* ///////////////////////////////the body f the model */}
             You Can Create A New Super Admin
@@ -124,7 +124,7 @@ const [message , setMessage] =useState("")
             </div>
             </div>
             <p>{message}</p>
-            </div>
+        {/*     </div> */}
           
 
           {/* // ... */}
