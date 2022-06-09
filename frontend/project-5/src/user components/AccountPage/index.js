@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 //import actions
-import { getUserInfo } from "../../redux/reducers/user";
+// import { getUserInfo } from "../../redux/reducers/user";
 
 const AccountPage = () => {
   const { token, user } = useSelector((state) => {
@@ -16,7 +16,7 @@ const AccountPage = () => {
 
   console.log("the user value from the store", user);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [info, setInfo] = useState("");
@@ -28,18 +28,18 @@ const AccountPage = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [show, setShow] = useState(false);
 
-  const getUserInfoFunc = () => {
-    axios
-      .get(`http://localhost:5000/users`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((result) => {
-        setInfo(result.data.user[0]);
-        dispatch(getUserInfo(result.data.user[0]));
-      });
-  };
+  // const getUserInfoFunc = () => {
+  //   axios
+  //     .get(`http://localhost:5000/users`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((result) => {
+  //       setInfo(result.data.user[0]);
+  //       dispatch(getUserInfo(result.data.user[0]));
+  //     });
+  // };
 
   const updateUserInfo = () => {
     axios
@@ -68,9 +68,10 @@ const AccountPage = () => {
   useEffect(() => {
     if (!token) {
       navigate("/signin");
-    } else {
-      getUserInfoFunc();
     }
+    // else {
+    //   getUserInfoFunc();
+    // }
   }, []);
 
   const uploadImage = () => {
@@ -132,10 +133,10 @@ const AccountPage = () => {
             </>
           ) : (
             <>
-              <p> Email : {info.email}</p>
-              <p>First Name : {info.first_name}</p>
-              <p>Last Name : {info.last_name}</p>
-              <p>Country : {info.country}</p>
+              <p> Email : {user.email}</p>
+              <p>First Name : {user.first_name}</p>
+              <p>Last Name : {user.last_name}</p>
+              <p>Country : {user.country}</p>
             </>
           )}
           <button onClick={updateUserInfo}>update profile</button>
@@ -143,7 +144,7 @@ const AccountPage = () => {
           {imgUrl ? (
             <img src={imgUrl} alt="profile_image" />
           ) : (
-            <img src={profile_image} alt="profile image" />
+            <img src={user.profile_image} alt="profile image" />
           )}
           <br></br>
           <button onClick={uploadImage}>Upload Image</button>
