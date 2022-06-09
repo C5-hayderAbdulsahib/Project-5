@@ -1,9 +1,10 @@
 //import styling
-import "./style.css";
+import "./DeleteCategoryModal.css"
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 import { BsTrashFill } from "react-icons/bs";
+
 
 const DeleteCategoryModal = (props) => {
   const {
@@ -19,7 +20,7 @@ const DeleteCategoryModal = (props) => {
     <>
       
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="super-admin-modal">
+      <div className="DeleteCategoryModal">
       <div className="darkBG" onClick={() => setIsOpenDelete(false)} />
       <div className="centered">
         <div className="modal">
@@ -29,7 +30,7 @@ const DeleteCategoryModal = (props) => {
           <button className="closeBtn" onClick={() => setIsOpenDelete(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
           </button>
-
+          <div className="superAdmin"    >  
           <div className="modalContent">
             {/* ///////////////////////////////the body f the model */}
             Are you sure you want to delete {name}?
@@ -41,7 +42,8 @@ const DeleteCategoryModal = (props) => {
               }}
             >
               {/* the delete button */}
-              <button className="deleteBtn">Delete Category <BsTrashFill/> </button>
+              <div className="shiftingToLeft"     >
+              <button className="deleteBtn">Delete Category {/* <BsTrashFill/> */} </button>
               {/* the cancel model button */}
               <button
                 className="cancelBtn"
@@ -49,7 +51,9 @@ const DeleteCategoryModal = (props) => {
               >
                 Cancel
               </button>
+              </div>
             </form>
+          </div>
           </div>
 
           {/* // ... */}

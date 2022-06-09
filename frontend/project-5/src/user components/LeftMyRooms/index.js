@@ -7,15 +7,21 @@ import { getAllMyRooms } from "../../redux/reducers/rooms";
 import { useNavigate } from "react-router-dom";
 
 //import component
-
 import { RightThisRoom } from "../RightThisRoom";
 
+//import actions
+import { getUserInfo, isAdminPage } from "../../redux/reducers/user";
+
+//import styling
 import "./style.css";
 
 const LeftMyRooms = () => {
   const dispatch = useDispatch();
   const { token, rooms } = useSelector((state) => {
-    return { token: state.auth.token, rooms: state.rooms.rooms };
+    return {
+      token: state.auth.token,
+      rooms: state.rooms.rooms,
+    };
   });
 
   console.log("all my rooms", rooms);
@@ -37,12 +43,29 @@ const LeftMyRooms = () => {
           setMessage(result.data.message);
       });
   };
+
+  ////////////////////////////////////this function is to get the user info and save it value in redux and also in the localStorage
+  const getUserInfoFunc = () => {
+    axios
+      .get(`http://localhost:5000/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(getUserInfo(result.data.user[0]));
+      });
+  };
+
   //============================================================
   useEffect(() => {
     if (!token) {
       navigate("/signin");
     } else {
+      dispatch(isAdminPage(""));
+      localStorage.removeItem("isAdminPage");
       getAllRooms();
+      getUserInfoFunc();
     }
   }, []);
 

@@ -15,7 +15,6 @@ body {
   display: none;
 }
 
-
 .position {
   position: absolute;
   width: 100vw;
@@ -151,6 +150,7 @@ body {
 
 .form-style:active .input-placeholder {
   color: #7289d9;
+  color: transparent;
 }
 
 .btn-position {

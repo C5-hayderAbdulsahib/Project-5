@@ -45,9 +45,6 @@ roomRouter.delete(
 );
 
 roomRouter.post("/:id/messages", authentication, createNewMessage);
-
-///:userid/individual_room
-
 roomRouter.post("/:userId/individual_room", authentication, createNewChatRoom);
 roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
 roomRouter.delete("/:id/users/block", authentication, blockUserFromRoom);
@@ -62,7 +59,6 @@ roomRouter.delete(
 
 roomRouter.put("/:id/unfollow", authentication, unFollowThisRoom);
 
-roomRouter.put("/:id/add_user", authentication, addUserToTheRoom)
-
+roomRouter.put("/:id/add_user", authentication, addUserToTheRoom);
 
 module.exports = roomRouter;

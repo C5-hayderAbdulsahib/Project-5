@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IoCreateOutline } from "react-icons/io5";
 
+//import style
+import "./style.css";
+
 //import actions
 import {
   setCategories,
   updateCategory,
   deleteCategory,
 } from "../../redux/reducers/categories";
+import { isAdminPage } from "../../redux/reducers/user";
 
 //import Components
 import SingleCategory from "./SingleCategory";
@@ -96,6 +100,7 @@ const SuperHomePage = () => {
       navigate("/super_admin/signin");
     }
 
+    dispatch(isAdminPage("this is super admin page"));
     getAllCategories();
   }, []);
 
