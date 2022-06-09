@@ -7,6 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 //import the actions
 import { logout } from "../../redux/reducers/auth";
 
+// //import packages
+// import { useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+
+// // import from store
+// // import { useSelector, useDispatch } from "react-redux";
+
+// import actions
+// import { getUserInfo } from "../../redux/reducers/user";
+
 //===============================================================
 
 const Navbar = () => {
@@ -19,8 +30,31 @@ const Navbar = () => {
     //the state inside the parameter refer to the store in the store.js and it will have all of it reducers and then we will access the wanted reducer and after that we want to access the wanted state inside that reducer
     return {
       isLoggedIn: state.auth.isLoggedIn, //state.auth.isLoggedIn ---> the first state is built in and it came from the function parameter the second auth is the name that we give to the reducer inside the store and the isLoggedIn is the name of the state itself and we give it this name inside the reducer file
+      user: state.user.user,
     };
   });
+
+  // const getUserInfoFunc = () => {
+  //   axios
+  //     .get(`http://localhost:5000/users`, {
+  //       headers: {
+  //         Authorization: `Bearer ${state.token}`,
+  //       },
+  //     })
+  //     .then((result) => {
+  //       dispatch(getUserInfo(result.data.user[0]));
+  //     });
+  // };
+
+  console.log("this is the navbar login", state.user);
+
+  // useEffect(() => {
+  //   if (!state.token) {
+  //     navigate("/signin");
+  //   } else {
+  //     getUserInfoFunc();
+  //   }
+  // }, []);
 
   //===============================================================
 
@@ -40,6 +74,8 @@ const Navbar = () => {
                 Logout
               </button>
             </Link>
+
+            <Link to="/account_page">{state?.user?.username}</Link>
 
             <Link to="/rooms/search">Search</Link>
 
