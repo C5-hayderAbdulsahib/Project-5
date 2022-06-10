@@ -57,7 +57,7 @@ export const RightThisRoom = () => {
     } else {
       getRoomById();
     }
-  }, [id, renderPage]);
+  }, [id, renderPage]); //the reason the i added the renderPage is because the get room by id came from the backend and it does not have a action in redux so it only have local state thats why i added the renderPage in order to make useEffect rerender the page again on update or delete
 
   return (
     <>

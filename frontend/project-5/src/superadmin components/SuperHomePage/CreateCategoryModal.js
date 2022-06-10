@@ -24,7 +24,8 @@ const CreateCategoryModal = (props) => {
   //======================================================================================================
 
   //Create Category
-  const createCategory = () => {
+  const createCategory = (e) => {
+    e.preventDefault();
     axios
       .post(
         `http://localhost:5000/categories`,
@@ -38,6 +39,7 @@ const CreateCategoryModal = (props) => {
       .then((result) => {
         if (result.data.success) {
           dispatch(addCategory(result.data.category));
+          setIsOpen(false);
         }
       })
       .catch((err) => {
@@ -66,14 +68,8 @@ const CreateCategoryModal = (props) => {
                 {/* ///////////////////////////////the body f the model */}
                 You can create a new category
                 <div className="push-down"></div>
-                <form
-                  onSubmit={() => {
-                    setIsOpen(false);
-                  }}
-                >
-                  {" "}
+                <form>
                   <div className="Category-label">
-                    {" "}
                     <label>Category Name</label>
                   </div>
                   <input
@@ -84,21 +80,10 @@ const CreateCategoryModal = (props) => {
                   />
                   {/* the update button */}
                   <div className="shiftingToLeft">
-                    {/* 
-<div className="shiftingToLeft"> */}
-
-                    <button
-                      // onClick={() => {
-                      //   updateCategoryFun(id);
-                      //   setIsOpen(false);
-                      // }}
-                      className="createBtn"
-                      onClick={createCategory}
-                    >
+                    <button className="createBtn" onClick={createCategory}>
                       Create Category
                     </button>
 
-                    {/*  </div> */}
                     {/* the cancel model button */}
                     <button
                       className="cancelBtn"

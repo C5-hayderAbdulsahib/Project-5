@@ -1,10 +1,8 @@
 //import styling
-import "./UpdateCategoryModal.css"
+import "./UpdateCategoryModal.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
-import { MdCreate } from "react-icons/md";
-
 
 const UpdateCategoryModal = (props) => {
   const {
@@ -35,13 +33,9 @@ const UpdateCategoryModal = (props) => {
               {/* ///////////////////////////////the body f the model */}
               Are you sure you want to update the name of this category?
               <div className="push-down"></div>
-              <form
-                onSubmit={() => {
-                  updateCategoryFun(id);
-                  setIsOpen(false);
-                }}
-              >
-                <input className="Update-Category"
+              <form>
+                <input
+                  className="Update-Category"
                   type={"text"}
                   placeholder="Update Category"
                   defaultValue={name}
@@ -50,20 +44,23 @@ const UpdateCategoryModal = (props) => {
                 <div className="push-down"></div>
                 {/* the update button */}
 
-                <div className="shiftingToLeft"     > 
-                <button
-                  // onClick={() => {
-                  //   updateCategoryFun(id);
-                  //   setIsOpen(false);
-                  // }}
-                  className="updateBtn"
-                >
-                  Update Category {/* <MdCreate/>  */}
-                </button>
-                {/* the cancel model button */}
-                <button className="cancelBtn" onClick={() => setIsOpen(false)}>
-                  Cancel
-                </button>
+                <div className="shiftingToLeft">
+                  <button
+                    onClick={(e) => {
+                      updateCategoryFun(e, id);
+                      setIsOpen(false);
+                    }}
+                    className="updateBtn"
+                  >
+                    Update Category
+                  </button>
+                  {/* the cancel model button */}
+                  <button
+                    className="cancelBtn"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </form>
             </div>

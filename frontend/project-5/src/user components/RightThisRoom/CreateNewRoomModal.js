@@ -30,7 +30,8 @@ export const CreateNewRoomModal = (props) => {
   });
   //*=================================================================================
 
-  const createRoom = (categoryId) => {
+  const createRoom = (e, categoryId) => {
+    e.preventDefault();
     axios
       .post(
         `http://localhost:5000/categories/${categoryId}/rooms`,
@@ -44,6 +45,7 @@ export const CreateNewRoomModal = (props) => {
       .then((result) => {
         dispatch(addRoom(result.data.room));
         setMessage(result.data.message);
+        setIsOpen(false);
       })
       .catch((err) => {
         if (!err.response.data.success) {
@@ -116,49 +118,51 @@ export const CreateNewRoomModal = (props) => {
                   {/* ///////////////////////////////the body f the model */}
                   You Can Create New Room
                   <div className="push-down"></div>
-                  <input
-                    type={"text"}
-                    placeholder="Create Room"
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                  <div className="push-down"></div>
-                  {categoriesList && (
-                    <>
-                      <label htmlFor="categories">
-                        Choose a Category Type:
-                      </label>
+                  <form>
+                    <input
+                      type={"text"}
+                      placeholder="Create Room"
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <div className="push-down"></div>
+                    {categoriesList && (
+                      <>
+                        <label htmlFor="categories">
+                          Choose a Category Type:
+                        </label>
 
-                      <select
-                        id="categories"
-                        onChange={(e) => setChooseCategory(e.target.value)}
-                      >
-                        <option value="">Choose A Category</option>
+                        <select
+                          id="categories"
+                          onChange={(e) => setChooseCategory(e.target.value)}
+                        >
+                          <option value="">Choose A Category</option>
 
-                        {categoriesList}
-                      </select>
-                    </>
-                  )}
-                  <div className="push-down"></div>
-                  {/* the create button */}
-                  <button
-                    className="deleteBtn"
-                    onClick={() => {
-                      createRoom(chooseCategory);
-                    }}
-                  >
-                    Create New Room
-                  </button>
-                  {/* the cancel model button */}
-                  <button
-                    className="cancelBtn"
-                    onClick={() => {
-                      setMessage("");
-                      setIsOpen(false);
-                    }}
-                  >
-                    Cancel
-                  </button>
-                  <p>{message}</p>
+                          {categoriesList}
+                        </select>
+                      </>
+                    )}
+                    <div className="push-down"></div>
+                    {/* the create button */}
+                    <button
+                      className="deleteBtn"
+                      onClick={(e) => {
+                        createRoom(e, chooseCategory);
+                      }}
+                    >
+                      Create New Room
+                    </button>
+                    {/* the cancel model button */}
+                    <button
+                      className="cancelBtn"
+                      onClick={() => {
+                        setMessage("");
+                        setIsOpen(false);
+                      }}
+                    >
+                      Cancel
+                    </button>
+                    <p>{message}</p>
+                  </form>
                 </div>
 
                 {/* // ... */}

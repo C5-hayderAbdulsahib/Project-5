@@ -62,7 +62,8 @@ const SuperHomePage = () => {
       });
     //======================================================================================================
   };
-  const updateCategoryFun = (id) => {
+  const updateCategoryFun = (e, id) => {
+    e.preventDefault();
     axios
       .put(
         `http://localhost:5000/categories/${id}`,
