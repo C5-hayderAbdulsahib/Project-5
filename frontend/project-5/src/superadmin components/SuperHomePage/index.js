@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { IoCreateOutline } from "react-icons/io5";
 
 //import style
@@ -15,6 +15,7 @@ import {
   deleteCategory,
 } from "../../redux/reducers/categories";
 import { isAdminPage } from "../../redux/reducers/user";
+import { logout } from "../../redux/reducers/auth";
 
 //import Components
 import SingleCategory from "./SingleCategory";
@@ -29,7 +30,11 @@ const SuperHomePage = () => {
   //======================================================================================================
 
   const { token, categories } = useSelector((state) => {
-    return { token: state.auth.token, categories: state.categories.categories };
+    return {
+      token: state.auth.token,
+      categories: state.categories.categories,
+      isLoggedIn: state.auth.isLoggedIn,
+    };
   });
 
   const [name, setName] = useState("");
@@ -125,6 +130,17 @@ const SuperHomePage = () => {
         {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
 
         <h1 className="superTitle">super home admin</h1>
+
+        <Link to="/super_admin/signin">
+          <button
+            onClick={() => {
+              dispatch(logout()); //send the action to the reducer using dispatch
+            }}
+          >
+            Logout
+          </button>
+        </Link>
+
         <div>
           <button
             onClick={() => {

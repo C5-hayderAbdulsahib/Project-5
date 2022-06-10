@@ -17,7 +17,6 @@ const AccountPage = () => {
     return { token: state.auth.token, user: state.user.user };
   });
 
-
   const dispatch = useDispatch();
 
   console.log("the user value from the store", user);
@@ -35,6 +34,7 @@ const AccountPage = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [show, setShow] = useState("");
 
   // const getUserInfoFunc = () => {
   //   axios
@@ -107,8 +107,7 @@ const AccountPage = () => {
       {user?.username ? (
         <>
           <h1> account page </h1>
-
- update-password
+          update-password
           <>
             <label>Email : </label>
             <input
@@ -153,7 +152,6 @@ const AccountPage = () => {
             <p>{message}</p>
             <button onClick={updateUserInfo}>update profile</button>
           </>
-
           {show ? (
             <>
               <input
@@ -198,7 +196,6 @@ const AccountPage = () => {
             </>
           )}
           <button onClick={updateUserInfo}>update profile</button>
-
           <br></br>
           {imgUrl ? (
             <img src={imgUrl} alt="profile_image" />
@@ -226,7 +223,13 @@ const AccountPage = () => {
       )}
       <br></br>
       {isOpen && <UpdatePasswordModal setIsOpen={setIsOpen} />}
-      <button onClick={()=>{setIsOpen(true)}}>Update Password</button>
+      <button
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        Update Password
+      </button>
     </>
   );
 };
