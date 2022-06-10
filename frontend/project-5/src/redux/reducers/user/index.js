@@ -25,6 +25,14 @@ export const userSlice = createSlice({
       localStorage.setItem("isAdminPage", action.payload);
       console.log(action);
     },
+
+    updateUserInfo: (state, action) => {
+      //action is an object and it contains two values {type,payload:{...old properties, new properties}}
+      // payload is can be data that will be sent from the form using the dispatch so the expected data will be either an object or an array of object, or it can be the data that came when the user click on a button so it might be an id or might be an object or an array of objects
+      state.user = action.payload;
+      localStorage.setItem("user", JSON.stringify(action.payload));
+      console.log(action.payload);
+    },
   },
 });
 

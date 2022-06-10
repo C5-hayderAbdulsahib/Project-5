@@ -3,9 +3,6 @@ import { RiCloseLine } from "react-icons/ri";
 const UpdatePasswordModal = (props) => {
   const { setIsOpen } = props;
 
-
-
-
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
@@ -39,7 +36,6 @@ const UpdatePasswordModal = (props) => {
                     className="Create-Category"
                     type={"text"}
                     placeholder="Create Category"
-                   
                   />
                   {/* the update button */}
                   <div className="shiftingToLeft">
@@ -52,7 +48,6 @@ const UpdatePasswordModal = (props) => {
                       //   setIsOpen(false);
                       // }}
                       className="createBtn"
-                      
                     >
                       Create Category
                     </button>

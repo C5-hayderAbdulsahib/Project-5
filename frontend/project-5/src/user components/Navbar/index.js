@@ -7,17 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 //import the actions
 import { logout } from "../../redux/reducers/auth";
 
-// //import packages
-// import { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-
-// // import from store
-// // import { useSelector, useDispatch } from "react-redux";
-
-// import actions
-// import { getUserInfo } from "../../redux/reducers/user";
-
 //===============================================================
 
 const Navbar = () => {
@@ -33,28 +22,6 @@ const Navbar = () => {
       user: state.user.user,
     };
   });
-
-  // const getUserInfoFunc = () => {
-  //   axios
-  //     .get(`http://localhost:5000/users`, {
-  //       headers: {
-  //         Authorization: `Bearer ${state.token}`,
-  //       },
-  //     })
-  //     .then((result) => {
-  //       dispatch(getUserInfo(result.data.user[0]));
-  //     });
-  // };
-
-  console.log("this is the navbar login", state.user);
-
-  // useEffect(() => {
-  //   if (!state.token) {
-  //     navigate("/signin");
-  //   } else {
-  //     getUserInfoFunc();
-  //   }
-  // }, []);
 
   //===============================================================
 
