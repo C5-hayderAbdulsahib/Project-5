@@ -146,13 +146,18 @@ const AccountPage = () => {
                     Upload Image
                   </button>
                   <br></br>
-                  <input
-                    type={"file"}
-                    onChange={(e) => {
-                      setProfile_image(e.target.files[0]);
-                    }}
-                    className="btn-choose"
-                  />
+                  <div>
+                    <input
+                      type={"file"}
+                      onChange={(e) => {
+                        setProfile_image(e.target.files[0]);
+                      }}
+                      className="update-account"
+                      id="file"
+                    />
+                    <label for="file" className="accountlable">Choose a photo </label>
+                  </div>
+
                   <h3 className="primary-header-signup">{user.username}</h3>
                   <div className="input-position-signup">
                     <div className="form-group">
@@ -214,7 +219,9 @@ const AccountPage = () => {
                   </div>
                   <div className="password-container"></div>
                   <div className="btn-position">
-                    <p className="error-message">{message}</p>
+                    <div>
+                      <p className="error-message">{message}</p>
+                    </div>
                     <br></br>
                     <button className="btn-account" onClick={updateUserInfoFun}>
                       Update Account Information
@@ -243,4 +250,3 @@ const AccountPage = () => {
 };
 
 export default AccountPage;
-
