@@ -12,6 +12,9 @@ import { getUserInfo, updateUserInfo } from "../../redux/reducers/user";
 //import Model
 import UpdatePasswordModal from "./UpdatePasswordModal";
 
+// import style
+import "./style.css";
+
 const AccountPage = () => {
   const { token, user } = useSelector((state) => {
     return { token: state.auth.token, user: state.user.user };
@@ -114,89 +117,130 @@ const AccountPage = () => {
     <>
       {user?.username ? (
         <>
-          <h1> account page </h1>
-
-          <>
-            <label>Email : </label>
-            <input
-              type={"text"}
-              placeholder="Email"
-              defaultValue={user.email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-            <br></br>
-            <label>First name : </label>
-            <input
-              type={"text"}
-              placeholder="First name"
-              defaultValue={user.first_name}
-              onChange={(e) => {
-                setFirst_name(e.target.value);
-              }}
-            />
-            <br></br>
-            <label>Last name : </label>
-            <input
-              type={"text"}
-              placeholder="Last Name"
-              defaultValue={user.last_name}
-              onChange={(e) => {
-                setLast_name(e.target.value);
-              }}
-            />
-            <br></br>
-            <label>Country : </label>
-            <input
-              type={"text"}
-              placeholder="Country"
-              defaultValue={user.country}
-              onChange={(e) => {
-                setCountry(e.target.value);
-              }}
-            />
-            <br></br>
-            <p>{message}</p>
-            <button onClick={updateUserInfoFun}>update profile</button>
-          </>
-
-          <br></br>
-          {imgUrl ? (
-            <img src={imgUrl} alt="profile_image" />
-          ) : (
-            <img src={user.profile_image} alt="profile image" />
-          )}
-          <br></br>
-          <button
-            onClick={() => {
-              uploadImage();
-            }}
-          >
-            Upload Image
-          </button>
-          <br></br>
-          <input
-            type={"file"}
-            onChange={(e) => {
-              setProfile_image(e.target.files[0]);
-            }}
-          />
+          <div className="position-profile-account">
+            <div className="container-profile">
+              <div className="centering-wrapper-account">
+                <div className="section1 text-center">
+                  <p className="primary-header-username">My Account</p>
+                  <br></br>
+                  {imgUrl ? (
+                    <img
+                      src={imgUrl}
+                      alt="profile_image"
+                      className="profileImage"
+                    />
+                  ) : (
+                    <img
+                      src={user.profile_image}
+                      alt="profile image"
+                      className="profileImage"
+                    />
+                  )}
+                  <br></br>
+                  <button
+                    onClick={() => {
+                      uploadImage();
+                    }}
+                    className="btn-upload"
+                  >
+                    Upload Image
+                  </button>
+                  <br></br>
+                  <input
+                    type={"file"}
+                    onChange={(e) => {
+                      setProfile_image(e.target.files[0]);
+                    }}
+                    className="btn-choose"
+                  />
+                  <h3 className="primary-header-signup">{user.username}</h3>
+                  <div className="input-position-signup">
+                    <div className="form-group">
+                      <h5 className="input-placeholder-account">Email</h5>
+                      <input
+                        type="email"
+                        required={true}
+                        defaultValue={user.email}
+                        name="logemail"
+                        className="form-style-account"
+                        autoComplete={"off"}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <h5 className="input-placeholder-account">First Name</h5>
+                      <input
+                        type="text"
+                        required={true}
+                        name="logpass"
+                        defaultValue={user.first_name}
+                        className="form-style-account"
+                        autoComplete={"on"}
+                        onChange={(e) => {
+                          setFirst_name(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <h5 className="input-placeholder-account">Last Name</h5>
+                      <input
+                        type="text"
+                        required={true}
+                        name="logemail"
+                        className="form-style-account"
+                        autoComplete={"off"}
+                        defaultValue={user.last_name}
+                        onChange={(e) => {
+                          setLast_name(e.target.value);
+                        }}
+                      />
+                    </div>
+                    <div className="form-group">
+                      <h5 className="input-placeholder-account">Country</h5>
+                      <input
+                        type="text"
+                        required={true}
+                        name="logemail"
+                        className="form-style-account"
+                        autoComplete={"off"}
+                        defaultValue={user.country}
+                        onChange={(e) => {
+                          setCountry(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="password-container"></div>
+                  <div className="btn-position">
+                    <p className="error-message">{message}</p>
+                    <br></br>
+                    <button className="btn-account" onClick={updateUserInfoFun}>
+                      Update Account Information
+                    </button>
+                    <button
+                      className="btn-account"
+                      onClick={() => {
+                        setIsOpen(true);
+                      }}
+                    >
+                      Update Password
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       ) : (
         ""
       )}
       <br></br>
-      {isOpen && <UpdatePasswordModal key={token} setIsOpen={setIsOpen} />}
-      <button
-        onClick={() => {
-          setIsOpen(true);
-        }}
-      >
-        Update Password
-      </button>
+      {isOpen && <UpdatePasswordModal setIsOpen={setIsOpen} />}
     </>
   );
 };
 
 export default AccountPage;
+
