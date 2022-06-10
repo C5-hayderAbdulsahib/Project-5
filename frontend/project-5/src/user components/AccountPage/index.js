@@ -53,7 +53,7 @@ const AccountPage = () => {
           first_name,
           last_name,
           country,
-          profile_image: imgUrl,
+          profile_image: imgUrl || user.profile_image,
         },
         {
           headers: {
@@ -69,7 +69,7 @@ const AccountPage = () => {
             first_name,
             last_name,
             country,
-            profile_image: imgUrl,
+            profile_image: imgUrl || user.profile_image,
           })
         );
         setMessage(`update information`);
@@ -109,7 +109,6 @@ const AccountPage = () => {
   setTimeout(function () {
     setMessage("");
   }, 3000);
-
 
   return (
     <>
