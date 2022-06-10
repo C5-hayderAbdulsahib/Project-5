@@ -9,6 +9,9 @@ import axios from "axios";
 //import style
 import "./CreateCategoryModal.css";
 
+//import icons
+import { IoMdAdd   } from "react-icons/io";
+
 const CreateCategoryModal = (props) => {
   const dispatch = useDispatch("");
   const { token } = useSelector((state) => {
@@ -81,7 +84,7 @@ const CreateCategoryModal = (props) => {
                   {/* the update button */}
                   <div className="shiftingToLeft">
                     <button className="createBtn" onClick={createCategory}>
-                      Create Category
+                      Create Category  < IoMdAdd />
                     </button>
 
                     {/* the cancel model button */}

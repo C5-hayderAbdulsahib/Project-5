@@ -3,10 +3,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { IoCreateOutline } from "react-icons/io5";
+/* import { IoCreateOutline } from "react-icons/io5"; */
 
 //import style
 import "./style.css";
+
+//import icons
+import { BsFillPersonPlusFill  } from "react-icons/bs";
+import { IoMdAdd   } from "react-icons/io";
 
 //import actions
 import {
@@ -129,11 +133,11 @@ const SuperHomePage = () => {
       <div className="superadminMain">
         {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
         {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
-
+<div className="superNav">
         <h1 className="superTitle">super home admin</h1>
 
         <Link to="/super_admin/signin">
-          <button
+          <button className="logOut"
             onClick={() => {
               dispatch(logout()); //send the action to the reducer using dispatch
             }}
@@ -141,7 +145,7 @@ const SuperHomePage = () => {
             Logout
           </button>
         </Link>
-
+        </div>
         <div>
           <button
             onClick={() => {
@@ -149,7 +153,7 @@ const SuperHomePage = () => {
             }}
             className="CreateCategoryBtn"
           >
-            Create Category <IoCreateOutline />
+            Create Category < IoMdAdd />
           </button>
           <br></br>
           <button
@@ -158,7 +162,7 @@ const SuperHomePage = () => {
             }}
             className="CreateCategoryAdminBtn"
           >
-            Create New Admin <IoCreateOutline />
+            Create New Admin < BsFillPersonPlusFill />
           </button>
           {message ? <p>{message}</p> : ""}
 
