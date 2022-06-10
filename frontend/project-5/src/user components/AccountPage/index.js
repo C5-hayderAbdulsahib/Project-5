@@ -101,7 +101,7 @@ const AccountPage = () => {
   setTimeout(function () {
     setMessage("");
   }, 3000);
-
+//=============================================
   return (
     <>
       {user?.username ? (
@@ -222,7 +222,8 @@ const AccountPage = () => {
         ""
       )}
       <br></br>
-      {isOpen && <UpdatePasswordModal setIsOpen={setIsOpen} />}
+      {isOpen && <UpdatePasswordModal key={token} setIsOpen={setIsOpen} />}
+
       <button
         onClick={() => {
           setIsOpen(true);
