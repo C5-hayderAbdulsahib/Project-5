@@ -172,8 +172,14 @@ const AccountPage = () => {
         ""
       )}
       <br></br>
-      {isOpen && <UpdatePasswordModal setIsOpen={setIsOpen} />}
-      <button onClick={()=>{setIsOpen(true)}}>Update Password</button>
+      {isOpen && <UpdatePasswordModal key={token} setIsOpen={setIsOpen} />}
+      <button
+        onClick={() => {
+          setIsOpen(true);
+        }}
+      >
+        Update Password
+      </button>
     </>
   );
 };
