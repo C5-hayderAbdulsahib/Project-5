@@ -579,13 +579,12 @@ const addUserToTheRoom = (req, res) => {
 
 ///////////////getAllRoomsForCategory//////////////////
 
-const  getAllRoomsForCategory = (req, res) => {
+const getAllRoomsForCategory = (req, res) => {
   const id = req.params.id;
 
   const command = `SELECT * FROM rooms   WHERE category_id =?`;
 
   const data = [id];
-
 
   connection.query(command, data, (err, result) => {
     console.log(result);
@@ -612,6 +611,35 @@ const  getAllRoomsForCategory = (req, res) => {
   });
 };
 
+/////////////getAllMyCreatedRoom/////////////////////
+
+const getAllMyCreatedRoom = (req, res) => {
+  const id = req.token.userId;
+
+  const command = `SELECT * FROM rooms  WHERE  admin_id =? AND is_group=1 `;
+
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err.message });
+    }
+    if (!result.length) {
+      return res.status(200).json({
+        success: false,
+        message: "You Did Not Create Any Room Yet",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "All The Room That I Have Created",
+      rooms: result,
+    });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -630,4 +658,5 @@ module.exports = {
   unFollowThisRoom,
   addUserToTheRoom,
   getAllRoomsForCategory,
+  getAllMyCreatedRoom,
 };
