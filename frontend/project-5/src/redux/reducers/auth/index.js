@@ -26,6 +26,8 @@ export const authSlice = createSlice({
       state.token = "";
       state.isLoggedIn = false;
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("isAdminPage");
       // console.log(action);
     },
   },

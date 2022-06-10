@@ -1,9 +1,8 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 //import actions
-
 import { deleteRoom } from "../../redux/reducers/rooms";
 
 //import styling
@@ -23,6 +22,8 @@ export const DeleteRoomModal = (props) => {
   } = props;
 
   const dispatch = useDispatch("");
+
+  const navigate = useNavigate();
 
   //======================================================================================================
 
@@ -44,6 +45,7 @@ export const DeleteRoomModal = (props) => {
       .then((result) => {
         dispatch(deleteRoom(id));
         setRenderPage(!renderPage);
+        navigate("/rooms");
       })
       .catch((err) => {
         console.log(err);

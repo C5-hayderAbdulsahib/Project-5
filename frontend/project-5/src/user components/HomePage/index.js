@@ -9,6 +9,7 @@ const HomePage = () => {
   //the reason that i add the navigate because the user normally will put only the domain of the website so he will be redirected automatically the / route so he will enter the home component then he will be redirected to the rooms component
   useEffect(() => {
     navigate("/rooms");
+    localStorage.removeItem("isAdminPage");
   }, []);
 };
 

@@ -2,11 +2,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { IoCreateOutline } from "react-icons/io5";
 
 //import style
-import "./style.css"
+import "./style.css";
 
 //import actions
 import {
@@ -14,6 +14,8 @@ import {
   updateCategory,
   deleteCategory,
 } from "../../redux/reducers/categories";
+import { isAdminPage } from "../../redux/reducers/user";
+import { logout } from "../../redux/reducers/auth";
 
 //import Components
 import SingleCategory from "./SingleCategory";
@@ -28,7 +30,11 @@ const SuperHomePage = () => {
   //======================================================================================================
 
   const { token, categories } = useSelector((state) => {
-    return { token: state.auth.token, categories: state.categories.categories };
+    return {
+      token: state.auth.token,
+      categories: state.categories.categories,
+      isLoggedIn: state.auth.isLoggedIn,
+    };
   });
 
   const [name, setName] = useState("");
@@ -56,7 +62,8 @@ const SuperHomePage = () => {
       });
     //======================================================================================================
   };
-  const updateCategoryFun = (id) => {
+  const updateCategoryFun = (e, id) => {
+    e.preventDefault();
     axios
       .put(
         `http://localhost:5000/categories/${id}`,
@@ -99,6 +106,7 @@ const SuperHomePage = () => {
       navigate("/super_admin/signin");
     }
 
+    dispatch(isAdminPage("this is super admin page"));
     getAllCategories();
   }, []);
 
@@ -123,6 +131,17 @@ const SuperHomePage = () => {
         {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
 
         <h1 className="superTitle">super home admin</h1>
+
+        <Link to="/super_admin/signin">
+          <button
+            onClick={() => {
+              dispatch(logout()); //send the action to the reducer using dispatch
+            }}
+          >
+            Logout
+          </button>
+        </Link>
+
         <div>
           <button
             onClick={() => {
