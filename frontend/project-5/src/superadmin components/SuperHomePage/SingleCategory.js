@@ -1,7 +1,7 @@
 //import packages
 import React, { useState } from "react";
 
-//import style 
+//import style
 import "./SingleCategory.css";
 
 //import components
@@ -20,7 +20,7 @@ const SingleCategory = (props) => {
   return (
     <>
       {/* the model component for update category */}
-      {/* we make a condition if the state is false then dont show the model else show it */}
+      {/* we make a condition if the state is false then don't show the model else show it */}
       {isOpen && (
         <UpdateCategoryModal
           name={name}
