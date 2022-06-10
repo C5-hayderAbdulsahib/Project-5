@@ -52,7 +52,6 @@ const UpdatePasswordModal = (props) => {
 
   //=============================================================================================================
 
-
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
@@ -105,19 +104,6 @@ const UpdatePasswordModal = (props) => {
                 {/* the update button */}
                 <div className="shiftingToLeft">
                   {/* 
-
-                  <div className="Category-label">
-                    {" "}
-                    <label>Category Name</label>
-                  </div>
-                  <input
-                    className="Create-Category"
-                    type={"text"}
-                    placeholder="Create Category"
-                  />
-                  {/* the update button */}
-                  <div className="shiftingToLeft">
-                    {/* 
 <div className="shiftingToLeft"> */}
                   <button
                     // onClick={() => {
@@ -148,29 +134,6 @@ const UpdatePasswordModal = (props) => {
                 ) : (
                   <p className="errMessage">{message}</p>
                 )}
-
-                    <button
-                      // onClick={() => {
-                      //   updateCategoryFun(id);
-                      //   setIsOpen(false);
-                      // }}
-                      className="createBtn"
-                    >
-                      Create Category
-                    </button>
-
-                    {/*  </div> */}
-                    {/* the cancel model button */}
-                    <button
-                      className="cancelBtn"
-                      onClick={() => {
-                        setIsOpen(false);
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  </div>
-                </form>
               </div>
             </div>
             {/* // ... */}
@@ -181,4 +144,5 @@ const UpdatePasswordModal = (props) => {
   );
 };
 
-export default UpdatePasswordModal;
+
+export default UpdatePasswordModal

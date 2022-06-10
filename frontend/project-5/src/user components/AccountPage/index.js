@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 //import actions
-// import { getUserInfo } from "../../redux/reducers/user";
+import { getUserInfo } from "../../redux/reducers/user";
 
 //import Model
 import UpdatePasswordModal from "./UpdatePasswordModal";
@@ -18,11 +18,6 @@ const AccountPage = () => {
   });
 
   const dispatch = useDispatch();
-
-  console.log("the user value from the store", user);
-
-  // const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   const [info, setInfo] = useState("");
@@ -34,20 +29,19 @@ const AccountPage = () => {
   const [imgUrl, setImgUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [show, setShow] = useState("");
 
-  // const getUserInfoFunc = () => {
-  //   axios
-  //     .get(`http://localhost:5000/users`, {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((result) => {
-  //       setInfo(result.data.user[0]);
-  //       dispatch(getUserInfo(result.data.user[0]));
-  //     });
-  // };
+  const getUserInfoFunc = () => {
+    axios
+      .get(`http://localhost:5000/users`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        setInfo(result.data.user[0]);
+        dispatch(getUserInfo(result.data.user[0]));
+      });
+  };
 
   const updateUserInfo = () => {
     axios
@@ -76,10 +70,9 @@ const AccountPage = () => {
   useEffect(() => {
     if (!token) {
       navigate("/signin");
+    } else {
+      getUserInfoFunc();
     }
-    // else {
-    //   getUserInfoFunc();
-    // }
   }, []);
 
   const uploadImage = () => {
@@ -101,13 +94,13 @@ const AccountPage = () => {
   setTimeout(function () {
     setMessage("");
   }, 3000);
-//=============================================
+
   return (
     <>
       {user?.username ? (
         <>
           <h1> account page </h1>
-          update-password
+
           <>
             <label>Email : </label>
             <input
@@ -152,55 +145,12 @@ const AccountPage = () => {
             <p>{message}</p>
             <button onClick={updateUserInfo}>update profile</button>
           </>
-          {show ? (
-            <>
-              <input
-                type={"text"}
-                value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={first_name}
-                onChange={(e) => {
-                  setFirst_name(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={last_name}
-                onChange={(e) => {
-                  setLast_name(e.target.value);
-                }}
-              />
-              <br></br>
-              <input
-                type={"text"}
-                value={country}
-                onChange={(e) => {
-                  setCountry(e.target.value);
-                }}
-              />
-              <br></br>
-            </>
-          ) : (
-            <>
-              <p> Email : {user.email}</p>
-              <p>First Name : {user.first_name}</p>
-              <p>Last Name : {user.last_name}</p>
-              <p>Country : {user.country}</p>
-            </>
-          )}
-          <button onClick={updateUserInfo}>update profile</button>
+
           <br></br>
           {imgUrl ? (
             <img src={imgUrl} alt="profile_image" />
           ) : (
-            <img src={user.profile_image} alt="profile image" />
+            <img src={profile_image} alt="profile image" />
           )}
           <br></br>
           <button
@@ -223,7 +173,6 @@ const AccountPage = () => {
       )}
       <br></br>
       {isOpen && <UpdatePasswordModal key={token} setIsOpen={setIsOpen} />}
-
       <button
         onClick={() => {
           setIsOpen(true);
