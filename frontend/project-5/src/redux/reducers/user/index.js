@@ -38,6 +38,6 @@ export const userSlice = createSlice({
 
 // action creator functions are generated for each case reducer function
 // action creator is a function that creates an action which is an object that has 2 keys type and payload, the type is used to identify what the reducer is supposed to do, and the payload is the information that the reducer will use to complete the process.
-export const { getUserInfo, isAdminPage } = userSlice.actions;
+export const { getUserInfo, isAdminPage, updateUserInfo } = userSlice.actions;
 
 export default userSlice.reducer;

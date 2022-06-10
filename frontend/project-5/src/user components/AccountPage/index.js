@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 //import actions
-import { getUserInfo } from "../../redux/reducers/user";
+import { getUserInfo, updateUserInfo } from "../../redux/reducers/user";
 
 //import Model
 import UpdatePasswordModal from "./UpdatePasswordModal";
@@ -21,15 +21,16 @@ const AccountPage = () => {
   const navigate = useNavigate();
 
   const [info, setInfo] = useState("");
-  const [email, setEmail] = useState("");
-  const [first_name, setFirst_name] = useState("");
-  const [last_name, setLast_name] = useState("");
-  const [country, setCountry] = useState("");
-  const [profile_image, setProfile_image] = useState("");
+  const [email, setEmail] = useState(user.email);
+  const [first_name, setFirst_name] = useState(user.first_name);
+  const [last_name, setLast_name] = useState(user.last_name);
+  const [country, setCountry] = useState(user.country);
+  const [profile_image, setProfile_image] = useState(user.profile_image);
   const [imgUrl, setImgUrl] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
 
+  /*
   const getUserInfoFunc = () => {
     axios
       .get(`http://localhost:5000/users`, {
@@ -42,8 +43,8 @@ const AccountPage = () => {
         dispatch(getUserInfo(result.data.user[0]));
       });
   };
-
-  const updateUserInfo = () => {
+*/
+  const updateUserInfoFun = () => {
     axios
       .put(
         `http://localhost:5000/users/change_info`,
@@ -52,6 +53,7 @@ const AccountPage = () => {
           first_name,
           last_name,
           country,
+          profile_image: imgUrl,
         },
         {
           headers: {
@@ -60,6 +62,16 @@ const AccountPage = () => {
         }
       )
       .then((result) => {
+        dispatch(
+          updateUserInfo({
+            ...user,
+            email,
+            first_name,
+            last_name,
+            country,
+            profile_image: imgUrl,
+          })
+        );
         setMessage(`update information`);
       })
       .catch((err) => {
@@ -70,9 +82,12 @@ const AccountPage = () => {
   useEffect(() => {
     if (!token) {
       navigate("/signin");
-    } else {
+    }
+    /*
+    else {
       getUserInfoFunc();
     }
+    */
   }, []);
 
   const uploadImage = () => {
@@ -95,6 +110,7 @@ const AccountPage = () => {
     setMessage("");
   }, 3000);
 
+
   return (
     <>
       {user?.username ? (
@@ -106,7 +122,7 @@ const AccountPage = () => {
             <input
               type={"text"}
               placeholder="Email"
-              defaultValue={info.email}
+              defaultValue={user.email}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -116,7 +132,7 @@ const AccountPage = () => {
             <input
               type={"text"}
               placeholder="First name"
-              defaultValue={info.first_name}
+              defaultValue={user.first_name}
               onChange={(e) => {
                 setFirst_name(e.target.value);
               }}
@@ -126,7 +142,7 @@ const AccountPage = () => {
             <input
               type={"text"}
               placeholder="Last Name"
-              defaultValue={info.last_name}
+              defaultValue={user.last_name}
               onChange={(e) => {
                 setLast_name(e.target.value);
               }}
@@ -136,21 +152,21 @@ const AccountPage = () => {
             <input
               type={"text"}
               placeholder="Country"
-              defaultValue={info.country}
+              defaultValue={user.country}
               onChange={(e) => {
                 setCountry(e.target.value);
               }}
             />
             <br></br>
             <p>{message}</p>
-            <button onClick={updateUserInfo}>update profile</button>
+            <button onClick={updateUserInfoFun}>update profile</button>
           </>
 
           <br></br>
           {imgUrl ? (
             <img src={imgUrl} alt="profile_image" />
           ) : (
-            <img src={profile_image} alt="profile image" />
+            <img src={user.profile_image} alt="profile image" />
           )}
           <br></br>
           <button
