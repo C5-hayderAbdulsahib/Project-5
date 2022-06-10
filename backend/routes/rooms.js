@@ -19,6 +19,7 @@ const {
   deleteUserFollowRequest,
   unFollowThisRoom,
   addUserToTheRoom,
+  getAllMyCreatedRoom,
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -27,8 +28,10 @@ const roomRouter = express.Router();
 
 //////////// build roomRoutes////////
 
+//we have to put these routs above the dynamic routs :id Or  the dynamic routs will be executed first
 roomRouter.get("/group", authentication, getAllGroupRooms);
 roomRouter.get("/my_rooms", authentication, getAllMyRooms);
+roomRouter.get("/my_created_rooms", authentication, getAllMyCreatedRoom);
 
 roomRouter.get("/:id", authentication, getRoomById);
 roomRouter.put(
