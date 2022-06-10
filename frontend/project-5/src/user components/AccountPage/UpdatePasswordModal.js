@@ -1,53 +1,7 @@
-import React from "react";
 import { RiCloseLine } from "react-icons/ri";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import { addCategory } from "../../redux/reducers/categories/index";
-import axios from "axios";
-
-//import style
-import "./CreateCategoryModal.css";
-
-const CreateCategoryModal = (props) => {
-  const dispatch = useDispatch("");
-  const { token } = useSelector((state) => {
-    return {
-      token: state.auth.token,
-    };
-  });
-  //======================================================================================================
-
+const UpdatePasswordModal = (props) => {
   const { setIsOpen } = props;
-  const [name, setName] = useState("");
-
-  //======================================================================================================
-
-  //Create Category
-  const createCategory = (e) => {
-    e.preventDefault();
-    axios
-      .post(
-        `http://localhost:5000/categories`,
-        { name },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
-      .then((result) => {
-        if (result.data.success) {
-          dispatch(addCategory(result.data.category));
-          setIsOpen(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  //======================================================================================================
 
   return (
     <>
@@ -68,22 +22,37 @@ const CreateCategoryModal = (props) => {
                 {/* ///////////////////////////////the body f the model */}
                 You can create a new category
                 <div className="push-down"></div>
-                <form>
+                <form
+                  onSubmit={() => {
+                    setIsOpen(false);
+                  }}
+                >
+                  {" "}
                   <div className="Category-label">
+                    {" "}
                     <label>Category Name</label>
                   </div>
                   <input
                     className="Create-Category"
                     type={"text"}
                     placeholder="Create Category"
-                    onChange={(e) => setName(e.target.value)}
                   />
                   {/* the update button */}
                   <div className="shiftingToLeft">
-                    <button className="createBtn" onClick={createCategory}>
+                    {/* 
+<div className="shiftingToLeft"> */}
+
+                    <button
+                      // onClick={() => {
+                      //   updateCategoryFun(id);
+                      //   setIsOpen(false);
+                      // }}
+                      className="createBtn"
+                    >
                       Create Category
                     </button>
 
+                    {/*  </div> */}
                     {/* the cancel model button */}
                     <button
                       className="cancelBtn"
@@ -105,4 +74,4 @@ const CreateCategoryModal = (props) => {
   );
 };
 
-export default CreateCategoryModal;
+export default UpdatePasswordModal;
