@@ -155,14 +155,6 @@ const createNewChatRoom = async (req, res) => {
           myRawData[0].profile_image,
         ];
 
-        //we can remove it
-        // const asyncConnection = await mysql.createConnection({
-        //   host: process.env.DB_HOST,
-        //   user: process.env.DB_USER,
-        //   password: process.env.DB_PASS,
-        //   database: process.env.DB_NAME,
-        // });
-
         const [rows2, fields2] = await asyncConnection.execute(
           command_3,
           data2
@@ -175,13 +167,6 @@ const createNewChatRoom = async (req, res) => {
           rows[0].username,
           rows[0].profile_image,
         ];
-
-        // const asyncConnection2 = await mysql.createConnection({
-        //   host: process.env.DB_HOST,
-        //   user: process.env.DB_USER,
-        //   password: process.env.DB_PASS,
-        //   database: process.env.DB_NAME,
-        // });
 
         const [rows3, fields] = await asyncConnection.execute(command_4, data3);
 
@@ -206,7 +191,7 @@ const getRoomById = (req, res) => {
   const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ? And rooms.is_deleted = 0 `;
   data = [id, userId];
 
-  //this query will select spicific room by it's id
+  //this query will select specific room by it's id
   connection.query(command, data, (err, result) => {
     if (result.length > 0) {
       res.status(200).json({
