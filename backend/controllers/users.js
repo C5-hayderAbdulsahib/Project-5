@@ -208,7 +208,8 @@ const createNewAdmin = async (req, res) => {
 
 const updateUserInfo = (req, res) => {
   const id = req.token.userId;
-  const { first_name, last_name, country, profile_image } = req.body;
+
+  const { email, first_name, last_name, country, profile_image } = req.body;
 
   const command = `SELECT * FROM users WHERE id = ?`;
   const data = [id];
@@ -218,13 +219,16 @@ const updateUserInfo = (req, res) => {
         .status(500)
         .json({ success: false, message: "Server Error", err: err });
     }
+
+    const update_email = email || result[0].email;
     const update_first_name = first_name || result[0].first_name;
     const update_last_name = last_name || result[0].last_name;
     const update_country = country || result[0].country;
     const update_profile_image = profile_image || result[0].profile_image;
 
-    const command_tow = `UPDATE users SET first_name= ? ,last_name=? , country = ? ,profile_image =? WHERE id = ? `;
+    const command_tow = `UPDATE users SET email =? , first_name= ? ,last_name=? , country = ? ,profile_image =? WHERE id = ? `;
     const data = [
+      update_email,
       update_first_name,
       update_last_name,
       update_country,
@@ -237,6 +241,8 @@ const updateUserInfo = (req, res) => {
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       }
+    
+
 
       const commandThree =
         "UPDATE users_rooms SET user_profile_img= ? WHERE user_id = ? ";
@@ -253,6 +259,7 @@ const updateUserInfo = (req, res) => {
         return res.status(201).json({
           message: "Account updated",
           user: {
+            email : update_email,
             first_name: update_first_name,
             last_name: update_last_name,
             country: update_country,
@@ -343,3 +350,4 @@ module.exports = {
   updateUserInfo,
   changePassword,
 };
+
