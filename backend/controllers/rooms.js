@@ -385,7 +385,7 @@ const getAllMyRooms = async (req, res) => {
     rowsMyGroupRooms.concat(allMyPrivateRoomData);
 
   if (allMyPrivateAndGroupRooms.length === 0) {
-    return res.status(404).json({
+    return res.status(200).json({
       success: false,
       message: "You Need To Join A Room Or Create A New Room",
     });
