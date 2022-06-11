@@ -104,11 +104,11 @@ const getAllGroupRooms = (req, res) => {
 
 const createNewChatRoom = async (req, res) => {
   try {
-    const userIdFromParams = req.params.userId;
+    const userIdFromBody = req.body.userId;
     const thisUserId = req.token.userId;
 
     const command = `SELECT * FROM USERS WHERE id =?`;
-    const data = [userIdFromParams];
+    const data = [userIdFromBody];
 
     const asyncConnection = await mysql.createConnection({
       host: process.env.DB_HOST,
@@ -125,54 +125,69 @@ const createNewChatRoom = async (req, res) => {
       });
     }
 
-    const command_2 = `INSERT INTO rooms  (name ,room_image ) VALUES ( ? , ?)`;
-    const data_2 = [rows[0].username, rows[0].profile_image];
+    const getMyData = `SELECT * FROM USERS WHERE id =?`;
+    const myData = [thisUserId];
+
+    const [myRawData, fields2] = await asyncConnection.execute(
+      getMyData,
+      myData
+    );
+    if (!myRawData[0]) {
+      return res.status(404).json({
+        success: false,
+        message: "This User Is Not Found",
+      });
+    }
+
+    const command_2 = `INSERT INTO rooms  (name) VALUES (?)`;
+    const data_2 = [""];
     connection.query(command_2, data_2, async (err, result) => {
       if (err) {
         return res
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       } else {
-        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
-        const data2 = [result.insertId, rows[0].id];
+        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img ) VALUES ( ? , ?, ?, ?)`;
+        const data2 = [
+          result.insertId,
+          thisUserId,
+          myRawData[0].username,
+          myRawData[0].profile_image,
+        ];
 
-        const asyncConnection = await mysql.createConnection({
-          host: process.env.DB_HOST,
-          user: process.env.DB_USER,
-          password: process.env.DB_PASS,
-          database: process.env.DB_NAME,
-        });
+        //we can remove it
+        // const asyncConnection = await mysql.createConnection({
+        //   host: process.env.DB_HOST,
+        //   user: process.env.DB_USER,
+        //   password: process.env.DB_PASS,
+        //   database: process.env.DB_NAME,
+        // });
 
         const [rows2, fields2] = await asyncConnection.execute(
           command_3,
           data2
         );
 
-        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
-        const data3 = [result.insertId, thisUserId];
+        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img) VALUES (?, ?, ?, ?)`;
+        const data3 = [
+          result.insertId,
+          rows[0].id,
+          rows[0].username,
+          rows[0].profile_image,
+        ];
 
-        const asyncConnection2 = await mysql.createConnection({
-          host: process.env.DB_HOST,
-          user: process.env.DB_USER,
-          password: process.env.DB_PASS,
-          database: process.env.DB_NAME,
-        });
+        // const asyncConnection2 = await mysql.createConnection({
+        //   host: process.env.DB_HOST,
+        //   user: process.env.DB_USER,
+        //   password: process.env.DB_PASS,
+        //   database: process.env.DB_NAME,
+        // });
 
-        const [rows3, fields] = await asyncConnection2.execute(
-          command_4,
-          data3
-        );
+        const [rows3, fields] = await asyncConnection.execute(command_4, data3);
 
         return res.status(201).json({
           success: true,
-          message: "Room Post Created",
-          room: {
-            id: result.insertId,
-            name: rows[0].username,
-            room_image: rows[0].profile_image,
-            is_group: 0,
-            is_deleted: 0,
-          },
+          message: "Private Room Was Created",
         });
       }
     });
