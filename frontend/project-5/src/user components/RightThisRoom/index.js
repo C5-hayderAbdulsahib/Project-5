@@ -40,8 +40,8 @@ export const RightThisRoom = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.room[0].name);
-        setRoomName(result.data.room[0].name);
+        console.log(result.data.room.name);
+        setRoomName(result.data.room.name);
         setErrMessage("");
       })
       .catch((err) => {
