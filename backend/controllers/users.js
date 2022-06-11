@@ -49,11 +49,6 @@ const signup = async (req, res, next) => {
         .json({ success: false, message: "The UserName Cannot Be Null" });
     }
 
-    // return res.status(201).json({
-    //   success: true,
-    //   message: "Account Created Successfully",
-    //   user: result,
-    // });
     next();
   });
 };
@@ -242,14 +237,28 @@ const updateUserInfo = (req, res) => {
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       }
-      return res.status(201).json({
-        message: "Account updated",
-        user: {
-          first_name: update_first_name,
-          last_name: update_last_name,
-          country: update_country,
-          profile_image: update_profile_image,
-        },
+
+      const commandThree =
+        "UPDATE users_rooms SET user_profile_img= ? WHERE user_id = ? ";
+
+      const data = [update_profile_image, id];
+
+      connection.query(commandThree, data, (err, result) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ success: false, message: "Server Error", err: err });
+        }
+
+        return res.status(201).json({
+          message: "Account updated",
+          user: {
+            first_name: update_first_name,
+            last_name: update_last_name,
+            country: update_country,
+            profile_image: update_profile_image,
+          },
+        });
       });
     });
   });
