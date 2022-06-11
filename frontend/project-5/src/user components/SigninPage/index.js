@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { signin } from "../../redux/reducers/auth";
 
+
 ////import for styling //
 
 import "./style.css";
@@ -51,6 +52,7 @@ export const SigninPage = () => {
     }
   };
 
+  
   useEffect(() => {
     {
       //this is to redirect the user to the home page if he was already logged in
@@ -64,7 +66,7 @@ export const SigninPage = () => {
   return (
     <>
       <div className="position">
-        <form className="container">
+        <form className="container" >
           <div className="centering-wrapper">
             <div className="section1 text-center">
               <p className="primary-header">Welcome back!</p>
@@ -77,7 +79,7 @@ export const SigninPage = () => {
                   <input
                     type="email"
                     required={true}
-                    name="logemail"
+                    name="email"
                     className="form-style"
                     autoComplete={"off"}
                     onChange={(e) => {

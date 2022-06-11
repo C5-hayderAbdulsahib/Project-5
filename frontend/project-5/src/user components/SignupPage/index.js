@@ -4,12 +4,12 @@
 import "./style.css";
 
 // import component
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
+import emailjs from "@emailjs/browser";
 //import action
 import { signin } from "../../redux/reducers/auth";
 
@@ -19,9 +19,11 @@ export const SignupPage = () => {
   const [password, serPassword] = useState("");
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
-  const [country , setCountry] = useState("")
+  const [country, setCountry] = useState("");
   const [message, setMessage] = useState("");
   const role_id = 1;
+
+  const form = useRef();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,6 +43,24 @@ export const SignupPage = () => {
       .then((result) => {
         if (result.data.success) {
           dispatch(signin(result.data.token));
+
+        /*   emailjs
+            .sendForm(
+              "service_pkpkbwk",
+              "template_tp2jvg8",
+              form.current,
+
+              "34ZUguS3f3B0c_oSk"
+            )
+            .then(
+              (result) => {
+                console.log(result.text);
+              },
+              (error) => {
+                console.log(error.text);
+              }
+            ); */
+
           navigate("/");
         }
       })
@@ -55,7 +75,10 @@ export const SignupPage = () => {
   return (
     <>
       <div className="position-signup">
-        <form className="container-signup">
+        <form
+          className="container-signup"
+          ref={form}  
+        >
           <div className="centering-wrapper-signup">
             <div className="section1 text-center">
               <p className="primary-header-signup">Create an account</p>
@@ -65,7 +88,7 @@ export const SignupPage = () => {
                   <input
                     type="email"
                     required={true}
-                    name="logemail"
+                    name="user_email"
                     className="form-style-signup"
                     autoComplete={"off"}
                     onChange={(e) => {
@@ -145,7 +168,13 @@ export const SignupPage = () => {
                 </Link>
               </div>
               <div className="btn-position">
-                <button className="btn" onClick={signup}>
+                <button
+                  className="btn"
+                  onClick={(e) => {
+                  
+                    signup(e);
+                  }}
+                >
                   Signup
                 </button>
               </div>
