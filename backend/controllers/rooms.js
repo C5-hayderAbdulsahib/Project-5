@@ -310,26 +310,65 @@ const deleteRoomById = (req, res) => {
 //===============================================================================================================
 
 //create function to get all user room
-const getAllMyRooms = (req, res) => {
-  const id = req.token.userId;
+const getAllMyRooms = async (req, res) => {
+  const myUserId = req.token.userId;
 
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_deleted = 0`;
-  const data = [id];
-  connection.query(command, data, (err, result) => {
-    if (err) {
-      return res
-        .status(500)
-        .json({ success: false, message: "Server Error", err: err });
-    }
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 1 AND rooms.is_deleted = 0`;
+  const data = [myUserId];
 
-    if (!result.length) {
-      return res
-        .status(200)
-        .json({ success: false, message: "No Room Were Created Yet" });
-    }
-    res
-      .status(200)
-      .json({ success: true, message: "All The Room", rooms: result });
+  const asyncConnection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
+
+  const [rowsMyGroupRooms, fields] = await asyncConnection.execute(
+    command,
+    data
+  );
+
+  const command2 = `SELECT room_id FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0`;
+  const data2 = [myUserId];
+
+  const [rowsAllMyPrivateRoom, fields2] = await asyncConnection.execute(
+    command2,
+    data2
+  );
+
+  const allMyPrivateRoomsIdsArr = rowsAllMyPrivateRoom.map((element) => {
+    return element.room_id;
+  });
+
+  const command3 = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0`;
+  const data3 = [myUserId];
+
+  const [rowsAllPrivateRooms, fields3] = await asyncConnection.execute(
+    command3,
+    data3
+  );
+
+  const allPrivateRoomsAmIn = rowsAllPrivateRooms.filter((element) => {
+    return allMyPrivateRoomsIdsArr.includes(element.room_id);
+  });
+
+  const allMyPrivateRoom = allPrivateRoomsAmIn.filter((element) => {
+    return element.user_id !== myUserId;
+  });
+
+  const allMyPrivateRoomData = allMyPrivateRoom.map((element) => {
+    element.name = element.user_username;
+    element.room_image = element.user_profile_img;
+    return element;
+  });
+
+  const allMyPrivateAndGroupRooms =
+    rowsMyGroupRooms.concat(allMyPrivateRoomData);
+
+  res.status(200).json({
+    success: true,
+    message: "All My Rooms",
+    rooms: allMyPrivateAndGroupRooms,
   });
 };
 
