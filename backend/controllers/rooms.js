@@ -185,35 +185,82 @@ const createNewChatRoom = async (req, res) => {
 
 //===============================================================================================================
 
-const getRoomById = (req, res) => {
+const getRoomById = async (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId;
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ? And rooms.is_deleted = 0 `;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ? And user_id = ? And rooms.is_deleted = 0 AND users_rooms.is_blocked = 0 `;
   data = [id, userId];
 
-  //this query will select specific room by it's id
-  connection.query(command, data, (err, result) => {
-    if (result.length > 0) {
-      res.status(200).json({
-        success: true,
-        message: `The Room For The Specified Id `,
-        room: result,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: "The Room Is Not Found",
-      });
-    }
-
-    if (err) {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        err: err,
-      });
-    }
+  const asyncConnection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
   });
+
+  const [rows, fields] = await asyncConnection.execute(command, data);
+  if (!rows[0]) {
+    return res.status(404).json({
+      success: false,
+      message: "The Room Is Not Found",
+    });
+  }
+
+  if (rows[0].is_group === 1) {
+    return res.status(200).json({
+      success: true,
+      message: `The Room For The Specified Id `,
+      room: rows[0],
+    });
+  }
+
+  const command2 = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ? And user_id != ? And rooms.is_deleted = 0 `;
+  data2 = [id, userId];
+
+  const [rowsPrivateRoom, fields2] = await asyncConnection.execute(
+    command2,
+    data2
+  );
+
+  const privateRoomData = {
+    ...rowsPrivateRoom[0],
+    name: rowsPrivateRoom[0].user_username,
+    room_image: rowsPrivateRoom[0].user_profile_img,
+  };
+
+  res.status(200).json({
+    success: true,
+    message: `The Room For The Specified Id `,
+    room: privateRoomData,
+  });
+
+  // //this query will select specific room by it's id
+  // connection.query(command, data, (err, result) => {
+  //   if (result.length > 0) {
+  //     if (result[0].is_group === 1) {
+  //       res.status(200).json({
+  //         success: true,
+  //         message: `The Room For The Specified Id `,
+  //         room: result,
+  //       });
+  //     } else {
+  //       result
+  //     }
+  //   } else {
+  //     res.status(404).json({
+  //       success: false,
+  //       message: "The Room Is Not Found",
+  //     });
+  //   }
+
+  //   if (err) {
+  //     res.status(500).json({
+  //       success: false,
+  //       message: "Server Error",
+  //       err: err,
+  //     });
+  //   }
+  // });
 };
 
 ///////updateRoomById/////////////
@@ -366,12 +413,10 @@ const getAllMyRooms = async (req, res) => {
     rowsMyGroupRooms.concat(allMyPrivateRoomData);
 
   if (allMyPrivateAndGroupRooms.length === 0) {
-    return res
-      .status(404)
-      .json({
-        success: false,
-        message: "You Need To Join A Room Or Create A New Room",
-      });
+    return res.status(404).json({
+      success: false,
+      message: "You Need To Join A Room Or Create A New Room",
+    });
   }
 
   res.status(200).json({
