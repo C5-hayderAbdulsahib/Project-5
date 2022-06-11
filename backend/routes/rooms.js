@@ -32,6 +32,7 @@ const roomRouter = express.Router();
 roomRouter.get("/group", authentication, getAllGroupRooms);
 roomRouter.get("/my_rooms", authentication, getAllMyRooms);
 roomRouter.get("/my_created_rooms", authentication, getAllMyCreatedRoom);
+roomRouter.post("/individual_room", authentication, createNewChatRoom);
 
 roomRouter.get("/:id", authentication, getRoomById);
 roomRouter.put(
@@ -48,7 +49,6 @@ roomRouter.delete(
 );
 
 roomRouter.post("/:id/messages", authentication, createNewMessage);
-roomRouter.post("/:userId/individual_room", authentication, createNewChatRoom);
 roomRouter.get(`/:id/allusers`, authentication, getAllUsersInRooms);
 roomRouter.delete("/:id/users/block", authentication, blockUserFromRoom);
 roomRouter.put("/:id/users/unblock", authentication, unBlockUserFromRoom);

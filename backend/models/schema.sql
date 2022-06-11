@@ -73,6 +73,8 @@ CREATE TABLE users_rooms (
     is_blocked BOOLEAN DEFAULT false,
     send_follow_request BOOLEAN DEFAULT false,
     is_member BOOLEAN DEFAULT false,
+    user_username VARCHAR(255),
+    user_profile_img VARCHAR(255),
     PRIMARY KEY (id)
 );
 
