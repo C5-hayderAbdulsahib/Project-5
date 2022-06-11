@@ -136,6 +136,7 @@ const getUserInfo = (req, res) => {
   console.log(id);
   const command = `SELECT id,email,username ,first_name,last_name,country,profile_image,role_id FROM users WHERE is_deleted=0 AND id=? ;`;
   const data = [id];
+
   connection.query(command, data, (err, result) => {
     if (result.length > 0) {
       res.status(200).json({
@@ -178,6 +179,7 @@ const createNewAdmin = async (req, res) => {
     profile_image,
     role_id,
   ];
+
   connection.query(command, data, (err, result) => {
     if (err?.sqlMessage.includes(`for key 'users.email`)) {
       return res
@@ -235,14 +237,13 @@ const updateUserInfo = (req, res) => {
       update_profile_image,
       id,
     ];
+
     connection.query(command_tow, data, (err, result) => {
       if (err) {
         return res
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       }
-    
-
 
       const commandThree =
         "UPDATE users_rooms SET user_profile_img= ? WHERE user_id = ? ";
@@ -259,7 +260,7 @@ const updateUserInfo = (req, res) => {
         return res.status(201).json({
           message: "Account updated",
           user: {
-            email : update_email,
+            email: update_email,
             first_name: update_first_name,
             last_name: update_last_name,
             country: update_country,
@@ -350,4 +351,3 @@ module.exports = {
   updateUserInfo,
   changePassword,
 };
-
