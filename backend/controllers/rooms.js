@@ -233,34 +233,6 @@ const getRoomById = async (req, res) => {
     message: `The Room For The Specified Id `,
     room: privateRoomData,
   });
-
-  // //this query will select specific room by it's id
-  // connection.query(command, data, (err, result) => {
-  //   if (result.length > 0) {
-  //     if (result[0].is_group === 1) {
-  //       res.status(200).json({
-  //         success: true,
-  //         message: `The Room For The Specified Id `,
-  //         room: result,
-  //       });
-  //     } else {
-  //       result
-  //     }
-  //   } else {
-  //     res.status(404).json({
-  //       success: false,
-  //       message: "The Room Is Not Found",
-  //     });
-  //   }
-
-  //   if (err) {
-  //     res.status(500).json({
-  //       success: false,
-  //       message: "Server Error",
-  //       err: err,
-  //     });
-  //   }
-  // });
 };
 
 ///////updateRoomById/////////////
