@@ -1,0 +1,52 @@
+.DeleteCategoryBtn {
+    width: 80px;
+    padding: 5px 5px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    background-color: #a94442;
+    color: white;
+    cursor: pointer;
+    font-family: "Whitney", sans-serif;
+  }
+  
+  .UpdateCategoryBtn {
+    width: 80px;
+    padding: 5px 5px;
+    font-size: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    font-family: "Whitney", sans-serif;
+  }
+  
+  .DeleteCategoryBtn:hover {
+    background-color: white;
+    color: #a94442;
+  }
+  
+  .UpdateCategoryBtn:hover {
+    background-color: white;
+    color: gray;
+  }
+  .CreateCategoryAdminBtn:hover {
+    background-color: #677bc4;
+  }
+  .CreateCategoryBtn:hover {
+    background-color: #677bc4;
+  }
+  
+  .categoryBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  

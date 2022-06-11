@@ -1,6 +1,7 @@
 //import styling
 import "./DeleteCategoryModal.css";
 
+
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 import { BsTrashFill } from "react-icons/bs";
@@ -42,7 +43,7 @@ const DeleteCategoryModal = (props) => {
                       setIsOpenDelete(false);
                     }}
                   >
-                    Delete Category
+                    Delete Category < BsTrashFill />
                   </button>
                   {/* the cancel model button */}
                   <button className="cancelBtn">Cancel</button>

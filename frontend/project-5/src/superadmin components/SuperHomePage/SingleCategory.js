@@ -9,7 +9,9 @@ import UpdateCategoryModal from "./UpdateCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
 
 //import icons
-import { GrUpdate } from "react-icons/gr";
+import { IoIosCreate } from "react-icons/io";
+import { BsTrashFill } from "react-icons/bs";
+import { BsFillPersonPlusFill  } from "react-icons/bs";
 
 const SingleCategory = (props) => {
   const { name, id, setUpdateName, updateCategoryFun, deleteCategoryFun } =
@@ -51,7 +53,7 @@ const SingleCategory = (props) => {
 
         <div className="categoryBtn">
           <button onClick={() => setIsOpen(true)} className="UpdateCategoryBtn">
-            Update
+            Update  < IoIosCreate />
           </button>
 
           <button
@@ -61,7 +63,7 @@ const SingleCategory = (props) => {
         }} */
             className="DeleteCategoryBtn"
           >
-            Delete
+            Delete < BsTrashFill />
           </button>
         </div>
       </div>

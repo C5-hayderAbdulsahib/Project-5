@@ -11,6 +11,7 @@
 }
 
 .CreateNewAdminModel .centered {
+  margin-top: 60px;
   position: fixed;
   top: 35%;
   left: 50%;
@@ -18,7 +19,7 @@
 }
 
 .CreateNewAdminModel .modal {
-  margin-top: 150px;
+ 
   width: 100%;
   height:100%;
   background: white;
@@ -45,6 +46,7 @@
 /* modalContent-paragraph */
 
 .CreateNewAdminModel .modalContent {
+  
   display: grid;
   justify-content: center;
   align-items: center;
@@ -79,6 +81,17 @@
   border-radius: 3px;
   outline: none;
   transition: border-color 0.2s ease-in-out;
+}
+
+
+.CreateNewAdminModel .createAdmin-error{
+  padding:5px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+
+
+
 }
 
 

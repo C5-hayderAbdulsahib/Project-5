@@ -3,7 +3,7 @@ import "./UpdateCategoryModal.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
-
+import { IoIosCreate } from "react-icons/io";
 const UpdateCategoryModal = (props) => {
   const {
     name,
@@ -52,7 +52,7 @@ const UpdateCategoryModal = (props) => {
                     }}
                     className="updateBtn"
                   >
-                    Update Category
+                    Update Category   < IoIosCreate />
                   </button>
                   {/* the cancel model button */}
                   <button

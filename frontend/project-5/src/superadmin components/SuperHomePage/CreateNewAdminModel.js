@@ -2,8 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import { RiCloseLine } from "react-icons/ri";
 
+
+
 // import style
 import "./CreateNewAdminModel.css";
+
+
+//import icons
+import { BsFillPersonPlusFill  } from "react-icons/bs";
+ 
 
 const CreateNewAdminModel = (props) => {
   const { setIsOpenAdmin } = props;
@@ -105,11 +112,13 @@ const CreateNewAdminModel = (props) => {
                   onChange={(e) => setCountry(e.target.value)}
                 />
 
-                <div className="push-down"></div>
+                {/*         <div className="push-down"></div> */}
+
+                {message && <p className="createAdmin-error">{message}</p>}
                 {/* the update button */}
                 <div className="shiftingToLeft">
                   <button onClick={createNewAdmin} className="create-admin-Btn">
-                    Create New Admin
+                    Create New Admin < BsFillPersonPlusFill />
                   </button>
 
                   {/* the cancel model button */}
@@ -124,7 +133,7 @@ const CreateNewAdminModel = (props) => {
                 </div>
               </form>
             </div>
-            <p>{message}</p>
+
             {/*     </div> */}
 
             {/* // ... */}

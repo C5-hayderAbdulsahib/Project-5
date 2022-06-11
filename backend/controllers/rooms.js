@@ -104,11 +104,11 @@ const getAllGroupRooms = (req, res) => {
 
 const createNewChatRoom = async (req, res) => {
   try {
-    const userIdFromParams = req.params.userId;
+    const userIdFromBody = req.body.userId;
     const thisUserId = req.token.userId;
 
     const command = `SELECT * FROM USERS WHERE id =?`;
-    const data = [userIdFromParams];
+    const data = [userIdFromBody];
 
     const asyncConnection = await mysql.createConnection({
       host: process.env.DB_HOST,
@@ -125,54 +125,54 @@ const createNewChatRoom = async (req, res) => {
       });
     }
 
-    const command_2 = `INSERT INTO rooms  (name ,room_image ) VALUES ( ? , ?)`;
-    const data_2 = [rows[0].username, rows[0].profile_image];
+    const getMyData = `SELECT * FROM USERS WHERE id =?`;
+    const myData = [thisUserId];
+
+    const [myRawData, fields2] = await asyncConnection.execute(
+      getMyData,
+      myData
+    );
+    if (!myRawData[0]) {
+      return res.status(404).json({
+        success: false,
+        message: "This User Is Not Found",
+      });
+    }
+
+    const command_2 = `INSERT INTO rooms  (name) VALUES (?)`;
+    const data_2 = [""];
     connection.query(command_2, data_2, async (err, result) => {
       if (err) {
         return res
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       } else {
-        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
-        const data2 = [result.insertId, rows[0].id];
-
-        const asyncConnection = await mysql.createConnection({
-          host: process.env.DB_HOST,
-          user: process.env.DB_USER,
-          password: process.env.DB_PASS,
-          database: process.env.DB_NAME,
-        });
+        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img ) VALUES ( ? , ?, ?, ?)`;
+        const data2 = [
+          result.insertId,
+          thisUserId,
+          myRawData[0].username,
+          myRawData[0].profile_image,
+        ];
 
         const [rows2, fields2] = await asyncConnection.execute(
           command_3,
           data2
         );
 
-        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id ) VALUES ( ? , ?)`;
-        const data3 = [result.insertId, thisUserId];
+        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img) VALUES (?, ?, ?, ?)`;
+        const data3 = [
+          result.insertId,
+          rows[0].id,
+          rows[0].username,
+          rows[0].profile_image,
+        ];
 
-        const asyncConnection2 = await mysql.createConnection({
-          host: process.env.DB_HOST,
-          user: process.env.DB_USER,
-          password: process.env.DB_PASS,
-          database: process.env.DB_NAME,
-        });
-
-        const [rows3, fields] = await asyncConnection2.execute(
-          command_4,
-          data3
-        );
+        const [rows3, fields] = await asyncConnection.execute(command_4, data3);
 
         return res.status(201).json({
           success: true,
-          message: "Room Post Created",
-          room: {
-            id: result.insertId,
-            name: rows[0].username,
-            room_image: rows[0].profile_image,
-            is_group: 0,
-            is_deleted: 0,
-          },
+          message: "Private Room Was Created",
         });
       }
     });
@@ -185,34 +185,53 @@ const createNewChatRoom = async (req, res) => {
 
 //===============================================================================================================
 
-const getRoomById = (req, res) => {
+const getRoomById = async (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId;
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ?And user_id = ? And rooms.is_deleted = 0 `;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ? And user_id = ? And rooms.is_deleted = 0 AND users_rooms.is_blocked = 0 `;
   data = [id, userId];
 
-  //this query will select spicific room by it's id
-  connection.query(command, data, (err, result) => {
-    if (result.length > 0) {
-      res.status(200).json({
-        success: true,
-        message: `The Room For The Specified Id `,
-        room: result,
-      });
-    } else {
-      res.status(404).json({
-        success: false,
-        message: "The Room Is Not Found",
-      });
-    }
+  const asyncConnection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
 
-    if (err) {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        err: err,
-      });
-    }
+  const [rows, fields] = await asyncConnection.execute(command, data);
+  if (!rows[0]) {
+    return res.status(404).json({
+      success: false,
+      message: "The Room Is Not Found",
+    });
+  }
+
+  if (rows[0].is_group === 1) {
+    return res.status(200).json({
+      success: true,
+      message: `The Room For The Specified Id `,
+      room: rows[0],
+    });
+  }
+
+  const command2 = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE room_id= ? And user_id != ? And rooms.is_deleted = 0 `;
+  data2 = [id, userId];
+
+  const [rowsPrivateRoom, fields2] = await asyncConnection.execute(
+    command2,
+    data2
+  );
+
+  const privateRoomData = {
+    ...rowsPrivateRoom[0],
+    name: rowsPrivateRoom[0].user_username,
+    room_image: rowsPrivateRoom[0].user_profile_img,
+  };
+
+  res.status(200).json({
+    success: true,
+    message: `The Room For The Specified Id `,
+    room: privateRoomData,
   });
 };
 
@@ -310,26 +329,72 @@ const deleteRoomById = (req, res) => {
 //===============================================================================================================
 
 //create function to get all user room
-const getAllMyRooms = (req, res) => {
-  const id = req.token.userId;
+const getAllMyRooms = async (req, res) => {
+  const myUserId = req.token.userId;
 
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_deleted = 0`;
-  const data = [id];
-  connection.query(command, data, (err, result) => {
-    if (err) {
-      return res
-        .status(500)
-        .json({ success: false, message: "Server Error", err: err });
-    }
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 1 AND rooms.is_deleted = 0`;
+  const data = [myUserId];
 
-    if (!result.length) {
-      return res
-        .status(200)
-        .json({ success: false, message: "No Room Were Created Yet" });
-    }
-    res
-      .status(200)
-      .json({ success: true, message: "All The Room", rooms: result });
+  const asyncConnection = await mysql.createConnection({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+  });
+
+  const [rowsMyGroupRooms, fields] = await asyncConnection.execute(
+    command,
+    data
+  );
+
+  const command2 = `SELECT room_id FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0`;
+  const data2 = [myUserId];
+
+  const [rowsAllMyPrivateRoom, fields2] = await asyncConnection.execute(
+    command2,
+    data2
+  );
+
+  const allMyPrivateRoomsIdsArr = rowsAllMyPrivateRoom.map((element) => {
+    return element.room_id;
+  });
+
+  const command3 = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0`;
+  const data3 = [myUserId];
+
+  const [rowsAllPrivateRooms, fields3] = await asyncConnection.execute(
+    command3,
+    data3
+  );
+
+  const allPrivateRoomsAmIn = rowsAllPrivateRooms.filter((element) => {
+    return allMyPrivateRoomsIdsArr.includes(element.room_id);
+  });
+
+  const allMyPrivateRoom = allPrivateRoomsAmIn.filter((element) => {
+    return element.user_id !== myUserId;
+  });
+
+  const allMyPrivateRoomData = allMyPrivateRoom.map((element) => {
+    element.name = element.user_username;
+    element.room_image = element.user_profile_img;
+    return element;
+  });
+
+  const allMyPrivateAndGroupRooms =
+    rowsMyGroupRooms.concat(allMyPrivateRoomData);
+
+  if (allMyPrivateAndGroupRooms.length === 0) {
+    return res.status(404).json({
+      success: false,
+      message: "You Need To Join A Room Or Create A New Room",
+    });
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "All My Rooms",
+    rooms: allMyPrivateAndGroupRooms,
   });
 };
 
@@ -579,13 +644,12 @@ const addUserToTheRoom = (req, res) => {
 
 ///////////////getAllRoomsForCategory//////////////////
 
-const  getAllRoomsForCategory = (req, res) => {
+const getAllRoomsForCategory = (req, res) => {
   const id = req.params.id;
 
   const command = `SELECT * FROM rooms   WHERE category_id =?`;
 
   const data = [id];
-
 
   connection.query(command, data, (err, result) => {
     console.log(result);
@@ -612,6 +676,35 @@ const  getAllRoomsForCategory = (req, res) => {
   });
 };
 
+/////////////getAllMyCreatedRoom/////////////////////
+
+const getAllMyCreatedRoom = (req, res) => {
+  const id = req.token.userId;
+
+  const command = `SELECT * FROM rooms  WHERE  admin_id =? AND is_group=1 `;
+
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err.message });
+    }
+    if (!result.length) {
+      return res.status(200).json({
+        success: false,
+        message: "You Did Not Create Any Room Yet",
+      });
+    }
+    res.status(200).json({
+      success: true,
+      message: "All The Room That I Have Created",
+      rooms: result,
+    });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -630,4 +723,5 @@ module.exports = {
   unFollowThisRoom,
   addUserToTheRoom,
   getAllRoomsForCategory,
+  getAllMyCreatedRoom,
 };
