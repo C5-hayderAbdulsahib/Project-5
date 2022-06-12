@@ -103,7 +103,8 @@ const signIn = (req, res) => {
 /////////////////////////////
 
 const getAllUsernames = (req, res) => {
-  const command = `SELECT * FROM users WHERE is_deleted=0  ;`;
+  const userId = req.token.userId;
+  const command = `SELECT * FROM users WHERE is_deleted=0 AND id != ${userId};`;
 
   connection.query(command, (err, result) => {
     if (result.length > 0) {
