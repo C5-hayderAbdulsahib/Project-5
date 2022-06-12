@@ -1,12 +1,27 @@
-.right-this-room .specific-size-for-right {
-  border: 5px solid green;
+.right-this-room {
   height: 93.5vh;
+  display: flex;
 }
 
-.right-this-room .room-navbar {
+.room-navbar {
   display: flex;
-  justify-content: space-around;
+  width: 500px;
+  height: 40px;
+  border: 2px solid red;
   align-items: center;
+  
+}
+.roomController{
+  display: flex;
+}
+
+
+.listIcon{
+  position: relative;
+  color: white;
+  height: 30px ;
+  width: 30px;
+  cursor: pointer;
 }
 
 /* @src/components/Modal.module.css ////////////////////////////////////////////////////////////////////////////////////// */

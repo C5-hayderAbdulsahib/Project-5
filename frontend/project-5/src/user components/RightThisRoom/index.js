@@ -14,6 +14,9 @@ import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
 import FollowRequestList from "./FollowRequestList";
 
+// import react icon
+import { TbClipboardList } from "react-icons/tb";
+
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
   const { token, user } = useSelector((state) => {
@@ -73,13 +76,22 @@ export const RightThisRoom = () => {
           {!errMessage ? (
             <>
               <div className="room-navbar">
-                <button
-                  onClick={() => {
-                    setIsOpen(true);
-                  }}
-                >
-                  create room
-                </button>
+                <div className="roomName-tow">
+                  <p>{roomName}</p>
+                </div>
+                <div className="roomController">
+                  <div>
+                    <button
+                      onClick={() => {
+                        setIsOpen(true);
+                      }}
+                    >
+                      create room
+                    </button>
+                  </div>
+                  <div>
+
+             
 
                 {room.admin_id === user.id && (
                   <>
@@ -90,6 +102,9 @@ export const RightThisRoom = () => {
                     >
                       update room
                     </button>
+                  </div>
+                  <div>
+
 
                     <button
                       onClick={() => {
@@ -98,14 +113,20 @@ export const RightThisRoom = () => {
                     >
                       delete room
                     </button>
-
-                    <button
+                  </div>
+                  <div>
+                    <TbClipboardList
+                      className="listIcon"
                       onClick={() => {
                         setIsOpenUsersList(true);
                       }}
-                    >
-                      Users List
-                    </button>
+                    />
+                  </div>
+                </div>
+              </div>
+              <div>
+
+                
 
                     <button
                       onClick={() => {
@@ -118,7 +139,7 @@ export const RightThisRoom = () => {
                 )}
               </div>
               <div>
-                <p>{room.name}</p>
+                
 
                 {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
 
