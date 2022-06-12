@@ -13,6 +13,9 @@ import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
 
+// import react icon
+import { TbClipboardList } from "react-icons/tb";
+
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
   const { token, rooms } = useSelector((state) => {
@@ -68,41 +71,48 @@ export const RightThisRoom = () => {
           {!errMessage ? (
             <>
               <div className="room-navbar">
-                <button
-                  onClick={() => {
-                    setIsOpen(true);
-                  }}
-                >
-                  create room
-                </button>
-
-                <button
-                  onClick={() => {
-                    setIsOpenUpdate(true);
-                  }}
-                >
-                  update room
-                </button>
-
-                <button
-                  onClick={() => {
-                    setIsOpenDelete(true);
-                  }}
-                >
-                  delete room
-                </button>
-
-                <button
-                  onClick={() => {
-                    setIsOpenUsersList(true);
-                  }}
-                >
-                  Users List
-                </button>
+                <div className="roomName-tow">
+                  <p>{roomName}</p>
+                </div>
+                <div className="roomController">
+                  <div>
+                    <button
+                      onClick={() => {
+                        setIsOpen(true);
+                      }}
+                    >
+                      create room
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        setIsOpenUpdate(true);
+                      }}
+                    >
+                      update room
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => {
+                        setIsOpenDelete(true);
+                      }}
+                    >
+                      delete room
+                    </button>
+                  </div>
+                  <div>
+                    <TbClipboardList
+                      className="listIcon"
+                      onClick={() => {
+                        setIsOpenUsersList(true);
+                      }}
+                    />
+                  </div>
+                </div>
               </div>
               <div>
-                <p>{roomName}</p>
-
                 {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
 
                 {isOpenUpdate && (

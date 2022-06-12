@@ -77,25 +77,222 @@ const LeftMyRooms = () => {
             <div className="titleRooms">
               <h3>All Rooms</h3>
             </div>
-            <div>
+            <div className="mainContaine">
               {rooms &&
                 rooms.map((element) => {
                   return (
-                    <div
-                      className="roomInfoContainer"
-                      key={element.id}
-                      onClick={() => {
-                        navigate(`/rooms/${element.id}`);
-                      }}
-                    >
-                      <img
-                        className="roomImage"
-                        src={element.room_image}
-                        alt="room-image"
-                      />
+                    <>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
 
-                      <p className="roomName">#{element.name}</p>
-                    </div>
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                      <div
+                        className="roomInfoContainer"
+                        key={element.id}
+                        onClick={() => {
+                          navigate(`/rooms/${element.id}`);
+                        }}
+                      >
+                        <img
+                          className="roomImage"
+                          src={element.room_image}
+                          alt="room-image"
+                        />
+
+                        <p className="roomName">#{element.name}</p>
+                      </div>
+                    </>
                   );
                 })}
             </div>
