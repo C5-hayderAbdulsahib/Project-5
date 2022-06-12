@@ -14,13 +14,31 @@ const SingleSearchResult = (props) => {
     };
   });
 
-  console.log("this is me", user.id);
+  const [userRoomRelation, setUserRoomRelation] = useState([]);
+
+  const [renderSinglePage, setRenderSinglePage] = useState(false);
+
+  // console.log("this is me", user.id);
 
   // console.log("the room id is", search);
 
   const dispatch = useDispatch();
 
-  // const [inRoom, setInRoom] = useState(false);
+  const usersRoomsRelationsFun = () => {
+    axios
+      .get(`http://localhost:5000/rooms/user_room_relation`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        setUserRoomRelation(result.data.users_rooms_relation);
+        // console.log(result);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
 
   const createPrivateRoom = (userId) => {
     console.log(userId);
@@ -56,7 +74,7 @@ const SingleSearchResult = (props) => {
       )
       .then((result) => {
         console.log(result);
-        setRenderPage(!renderPage);
+        setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
         throw err;
@@ -77,12 +95,18 @@ const SingleSearchResult = (props) => {
       )
       .then((result) => {
         console.log(result);
-        setRenderPage(!renderPage);
+        setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
         throw err;
       });
   };
+
+  // console.log(userRoomRelation);
+
+  useEffect(() => {
+    usersRoomsRelationsFun();
+  }, [renderSinglePage]);
 
   let inRoom = false;
   let alreadyFollowed = false;
@@ -127,17 +151,20 @@ const SingleSearchResult = (props) => {
           <h1>{search.name}</h1>
           <p>this is a group room</p>
 
-          {rooms.forEach((element) => {
+          {userRoomRelation.forEach((element) => {
             console.log(element);
             if (
-              element.is_group === 1 &&
               element.room_id === search.id &&
-              element.user_id &&
+              element.user_id === user.id &&
               element.is_member === 1
             ) {
               inRoom = true;
             }
-            if (element.send_follow_request === 1) {
+            if (
+              element.room_id === search.id &&
+              element.user_id === user.id &&
+              element.send_follow_request === 1
+            ) {
               alreadyFollowed = true;
             }
           })}
@@ -151,7 +178,14 @@ const SingleSearchResult = (props) => {
               unfoolow room
             </button>
           ) : (
-            <button onClick={() => FollowRoom(search.id)}>foolow room</button>
+            <button
+              onClick={() => {
+                FollowRoom(search.id);
+                usersRoomsRelationsFun();
+              }}
+            >
+              foolow room
+            </button>
           )}
 
           <hr></hr>
