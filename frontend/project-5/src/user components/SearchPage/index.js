@@ -38,8 +38,6 @@ const SearchPage = () => {
 
   const [renderPage, setRenderPage] = useState(false);
 
-  //   http://localhost:5000/users/usernames
-  //   http://localhost:5000/rooms/group
   const getAllGroupRoomsFun = () => {
     axios
       .get(`http://localhost:5000/rooms/group`, {
