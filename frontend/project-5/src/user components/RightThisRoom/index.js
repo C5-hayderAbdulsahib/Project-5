@@ -77,7 +77,7 @@ export const RightThisRoom = () => {
             <>
               <div className="room-navbar">
                 <div className="roomName-tow">
-                  <p>{roomName}</p>
+                  <p>{room.name}</p>
                 </div>
                 <div className="roomController">
                   <div>
@@ -90,11 +90,6 @@ export const RightThisRoom = () => {
                     </button>
                   </div>
                   <div>
-
-             
-
-                {room.admin_id === user.id && (
-                  <>
                     <button
                       onClick={() => {
                         setIsOpenUpdate(true);
@@ -104,8 +99,6 @@ export const RightThisRoom = () => {
                     </button>
                   </div>
                   <div>
-
-
                     <button
                       onClick={() => {
                         setIsOpenDelete(true);
@@ -122,12 +115,7 @@ export const RightThisRoom = () => {
                       }}
                     />
                   </div>
-                </div>
-              </div>
-              <div>
-
-                
-
+                  <div>
                     <button
                       onClick={() => {
                         setIsOpenFollowRequest(true);
@@ -135,12 +123,10 @@ export const RightThisRoom = () => {
                     >
                       Follow Request List
                     </button>
-                  </>
-                )}
+                  </div>
+                </div>
               </div>
               <div>
-                
-
                 {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
 
                 {isOpenUpdate && (
@@ -168,7 +154,6 @@ export const RightThisRoom = () => {
                     roomId={id}
                   />
                 )}
-
                 {isOpenFollowRequest && (
                   <FollowRequestList
                     setIsOpenFollowRequest={setIsOpenFollowRequest}
