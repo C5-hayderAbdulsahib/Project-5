@@ -8,5 +8,4 @@ body {
   display: grid;
   grid-template-columns: 200px auto;
   height: 94vh;
-  border: 5px solid red;
 }
