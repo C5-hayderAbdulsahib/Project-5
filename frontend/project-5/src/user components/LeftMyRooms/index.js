@@ -3,13 +3,13 @@ import { Routes, Route, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { getAllMyRooms } from "../../redux/reducers/rooms";
 import { useNavigate } from "react-router-dom";
 
 //import component
 import { RightThisRoom } from "../RightThisRoom";
 
 //import actions
+import { getAllMyRooms } from "../../redux/reducers/rooms";
 import { getUserInfo, isAdminPage } from "../../redux/reducers/user";
 
 //import styling

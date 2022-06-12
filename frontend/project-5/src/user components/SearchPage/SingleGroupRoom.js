@@ -3,7 +3,13 @@ const SingleRoom = (props) => {
 
   //   return <h1>{room.username}</h1>;
 
-  return <h1>{room.name}</h1>;
+  return (
+    <>
+      <h1>{room.name}</h1>
+      <p>this is a group room</p>
+      <hr></hr>
+    </>
+  );
 };
 
 export default SingleRoom;
