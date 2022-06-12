@@ -142,10 +142,10 @@ INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (6, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 2, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 3, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 4, 1);
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (9, 1, "hayder", "hayder image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (9, 4, "mosa s", "mosa image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (10, 1, "hayder", "hayder image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (10, 5, 'mustafa a', "mustafa image");
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 1, "hayder", "hayder image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 4, "mosa s", "mosa image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 1, "hayder", "hayder image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 5, 'mustafa a', "mustafa image", 1);
 
 
 

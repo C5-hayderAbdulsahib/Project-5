@@ -147,7 +147,7 @@ const createNewChatRoom = async (req, res) => {
           .status(500)
           .json({ success: false, message: "Server Error", err: err });
       } else {
-        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img ) VALUES ( ? , ?, ?, ?)`;
+        const command_3 = `INSERT INTO users_rooms  (room_id ,user_id, is_member, user_username, user_profile_img ) VALUES ( ? , ?, 1, ?, ?)`;
         const data2 = [
           result.insertId,
           thisUserId,
@@ -160,7 +160,7 @@ const createNewChatRoom = async (req, res) => {
           data2
         );
 
-        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id, user_username, user_profile_img) VALUES (?, ?, ?, ?)`;
+        const command_4 = `INSERT INTO users_rooms  (room_id ,user_id, is_member, user_username, user_profile_img) VALUES (?, ?, 1, ?, ?)`;
         const data3 = [
           result.insertId,
           rows[0].id,
@@ -332,7 +332,7 @@ const deleteRoomById = (req, res) => {
 const getAllMyRooms = async (req, res) => {
   const myUserId = req.token.userId;
 
-  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 1 AND rooms.is_deleted = 0`;
+  const command = `SELECT * FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 1 AND rooms.is_deleted = 0 AND users_rooms.is_member = 1`;
   const data = [myUserId];
 
   const asyncConnection = await mysql.createConnection({
@@ -347,7 +347,7 @@ const getAllMyRooms = async (req, res) => {
     data
   );
 
-  const command2 = `SELECT room_id FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0`;
+  const command2 = `SELECT room_id FROM users_rooms INNER JOIN rooms ON users_rooms.room_id= rooms.id WHERE user_id = ? AND is_blocked = 0 AND rooms.is_group = 0 AND rooms.is_deleted = 0 AND users_rooms.is_member = 1`;
   const data2 = [myUserId];
 
   const [rowsAllMyPrivateRoom, fields2] = await asyncConnection.execute(
@@ -401,7 +401,6 @@ const getAllMyRooms = async (req, res) => {
 //=========================================================================================================
 
 const getAllUsersInRooms = (req, res) => {
-  const userId = req.token.userId;
   const room_id = req.params.id;
 
   console.log(room_id);
@@ -420,7 +419,7 @@ const getAllUsersInRooms = (req, res) => {
     if (!result) {
       return res
         .status(404)
-        .json({ success: false, message: `This User Has ` });
+        .json({ success: false, message: `There Is No Users In This Room` });
     }
 
     res.status(200).json({
@@ -526,8 +525,6 @@ const sendFollowRequestToTheRoom = (req, res) => {
 
 const getAllFollowRequests = (req, res) => {
   const room_id = req.params.id;
-
-  // const command = `SELECT * from users_rooms WHERE room_id = ? AND send_follow_request = 1 AND is_deleted = 0 AND is_member = 0  `;
 
   const command = `SELECT * FROM users_rooms INNER JOIN users ON users_rooms.user_id = users.id WHERE users_rooms.room_id = ? AND users_rooms.send_follow_request = 1 AND users_rooms.is_deleted = 0 AND users_rooms.is_member = 0`;
 
