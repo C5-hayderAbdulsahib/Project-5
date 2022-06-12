@@ -7,12 +7,12 @@ import axios from "axios";
 //import styling
 import "./style.css";
 
-const AllUsersInThisRoomList = (props) => {
-  const { setIsOpenUsersList, roomId } = props;
+const FollowRequestList = (props) => {
+  const { setIsOpenFollowRequest, roomId } = props;
 
   const [message, setMessage] = useState("");
 
-  const [usersInRoom, setUsersInRoom] = useState([]);
+  const [followRequestList, setFollowRequestList] = useState([]);
 
   const [renderPage, setRenderPage] = useState(false);
 
@@ -23,16 +23,16 @@ const AllUsersInThisRoomList = (props) => {
   });
   //*=================================================================================
 
-  const allUsersInThisRoomFun = (roomId) => {
+  const getAllFollowRequestListFun = (roomId) => {
     axios
-      .get(`http://localhost:5000/rooms/${roomId}/allusers`, {
+      .get(`http://localhost:5000/rooms/${roomId}/follow_list`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((result) => {
-        console.log(result.data.roomUsers);
-        setUsersInRoom(result.data.roomUsers);
+        console.log(result.data.follow_requests);
+        setFollowRequestList(result.data.follow_requests);
       })
       .catch((err) => {
         if (!err.response.data.success) {
@@ -42,33 +42,10 @@ const AllUsersInThisRoomList = (props) => {
       });
   };
 
-  const blockUser = (roomId, userId) => {
-    axios
-      .delete(`http://localhost:5000/rooms/${roomId}/users/block`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: {
-          userId,
-        },
-      })
-      .then((result) => {
-        console.log(result.data.message);
-        setRenderPage(!renderPage);
-        // setMessage(result.response.data.message);
-      })
-      .catch((err) => {
-        if (!err.response.data.success) {
-          return setMessage(err.response.data.message);
-        }
-        setMessage("Error happened while Get Data, please try again");
-      });
-  };
-
-  const unBlockUser = (roomId, userId) => {
+  const addUserToGroupFun = (roomId, userId) => {
     axios
       .put(
-        `http://localhost:5000/rooms/${roomId}/users/unblock`,
+        `http://localhost:5000/rooms/${roomId}/add_user`,
         {
           userId,
         },
@@ -91,8 +68,31 @@ const AllUsersInThisRoomList = (props) => {
       });
   };
 
+  const removeFollowRequestFun = (roomId, userId) => {
+    axios
+      .delete(`http://localhost:5000/rooms/${roomId}/remove_follow_request`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          userId,
+        },
+      })
+      .then((result) => {
+        console.log(result.data.message);
+        setRenderPage(!renderPage);
+        // setMessage(result.response.data.message);
+      })
+      .catch((err) => {
+        if (!err.response.data.success) {
+          return setMessage(err.response.data.message);
+        }
+        setMessage("Error happened while Get Data, please try again");
+      });
+  };
+
   useEffect(() => {
-    allUsersInThisRoomFun(roomId);
+    getAllFollowRequestListFun(roomId);
   }, [renderPage]);
 
   //*=================================================================================
@@ -106,7 +106,7 @@ const AllUsersInThisRoomList = (props) => {
             <div
               className="darkBG"
               onClick={() => {
-                setIsOpenUsersList(false);
+                setIsOpenFollowRequest(false);
               }}
             />
             <div className="centered">
@@ -117,7 +117,7 @@ const AllUsersInThisRoomList = (props) => {
                 <button
                   className="closeBtn"
                   onClick={() => {
-                    setIsOpenUsersList(false);
+                    setIsOpenFollowRequest(false);
                   }}
                 >
                   <RiCloseLine style={{ marginBottom: "-3px" }} />
@@ -126,24 +126,25 @@ const AllUsersInThisRoomList = (props) => {
                 <div className="modalContent">
                   {/* ///////////////////////////////the body f the model */}
                   These are all the users in the room
-                  {usersInRoom?.map((element) => {
+                  {followRequestList?.map((element) => {
                     return (
                       <div key={element.user_id}>
                         <p>{element.username}</p>
 
-                        {element.is_blocked === 0 ? (
-                          <button
-                            onClick={() => blockUser(roomId, element.user_id)}
-                          >
-                            block user
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => unBlockUser(roomId, element.user_id)}
-                          >
-                            unblock user
-                          </button>
-                        )}
+                        <button
+                          onClick={() =>
+                            addUserToGroupFun(roomId, element.user_id)
+                          }
+                        >
+                          Accept Request
+                        </button>
+                        <button
+                          onClick={() =>
+                            removeFollowRequestFun(roomId, element.user_id)
+                          }
+                        >
+                          Remove Request
+                        </button>
                       </div>
                     );
                   })}
@@ -152,7 +153,7 @@ const AllUsersInThisRoomList = (props) => {
                     className="cancelBtn"
                     onClick={() => {
                       setMessage("");
-                      setIsOpenUsersList(false);
+                      setIsOpenFollowRequest(false);
                     }}
                   >
                     Cancel
@@ -170,4 +171,4 @@ const AllUsersInThisRoomList = (props) => {
   );
 };
 
-export default AllUsersInThisRoomList;
+export default FollowRequestList;
