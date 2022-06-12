@@ -14,6 +14,8 @@ const AllUsersInThisRoomList = (props) => {
 
   const [usersInRoom, setUsersInRoom] = useState([]);
 
+  const [renderPage, setRenderPage] = useState(false);
+
   //*=================================================================================
 
   const dispatch = useDispatch();
@@ -42,9 +44,58 @@ const AllUsersInThisRoomList = (props) => {
       });
   };
 
+  const blockUser = (roomId, userId) => {
+    axios
+      .delete(`http://localhost:5000/rooms/${roomId}/users/block`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data: {
+          userId,
+        },
+      })
+      .then((result) => {
+        console.log(result.data.message);
+        setRenderPage(!renderPage);
+        // setMessage(result.response.data.message);
+      })
+      .catch((err) => {
+        if (!err.response.data.success) {
+          return setMessage(err.response.data.message);
+        }
+        setMessage("Error happened while Get Data, please try again");
+      });
+  };
+
+  const unBlockUser = (roomId, userId) => {
+    axios
+      .put(
+        `http://localhost:5000/rooms/${roomId}/users/unblock`,
+        {
+          userId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((result) => {
+        console.log(result.data.message);
+        setRenderPage(!renderPage);
+        // setMessage(result.response.data.message);
+      })
+      .catch((err) => {
+        if (!err.response.data.success) {
+          return setMessage(err.response.data.message);
+        }
+        setMessage("Error happened while Get Data, please try again");
+      });
+  };
+
   useEffect(() => {
     allUsersInThisRoomFun(roomId);
-  }, []);
+  }, [renderPage]);
 
   //*=================================================================================
 
@@ -83,9 +134,17 @@ const AllUsersInThisRoomList = (props) => {
                         <p>{element.username}</p>
 
                         {element.is_blocked === 0 ? (
-                          <button>block user</button>
+                          <button
+                            onClick={() => blockUser(roomId, element.user_id)}
+                          >
+                            block user
+                          </button>
                         ) : (
-                          <button>unblock user</button>
+                          <button
+                            onClick={() => unBlockUser(roomId, element.user_id)}
+                          >
+                            unblock user
+                          </button>
                         )}
                       </div>
                     );
