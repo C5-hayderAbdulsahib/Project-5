@@ -558,7 +558,7 @@ const getAllFollowRequests = (req, res) => {
 
 const deleteUserFollowRequest = (req, res) => {
   const room_id = req.params.id;
-  const userId = req.token.userId;
+  const userId = req.body.userId;
 
   const command = `UPDATE users_rooms SET is_deleted = 1 WHERE user_id = ? AND room_id = ? `;
 
