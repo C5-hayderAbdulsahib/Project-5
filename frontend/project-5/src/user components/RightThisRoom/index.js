@@ -80,41 +80,45 @@ export const RightThisRoom = () => {
                   <p>{room.name}</p>
                 </div>
                 <div className="roomController">
-                  <div>
-                    <button
-                      onClick={() => {
-                        setIsOpenUpdate(true);
-                      }}
-                    >
-                      update room
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => {
-                        setIsOpenDelete(true);
-                      }}
-                    >
-                      delete room
-                    </button>
-                  </div>
-                  <div>
-                    <TbClipboardList
-                      className="listIcon"
-                      onClick={() => {
-                        setIsOpenUsersList(true);
-                      }}
-                    />
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => {
-                        setIsOpenFollowRequest(true);
-                      }}
-                    >
-                      Follow Request List
-                    </button>
-                  </div>
+                  {room.admin_id === user.id && (
+                    <>
+                      <div>
+                        <button
+                          onClick={() => {
+                            setIsOpenUpdate(true);
+                          }}
+                        >
+                          update room
+                        </button>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => {
+                            setIsOpenDelete(true);
+                          }}
+                        >
+                          delete room
+                        </button>
+                      </div>
+                      <div>
+                        <TbClipboardList
+                          className="listIcon"
+                          onClick={() => {
+                            setIsOpenUsersList(true);
+                          }}
+                        />
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => {
+                            setIsOpenFollowRequest(true);
+                          }}
+                        >
+                          Follow Request List
+                        </button>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
               <div>
