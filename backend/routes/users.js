@@ -7,7 +7,7 @@ const {
   getUserInfo,
   updateUserInfo,
   createNewAdmin,
-  changePassword,
+  changePassword,signupWithGoogle,signinWithGoogle
 } = require("../controllers/users");
 
 ////////////Middleware////////
@@ -21,6 +21,7 @@ usersRouter.post("/signIn", signIn);
 usersRouter.get("/usernames", authentication, getAllUsernames);
 usersRouter.post(`/signup/superadmin`, createNewAdmin);
 usersRouter.put(`/change_info`, authentication, updateUserInfo);
-usersRouter.put(`/change_password`, authentication, changePassword);
-
+usersRouter.put(`/change_password`, authentication, changePassword);///
+usersRouter.post(`/signin_google`, signupWithGoogle,signinWithGoogle);
+ 
 module.exports = usersRouter;
