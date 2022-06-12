@@ -727,6 +727,49 @@ const getAllUsersRoomsRelations = (req, res) => {
   });
 };
 
+///////leaveRoom/////////////////////////
+
+const leaveRoom =(req,res)=>{
+
+const userId=req.token.userId
+console.log(userId);
+
+const id=req.params.id
+
+const command = ` UPDATE users_rooms SET is_member = 0 WHERE room_id = ? AND user_id=?`;
+const data=[id,userId]
+
+connection.query(command, data,(err, result) => {
+  if (err) {
+    return res
+      .status(500)
+      .json({ success: false, message: "Server Error", err: err.message });
+  }
+  if (!result.affectedRows) {
+    console.log(result);
+    return res.status(404).json({
+      success: false,
+      message: "The Room Is Not Found",
+    });
+  }
+  res.status(200).json({
+    success: true,
+    message: "You Have Left This Room",
+    rooms: result,
+  });
+});
+
+
+
+}
+
+
+
+
+
+
+
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -747,4 +790,5 @@ module.exports = {
   getAllRoomsForCategory,
   getAllMyCreatedRoom,
   getAllUsersRoomsRelations,
+  leaveRoom
 };
