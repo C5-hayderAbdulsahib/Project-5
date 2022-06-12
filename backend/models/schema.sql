@@ -122,30 +122,30 @@ INSERT INTO categories (name) VALUES ('developers');
 INSERT INTO categories (name) VALUES ('anime fans');
 INSERT INTO categories (name) VALUES ('gamers');
 
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('pirates', 1, 1);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('one piece fans', 2, 1);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('DBZ fans', 2, 2);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('attack on titans fans', 2, 1);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('call of duties fans', 3, 1);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('devil may cry fans', 3, 1);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('react developer', 1, 2);
-INSERT INTO rooms (name, category_id, admin_id) VALUES ('javascript developer', 1, 2);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('pirates', 1, 1, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('one piece fans', 2, 1, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('DBZ fans', 2, 2, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('attack on titans fans', 2, 1, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('call of duties fans', 3, 1, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('devil may cry fans', 3, 1, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('react developer', 1, 2, 1);
+INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('javascript developer', 1, 2, 1);
 INSERT INTO rooms (is_group) VALUES (0);
 INSERT INTO rooms (is_group) VALUES (0);
 
 
-INSERT INTO users_rooms (room_id, user_id) VALUES (1, 1);
-INSERT INTO users_rooms (room_id, user_id) VALUES (3, 1);
-INSERT INTO users_rooms (room_id, user_id) VALUES (4, 1);
-INSERT INTO users_rooms (room_id, user_id) VALUES (5, 1);
-INSERT INTO users_rooms (room_id, user_id) VALUES (6, 1);
-INSERT INTO users_rooms (room_id, user_id) VALUES (1, 2);
-INSERT INTO users_rooms (room_id, user_id) VALUES (1, 3);
-INSERT INTO users_rooms (room_id, user_id) VALUES (5, 4);
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (9, 1, "hayder", "hayder image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (9, 4, "mosa s", "mosa image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (10, 1, "hayder", "hayder image");
-INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img) VALUES (10, 5, 'mustafa a', "mustafa image");
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (3, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (4, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (6, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 2, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 3, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 4, 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 1, "hayder", "hayder image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 4, "mosa s", "mosa image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 1, "hayder", "hayder image", 1);
+INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 5, 'mustafa a', "mustafa image", 1);
 
 
 

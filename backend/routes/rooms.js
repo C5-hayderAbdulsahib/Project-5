@@ -19,7 +19,9 @@ const {
   deleteUserFollowRequest,
   unFollowThisRoom,
   addUserToTheRoom,
-  getAllMyCreatedRoom,
+
+  getAllMyCreatedRoom,getAllUsersRoomsRelations,leaveRoom
+
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -33,6 +35,12 @@ roomRouter.get("/group", authentication, getAllGroupRooms);
 roomRouter.get("/my_rooms", authentication, getAllMyRooms);
 roomRouter.get("/my_created_rooms", authentication, getAllMyCreatedRoom);
 roomRouter.post("/individual_room", authentication, createNewChatRoom);
+
+roomRouter.get(
+  "/user_room_relation",
+  authentication,
+  getAllUsersRoomsRelations
+);
 
 roomRouter.get("/:id", authentication, getRoomById);
 roomRouter.put(
@@ -62,6 +70,11 @@ roomRouter.delete(
 
 roomRouter.put("/:id/unfollow", authentication, unFollowThisRoom);
 
-roomRouter.put("/:id/add_user", authentication, addUserToTheRoom);
+
+roomRouter.put("/:id/add_user", authentication, addUserToTheRoom); //User_room_relation
+
+
+roomRouter.put("/:id/leave_room", authentication, leaveRoom);
+
 
 module.exports = roomRouter;
