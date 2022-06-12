@@ -11,6 +11,7 @@ import "./style.css";
 import { CreateNewRoomModal } from "./CreateNewRoomModal";
 import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
+import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -26,6 +27,7 @@ export const RightThisRoom = () => {
 
   const [isOpenUpdate, setIsOpenUpdate] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenUsersList, setIsOpenUsersList] = useState(false);
 
   const [renderPage, setRenderPage] = useState(false);
 
@@ -89,6 +91,14 @@ export const RightThisRoom = () => {
                 >
                   delete room
                 </button>
+
+                <button
+                  onClick={() => {
+                    setIsOpenUsersList(true);
+                  }}
+                >
+                  Users List
+                </button>
               </div>
               <div>
                 <p>{roomName}</p>
@@ -111,6 +121,13 @@ export const RightThisRoom = () => {
                     id={id}
                     setRenderPage={setRenderPage}
                     renderPage={renderPage}
+                  />
+                )}
+
+                {isOpenUsersList && (
+                  <AllUsersInThisRoomList
+                    setIsOpenUsersList={setIsOpenUsersList}
+                    roomId={id}
                   />
                 )}
               </div>
