@@ -120,7 +120,7 @@ const SingleSearchResult = (props) => {
           <h1>{search.username}</h1>
           <p>this is user</p>
 
-          {rooms.forEach((element) => {
+          {rooms?.forEach((element) => {
             if (
               element.is_group === 0 &&
               element.user_username === search.username
@@ -151,7 +151,7 @@ const SingleSearchResult = (props) => {
           <h1>{search.name}</h1>
           <p>this is a group room</p>
 
-          {userRoomRelation.forEach((element) => {
+          {userRoomRelation?.forEach((element) => {
             console.log(element);
             if (
               element.room_id === search.id &&
