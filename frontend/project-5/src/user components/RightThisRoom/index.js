@@ -12,6 +12,7 @@ import { CreateNewRoomModal } from "./CreateNewRoomModal";
 import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
+import FollowRequestList from "./FollowRequestList";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -28,6 +29,7 @@ export const RightThisRoom = () => {
   const [isOpenUpdate, setIsOpenUpdate] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenUsersList, setIsOpenUsersList] = useState(false);
+  const [isOpenFollowRequest, setIsOpenFollowRequest] = useState(false);
 
   const [renderPage, setRenderPage] = useState(false);
 
@@ -99,6 +101,14 @@ export const RightThisRoom = () => {
                 >
                   Users List
                 </button>
+
+                <button
+                  onClick={() => {
+                    setIsOpenFollowRequest(true);
+                  }}
+                >
+                  Follow Request List
+                </button>
               </div>
               <div>
                 <p>{roomName}</p>
@@ -127,6 +137,13 @@ export const RightThisRoom = () => {
                 {isOpenUsersList && (
                   <AllUsersInThisRoomList
                     setIsOpenUsersList={setIsOpenUsersList}
+                    roomId={id}
+                  />
+                )}
+
+                {isOpenFollowRequest && (
+                  <FollowRequestList
+                    setIsOpenFollowRequest={setIsOpenFollowRequest}
                     roomId={id}
                   />
                 )}
