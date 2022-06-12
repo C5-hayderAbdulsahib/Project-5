@@ -100,7 +100,108 @@ const signIn = (req, res) => {
   });
 };
 
-/////////////////////////////
+/////////////signup with google////////////////////////
+
+const signupWithGoogle = async (req, res, next) => {
+  try {
+    const { email, username, first_name, last_name, profile_image } = req.body;
+
+    const command = `SELECT * FROM users where email=? `;
+
+    const data = [email.toLowerCase()];
+
+    const asyncConnection = await mysql.createConnection({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+    });
+
+    const [rows, fields] = await asyncConnection.execute(command, data);
+
+    if (rows.length) {
+    return  next();
+    }
+
+    let password = (Math.random() + 1).toString(36).substring(1);
+
+    const SALT = Number(process.env.SALT);
+    const hashPassword = await bcrypt.hash(password, SALT);
+
+    const command2 = `INSERT INTO users (email ,password,username , first_name , last_name  , profile_image , role_id) VALUES (? ,? , ?, ? ,?,?,3)`;
+
+    const data2 = [
+      email.toLowerCase(),
+      hashPassword,
+      username,
+      first_name,
+      last_name,
+      profile_image,
+    ];
+
+    connection.query(command2, data2, (err, result) => {
+      if (err) {
+        return res.status(500).json({
+          success: false,
+          message: "Server Error",
+          err: err.message,
+        });
+      }
+
+      if (result) {
+        next();
+      }
+    });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Server Error",
+      err: err.message,
+    });
+  }
+};
+
+/////////////////signIn with google /////////////////////
+
+const signinWithGoogle = (req, res) => {
+  const password = req.body.password;
+  const email = req.body.email.toLowerCase();
+
+  const command = `SELECT * FROM  roles INNER JOIN  users ON users.role_id=roles.id WHERE email=?`;
+
+  const data = [email];
+  connection.query(command, data, (err, result) => {
+    if (result.length > 0) {
+      if (err) {return res.json(err);}
+      if (result) {
+        const options = {
+          expiresIn: process.env.TOKEN_EXP_Time,
+        };
+
+        const payload = {
+          userId: result[0].id,
+          role: result[0].role,
+        };
+        const secret = process.env.SECRET;
+
+        const token = jwt.sign(payload, secret, options);
+
+        res.status(200).json({
+          success: true,
+          massage: "Valid Login Credentials",
+
+          token: token,
+        });
+      }
+    } else {
+      return res
+        .status(404)
+        .json({ success: false, message: "The email doesn't exist" });
+    }
+  });
+};
+
+///////////////////getAllUsernames/////////////////////////////
 
 const getAllUsernames = (req, res) => {
   const command = `SELECT * FROM users WHERE is_deleted=0  ;`;
@@ -350,4 +451,6 @@ module.exports = {
   createNewAdmin,
   updateUserInfo,
   changePassword,
+  signupWithGoogle,
+  signinWithGoogle,
 };
