@@ -19,7 +19,7 @@ const {
   deleteUserFollowRequest,
   unFollowThisRoom,
   addUserToTheRoom,
-  getAllMyCreatedRoom,getAllUsersRoomsRelations
+  getAllMyCreatedRoom,getAllUsersRoomsRelations,leaveRoom
 } = require("../controllers/rooms");
 
 const { createNewMessage } = require("../controllers/messages");
@@ -65,8 +65,9 @@ roomRouter.delete(
 
 roomRouter.put("/:id/unfollow", authentication, unFollowThisRoom);
 
-roomRouter.put("/:id/add_user", authentication, addUserToTheRoom);//User_room_relation
+roomRouter.put("/:id/add_user", authentication, addUserToTheRoom);
 
 
+roomRouter.put("/:id/leave_room", authentication, leaveRoom);
 
 module.exports = roomRouter;
