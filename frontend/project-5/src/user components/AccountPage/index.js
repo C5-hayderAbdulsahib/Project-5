@@ -155,7 +155,9 @@ const AccountPage = () => {
                       className="update-account"
                       id="file"
                     />
-                    <label for="file" className="accountlable">Choose a photo </label>
+                    <label htmlFor="file" className="accountlable">
+                      Choose a photo
+                    </label>
                   </div>
 
                   <h3 className="primary-header-signup">{user.username}</h3>

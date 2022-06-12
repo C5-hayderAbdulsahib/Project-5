@@ -14,6 +14,7 @@ import "./style.css";
 
 //import actions
 import { setCategories } from "../../redux/reducers/categories";
+import { getAllMyRooms } from "../../redux/reducers/rooms";
 
 const SearchPage = () => {
   const { token, categories } = useSelector((state) => {
@@ -34,6 +35,8 @@ const SearchPage = () => {
 
   //we add this state to bring the the categories to add it to the dropdown select category
   const [chooseCategory, setChooseCategory] = useState("");
+
+  const [renderPage, setRenderPage] = useState(false);
 
   //   http://localhost:5000/users/usernames
   //   http://localhost:5000/rooms/group
@@ -91,6 +94,18 @@ const SearchPage = () => {
       });
   };
 
+  const getAllRooms = () => {
+    axios
+      .get(`http://localhost:5000/rooms/my_rooms`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        dispatch(getAllMyRooms(result.data.rooms));
+      });
+  };
+
   let categoriesList;
   if (categories) {
     categoriesList = categories?.map((element) => {
@@ -106,7 +121,7 @@ const SearchPage = () => {
   //the first iteration is used to search depending on the input search bar to search by title or category or country
   if (inputSearch) {
     const concatArray = groupRooms.concat(allUserNames);
-    // console.log(concatArray);
+    console.log(allUserNames);
 
     roomsList = concatArray
       .filter((element) => {
@@ -125,7 +140,14 @@ const SearchPage = () => {
       })
       .map((element, index) => {
         // console.log(element);
-        return <SingleSearchResult key={index} search={element} />; //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it value has to be unique or an error will also occur so that why we usually  give it the value of the id, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
+        return (
+          <SingleSearchResult
+            key={index}
+            search={element}
+            renderPage={renderPage}
+            setRenderPage={setRenderPage}
+          />
+        ); //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it value has to be unique or an error will also occur so that why we usually  give it the value of the id, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
       });
   }
 
@@ -149,8 +171,9 @@ const SearchPage = () => {
       getAllGroupRoomsFun();
       getAllUserNamesFun();
       chooseCategoryFun();
+      getAllRooms();
     }
-  }, []);
+  }, [renderPage]);
 
   return (
     <>
