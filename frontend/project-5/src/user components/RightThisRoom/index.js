@@ -8,7 +8,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./style.css";
 
 //import component
-import { CreateNewRoomModal } from "./CreateNewRoomModal";
 import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
@@ -122,8 +121,6 @@ export const RightThisRoom = () => {
                 </div>
               </div>
               <div>
-                {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
-
                 {isOpenUpdate && (
                   <UpdateRoomModel
                     setIsOpenUpdate={setIsOpenUpdate}
