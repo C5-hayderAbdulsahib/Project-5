@@ -722,7 +722,7 @@ const getAllUsersRoomsRelations = (req, res) => {
     res.status(200).json({
       success: true,
       message: "All The Relation of The Rooms With the Users",
-      rooms: result,
+      users_rooms_relation: result,
     });
   });
 };
