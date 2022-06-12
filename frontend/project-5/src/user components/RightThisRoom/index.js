@@ -83,15 +83,6 @@ export const RightThisRoom = () => {
                   <div>
                     <button
                       onClick={() => {
-                        setIsOpen(true);
-                      }}
-                    >
-                      create room
-                    </button>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => {
                         setIsOpenUpdate(true);
                       }}
                     >
