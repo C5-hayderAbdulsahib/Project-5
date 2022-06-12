@@ -3,15 +3,18 @@ import "./style.css";
 
 //import useDispatch and useSelector to dispatch and subscribe to the store
 import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 
 //import the actions
 import { logout } from "../../redux/reducers/auth";
+import { CreateNewRoomModal } from "./CreateNewRoomModal";
 
 //===============================================================
 
 const Navbar = () => {
   // useDispatch allows us to dispatch actions to the reducers
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false); //this state is for showing the the create room model
 
   // useSelector gives us access to the store
   const state = useSelector((state) => {
@@ -47,6 +50,15 @@ const Navbar = () => {
             <Link to="/rooms/search">Search</Link>
 
             <Link to="/account_page">User Profile</Link>
+            <button
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              create room
+            </button>
+
+            {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
           </>
         ) : (
           ""
