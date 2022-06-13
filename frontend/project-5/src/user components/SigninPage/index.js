@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { signin } from "../../redux/reducers/auth";
-
+import SignInWithGoogle from "../SignInWithGoogle";
 
 ////import for styling //
 
@@ -109,8 +109,9 @@ export const SigninPage = () => {
               </div>
               <div className="btn-position">
                 <button className="btn" onClick={signIn}>
-                  Signin
+                  Signin 
                 </button>
+                <SignInWithGoogle/>
               </div>
             </div>
             <div className="logo-login">

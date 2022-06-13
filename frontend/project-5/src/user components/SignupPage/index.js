@@ -44,7 +44,7 @@ export const SignupPage = () => {
         if (result.data.success) {
           dispatch(signin(result.data.token));
 
-        /*   emailjs
+           /* emailjs
             .sendForm(
               "service_pkpkbwk",
               "template_tp2jvg8",
@@ -59,8 +59,8 @@ export const SignupPage = () => {
               (error) => {
                 console.log(error.text);
               }
-            ); */
-
+            ); 
+ */
           navigate("/");
         }
       })
@@ -114,7 +114,7 @@ export const SignupPage = () => {
                   <input
                     type="text"
                     required={true}
-                    name="logemail"
+                    name="user_name"
                     className="form-style-signup"
                     autoComplete={"off"}
                     onChange={(e) => {

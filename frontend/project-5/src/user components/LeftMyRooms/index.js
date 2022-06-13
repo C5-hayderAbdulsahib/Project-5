@@ -77,7 +77,7 @@ const LeftMyRooms = () => {
             <div className="titleRooms">
               <h3>All Rooms</h3>
             </div>
-            <div>
+            <div className="mainContaine">
               {rooms &&
                 rooms.map((element) => {
                   return (

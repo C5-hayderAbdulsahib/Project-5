@@ -8,11 +8,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./style.css";
 
 //import component
-import { CreateNewRoomModal } from "./CreateNewRoomModal";
 import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
 import FollowRequestList from "./FollowRequestList";
+
+// import react icon
+import { TbClipboardList } from "react-icons/tb";
+import { RiUserFollowFill } from "react-icons/ri";
+import { MdDelete } from "react-icons/md";
+import { MdSystemUpdateAlt } from "react-icons/md";
+import { MdGroup } from "react-icons/md";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -68,99 +74,91 @@ export const RightThisRoom = () => {
 
   return (
     <>
-      <div className="right-this-room">
-        <div className="specific-size-for-right">
-          {!errMessage ? (
-            <>
-              <div className="room-navbar">
-                <button
-                  onClick={() => {
-                    setIsOpen(true);
-                  }}
-                >
-                  create room
-                </button>
-
-                {room.admin_id === user.id && (
-                  <>
-                    <button
+      {!errMessage ? (
+        <>
+          <div className="room-navbar">
+            <div className="roomName-tow">
+              <MdGroup className="groupIcon" />
+              <p className="nameRoom">{room.name}</p>
+            </div>
+            <div className="roomController">
+              {room.admin_id === user.id && (
+                <>
+                  <div className="toolTip">
+                    <span className="toolTipText">Update Room</span>
+                    <MdSystemUpdateAlt
+                      className="updateRoom"
                       onClick={() => {
                         setIsOpenUpdate(true);
                       }}
-                    >
-                      update room
-                    </button>
-
-                    <button
+                    />
+                  </div>
+                  <div className="toolTip">
+                    <span className="toolTipText">Delete Room</span>
+                    <MdDelete
+                      className="deleteRoom"
                       onClick={() => {
                         setIsOpenDelete(true);
                       }}
-                    >
-                      delete room
-                    </button>
-
-                    <button
+                    />
+                  </div>
+                  <div className="toolTip">
+                    <span className="toolTipText">User List</span>
+                    <TbClipboardList
+                      className="listIcon"
                       onClick={() => {
                         setIsOpenUsersList(true);
                       }}
-                    >
-                      Users List
-                    </button>
-
-                    <button
+                    />
+                  </div>
+                  <div className="toolTip">
+                    <span className="toolTipText">Follow Request</span>
+                    <RiUserFollowFill
+                      className="FollowRequestList"
                       onClick={() => {
                         setIsOpenFollowRequest(true);
                       }}
-                    >
-                      Follow Request List
-                    </button>
-                  </>
-                )}
-              </div>
-              <div>
-                <p>{room.name}</p>
-
-                {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
-
-                {isOpenUpdate && (
-                  <UpdateRoomModel
-                    setIsOpenUpdate={setIsOpenUpdate}
-                    roomName={room.name}
-                    id={id}
-                    setRenderPage={setRenderPage}
-                    renderPage={renderPage}
-                  />
-                )}
-
-                {isOpenDelete && (
-                  <DeleteRoomModal
-                    setIsOpenDelete={setIsOpenDelete}
-                    id={id}
-                    setRenderPage={setRenderPage}
-                    renderPage={renderPage}
-                  />
-                )}
-
-                {isOpenUsersList && (
-                  <AllUsersInThisRoomList
-                    setIsOpenUsersList={setIsOpenUsersList}
-                    roomId={id}
-                  />
-                )}
-
-                {isOpenFollowRequest && (
-                  <FollowRequestList
-                    setIsOpenFollowRequest={setIsOpenFollowRequest}
-                    roomId={id}
-                  />
-                )}
-              </div>
-            </>
-          ) : (
-            <div>{errMessage && <p>{errMessage}</p>}</div>
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+          <div className="centerSide"></div>
+          <div className="buttomSide"></div>
+          {isOpenUpdate && (
+            <UpdateRoomModel
+              setIsOpenUpdate={setIsOpenUpdate}
+              roomName={room.name}
+              id={id}
+              setRenderPage={setRenderPage}
+              renderPage={renderPage}
+            />
           )}
-        </div>
-      </div>
+          {isOpenDelete && (
+            <DeleteRoomModal
+              setIsOpenDelete={setIsOpenDelete}
+              id={id}
+              setRenderPage={setRenderPage}
+              renderPage={renderPage}
+            />
+          )}
+          {isOpenUsersList && (
+            <AllUsersInThisRoomList
+              setIsOpenUsersList={setIsOpenUsersList}
+              roomId={id}
+            />
+          )}
+          {isOpenFollowRequest && (
+            <FollowRequestList
+              setIsOpenFollowRequest={setIsOpenFollowRequest}
+              roomId={id}
+            />
+          )}
+        </>
+      ) : (
+        <div>{errMessage && <p>{errMessage}</p>}</div>
+      )}
     </>
   );
 };
