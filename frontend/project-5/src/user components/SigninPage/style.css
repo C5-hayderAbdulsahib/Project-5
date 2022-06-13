@@ -160,6 +160,7 @@ body {
 }
 
 .btn {
+  margin-top: 6px;
   text-decoration: none;
   border-radius: 4px;
   height: 44px;
@@ -296,3 +297,5 @@ body {
     padding: 20px;
   }
 }
+
+
