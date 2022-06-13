@@ -1,4 +1,5 @@
 
+
 .rightSideHomePage {
   background-color: rgb(54, 57, 63);
   display: flex;
@@ -38,6 +39,7 @@ background-color: green;
   margin-left: 20px;
   color: #b6b7bb;
   cursor: default;
+
 }
 
 .groupIcon {
