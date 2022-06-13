@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { signin } from "../../redux/reducers/auth";
+import "./style.css";
 
 const SignInWithGoogle = () => {
   const [message, setMessage] = useState("");
@@ -32,9 +33,8 @@ const SignInWithGoogle = () => {
       })
       .catch((err) => {
         if (!err.response.data.success) {
-            console.log(err);
+          console.log(err);
           return setMessage(err.response.data.message);
-
         }
         return setMessage("Error happened while Login, please try again");
       });
@@ -45,24 +45,22 @@ const SignInWithGoogle = () => {
 
   return (
     <>
-      <div className="App">
-        <h1>React Google login app</h1>
-
-        <GoogleLogin
-          clientId={clientId}
-          render={(renderProps) => (
-            <button
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
-            >
-              This is my custom Google button <FcGoogle />
-            </button>
-          )}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={"single_host_origin"}
-        />
-      </div>
+      <GoogleLogin
+        clientId={clientId}
+        render={(renderProps) => (
+          <button
+            className="btn"
+            onClick={renderProps.onClick}
+            disabled={renderProps.disabled}
+          >
+            <FcGoogle className="googleIcon" />
+            Signin with google
+          </button>
+        )}
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={"single_host_origin"}
+      />
     </>
   );
 };

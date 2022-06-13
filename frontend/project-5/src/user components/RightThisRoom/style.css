@@ -173,6 +173,11 @@
   opacity: 1;
 }
 
+.centerSide{
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 /* @src/components/Modal.module.css ////////////////////////////////////////////////////////////////////////////////////// */
 
 .darkBG {
