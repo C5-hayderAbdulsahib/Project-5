@@ -10,10 +10,7 @@ body {
   background-size: cover;
 }
 
-/* use this wib kit to hide scrollbar*/
-::-webkit-scrollbar {
-  display: none;
-}
+
 
 
 

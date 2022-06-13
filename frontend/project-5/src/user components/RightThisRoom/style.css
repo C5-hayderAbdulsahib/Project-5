@@ -1,4 +1,3 @@
-
 .rightSideHomePage {
   background-color: rgb(54, 57, 63);
   display: flex;
@@ -7,18 +6,20 @@
 }
 
 .centerSide {
-  margin-top: 30px;
+  margin-top: 20px;
   height: 600px;
-  width: 95%;
-  background-color: red;
+  width: 97%;
+  background-color: rgb(64, 68, 75);
+  border-radius: 5px;
+  overflow-y: scroll;
 }
 
 .buttomSide {
   display: flex;
   margin-top: 10px;
   height: 50px;
-  width: 95%;
-  background-color: rgb(64,68,75);
+  width: 97%;
+  background-color: rgb(64, 68, 75);
   border-radius: 5px;
 }
 
@@ -31,7 +32,7 @@
 .sendIcon {
   height: 30px;
   width: 30px;
-  color: rgb(154,157,161);
+  color: rgb(154, 157, 161);
 }
 
 .sendIcon:hover {
@@ -48,11 +49,11 @@
   height: 30px;
   width: 60vw;
   border: none;
-  background-color: rgb(64,68,75);
+  background-color: rgb(64, 68, 75);
   font-size: 17px;
   outline: none;
   caret-color: rgb(187, 187, 184);
-  color: rgb(181, 183, 186)
+  color: rgb(181, 183, 186);
 }
 
 .inputMessage::placeholder {
@@ -66,6 +67,7 @@
   border-bottom: 0.5px solid black;
   align-items: center;
   justify-content: space-between;
+  border-top:0.5px solid black ;
 }
 
 .roomName-tow {
@@ -79,7 +81,6 @@
   margin-left: 20px;
   color: #b6b7bb;
   cursor: default;
-
 }
 
 .groupIcon {
@@ -173,8 +174,7 @@
   opacity: 1;
 }
 
-.centerSide{
-  overflow: hidden;
+.centerSide {
   overflow-y: scroll;
 }
 

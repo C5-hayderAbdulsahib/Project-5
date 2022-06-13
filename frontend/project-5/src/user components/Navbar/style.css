@@ -1,4 +1,28 @@
 .navbar {
   display: flex;
-  gap: 20px;
+  height: 40px;
+  gap: 40px;
+  align-items: center;
+  background-color: rgb(47, 49, 54);
+}
+
+.homeLink {
+  text-decoration: none;
+  color: rgb(178, 179, 182);
+  font-size: 18px;
+  margin-left: 15px;
+}
+
+.linkPage {
+  text-decoration: none;
+  color: rgb(178, 180, 185);
+  font-size: 18px;
+}
+
+.linkPage:hover {
+  color: rgb(255, 255, 226);
+}
+
+.homeLink:hover {
+  color: rgb(255, 255, 226);
 }
