@@ -3,29 +3,40 @@
   padding: 0;
 }
 
-.search {
-  display: flex;
-  justify-content: space-evenly;
+.search .result-search {
   background-color: #42464d;
   color: white;
   width: 100vw;
   height: 100vh;
 }
 
+.input-search {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .search .byText {
   margin-top: 25px;
   width: 50vw;
   background-color: #202225;
-  height: 6vh;
+  height: 7vh;
   border-radius: 0.3rem;
   padding-right: 10px;
   justify-content: center;
   align-items: center;
 }
 
+
+.byText .search-icon{
+width:10vw;
+height: 10vh;
+
+}
+
+
 .search .byText input {
-  width: 47vw;
-  height: 6vh;
+  width: 46.7vw;
+  height: 7vh;
   background-color: #202225;
   border-style: none;
   color: white;
