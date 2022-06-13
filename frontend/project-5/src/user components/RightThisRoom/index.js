@@ -128,7 +128,31 @@ export const RightThisRoom = () => {
           </div>
 
           <div className="centerSide">
-            <h1>center</h1>
+            <div className="messages">
+              <div className="sendImage">
+                <img src="" alt="user image" />
+              </div>
+              <div className="sendName">
+                <p>Mosa saleh</p>
+              </div>
+              <div className="messageText">
+                <p>hisaddddddddddddddddddddddddddddddddddd</p>
+              </div>
+            </div>
+            <div className="messages">
+              <div className="sendImage">
+                <img
+                  className="sendImageProfile"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkTQ8DFOgujidIRil33r2QnSZ2Y_ZHahrUlw&usqp=CAU"
+                  alt="user image"
+                />
+              </div>
+              <div className="sendName">
+                <p className="userNameSend">Mosa saleh</p>
+                <p className="messageText">hi mosa</p>
+              </div>
+              
+            </div>
           </div>
           <div className="buttomSide">
             <div className="sendButton">
