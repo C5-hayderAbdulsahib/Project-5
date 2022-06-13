@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.search {display: flex;
+  justify-content: space-evenly;
+  background-color: #42464d;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+ 
+ 
+  
+}
+
+ 
+.search .byText {
+    margin-top: 25px;
+    width: 50vw;
+background-color: #202225;
+height: 6vh;
+border-radius: 0.3rem;
+ padding-right: 10px;
+ justify-content: center;
+align-items: center;
+}
+
+
+.search .byText input {
+    width: 47vw;
+    height: 6vh;
+  background-color: #202225;
+  border-style: none;
+  color: white;
+  text-align: center;
+  outline: none;
+}
+
+
+
+
+/* 
+ .search .byText input:focus,
+
+.search .byText input:active {outline: none;
+  border: none;
+ 
+} */
+  
+
+
+
+
+
+
+
+
+.search .byCategory select {
+    margin-top: 25px;
+  width: 13vw;
+  height: 6vh;
+  background-color: #202225;
+  border-radius: 0.3rem;
+  outline: none;
+  color: #757575;
+}
