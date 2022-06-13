@@ -12,6 +12,9 @@ import SingleSearchResult from "./SingleSearchResult";
 //importing css
 import "./style.css";
 
+// import icons 
+import { BsSearch } from "react-icons/bs";
+
 //import actions
 import { setCategories } from "../../redux/reducers/categories";
 import { getAllMyRooms } from "../../redux/reducers/rooms";
@@ -178,30 +181,30 @@ const SearchPage = () => {
       {/* the reason that we did not add length is because axios take somw time to execute then bothe of these data will have a null value */}
       {groupRooms || allUserNames || roomsList.length ? (
         <>
-          <div>
-            <div>
-              <label htmlFor="search-bar">Search By Text:</label>
-              <input
-                type={"text"}
+          <div className="search">
+            <div  className="byText" >
+       {/*        <label htmlFor="search-bar">Search By Text:   </label> */}
+              <input 
+                type={"text"} 
                 id="search - bar"
-                placeholder={"Search By Room"}
+                placeholder={"Search By Room Name Or User Name"} 
                 onChange={(e) => {
                   setChooseCategory("");
-                  setInputSearch(e.target.value);
+                  setInputSearch(e.target.value);  
                 }}
-              />
+              /> <BsSearch/> 
             </div>
 
-            <div>
+            <div className="byCategory" >
               <label htmlFor="categories">Search By Category:</label>
-              <select
+              <select 
                 id="categories"
                 onChange={(e) => {
                   setInputSearch("");
                   setChooseCategory(e.target.value);
                 }}
               >
-                <option value="">Choose A Category</option>
+                <option  value="">Choose A Category</option>
 
                 {categoriesList}
               </select>
