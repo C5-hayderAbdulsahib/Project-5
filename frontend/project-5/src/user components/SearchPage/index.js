@@ -12,7 +12,7 @@ import SingleSearchResult from "./SingleSearchResult";
 //importing css
 import "./style.css";
 
-// import icons 
+// import icons
 import { BsSearch } from "react-icons/bs";
 
 //import actions
@@ -182,35 +182,39 @@ const SearchPage = () => {
       {groupRooms || allUserNames || roomsList.length ? (
         <>
           <div className="search">
-            <div  className="byText" >
-       {/*        <label htmlFor="search-bar">Search By Text:   </label> */}
-              <input 
-                type={"text"} 
-                id="search - bar"
-                placeholder={"Search By Room Name Or User Name"} 
-                onChange={(e) => {
-                  setChooseCategory("");
-                  setInputSearch(e.target.value);  
-                }}
-              /> <BsSearch/> 
+            <div  className="result-search" > 
+            <div className="input-search">
+              <div className="byText">
+                {/*        <label htmlFor="search-bar">Search By Text:   </label> */}
+                <input
+                  type={"text"}
+                  id="search - bar"
+                  placeholder={"Search By Room Name Or User Name"}
+                  onChange={(e) => {
+                    setChooseCategory("");
+                    setInputSearch(e.target.value);
+                  }}
+                />{" "}
+                <BsSearch />
+              </div>
+
+              <div className="byCategory">
+                <label htmlFor="categories">Search By Category:</label>
+                <select
+                  id="categories"
+                  onChange={(e) => {
+                    setInputSearch("");
+                    setChooseCategory(e.target.value);
+                  }}
+                >
+                  <option value="">Choose A Category</option>
+
+                  {categoriesList}
+                </select>
+              </div>
             </div>
-
-            <div className="byCategory" >
-              <label htmlFor="categories">Search By Category:</label>
-              <select 
-                id="categories"
-                onChange={(e) => {
-                  setInputSearch("");
-                  setChooseCategory(e.target.value);
-                }}
-              >
-                <option  value="">Choose A Category</option>
-
-                {categoriesList}
-              </select>
-            </div>
-
             {roomsList}
+            </div>
           </div>
         </>
       ) : (
