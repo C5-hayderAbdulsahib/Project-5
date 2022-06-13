@@ -124,8 +124,15 @@ export const RightThisRoom = () => {
               )}
             </div>
           </div>
-          <div className="centerSide"></div>
-          <div className="buttomSide"></div>
+
+          <div className="centerSide">
+            <h1>center</h1>
+          </div>
+          <div className="buttomSide">
+            
+            <h1>buttom</h1>
+          </div>
+
           {isOpenUpdate && (
             <UpdateRoomModel
               setIsOpenUpdate={setIsOpenUpdate}

@@ -112,10 +112,10 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 4);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 5);
 
 INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'hayder', 'hayder', 'hayder', 'jordan', 1);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa', 'mosa', 'hayder', 'jordan', 2);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa', 'mustafa', 'hayder', 'jordan', 3);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mosa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa s', 'mo s', 'hayder', 'jordan', 3, "mosa image");
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mustafa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa a', 'mus a', 'hayder', 'jordan', 3, "mustafa image");
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa', 'mosa s', 'hayder', 'jordan', 2);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa', 'mustafa h', 'hayder', 'jordan', 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mosa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa saleh', 'mo s', 'hayder', 'jordan', 3, "mosa image");
+INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mustafa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa hamdan', 'mus a', 'hayder', 'jordan', 3, "mustafa image");
 
 
 INSERT INTO categories (name) VALUES ('developers');
