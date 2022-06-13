@@ -127,6 +127,7 @@ export const RightThisRoom = () => {
               )}
             </div>
           </div>
+
           <div className="centerSide">
             <h1>center</h1>
           </div>
@@ -139,6 +140,7 @@ export const RightThisRoom = () => {
             </div>
             <div className="Impoges"></div>
           </div>
+
           {isOpenUpdate && (
             <UpdateRoomModel
               setIsOpenUpdate={setIsOpenUpdate}
