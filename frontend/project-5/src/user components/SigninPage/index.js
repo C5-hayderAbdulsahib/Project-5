@@ -52,7 +52,6 @@ export const SigninPage = () => {
     }
   };
 
-  
   useEffect(() => {
     {
       //this is to redirect the user to the home page if he was already logged in
@@ -66,7 +65,7 @@ export const SigninPage = () => {
   return (
     <>
       <div className="position">
-        <form className="container" >
+        <form className="container">
           <div className="centering-wrapper">
             <div className="section1 text-center">
               <p className="primary-header">Welcome back!</p>
@@ -109,9 +108,9 @@ export const SigninPage = () => {
               </div>
               <div className="btn-position">
                 <button className="btn" onClick={signIn}>
-                  Signin 
+                  Signin
                 </button>
-                <SignInWithGoogle/>
+                <button className="btn"> <SignInWithGoogle/> </button>
               </div>
             </div>
             <div className="logo-login">
