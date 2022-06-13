@@ -82,7 +82,6 @@ const LeftMyRooms = () => {
                 rooms.map((element) => {
                   return (
                     <>
-                      
                       <div
                         className="roomInfoContainer"
                         key={element.id}
@@ -107,6 +106,7 @@ const LeftMyRooms = () => {
           </div>
           <div className="rightSideHomePage">
             {/* the reason that i added this part because the RightThisRoom is nested route of this route   */}
+            
             <Routes>
               <Route path="/:id" element={<RightThisRoom />} />
             </Routes>
