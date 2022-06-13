@@ -33,31 +33,38 @@ const Navbar = () => {
       <div className="navbar">
         {state.isLoggedIn ? (
           <>
-            <Link to="/">Home</Link>
-
-            <Link to="/signin">
-              <button
-                onClick={() => {
-                  dispatch(logout()); //send the action to the reducer using dispatch
-                }}
-              >
-                Logout
-              </button>
+            <Link className="homeLink" to="/">
+              Home
+            </Link>
+            <Link className="linkPage" to="/account_page">
+              {state?.user?.username}
             </Link>
 
-            <Link to="/account_page">{state?.user?.username}</Link>
+            <Link className="linkPage" to="/rooms/search">
+              Search
+            </Link>
 
-            <Link to="/rooms/search">Search</Link>
-
-            <Link to="/account_page">User Profile</Link>
-            <button
+            <Link className="linkPage" to="/account_page">
+              User Profile
+            </Link>
+            <Link
+              className="linkPage"
+              to={"#"}
               onClick={() => {
                 setIsOpen(true);
               }}
             >
-              create room
-            </button>
-
+              Create Room
+            </Link>
+            <Link
+              className="linkPage"
+              to="/signin"
+              onClick={() => {
+                dispatch(logout()); //send the action to the reducer using dispatch
+              }}
+            >
+              Logout
+            </Link>
             {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
           </>
         ) : (
