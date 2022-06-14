@@ -1,3 +1,13 @@
+
+
+
+//import packages
+import React, { useState } from "react";
+
+//importing css
+import "./style.css";
+
+
 const SingleRoom = (props) => {
   const { room } = props; //we used destructuring to make it easier to use them
 
