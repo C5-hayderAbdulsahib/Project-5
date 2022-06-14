@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateRoom } from "../../redux/reducers/rooms";
 
 //import styling
-import "./style.css";
+import "./UpdateRoomModel.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
@@ -63,7 +63,10 @@ export const UpdateRoomModel = (props) => {
             <h5 className="heading">Dialog</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpenUpdate(false)}>
-            <RiCloseLine style={{ marginBottom: "-3px" }} />
+            <RiCloseLine
+              className="closeIcon"
+              style={{ marginBottom: "-3px" }}
+            />
           </button>
 
           <div className="modalContent">
@@ -80,12 +83,13 @@ export const UpdateRoomModel = (props) => {
                 type={"text"}
                 placeholder="Update Room"
                 defaultValue={roomName}
+                className="inputFieldUpdate"
                 onChange={(e) => setUpdateName(e.target.value)}
               />
               <div className="push-down"></div>
               {/* the update button */}
               <button
-                className="deleteBtn"
+                className="updateRoomBtn"
                 // onClick={() => {
                 //   UpdateRoomFun(id);
                 //   setIsOpenUpdate(false);

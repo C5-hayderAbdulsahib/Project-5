@@ -175,7 +175,7 @@
 /*---------------------New Update------------------------*/
 
 .closeBtn {
-  background-color: rgb(202, 104, 104);
+  background-color: rgb(219, 37, 37);
 }
 .userName {
   margin-top: 10px;
@@ -214,7 +214,7 @@
 
 .ubBlockBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  background-color: rgb(147, 145, 145);
+  background-color: #4f545c;
   color: white;
 }
 
@@ -227,7 +227,7 @@
 
 .main {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
   overflow-y: scroll;
