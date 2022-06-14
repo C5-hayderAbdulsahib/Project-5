@@ -1,7 +1,7 @@
 .left-my-rooms .display-grid {
   display: grid;
   grid-template-columns: 300px auto;
-  height: 100vh;
+  height: 94.6vh;
 }
 
 .allMyRooms {
