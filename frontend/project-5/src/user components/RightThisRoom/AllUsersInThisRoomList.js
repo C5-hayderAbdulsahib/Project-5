@@ -128,24 +128,29 @@ const AllUsersInThisRoomList = (props) => {
                   <p className="title">These are all the users in the room</p>
                   {usersInRoom?.map((element) => {
                     return (
-                      <div className="mainContainer" key={element.user_id}>
-                        <p className="userName">{element.username}</p>
+                      <>
+                        <div className="main" key={element.user_id}>
+                          <p className="userName">{element.username}</p>
 
-                        {element.is_blocked === 0 ? (
-                          <button
-                            className="blockButton"
-                            onClick={() => blockUser(roomId, element.user_id)}
-                          >
-                            block user
-                          </button>
-                        ) : (
-                          <button className="ubBlockBtn"
-                            onClick={() => unBlockUser(roomId, element.user_id)}
-                          >
-                            unblock user
-                          </button>
-                        )}
-                      </div>
+                          {element.is_blocked === 0 ? (
+                            <button
+                              className="blockButton"
+                              onClick={() => blockUser(roomId, element.user_id)}
+                            >
+                              block user
+                            </button>
+                          ) : (
+                            <button
+                              className="ubBlockBtn"
+                              onClick={() =>
+                                unBlockUser(roomId, element.user_id)
+                              }
+                            >
+                              unblock user
+                            </button>
+                          )}
+                        </div>
+                      </>
                     );
                   })}
                   {/* the cancel model button */}

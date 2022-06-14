@@ -12,6 +12,16 @@
   z-index: 10;
   border-radius: 3px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
+}
+.modal {
+  width: 350px;
+  height: 400px;
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
+  overflow: hidden;
   overflow-y: scroll;
 }
 
@@ -46,6 +56,8 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
+
 /* modalContent */
 
 /* modalContent-paragraph */
@@ -58,6 +70,8 @@
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .CreateCategoryModal .fixed-width {
@@ -131,8 +145,8 @@
   background-color: #4f545c;
 }
 
-.closeIcon{
-    color: aliceblue;
+.closeIcon {
+  color: aliceblue;
 }
 
 /* cancel button */
@@ -166,6 +180,7 @@
 .userName {
   margin-top: 10px;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .blockButton {
@@ -185,8 +200,8 @@
   color: white;
 }
 
-.ubBlockBtn{
-    font-size: 14px;
+.ubBlockBtn {
+  font-size: 14px;
   border: none;
   cursor: pointer;
   width: 100px;
@@ -194,7 +209,7 @@
   border-radius: 5px;
   background: gray;
   color: white;
-  transition: all 0.25s ease;  
+  transition: all 0.25s ease;
 }
 
 .ubBlockBtn:hover {
@@ -207,4 +222,13 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 15px;
   color: black;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
 }
