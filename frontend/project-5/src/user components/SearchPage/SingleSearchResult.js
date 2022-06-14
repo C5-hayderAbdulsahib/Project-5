@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const SingleSearchResult = (props) => {
+
   const { search, renderPage, setRenderPage } = props; //we used destructuring to make it easier to use them
 
   const { rooms, token, user } = useSelector((state) => {
@@ -14,13 +15,14 @@ const SingleSearchResult = (props) => {
     };
   });
 
+  
   const [userRoomRelation, setUserRoomRelation] = useState([]);
 
   const [renderSinglePage, setRenderSinglePage] = useState(false);
 
   // console.log("this is me", user.id);
 
-  // console.log("the room id is", search);
+   console.log("the room id is", search);
 
   const dispatch = useDispatch();
 
@@ -117,6 +119,9 @@ const SingleSearchResult = (props) => {
     <>
       {search?.username ? (
         <>
+         
+      <img src={search.profile_image}/>
+
           <h1>{search.username}</h1>
           <p>this is user</p>
 
@@ -148,6 +153,8 @@ const SingleSearchResult = (props) => {
 
       {search?.name ? (
         <>
+
+          <img src={search.room_image}/>
           <h1>{search.name}</h1>
           <p>this is a group room</p>
 
