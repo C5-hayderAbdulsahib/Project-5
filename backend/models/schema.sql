@@ -84,6 +84,7 @@ CREATE TABLE messages(
     message_image  VARCHAR(255),
     document VARCHAR(255),
     is_deleted TINYINT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     room_id INT,
     FOREIGN KEY (room_id) REFERENCES rooms(id),
     user_id INT,
@@ -135,6 +136,7 @@ INSERT INTO rooms (is_group) VALUES (0);
 
 
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (2, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (3, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (4, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 1, 1);
@@ -142,6 +144,8 @@ INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (6, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 2, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 3, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 4, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 2, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (4, 2, 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 1, "hayder", "hayder image", 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 4, "mosa s", "mosa image", 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 1, "hayder", "hayder image", 1);
