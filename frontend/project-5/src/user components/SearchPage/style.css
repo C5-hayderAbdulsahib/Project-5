@@ -56,29 +56,108 @@
 .SingleSearchResult {
   background-color: #42464d;
   display: grid;
-  gap: 40px;
   align-items: center;
   justify-content: center;
-
-
 }
 
 /* userRoom */
 
-.SingleSearchResult .resultRoom {
-  width: 25rem;
+.SingleSearchResult .result-Room {
+  width: 35rem;
+  height: 15rem;
   background-color: #202225;
-  margin-right:337px ;
-  margin-top: 50px;
+  margin-right: 558px;
+  margin-top: 40px;
+  border: 2px solid #42464d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
 /* userRoom-image */
-.resultRoom .result-image {
-  width: 70px;
-  height: 70px;
+.result-Room .result-image {
+  width: 12rem;
+  height: 12rem;
+  padding-left: 50px;
+}
 
+.SingleSearchResult .result-Room:hover {
+  border-color: #7289d9;
 }
 
 
+.result-Room .room-info{
+width: 20rem;
  
+display: flex;
+justify-content: space-around;
+margin-right: 20px;
+align-items: center;
+gap: 10px;
+padding-right:15px;
+}
+
+
+.room-info .result-text {
+width: 200px;
+display: grid;
+gap: 10px;
+margin-top: 10px;
+}
+
+ .result-button .follow-btn{
+
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  background-color: #42464d;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+ 
+  transition: all 0.25s ease;
+width: 5.5rem;
+height: 2.5rem;
+margin-left: 10px;
+}
+
+
+
+.result-button .follow-btn:hover {
+  box-shadow: 0 10px 20px -10px #9fc5e8;
+  transform: translateY(-5px);
+  background: #7289d9;
+  
+}
+
+
+
+
+.result-button .unfollow-btn{
+
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+ 
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background-color: #42464d;
+
+  transition: all 0.25s ease;
+width: 5.5rem;
+height: 2.5rem;
+margin-left: 10px;
+}
+
+
+
+.result-button .unfollow-btn:hover {
+  box-shadow: 0 10px 20px -10px #9fc5e8;
+  transform: translateY(-5px);
+  background: rgb(202, 104, 104)
+  ;
+}
