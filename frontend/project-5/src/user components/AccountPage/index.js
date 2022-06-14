@@ -109,10 +109,6 @@ const AccountPage = () => {
       .catch((err) => console.log(err));
   };
 
-  setTimeout(function () {
-    setMessage("");
-  }, 3000);
-
   return (
     <>
       {user?.username ? (
