@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 //import styling
-import "./style.css";
+import "./FollowRequestList.css";
 
 const FollowRequestList = (props) => {
   const { setIsOpenFollowRequest, roomId } = props;
@@ -110,7 +110,7 @@ const FollowRequestList = (props) => {
               }}
             />
             <div className="centered">
-              <div className="modal">
+              <div className="modalFollow">
                 <div className="modalHeader">
                   <h5 className="heading">Dialog</h5>
                 </div>
@@ -120,18 +120,23 @@ const FollowRequestList = (props) => {
                     setIsOpenFollowRequest(false);
                   }}
                 >
-                  <RiCloseLine style={{ marginBottom: "-3px" }} />
+                  <RiCloseLine
+                    className="closeIcon"
+                    style={{ marginBottom: "-3px" }}
+                  />
                 </button>
 
                 <div className="modalContent">
                   {/* ///////////////////////////////the body f the model */}
-                  These are all the users in the room
+                  <div className="titleOfHeader">
+                    <p> These are all the users in the room</p>
+                  </div>
                   {followRequestList?.map((element) => {
                     return (
-                      <div key={element.user_id}>
-                        <p>{element.username}</p>
+                      <div className="requestContainer" key={element.user_id}>
+                        <p className="userInfoName">{element.username}</p>
 
-                        <button
+                        <button className="acceptRequest"
                           onClick={() =>
                             addUserToGroupFun(roomId, element.user_id)
                           }
@@ -139,6 +144,7 @@ const FollowRequestList = (props) => {
                           Accept Request
                         </button>
                         <button
+                        className="removeRequest"
                           onClick={() =>
                             removeFollowRequestFun(roomId, element.user_id)
                           }

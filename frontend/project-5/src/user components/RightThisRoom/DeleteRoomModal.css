@@ -170,7 +170,7 @@ margin-top: 50px;
   font-size: 0.8rem;
   border: none;
   color: white;
-  background: grey;
+  background: rgb(103, 102, 102);
   transition: all 0.25s ease;
   border-radius: 15px;
   margin-right: 10px;
@@ -190,14 +190,14 @@ margin-top: 50px;
   font-size: 0.8rem;
   border: none;
   color: white;
-  background: rgb(202, 104, 104);
+  background: rgb(241, 56, 56);
   transition: all 0.25s ease;
   border-radius: 15px;
   margin-right: 10px;
 }
 .DeleteButton:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  background-color: rgb(241, 56, 56);
+  background-color: rgb(231, 18, 18);;
   color: white;
 }
 

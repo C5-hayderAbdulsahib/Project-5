@@ -9,7 +9,7 @@ import { addRoom } from "../../redux/reducers/rooms";
 import { setCategories } from "../../redux/reducers/categories";
 
 //import styling
-import "./style.css";
+import "./CreateNewRoomModals.css";
 
 //import component
 import SingleCategory from "./SingleCategory";
@@ -111,7 +111,10 @@ export const CreateNewRoomModal = (props) => {
                     setIsOpen(false);
                   }}
                 >
-                  <RiCloseLine style={{ marginBottom: "-3px" }} />
+                  <RiCloseLine
+                    className="closeIcon"
+                    style={{ marginBottom: "-3px" }}
+                  />
                 </button>
 
                 <div className="modalContent">
@@ -120,6 +123,7 @@ export const CreateNewRoomModal = (props) => {
                   <div className="push-down"></div>
                   <form>
                     <input
+                    className="createField"
                       type={"text"}
                       placeholder="Create Room"
                       onChange={(e) => setName(e.target.value)}
@@ -133,6 +137,7 @@ export const CreateNewRoomModal = (props) => {
 
                         <select
                           id="categories"
+                          className="selector"
                           onChange={(e) => setChooseCategory(e.target.value)}
                         >
                           <option value="">Choose A Category</option>
@@ -144,7 +149,7 @@ export const CreateNewRoomModal = (props) => {
                     <div className="push-down"></div>
                     {/* the create button */}
                     <button
-                      className="deleteBtn"
+                      className="createBtn"
                       onClick={(e) => {
                         createRoom(e, chooseCategory);
                       }}
