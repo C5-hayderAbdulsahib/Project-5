@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 //import styling
-import "./style.css";
+import "./AllUsersInThisRoomList.css";
 
 const AllUsersInThisRoomList = (props) => {
   const { setIsOpenUsersList, roomId } = props;
@@ -120,31 +120,37 @@ const AllUsersInThisRoomList = (props) => {
                     setIsOpenUsersList(false);
                   }}
                 >
-                  <RiCloseLine style={{ marginBottom: "-3px" }} />
+                  <RiCloseLine className="closeIcon" style={{ marginBottom: "-3px" }} />
                 </button>
 
                 <div className="modalContent">
                   {/* ///////////////////////////////the body f the model */}
-                  These are all the users in the room
+                  <p className="title">These are all the users in the room</p>
                   {usersInRoom?.map((element) => {
                     return (
-                      <div key={element.user_id}>
-                        <p>{element.username}</p>
+                      <>
+                        <div className="main" key={element.user_id}>
+                          <p className="userName">{element.username}</p>
 
-                        {element.is_blocked === 0 ? (
-                          <button
-                            onClick={() => blockUser(roomId, element.user_id)}
-                          >
-                            block user
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() => unBlockUser(roomId, element.user_id)}
-                          >
-                            unblock user
-                          </button>
-                        )}
-                      </div>
+                          {element.is_blocked === 0 ? (
+                            <button
+                              className="blockButton"
+                              onClick={() => blockUser(roomId, element.user_id)}
+                            >
+                              block user
+                            </button>
+                          ) : (
+                            <button
+                              className="ubBlockBtn"
+                              onClick={() =>
+                                unBlockUser(roomId, element.user_id)
+                              }
+                            >
+                              unblock user
+                            </button>
+                          )}
+                        </div>
+                      </>
                     );
                   })}
                   {/* the cancel model button */}
