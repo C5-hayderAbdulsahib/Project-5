@@ -3,8 +3,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const SingleSearchResult = (props) => {
+//import packages
+import React from "react";
 
+//importing css
+import "./style.css";
+
+const SingleSearchResult = (props) => {
   const { search, renderPage, setRenderPage } = props; //we used destructuring to make it easier to use them
 
   const { rooms, token, user } = useSelector((state) => {
@@ -15,14 +20,13 @@ const SingleSearchResult = (props) => {
     };
   });
 
-  
   const [userRoomRelation, setUserRoomRelation] = useState([]);
 
   const [renderSinglePage, setRenderSinglePage] = useState(false);
 
   // console.log("this is me", user.id);
 
-   console.log("the room id is", search);
+  console.log("the room id is", search);
 
   const dispatch = useDispatch();
 
@@ -117,10 +121,13 @@ const SingleSearchResult = (props) => {
 
   return (
     <>
+    
       {search?.username ? (
         <>
+      
          
-      <img src={search.profile_image}/>
+        <div className="resultRoom">
+          <img  className="result-image"   src={search.profile_image} />
 
           <h1>{search.username}</h1>
           <p>this is user</p>
@@ -146,6 +153,8 @@ const SingleSearchResult = (props) => {
           )}
 
           <hr></hr>
+
+          </div>
         </>
       ) : (
         ""
@@ -153,8 +162,8 @@ const SingleSearchResult = (props) => {
 
       {search?.name ? (
         <>
-
-          <img src={search.room_image}/>
+        <div className="resultRoom">
+          <img className="result-image" src={search.room_image} />
           <h1>{search.name}</h1>
           <p>this is a group room</p>
 
@@ -182,7 +191,7 @@ const SingleSearchResult = (props) => {
             </Link>
           ) : alreadyFollowed ? (
             <button onClick={() => unFollowRoom(search.id)}>
-              unfoolow room
+              unfollow room
             </button>
           ) : (
             <button
@@ -191,15 +200,18 @@ const SingleSearchResult = (props) => {
                 usersRoomsRelationsFun();
               }}
             >
-              foolow room
+              follow room
             </button>
           )}
 
           <hr></hr>
+          </div>
+          
         </>
       ) : (
         ""
       )}
+       
     </>
   );
 };

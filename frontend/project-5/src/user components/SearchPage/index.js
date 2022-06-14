@@ -213,7 +213,9 @@ const SearchPage = () => {
                 </select>
               </div>
             </div>
-            {roomsList}
+            <div className="SingleSearchResult"> 
+                        {roomsList}
+                        </div>
             </div>
           </div>
         </>
