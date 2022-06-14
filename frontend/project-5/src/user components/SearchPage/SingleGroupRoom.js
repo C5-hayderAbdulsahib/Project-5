@@ -6,6 +6,7 @@ const SingleRoom = (props) => {
   return (
     <>
       <h1>{room.name}</h1>
+
       <p>this is a group room</p>
       <hr></hr>
     </>

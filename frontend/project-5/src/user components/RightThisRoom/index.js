@@ -15,11 +15,13 @@ import FollowRequestList from "./FollowRequestList";
 
 // import react icon
 import { TbClipboardList } from "react-icons/tb";
-import { RiUserFollowFill } from "react-icons/ri";
+import { HiUserAdd } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import { MdSystemUpdateAlt } from "react-icons/md";
 import { MdGroup } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
+import { BsEmojiSmileFill } from "react-icons/bs";
+import { IoSend } from "react-icons/io5";
 
 
 //since we used export directly then when we import we have to add the {} or an error will occur
@@ -115,30 +117,58 @@ export const RightThisRoom = () => {
                   </div>
                   <div className="toolTip">
                     <span className="toolTipText">Follow Request</span>
-                    <RiUserFollowFill
+                    <HiUserAdd
                       className="FollowRequestList"
                       onClick={() => {
                         setIsOpenFollowRequest(true);
                       }}
                     />
                   </div>
-                  
                 </>
               )}
             </div>
           </div>
 
           <div className="centerSide">
-            <h1>center</h1>
+            <div className="messages">
+              <div className="sendImage">
+                <img src="" alt="user image" />
+              </div>
+              <div className="sendName">
+                <p>Mosa saleh</p>
+              </div>
+              <div className="messageText">
+                <p>hisaddddddddddddddddddddddddddddddddddd</p>
+              </div>
+            </div>
+            <div className="messages">
+              <div className="sendImage">
+                <img
+                  className="sendImageProfile"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkTQ8DFOgujidIRil33r2QnSZ2Y_ZHahrUlw&usqp=CAU"
+                  alt="user image"
+                />
+              </div>
+              <div className="sendName">
+                <p className="userNameSend">Mosa saleh</p>
+                <p className="messageText">hi mosa</p>
+              </div>
+            </div>
           </div>
           <div className="buttomSide">
             <div className="sendButton">
-              <AiFillPlusCircle className="sendIcon"/>
+              <AiFillPlusCircle className="sendIcon" />
             </div>
             <div className="InputFelid">
-              <input className="inputMessage" type={"text"} placeholder={`Message The ${room.name}`} />
+              <input
+                className="inputMessage"
+                type={"text"}
+                placeholder={`Message The ${room.name}`}
+              />
             </div>
-            <div className="Impoges"></div>
+            <div className="sendReactIcon">
+              <IoSend className="sendIconTow" />
+            </div>
           </div>
 
           {isOpenUpdate && (

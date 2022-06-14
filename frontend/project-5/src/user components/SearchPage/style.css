@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.search .result-search {
+  background-color: #42464d;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+}
+
+.input-search {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search .byText {
+  margin-top: 25px;
+  width: 50vw;
+  background-color: #202225;
+  height: 7vh;
+  border-radius: 0.3rem;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.byText .search-icon{
+width:10vw;
+height: 10vh;
+
+}
+
+
+.search .byText input {
+  width: 46.7vw;
+  height: 7vh;
+  background-color: #202225;
+  border-style: none;
+  color: white;
+  text-align: center;
+  outline: none;
+}
+
+.search .byCategory select {
+  margin-top: 25px;
+  width: 13vw;
+  height: 6vh;
+  background-color: #202225;
+  border-radius: 0.3rem;
+  outline: none;
+  color: #757575;
+}

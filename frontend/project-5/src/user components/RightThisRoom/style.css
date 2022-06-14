@@ -1,25 +1,65 @@
-
 .rightSideHomePage {
   background-color: rgb(54, 57, 63);
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url("https://support.discord.com/hc/user_images/-tSbfgDFQxmpAJamqqO8Mg.png");
 }
 
+.homeImg {
+  margin-left: 100px;
+}
 .centerSide {
-  margin-top: 30px;
-  height: 600px;
-  width: 95%;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  height: 570px;
+  width: 97%;
+  background-color: rgb(64, 68, 75);
+  border-radius: 5px;
+  overflow-y: scroll;
+}
+.messages {
+  display: flex;
+  width: 70vw;
+  align-items: center;
+  height: 70px;
+  gap: 20px;
+  border: 2px solid red;
+  left: 10px;
+  bottom: 10px;
+  margin-top: 10px;
+  padding: -10px;
+}
+.messageText {
+  font-family: "Whitney", sans-serif;
+  margin-top: 5px;
+  color: rgb(185,187,190);
 }
 
+.userNameSend {
+  cursor: default;
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(255, 255, 243);
+  font-family: "Whitney", sans-serif;
+}
+.sendImageProfile {
+  margin-left: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
 .buttomSide {
   display: flex;
   margin-top: 10px;
   height: 50px;
-  width: 95%;
-  background-color: rgb(64,68,75);
+  width: 97%;
+  background-color: rgb(64, 68, 75);
   border-radius: 5px;
+  align-items: center;
 }
 
 .sendButton {
@@ -31,13 +71,25 @@
 .sendIcon {
   height: 30px;
   width: 30px;
-  color: rgb(154,157,161);
+  color: rgb(154, 157, 161);
 }
 
+.sendReactIcon{
+  margin-left: 1px;
+}
 .sendIcon:hover {
   color: rgb(255, 255, 226);
 }
+.sendIconTow{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: rgb(154, 157, 161);
+}
 
+.sendIconTow:hover{
+  color: rgb(255, 255, 226);
+}
 .InputFelid {
   display: flex;
   align-items: center;
@@ -46,13 +98,13 @@
 }
 .inputMessage {
   height: 30px;
-  width: 60vw;
+  width: 70vw;
   border: none;
-  background-color: rgb(64,68,75);
+  background-color: rgb(64, 68, 75);
   font-size: 17px;
   outline: none;
   caret-color: rgb(187, 187, 184);
-  color: rgb(181, 183, 186)
+  color: rgb(181, 183, 186);
 }
 
 .inputMessage::placeholder {
@@ -66,6 +118,7 @@
   border-bottom: 0.5px solid black;
   align-items: center;
   justify-content: space-between;
+  border-top: 0.5px solid black;
 }
 
 .roomName-tow {
@@ -79,7 +132,6 @@
   margin-left: 20px;
   color: #b6b7bb;
   cursor: default;
-
 }
 
 .groupIcon {
@@ -173,8 +225,7 @@
   opacity: 1;
 }
 
-.centerSide{
-  overflow: hidden;
+.centerSide {
   overflow-y: scroll;
 }
 

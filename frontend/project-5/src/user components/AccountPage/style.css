@@ -15,10 +15,6 @@ body {
   overflow: auto !important;
 }
 
-/* use this wib kit to hide scrollbar*/
-::-webkit-scrollbar {
-  display: none;
-}
 
 .position-profile-account {
   position: absolute;
