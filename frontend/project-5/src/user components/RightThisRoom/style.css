@@ -59,6 +59,7 @@
   width: 97%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
+  align-items: center;
 }
 
 .sendButton {
@@ -73,10 +74,22 @@
   color: rgb(154, 157, 161);
 }
 
+.sendReactIcon{
+  margin-left: 1px;
+}
 .sendIcon:hover {
   color: rgb(255, 255, 226);
 }
+.sendIconTow{
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: rgb(154, 157, 161);
+}
 
+.sendIconTow:hover{
+  color: rgb(255, 255, 226);
+}
 .InputFelid {
   display: flex;
   align-items: center;
@@ -85,7 +98,7 @@
 }
 .inputMessage {
   height: 30px;
-  width: 60vw;
+  width: 70vw;
   border: none;
   background-color: rgb(64, 68, 75);
   font-size: 17px;
