@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //import actions
 
-import { updateRoom } from "../../redux/reducers/rooms";
+import  { updateRoom } from "../../redux/reducers/rooms";
 
 //import styling
 import "./UpdateRoomModel.css";
@@ -16,6 +16,7 @@ export const UpdateRoomModel = (props) => {
   const {
     roomName,
     id,
+
     // logout,
     setIsOpenUpdate,
     renderPage,
@@ -23,6 +24,7 @@ export const UpdateRoomModel = (props) => {
     // token,
   } = props;
 
+  const [imgUrl, setImgUrl] = useState("");
   const [updateName, setUpdateName] = useState("");
   const dispatch = useDispatch("");
 
@@ -32,12 +34,12 @@ export const UpdateRoomModel = (props) => {
     return { token: state.auth.token };
   });
 
-  const UpdateRoomFun = (e, id) => {
+  const UpdateRoomFun = (e, id,) => {
     e.preventDefault();
     axios
       .put(
         `http://localhost:5000/rooms/${id}`,
-        { name: updateName },
+        { name: updateName, room_image: imgUrl },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,12 +47,29 @@ export const UpdateRoomModel = (props) => {
         }
       )
       .then((result) => {
-        dispatch(updateRoom({ id, name: updateName }));
+        dispatch(updateRoom({ id, name: updateName , room_image : imgUrl }));
         setRenderPage(!renderPage);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const uploadImage = (image_data) => {
+    console.log("this is image", image_data);
+    const data = new FormData();
+    data.append("file", image_data);
+    data.append("upload_preset", "merakie");
+    data.append("cloud_name", "dkqqtkt3b");
+    fetch("https://api.cloudinary.com/v1_1/dkqqtkt3b/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setImgUrl(data.url);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -73,38 +92,52 @@ export const UpdateRoomModel = (props) => {
             {/* ///////////////////////////////the body f the model */}
             Are you sure you want to update the name of this Room?
             <div className="push-down"></div>
-            <form
+             <form
               onSubmit={(e) => {
                 UpdateRoomFun(e, id);
                 setIsOpenUpdate(false);
               }}
+            > 
+            <input
+              type={"text"}
+              placeholder="Update Room"
+              defaultValue={roomName}
+              className="inputFieldUpdate"
+              onChange={(e) => setUpdateName(e.target.value)}
+            />
+            <div className="push-down"></div>
+            {/* the update button */}
+            <input
+              type={"file"}
+               onChange={(e) => {
+                 console.log(
+                   "asdffffffffffffffffffffffffffffffffffffffffadsfkngioadfongadfongodsfjgjnjdsfjg"
+                 );
+                 uploadImage(e.target.files[0]);
+               }}
+              className="update-account"
+              id="file1"
+            />
+            <label htmlFor="file1" className="chooseRoomBtn">
+              Choose a photo
+            </label>
+            <button
+              className="updateRoomBtn"
+              // onClick={(e) => {
+              //   UpdateRoomFun(e, id);
+              //   setIsOpenUpdate(false);
+              // }}
             >
-              <input
-                type={"text"}
-                placeholder="Update Room"
-                defaultValue={roomName}
-                className="inputFieldUpdate"
-                onChange={(e) => setUpdateName(e.target.value)}
-              />
-              <div className="push-down"></div>
-              {/* the update button */}
-              <button
-                className="updateRoomBtn"
-                // onClick={() => {
-                //   UpdateRoomFun(id);
-                //   setIsOpenUpdate(false);
-                // }}
-              >
-                Update Room
-              </button>
-              {/* the cancel model button */}
-              <button
-                className="cancelBtn"
-                onClick={() => setIsOpenUpdate(false)}
-              >
-                Cancel
-              </button>
-            </form>
+              Update Room
+            </button>
+            {/* the cancel model button */}
+            <button
+              className="cancelBtn"
+              onClick={() => setIsOpenUpdate(false)}
+            >
+              Cancel
+            </button>
+             </form> 
           </div>
         </div>
       </div>

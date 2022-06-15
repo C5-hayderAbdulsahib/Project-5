@@ -168,7 +168,23 @@
     background: #4a6deb;
 
 }
+.chooseRoomBtn{
+  cursor: pointer;
+  font-weight: 500;
+  padding: 10px 23px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: #7289d9;
+}
 
+
+.chooseRoomBtn:hover {
+  /* background: #ff3e4e; */
+    background: #4a6deb;
+
+}
 .inputFieldUpdate {
   height: 30px;
   width: 220px;
