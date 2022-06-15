@@ -26,8 +26,9 @@
   width: 46.5vw;
   height: 7vh;
   background-color: #202225;
+
   border-style: none;
-  color: white;
+  color: #87898c;
   text-align: center;
   outline: none;
 }
@@ -101,8 +102,8 @@
   font-size: 0.8rem;
   border: none;
   color: white;
-  background-color: #42464d;
 
+  background: rgb(202, 104, 104);
   transition: all 0.25s ease;
   width: 100px;
   height: 50px;
@@ -111,7 +112,8 @@
 .result-button .unfollow-btn:hover {
   box-shadow: 0 10px 20px -10px #9fc5e8;
   transform: translateY(-5px);
-  background: rgb(202, 104, 104);
+  background-color: white;
+  color: rgb(202, 104, 104);
 }
 
 @media all and (max-width: 1100px) {
