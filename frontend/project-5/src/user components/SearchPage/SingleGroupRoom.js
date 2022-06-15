@@ -95,7 +95,7 @@ const SingleRoom = (props) => {
               <h1>{room.name}</h1>
             </div>
             <div className="room-type">
-              <p>Group</p>
+              <p className="this-is-room">Group</p>
             </div>
 
             {userRoomRelation?.forEach((element) => {
