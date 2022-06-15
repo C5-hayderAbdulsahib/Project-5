@@ -195,7 +195,7 @@ const SearchPage = () => {
                       setInputSearch(e.target.value);
                     }}
                   />{" "}
-                  <BsSearch />
+                  <BsSearch className="BsSearch" />
                 </div>
 
                 <div className="byCategory">

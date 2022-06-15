@@ -161,55 +161,61 @@ const SingleSearchResult = (props) => {
               <img className="result-image" src={search.room_image} />
             </div>
 
-         {/*    <div className="room-info"> */}
-              {/* <div className="result-text"> */}
-              <div className="room-name">   <h1>{search.name}</h1></div>
-              <div className="room-type">  <p>Group</p></div>
+            {/*    <div className="room-info"> */}
+            {/* <div className="result-text"> */}
+            <div className="room-name">
+              {" "}
+              <h1>{search.name}</h1>
+            </div>
+            <div className="room-type">
+              {" "}
+              <p>Group</p>
+            </div>
 
-                {userRoomRelation?.forEach((element) => {
-                  console.log(element);
-                  if (
-                    element.room_id === search.id &&
-                    element.user_id === user.id &&
-                    element.is_member === 1
-                  ) {
-                    inRoom = true;
-                  }
-                  if (
-                    element.room_id === search.id &&
-                    element.user_id === user.id &&
-                    element.send_follow_request === 1
-                  ) {
-                    alreadyFollowed = true;
-                  }
-                })}
-           {/*    </div> */}
+            {userRoomRelation?.forEach((element) => {
+              console.log(element);
+              if (
+                element.room_id === search.id &&
+                element.user_id === user.id &&
+                element.is_member === 1
+              ) {
+                inRoom = true;
+              }
+              if (
+                element.room_id === search.id &&
+                element.user_id === user.id &&
+                element.send_follow_request === 1
+              ) {
+                alreadyFollowed = true;
+              }
+            })}
+            {/*    </div> */}
 
-              <div className="result-button">
-                {inRoom ? (
-                  <Link to={`/rooms/${search.id}`}>
-                    <button>view Room</button>
-                  </Link>
-                ) : alreadyFollowed ? (
-                  <button
-                    className="unfollow-btn"
-                    onClick={() => unFollowRoom(search.id)}
-                  >
-                    unfollow room
-                  </button>
-                ) : (
-                  <button
-                    className="follow-btn"
-                    onClick={() => {
-                      FollowRoom(search.id);
-                      usersRoomsRelationsFun();
-                    }}
-                  >
-                    follow room
-                  </button>
-                )}
-              </div>
-           {/*  </div> */}
+            <div className="result-button">
+              {inRoom ? (
+                <Link to={`/rooms/${search.id}`}>
+                  <button className="view-Room">View Room</button>
+                </Link>
+              ) : alreadyFollowed ? (
+                <button
+                  className="unfollow-btn"
+                  onClick={() => unFollowRoom(search.id)}
+                >
+                  unfollow room
+                </button>
+              ) : (
+                <button
+                  className="follow-btn"
+                  onClick={() => {
+                    FollowRoom(search.id);
+                    usersRoomsRelationsFun();
+                  }}
+                >
+                  follow room
+                </button>
+              )}
+            </div>
+            {/*  </div> */}
           </div>
         </>
       ) : (
