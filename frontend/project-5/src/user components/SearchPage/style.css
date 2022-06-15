@@ -115,7 +115,7 @@
   background: rgb(202, 104, 104);
 }
 
-/* @media all and (max-width: 1100px) {
+ @media all and (max-width: 1100px) {
   .SingleSearchResult {
     margin-left: 0px;
     display: grid;
@@ -146,8 +146,8 @@
     height: 40px;
   }
 }
-*/
-@media all and (max-width: 950px) {
+
+/* @media all and (max-width: 950px) {
   .SingleSearchResult .result-Room {
     width: 100%;
     display: grid;
@@ -188,3 +188,4 @@
     height: 40px;
   }
 } 
+ */
