@@ -141,10 +141,10 @@ const SingleSearchResult = (props) => {
 
             {alreadyTalking ? (
               <Link to={`/rooms/${roomId}`}>
-                <button>view Conversation</button>
+                <button className="view-Conversation">view Conversation</button>
               </Link>
             ) : (
-              <button onClick={() => createPrivateRoom(search.id)}>
+              <button className=" start-new-Conversation" onClick={() => createPrivateRoom(search.id)}>
                 start new Conversation
               </button>
             )}
