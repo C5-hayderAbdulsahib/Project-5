@@ -161,10 +161,10 @@ const SingleSearchResult = (props) => {
               <img className="result-image" src={search.room_image} />
             </div>
 
-            <div className="room-info">
-              <div className="result-text">
-                <h1>{search.name}</h1>
-                <p>this is a group room</p>
+         {/*    <div className="room-info"> */}
+              {/* <div className="result-text"> */}
+              <div className="room-name">   <h1>{search.name}</h1></div>
+              <div className="room-type">  <p>Group</p></div>
 
                 {userRoomRelation?.forEach((element) => {
                   console.log(element);
@@ -183,7 +183,7 @@ const SingleSearchResult = (props) => {
                     alreadyFollowed = true;
                   }
                 })}
-              </div>
+           {/*    </div> */}
 
               <div className="result-button">
                 {inRoom ? (
@@ -209,7 +209,7 @@ const SingleSearchResult = (props) => {
                   </button>
                 )}
               </div>
-            </div>
+           {/*  </div> */}
           </div>
         </>
       ) : (
