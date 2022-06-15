@@ -194,3 +194,28 @@
 .createField:active {
   border-color: #8da2ec;
 }
+
+.contain{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chooseRoomBtnCreate{
+  cursor: pointer;
+  font-weight: 500;
+  padding: 2px 15px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: #7289d9;
+  margin-left: 10px;
+  border-radius: 3px;
+}
+
+
+.chooseRoomBtnCreate:hover {
+  /* background: #ff3e4e; */
+    background: #4a6deb;
+
+}

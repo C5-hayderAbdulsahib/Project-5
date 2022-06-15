@@ -146,8 +146,7 @@ export const RightThisRoom = () => {
                 <div className="messageTextContainer">
                   <span className="messageText">
                     asd asd asd asd a asd asd asd sdfag adf g asdf a asdg asdf
-                    sadg asdf sadg asdf asdf asdf asdf asdf asdf asdf asdf as
-                    asdf asdf asdf asdf sadf{" "}
+                    sadg asdf sadg 
                   </span>
                 </div>
               </div>
@@ -177,11 +176,17 @@ export const RightThisRoom = () => {
               </div>
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload File</span>
-                <TbFileUpload className="sendIconTow" />
+                <input type={"file"} className="update-account" id="file" />
+                <label htmlFor="file">
+                  <TbFileUpload className="sendIconTow" />
+                </label>
               </div>
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload Image</span>
-                <MdAddPhotoAlternate className="sendIconTow" />
+                <input type={"image"} className="update-account" id="file" />
+                <label htmlFor="file">
+                  <MdAddPhotoAlternate className="sendIconTow" />
+                </label>
               </div>
             </div>
           </div>

@@ -31,6 +31,7 @@ export const roomsSlice = createSlice({
           return {
             ...element, //the reason that i added this part is to only updated the wanted data so i will not have to write other properties like the id or is_deleted or foreign keys  or the need to send those extra data with the dispatch, and the way that it work is that first it will spread the object into all of it properties and add the new updated value so it will be something like this {id:id, title: oldTitle, description: oldDescription, title: newTitle, description: newDescription } but in javascript there can not be two key with the same name so they will be override so the new object will be {id:id, title: newTitle, description: newDescription } and the order is very important so it has to be the spread element first then the new data and if we switch their places then the code will not work
             name: action.payload.name,
+            room_image: action.payload.room_image,
           };
         } else {
           return element;
