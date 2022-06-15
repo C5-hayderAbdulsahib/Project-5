@@ -80,7 +80,7 @@ CREATE TABLE users_rooms (
 
 CREATE TABLE messages(
     id INT AUTO_INCREMENT NOT NULL,
-    description VARCHAR(255) NOT NULL,
+    description VARCHAR(255),
     message_image  VARCHAR(8000),
     document VARCHAR(8000),
     is_deleted TINYINT DEFAULT 0,
