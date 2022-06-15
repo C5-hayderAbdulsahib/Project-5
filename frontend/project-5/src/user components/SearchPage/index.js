@@ -122,7 +122,6 @@ const SearchPage = () => {
   //the first iteration is used to search depending on the input search bar to search by title or category or country
   if (inputSearch) {
     const concatArray = groupRooms.concat(allUserNames);
-    console.log(allUserNames);
 
     roomsList = concatArray
       .filter((element) => {
