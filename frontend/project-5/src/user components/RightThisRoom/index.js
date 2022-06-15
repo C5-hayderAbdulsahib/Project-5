@@ -129,18 +129,7 @@ export const RightThisRoom = () => {
             </div>
           </div>
 
-          <div className="centerSide">
-            <div className="messages">
-              <div className="sendImage">
-                <img src="" alt="user image" />
-              </div>
-              <div className="sendName">
-                <p>Mosa saleh</p>
-              </div>
-              <div className="messageText">
-                <p>hisaddddddddddddddddddddddddddddddddddd</p>
-              </div>
-            </div>
+          <div className="centerSide">          
             <div className="messages">
               <div className="sendImage">
                 <img
@@ -150,8 +139,13 @@ export const RightThisRoom = () => {
                 />
               </div>
               <div className="sendName">
-                <p className="userNameSend">Mosa saleh</p>
-                <p className="messageText">hi mosa</p>
+                <div className="userInfoContainer">
+                  <p className="userNameSend">Mosa saleh</p>
+                  <span className="date">data</span>
+                </div>
+                <div className="messageTextContainer">
+                  <span className="messageText">asd asd asd asd a asd asd asd sdfag adf g asdf a asdg asdf  sadg asdf  sadg asdf  asdf  asdf asdf asdf asdf asdf asdf as asdf asdf asdf asdf sadf  </span>
+                </div>
               </div>
             </div>
           </div>
