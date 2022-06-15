@@ -102,6 +102,7 @@ INSERT INTO permissions (permission) VALUES ("UPDATE_CATEGORIES");
 INSERT INTO permissions (permission) VALUES ("DELETE_CATEGORIES");
 INSERT INTO permissions (permission) VALUES ("UPDATE_ROOMS");
 INSERT INTO permissions (permission) VALUES ("DELETE_ROOMS");
+INSERT INTO permissions (permission) VALUES ("DELETE_ROOMS_ADMIN");
 
 
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 1);
@@ -109,6 +110,7 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 2);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 3);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 4);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 5);
+INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 6);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 4);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 5);
 
