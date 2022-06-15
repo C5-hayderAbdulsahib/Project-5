@@ -115,7 +115,9 @@ const SingleSearchResult = (props) => {
             <img className="result-image" src={search.profile_image} />
 
             <h1>{search.username}</h1>
-            <p>this is user</p>
+            <div>
+              <p className="this-is-user">User</p>
+            </div>
 
             {rooms?.forEach((element) => {
               if (
@@ -132,7 +134,10 @@ const SingleSearchResult = (props) => {
                 <button className="view-Conversation">view Conversation</button>
               </Link>
             ) : (
-              <button className=" start-new-Conversation" onClick={() => createPrivateRoom(search.id)}>
+              <button
+                className=" start-new-Conversation"
+                onClick={() => createPrivateRoom(search.id)}
+              >
                 start new Conversation
               </button>
             )}
@@ -155,7 +160,7 @@ const SingleSearchResult = (props) => {
               <h1>{search.name}</h1>
             </div>
             <div className="room-type">
-              <p>Group</p>
+              <p className="this-is-room">Group</p>
             </div>
 
             {userRoomRelation?.forEach((element) => {

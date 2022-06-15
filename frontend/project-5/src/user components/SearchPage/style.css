@@ -230,6 +230,36 @@
 } 
 
 
+ /* this-is-room" */
+
+ .SingleSearchResult .this-is-room{
+
+  color: #7289d9;
+  background: white;
+  padding: 15px 6px;
+border-radius: 5px;
+ margin: 10px 10px;
+ 
+}
+
+
+/*this-is-user  */
+
+.SingleSearchResult .this-is-user {
+
+  color: #42464D;
+  background: white;
+  padding: 15px 20px;
+border-radius: 5px;
+ margin: 10px 15px;
+ 
+}
+
+ 
+
+
+
+
 
 
 
@@ -310,6 +340,79 @@
   }
 
   .result-button .unfollow-btn {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
+}
+
+
+/* /////////////////////////// */ 
+
+
+
+@media all and (max-width: 1100px) {
+ 
+
+  .SingleSearchResult .result-User {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 280px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .result-button .start-new-Conversation {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 80px;
+    height: 40px;
+  }
+
+  .result-button .view-Conversation {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
+}
+
+@media all and (max-width: 950px) {
+  .SingleSearchResult .result-User {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 225px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+@media all and (max-width: 850px) {
+  .SingleSearchResult .result-User {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 130px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+
+/*   .SingleSearchResult .room-name {
+    font-size: 10px;
+  }
+
+  .SingleSearchResult .room-type {
+    font-size: 13px;
+  } */
+
+  .result-button .start-new-Conversation {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
+
+  .result-button .view-Conversation {
     font-weight: 600;
     font-size: 0.7rem;
     width: 85px;
