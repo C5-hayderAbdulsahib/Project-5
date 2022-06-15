@@ -761,6 +761,32 @@ const leaveRoom = (req, res) => {
   });
 };
 
+/////////////////////////////////
+
+const deleteRoomByIdForAdmin = (req, res) => {
+  const id = req.params.id;
+  const userId = req.token.userId;
+
+  const command = `UPDATE rooms SET is_deleted = 1 where id = ? AND admin_id=?`;
+  const data = [id, userId];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+    if (!result.affectedRows) {
+      return res
+        .status(404)
+        .json({ success: false, message: "The Room Is Not Found" });
+    }
+    res.status(200).json({ success: true, message: "Room Deleted" });
+  });
+};
+
 module.exports = {
   createNewChatRoom,
   createNewGroupRoom,
@@ -782,4 +808,5 @@ module.exports = {
   getAllMyCreatedRoom,
   getAllUsersRoomsRelations,
   leaveRoom,
+  deleteRoomByIdForAdmin,
 };
