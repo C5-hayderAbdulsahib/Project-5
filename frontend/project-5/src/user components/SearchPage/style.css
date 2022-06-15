@@ -13,43 +13,179 @@
 .input-search {
   display: flex;
   justify-content: space-evenly;
-}
-
-.search .byText {
-  margin-top: 25px;
-  width: 50vw;
-  background-color: #202225;
-  height: 7vh;
-  border-radius: 0.3rem;
-  padding-right: 10px;
-  justify-content: center;
   align-items: center;
 }
 
-
-.byText .search-icon{
-width:10vw;
-height: 10vh;
-
+.search .byText {
+  background-color: #202225;
+  border-radius: 0.3rem;
+  padding-right: 10px;
 }
 
-
 .search .byText input {
-  width: 46.7vw;
+  width: 46.5vw;
   height: 7vh;
   background-color: #202225;
+
   border-style: none;
-  color: white;
+  color: #87898c;
   text-align: center;
   outline: none;
 }
 
 .search .byCategory select {
-  margin-top: 25px;
-  width: 13vw;
+  max-width: 13vw;
   height: 6vh;
   background-color: #202225;
   border-radius: 0.3rem;
   outline: none;
   color: #757575;
+}
+
+/* SingleSearchResult */
+
+.SingleSearchResult {
+  width: 100%;
+  background-color: #42464d;
+  margin-left: 140px;
+}
+
+/* userRoom */
+
+.SingleSearchResult .result-Room {
+  width: 79%;
+  background-color: #72767d;
+  margin-top: 40px;
+  border: 2px solid #42464d;
+  display: grid;
+  grid-template-columns: auto 15rem auto auto;
+  align-items: center;
+  justify-items: center;
+}
+
+/* userRoom-image */
+.result-Room .result-image {
+  width: 12rem;
+  height: 12rem;
+}
+
+.SingleSearchResult .result-Room:hover {
+  border-color: #7289d9;
+}
+
+.result-button .follow-btn {
+  cursor: pointer;
+  font-weight: 700;
+  background: #7289d9;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+
+  transition: all 0.25s ease;
+  width: 100px;
+  height: 50px;
+}
+
+.result-button .follow-btn:hover {
+  box-shadow: 0 10px 20px -10px #9fc5e8;
+  transform: translateY(-5px);
+  color: #7289d9;
+  background: white;
+}
+
+.result-button .unfollow-btn {
+  cursor: pointer;
+  font-weight: 700;
+
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+
+  background: rgb(202, 104, 104);
+  transition: all 0.25s ease;
+  width: 100px;
+  height: 50px;
+}
+
+.result-button .unfollow-btn:hover {
+  box-shadow: 0 10px 20px -10px #9fc5e8;
+  transform: translateY(-5px);
+  background-color: white;
+  color: rgb(202, 104, 104);
+}
+
+@media all and (max-width: 1100px) {
+  .SingleSearchResult {
+    margin-left: 0px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 85vw;
+  }
+
+  .SingleSearchResult .result-Room {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 280px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .result-button .follow-btn {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 80px;
+    height: 40px;
+  }
+
+  .result-button .unfollow-btn {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
+}
+
+@media all and (max-width: 950px) {
+  .SingleSearchResult .result-Room {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 225px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+@media all and (max-width: 850px) {
+  .SingleSearchResult .result-Room {
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 130px auto auto;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .SingleSearchResult .room-name {
+    font-size: 10px;
+  }
+
+  .SingleSearchResult .room-type {
+    font-size: 13px;
+  }
+
+  .result-button .follow-btn {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
+
+  .result-button .unfollow-btn {
+    font-weight: 600;
+    font-size: 0.7rem;
+    width: 85px;
+    height: 40px;
+  }
 }

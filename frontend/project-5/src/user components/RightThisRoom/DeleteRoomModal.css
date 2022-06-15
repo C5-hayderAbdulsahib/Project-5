@@ -13,6 +13,17 @@
   border-radius: 3px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
 }
+.modal {
+  width: 350px;
+  height: 400px;
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
+  overflow: hidden;
+  overflow-y: scroll;
+}
 
 .CreateCategoryModal .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
@@ -45,20 +56,34 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
+
 /* modalContent */
 
 /* modalContent-paragraph */
 
-.CreateCategoryModal .modalContent {
+.CreateCategoryModal  {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
-
+margin-top: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
-
+.modalContent {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+margin-top: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
 .CreateCategoryModal .fixed-width {
   width: 250px;
 }
@@ -130,9 +155,13 @@
   background-color: #4f545c;
 }
 
+.closeIcon {
+  color: aliceblue;
+}
+
 /* cancel button */
 
-.CreateCategoryModal .cancelBtn {
+ .cancelButton {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -141,12 +170,34 @@
   font-size: 0.8rem;
   border: none;
   color: white;
-  background: gray;
+  background: rgb(103, 102, 102);
   transition: all 0.25s ease;
+  border-radius: 15px;
+  margin-right: 10px;
 }
-
-.CreateCategoryModal .cancelBtn:hover {
+.cancelButton:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background-color: #4f545c;
   color: white;
 }
+
+.DeleteButton {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 11px 38px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: rgb(241, 56, 56);
+  transition: all 0.25s ease;
+  border-radius: 15px;
+  margin-right: 10px;
+}
+.DeleteButton:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: rgb(231, 18, 18);;
+  color: white;
+}
+

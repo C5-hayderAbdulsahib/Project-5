@@ -13,6 +13,17 @@
   border-radius: 3px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
 }
+.modal {
+  width: 350px;
+  height: 400px;
+  background: white;
+  color: white;
+  z-index: 10;
+  border-radius: 5px;
+  box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
+  overflow: hidden;
+  overflow-y: scroll;
+}
 
 .CreateCategoryModal .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
@@ -45,6 +56,8 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+
+
 /* modalContent */
 
 /* modalContent-paragraph */
@@ -57,6 +70,8 @@
 
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 .CreateCategoryModal .fixed-width {
@@ -130,6 +145,10 @@
   background-color: #4f545c;
 }
 
+.closeIcon {
+  color: aliceblue;
+}
+
 /* cancel button */
 
 .CreateCategoryModal .cancelBtn {
@@ -145,8 +164,71 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .cancelBtn:hover {
+.CreateCategoryModal:hover {
+}
+.cancelBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background-color: #4f545c;
   color: white;
+}
+
+/*---------------------New Update------------------------*/
+
+.closeBtn {
+  background-color: rgb(219, 37, 37);
+}
+.userName {
+  margin-top: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.blockButton {
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 25px;
+  border-radius: 5px;
+  background: gray;
+  color: white;
+  transition: all 0.25s ease;
+}
+.blockButton:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: rgb(202, 104, 104);
+  color: white;
+}
+
+.ubBlockBtn {
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: 100px;
+  height: 25px;
+  border-radius: 5px;
+  background: gray;
+  color: white;
+  transition: all 0.25s ease;
+}
+
+.ubBlockBtn:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: #4f545c;
+  color: white;
+}
+
+.title {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  overflow-y: scroll;
 }

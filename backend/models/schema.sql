@@ -81,9 +81,10 @@ CREATE TABLE users_rooms (
 CREATE TABLE messages(
     id INT AUTO_INCREMENT NOT NULL,
     description VARCHAR(255) NOT NULL,
-    message_image  VARCHAR(255),
-    document VARCHAR(255),
+    message_image  VARCHAR(8000),
+    document VARCHAR(8000),
     is_deleted TINYINT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     room_id INT,
     FOREIGN KEY (room_id) REFERENCES rooms(id),
     user_id INT,
@@ -111,30 +112,31 @@ INSERT INTO roles_permissions (role_id, permission_id) VALUES (1, 5);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 4);
 INSERT INTO roles_permissions (role_id, permission_id) VALUES (2, 5);
 
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'hayder', 'hayder', 'hayder', 'jordan', 1);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa', 'mosa s', 'hayder', 'jordan', 2);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa', 'mustafa h', 'hayder', 'jordan', 3);
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mosa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa saleh', 'mo s', 'hayder', 'jordan', 3, "mosa image");
-INSERT INTO users (email, password, username, first_name, last_name, country, role_id, profile_image) VALUES ('mustafa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa hamdan', 'mus a', 'hayder', 'jordan', 3, "mustafa image");
+INSERT INTO users (email, password, username, first_name, last_name, country, profile_image ,role_id) VALUES ('superadmin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'hayder', 'hayder', 'hayder', 'jordan', "https://i.ytimg.com/vi/ha0-qytMD9k/maxresdefault.jpg" , 1);
+INSERT INTO users (email, password, username, first_name, last_name, country, profile_image ,role_id) VALUES ('admin@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa', 'mosa s', 'hayder', 'jordan', "https://i.ytimg.com/vi/ha0-qytMD9k/maxresdefault.jpg" , 2);
+INSERT INTO users (email, password, username, first_name, last_name, country, profile_image ,role_id) VALUES ('user@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa', 'mustafa h', 'hayder', 'jordan', "https://i.ytimg.com/vi/ha0-qytMD9k/maxresdefault.jpg" , 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, profile_image ,role_id) VALUES ('mosa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mosa saleh', 'mo s', 'hayder', 'jordan', "https://i.ytimg.com/vi/ha0-qytMD9k/maxresdefault.jpg" , 3);
+INSERT INTO users (email, password, username, first_name, last_name, country, profile_image ,role_id) VALUES ('mustafa@me.com', '$2b$10$uZYvsP7unqt2/fY37RixnenZqgFEC80uptiIFXecWFf6FmXEY/OaS', 'mustafa hamdan', 'mus a', 'hayder', 'jordan', "https://i.ytimg.com/vi/ha0-qytMD9k/maxresdefault.jpg" , 3);
 
 
 INSERT INTO categories (name) VALUES ('developers');
 INSERT INTO categories (name) VALUES ('anime fans');
 INSERT INTO categories (name) VALUES ('gamers');
 
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('pirates', 1, 1, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('one piece fans', 2, 1, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('DBZ fans', 2, 2, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('attack on titans fans', 2, 1, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('call of duties fans', 3, 1, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('devil may cry fans', 3, 1, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('react developer', 1, 2, 1);
-INSERT INTO rooms (name, category_id, admin_id, is_group) VALUES ('javascript developer', 1, 2, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('pirates', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",1, 1, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('one piece fans', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",2, 1, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('DBZ fans', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",2, 2, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('attack on titans fans', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",2, 1, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('call of duties fans', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",3, 1, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('devil may cry fans', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",3, 1, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('react developer', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",1, 2, 1);
+INSERT INTO rooms (name, room_image, category_id, admin_id, is_group) VALUES ('javascript developer', "https://i.pinimg.com/originals/5a/7e/be/5a7ebe0b0ba89c07e683f30fd0761f16.jpg",1, 2, 1);
 INSERT INTO rooms (is_group) VALUES (0);
 INSERT INTO rooms (is_group) VALUES (0);
 
 
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 1, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (2, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (3, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (4, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 1, 1);
@@ -142,6 +144,8 @@ INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (6, 1, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 2, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (1, 3, 1);
 INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 4, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (5, 2, 1);
+INSERT INTO users_rooms (room_id, user_id, is_member) VALUES (4, 2, 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 1, "hayder", "hayder image", 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (9, 4, "mosa s", "mosa image", 1);
 INSERT INTO users_rooms (room_id, user_id, user_username, user_profile_img, is_member) VALUES (10, 1, "hayder", "hayder image", 1);

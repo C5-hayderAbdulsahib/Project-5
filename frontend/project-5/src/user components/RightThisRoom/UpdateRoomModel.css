@@ -150,3 +150,37 @@
   background-color: #4f545c;
   color: white;
 }
+
+.updateRoomBtn {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 11px 28px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: #7289d9;
+}
+
+.updateRoomBtn:hover {
+  /* background: #ff3e4e; */
+    background: #4a6deb;
+
+}
+
+.inputFieldUpdate {
+  height: 30px;
+  width: 220px;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+  border-color: grey;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+.inputFieldUpdate:focus,
+.inputFieldUpdate:active {
+  border-color: #8da2ec;
+}
+

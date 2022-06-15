@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { deleteRoom } from "../../redux/reducers/rooms";
 
 //import styling
-import "./style.css";
+import "./DeleteRoomModal.css";
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
@@ -62,7 +62,10 @@ export const DeleteRoomModal = (props) => {
             <h5 className="heading">Dialog</h5>
           </div>
           <button className="closeBtn" onClick={() => setIsOpenDelete(false)}>
-            <RiCloseLine style={{ marginBottom: "-3px" }} />
+            <RiCloseLine
+              className="closeIcon"
+              style={{ marginBottom: "-3px" }}
+            />
           </button>
 
           <div className="modalContent">
@@ -76,13 +79,13 @@ export const DeleteRoomModal = (props) => {
                 deleteRoomFun(id);
                 setIsOpenDelete(false);
               }}
-              className="deleteBtn"
+              className="DeleteButton"
             >
               Delete Room
             </button>
             {/* the cancel model button */}
             <button
-              className="cancelBtn"
+              className="cancelButton"
               onClick={() => setIsOpenDelete(false)}
             >
               Cancel
