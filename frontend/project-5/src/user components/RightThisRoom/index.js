@@ -19,9 +19,10 @@ import { HiUserAdd } from "react-icons/hi";
 import { MdDelete } from "react-icons/md";
 import { MdSystemUpdateAlt } from "react-icons/md";
 import { MdGroup } from "react-icons/md";
-import { AiFillPlusCircle } from "react-icons/ai";
 import { IoSend } from "react-icons/io5";
 import { IoMdCreate } from "react-icons/io";
+import { TbFileUpload } from "react-icons/tb";
+import { MdAddPhotoAlternate } from "react-icons/md";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -163,9 +164,6 @@ export const RightThisRoom = () => {
             </div>
           </div>
           <div className="buttomSide">
-            <div className="sendButton">
-              <AiFillPlusCircle className="sendIcon" />
-            </div>
             <div className="InputFelid">
               <input
                 className="inputMessage"
@@ -173,8 +171,18 @@ export const RightThisRoom = () => {
                 placeholder={`Message The ${room.name}`}
               />
             </div>
-            <div className="sendReactIcon">
-              <IoSend className="sendIconTow" />
+            <div className="buttomIcons">
+              <div className="sendReactIcon">
+                <IoSend className="sendIconTow" />
+              </div>
+              <div className="toolTipButtom">
+                <span className="toolTipTextBottom">Upload File</span>
+                <TbFileUpload className="sendIconTow" />
+              </div>
+              <div className="toolTipButtom">
+                <span className="toolTipTextBottom">Upload Image</span>
+                <MdAddPhotoAlternate className="sendIconTow" />
+              </div>
             </div>
           </div>
 
