@@ -146,7 +146,7 @@
     height: 40px;
   }
 }
-
+*/
 @media all and (max-width: 950px) {
   .SingleSearchResult .result-Room {
     width: 100%;
@@ -187,4 +187,4 @@
     width: 85px;
     height: 40px;
   }
-} */
+} 
