@@ -23,9 +23,9 @@
 }
 .messages {
   display: flex;
-  width: 70vw;
+  width: 75vw;
   align-items: center;
-  height: 70px;
+  height: 100px;
   gap: 20px;
   border: 2px solid red;
   left: 10px;
@@ -36,9 +36,15 @@
 .messageText {
   font-family: "Whitney", sans-serif;
   margin-top: 5px;
-  color: rgb(185,187,190);
+  color: rgb(185, 187, 190);
 }
 
+.messageTextContainer{
+  display: flex;
+  flex-direction: column;
+  width: 65vw;
+  border: 2px solid aqua;
+}
 .userNameSend {
   cursor: default;
   font-weight: bold;
@@ -74,20 +80,20 @@
   color: rgb(154, 157, 161);
 }
 
-.sendReactIcon{
+.sendReactIcon {
   margin-left: 1px;
 }
 .sendIcon:hover {
   color: rgb(255, 255, 226);
 }
-.sendIconTow{
+.sendIconTow {
   height: 30px;
   width: 30px;
   cursor: pointer;
   color: rgb(154, 157, 161);
 }
 
-.sendIconTow:hover{
+.sendIconTow:hover {
   color: rgb(255, 255, 226);
 }
 .InputFelid {
@@ -362,4 +368,20 @@
 
 .push-down {
   margin-bottom: 20px;
+}
+
+.sendName {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.userInfoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date{
+  margin-right: 5px;
+  color: rgb(185, 187, 190);
 }
