@@ -20,9 +20,8 @@ import { MdDelete } from "react-icons/md";
 import { MdSystemUpdateAlt } from "react-icons/md";
 import { MdGroup } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
-import { BsEmojiSmileFill } from "react-icons/bs";
 import { IoSend } from "react-icons/io5";
-
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -129,7 +128,7 @@ export const RightThisRoom = () => {
             </div>
           </div>
 
-          <div className="centerSide">          
+          <div className="centerSide">
             <div className="messages">
               <div className="sendImage">
                 <img
@@ -144,8 +143,15 @@ export const RightThisRoom = () => {
                   <span className="date">data</span>
                 </div>
                 <div className="messageTextContainer">
-                  <span className="messageText">asd asd asd asd a asd asd asd sdfag adf g asdf a asdg asdf  sadg asdf  sadg asdf  asdf  asdf asdf asdf asdf asdf asdf as asdf asdf asdf asdf sadf  </span>
+                  <span className="messageText">
+                    asd asd asd asd a asd asd asd sdfag adf g asdf a asdg asdf
+                    sadg asdf sadg asdf asdf asdf asdf asdf asdf asdf asdf as
+                    asdf asdf asdf asdf sadf{" "}
+                  </span>
                 </div>
+              </div>
+              <div className="menuIcon">
+                <BiDotsVerticalRounded className="dotIcon" />
               </div>
             </div>
           </div>
