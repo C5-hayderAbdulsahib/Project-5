@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 //import actions
 
-import  { updateRoom } from "../../redux/reducers/rooms";
+import { updateRoom } from "../../redux/reducers/rooms";
 
 //import styling
 import "./UpdateRoomModel.css";
@@ -34,7 +34,7 @@ export const UpdateRoomModel = (props) => {
     return { token: state.auth.token };
   });
 
-  const UpdateRoomFun = (e, id,) => {
+  const UpdateRoomFun = (e, id) => {
     e.preventDefault();
     axios
       .put(
@@ -47,7 +47,7 @@ export const UpdateRoomModel = (props) => {
         }
       )
       .then((result) => {
-        dispatch(updateRoom({ id, name: updateName , room_image : imgUrl }));
+        dispatch(updateRoom({ id, name: updateName, room_image: imgUrl }));
         setRenderPage(!renderPage);
       })
       .catch((err) => {
@@ -92,52 +92,49 @@ export const UpdateRoomModel = (props) => {
             {/* ///////////////////////////////the body f the model */}
             Are you sure you want to update the name of this Room?
             <div className="push-down"></div>
-             <form
+            <form
               onSubmit={(e) => {
                 UpdateRoomFun(e, id);
                 setIsOpenUpdate(false);
               }}
-            > 
-            <input
-              type={"text"}
-              placeholder="Update Room"
-              defaultValue={roomName}
-              className="inputFieldUpdate"
-              onChange={(e) => setUpdateName(e.target.value)}
-            />
-            <div className="push-down"></div>
-            {/* the update button */}
-            <input
-              type={"file"}
-               onChange={(e) => {
-                 console.log(
-                   "asdffffffffffffffffffffffffffffffffffffffffadsfkngioadfongadfongodsfjgjnjdsfjg"
-                 );
-                 uploadImage(e.target.files[0]);
-               }}
-              className="update-account"
-              id="file1"
-            />
-            <label htmlFor="file1" className="chooseRoomBtn">
-              Choose a photo
-            </label>
-            <button
-              className="updateRoomBtn"
-              // onClick={(e) => {
-              //   UpdateRoomFun(e, id);
-              //   setIsOpenUpdate(false);
-              // }}
             >
-              Update Room
-            </button>
-            {/* the cancel model button */}
-            <button
-              className="cancelBtn"
-              onClick={() => setIsOpenUpdate(false)}
-            >
-              Cancel
-            </button>
-             </form> 
+              <input
+                type={"text"}
+                placeholder="Update Room"
+                defaultValue={roomName}
+                className="inputFieldUpdate"
+                onChange={(e) => setUpdateName(e.target.value)}
+              />
+              <div className="push-down"></div>
+              {/* the update button */}
+              <input
+                type={"file"}
+                onChange={(e) => {
+                  uploadImage(e.target.files[0]);
+                }}
+                className="update-account"
+                id="file1"
+              />
+              <label htmlFor="file1" className="chooseRoomBtn">
+                Choose a photo
+              </label>
+              <button
+                className="updateRoomBtn"
+                // onClick={(e) => {
+                //   UpdateRoomFun(e, id);
+                //   setIsOpenUpdate(false);
+                // }}
+              >
+                Update Room
+              </button>
+              {/* the cancel model button */}
+              <button
+                className="cancelBtn"
+                onClick={() => setIsOpenUpdate(false)}
+              >
+                Cancel
+              </button>
+            </form>
           </div>
         </div>
       </div>
