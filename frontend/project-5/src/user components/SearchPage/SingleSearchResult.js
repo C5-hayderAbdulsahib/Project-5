@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -24,11 +24,7 @@ const SingleSearchResult = (props) => {
 
   const [renderSinglePage, setRenderSinglePage] = useState(false);
 
-  // console.log("this is me", user.id);
-
-  console.log("the room id is", search);
-
-  const dispatch = useDispatch();
+  // console.log("the room id is", search);
 
   const usersRoomsRelationsFun = () => {
     axios
@@ -39,7 +35,6 @@ const SingleSearchResult = (props) => {
       })
       .then((result) => {
         setUserRoomRelation(result.data.users_rooms_relation);
-        // console.log(result);
       })
       .catch((err) => {
         throw err;
@@ -47,7 +42,6 @@ const SingleSearchResult = (props) => {
   };
 
   const createPrivateRoom = (userId) => {
-    console.log(userId);
     axios
       .post(
         `http://localhost:5000/rooms/individual_room`,
@@ -60,7 +54,6 @@ const SingleSearchResult = (props) => {
       )
       .then((result) => {
         setRenderPage(!renderPage);
-        console.log(result);
       })
       .catch((err) => {
         throw err;
@@ -79,7 +72,6 @@ const SingleSearchResult = (props) => {
         }
       )
       .then((result) => {
-        console.log(result);
         setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
@@ -88,7 +80,6 @@ const SingleSearchResult = (props) => {
   };
 
   const unFollowRoom = (roomId) => {
-    console.log("the id is", roomId);
     axios
       .put(
         `http://localhost:5000/rooms/${roomId}/unfollow`,
@@ -100,15 +91,12 @@ const SingleSearchResult = (props) => {
         }
       )
       .then((result) => {
-        console.log(result);
         setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
         throw err;
       });
   };
-
-  // console.log(userRoomRelation);
 
   useEffect(() => {
     usersRoomsRelationsFun();
@@ -164,16 +152,13 @@ const SingleSearchResult = (props) => {
             {/*    <div className="room-info"> */}
             {/* <div className="result-text"> */}
             <div className="room-name">
-              {" "}
               <h1>{search.name}</h1>
             </div>
             <div className="room-type">
-              {" "}
               <p>Group</p>
             </div>
 
             {userRoomRelation?.forEach((element) => {
-              console.log(element);
               if (
                 element.room_id === search.id &&
                 element.user_id === user.id &&
