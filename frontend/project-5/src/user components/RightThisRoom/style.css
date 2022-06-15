@@ -23,27 +23,32 @@
 }
 .messages {
   display: flex;
-  width: 75vw;
+  gap: 20px;
+  width: 73vw;
   align-items: center;
   height: 100px;
   gap: 20px;
-  border: 2px solid red;
   left: 10px;
   bottom: 10px;
   margin-top: 10px;
   padding: -10px;
+  margin-left: 20px;
 }
+
+.messages:hover {
+  background-color: rgb(55, 57, 63);
+}
+
 .messageText {
   font-family: "Whitney", sans-serif;
   margin-top: 5px;
   color: rgb(185, 187, 190);
 }
 
-.messageTextContainer{
+.messageTextContainer {
   display: flex;
   flex-direction: column;
-  width: 65vw;
-  border: 2px solid aqua;
+  width: 60vw;
 }
 .userNameSend {
   cursor: default;
@@ -226,7 +231,7 @@
 }
 
 .toolTip:hover .toolTipText {
-  bottom: -130%;
+  bottom: -120%;
   visibility: visible;
   opacity: 1;
 }
@@ -381,7 +386,54 @@
   justify-content: space-between;
 }
 
-.date{
+.date {
   margin-right: 5px;
   color: rgb(185, 187, 190);
+}
+
+.menuIcon {
+  margin-left: 48vw;
+}
+
+.toolTipMenu {
+  position: relative;
+  cursor: pointer;
+}
+.toolTipTextMenu {
+  margin-top: 2px;
+  position: absolute;
+  transform: translateX(50%);
+  transform: translateY(-50%);
+  left: 50%;
+  color: rgb(168, 172, 175);
+  background-color: rgb(32, 34, 37);
+  white-space: nowrap;
+  padding: 15px 15px;
+  border-radius: 7px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.toolTipTextMenu:before {
+  content: "";
+  position: absolute;
+  transform: rotate(45deg);
+  left: 41%;
+  bottom: 70%;
+  border: 12px solid;
+  border-color: rgb(32, 34, 37) #0000 #0000 rgb(32, 34, 37);
+}
+
+.toolTipMenu:hover .toolTipTextMenu {
+  bottom: -120%;
+  visibility: visible;
+  opacity: 1;
+}
+
+.dotIcon {
+  color: rgb(185, 187, 190);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
 }
