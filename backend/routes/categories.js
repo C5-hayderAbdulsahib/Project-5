@@ -7,7 +7,7 @@ const {
   createNewRoomCategory,
   getAllCategories,
   updateCategoryById,
-  deleteCategoryById,
+  deleteCategoryById,getCategoryById
 } = require("../controllers/categories");
 
 const { createNewGroupRoom,getAllRoomsForCategory } = require("../controllers/rooms");
@@ -38,5 +38,6 @@ categoryRouter.post("/:id/rooms", authentication, createNewGroupRoom);
 
 categoryRouter.get("/:id/get_all_of_it_rooms", authentication, getAllRoomsForCategory);
 
+categoryRouter.get("/:id", authentication, getCategoryById);
 
 module.exports = categoryRouter;

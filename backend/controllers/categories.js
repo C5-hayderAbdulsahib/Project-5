@@ -1,3 +1,4 @@
+const { query } = require("../models/db");
 const connection = require("../models/db");
 
 //===============================================================================================================
@@ -124,9 +125,41 @@ const deleteCategoryById = (req, res) => {
   });
 };
 
+/////////////////////////////
+
+const getCategoryById = (req, res) => {
+  const id = req.params.id;
+
+  const command = `SELECT * FROM categories WHERE id = ? ;`;
+
+  const data = [id];
+
+  connection.query(command, data, (err, result) => {
+    console.log(result);
+    if (err) {
+      return res
+        .status(500)
+        .json({ success: false, message: "Server Error", err: err.message });
+    }
+    if (!result.length) {
+      return res.status(404).json({
+        success: false,
+        message: "The Category Is Not Found",
+      });
+    } else {
+      return res.status(200).json({
+        success: true,
+        message: "The Category For The Specified Id",
+        category: result[0],
+      });
+    }
+  });
+};
+
 module.exports = {
   createNewRoomCategory,
   getAllCategories,
   updateCategoryById,
   deleteCategoryById,
+  getCategoryById,
 };
