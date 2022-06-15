@@ -1,3 +1,5 @@
+
+
 .rightSideHomePage {
   background-color: rgb(54, 57, 63);
   display: flex;
@@ -391,49 +393,16 @@
   color: rgb(185, 187, 190);
 }
 
-.menuIcon {
+.menuContainer {
   margin-left: 48vw;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
-.toolTipMenu {
-  position: relative;
-  cursor: pointer;
-}
-.toolTipTextMenu {
-  margin-top: 2px;
-  position: absolute;
-  transform: translateX(50%);
-  transform: translateY(-50%);
-  left: 50%;
-  color: rgb(168, 172, 175);
-  background-color: rgb(32, 34, 37);
-  white-space: nowrap;
-  padding: 15px 15px;
-  border-radius: 7px;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
 
-.toolTipTextMenu:before {
-  content: "";
-  position: absolute;
-  transform: rotate(45deg);
-  left: 41%;
-  bottom: 70%;
-  border: 12px solid;
-  border-color: rgb(32, 34, 37) #0000 #0000 rgb(32, 34, 37);
-}
-
-.toolTipMenu:hover .toolTipTextMenu {
-  bottom: -120%;
-  visibility: visible;
-  opacity: 1;
-}
-
-.dotIcon {
-  color: rgb(185, 187, 190);
+.deleteMessage{
+   color: rgb(185, 187, 190);
   height: 30px;
   width: 30px;
-  cursor: pointer;
 }

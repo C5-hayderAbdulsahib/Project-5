@@ -21,7 +21,7 @@ import { MdSystemUpdateAlt } from "react-icons/md";
 import { MdGroup } from "react-icons/md";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { IoSend } from "react-icons/io5";
-import { BiDotsVerticalRounded } from "react-icons/bi";
+import { IoMdCreate } from "react-icons/io";
 
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
@@ -150,8 +150,15 @@ export const RightThisRoom = () => {
                   </span>
                 </div>
               </div>
-              <div className="menuIcon">
-                <BiDotsVerticalRounded className="dotIcon" />
+              <div className="menuContainer">
+                <div className="toolTip">
+                  <span className="toolTipText">Delete Message</span>
+                  <MdDelete className="deleteMessage" />
+                </div>
+                <div className="toolTip">
+                  <span className="toolTipText">Update Message</span>
+                  <IoMdCreate className="updateRoom" />
+                </div>
               </div>
             </div>
           </div>
