@@ -33,12 +33,14 @@ function App() {
       {/* the reason tha twe add the adminPage condition is because we don't want the navbar to be shown inside the superAdmin page  */}
 
       <Routes>
-        <Route path="/super_admin/home" element={<SuperHomePage />} />
         <Route path="/super_admin/signin" element={<SuperSigninPage />} />
         <Route path="/rooms/search" element={<SearchPage />} />
         <Route path="/account_page" element={<AccountPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
+
+        {/* we put the * because this route has a nested route */}
+        <Route path="/super_admin/home/*" element={<SuperHomePage />} />
 
         {/* we put the * because this route has a nested route */}
         <Route path="/rooms/*" element={<LeftMyRooms />} />

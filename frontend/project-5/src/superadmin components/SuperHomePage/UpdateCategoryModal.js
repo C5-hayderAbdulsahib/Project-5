@@ -10,9 +10,9 @@ const UpdateCategoryModal = (props) => {
     setUpdateName,
     updateCategoryFun,
     id,
-    // logout,
+    setRenderPage,
     setIsOpen,
-    // token,
+    renderPage,
   } = props;
 
   return (
@@ -49,10 +49,11 @@ const UpdateCategoryModal = (props) => {
                     onClick={(e) => {
                       updateCategoryFun(e, id);
                       setIsOpen(false);
+                      setRenderPage(!renderPage);
                     }}
                     className="updateBtn"
                   >
-                    Update Category   < IoIosCreate />
+                    Update Category <IoIosCreate />
                   </button>
                   {/* the cancel model button */}
                   <button

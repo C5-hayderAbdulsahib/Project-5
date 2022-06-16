@@ -1,6 +1,8 @@
+//import packages
+import { useNavigate } from "react-router-dom";
+
 //import styling
 import "./DeleteCategoryModal.css";
-
 
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
@@ -11,10 +13,12 @@ const DeleteCategoryModal = (props) => {
     deleteCategoryFun,
     id,
     name,
-    // logout,
+    // setRenderPage,
     setIsOpenDelete,
-    // token,
+    // renderPage,
   } = props;
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -41,9 +45,10 @@ const DeleteCategoryModal = (props) => {
                     onClick={() => {
                       deleteCategoryFun(id);
                       setIsOpenDelete(false);
+                      navigate("/super_admin/home/");
                     }}
                   >
-                    Delete Category < BsTrashFill />
+                    Delete Category <BsTrashFill />
                   </button>
                   {/* the cancel model button */}
                   <button className="cancelBtn">Cancel</button>
