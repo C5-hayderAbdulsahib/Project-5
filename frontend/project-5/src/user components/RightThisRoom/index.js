@@ -253,7 +253,7 @@ export const RightThisRoom = () => {
                   <div className="toolTip">
                     <span className="toolTipText">Leave Room</span>
                     <ImExit
-                      className="FollowRequestList"
+                      className="leaveIcon"
                       onClick={() => {
                         setIsOpenFollowRequest(true);
                       }}
