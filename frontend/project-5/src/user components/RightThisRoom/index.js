@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { io } from "socket.io-client";
 
 //importing css
 import "./style.css";
@@ -27,6 +28,10 @@ import { IoCreateOutline } from "react-icons/io5";
 import { AiFillFile } from "react-icons/ai";
 import { AiOutlineDownload } from "react-icons/ai";
 
+//socket connection
+const ENDPOINT = "http://localhost:5000";
+const socket = io.connect(ENDPOINT);
+
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
   const { token, user } = useSelector((state) => {
@@ -49,6 +54,13 @@ export const RightThisRoom = () => {
 
   const [renderPage, setRenderPage] = useState(false);
 
+  //states for socket
+  const [messageContentState, setMessageContentState] = useState("");
+  const [messageList, setMessageList] = useState([]);
+  const [updateInput, setUpdateInput] = useState(false);
+  const [updatedMessage, setUpdatedMessage] = useState("");
+  const [messageIndex, setMessageIndex] = useState(-1);
+
   // `useParams` returns an object that contains the URL parameters
   const { id } = useParams();
 
@@ -60,9 +72,13 @@ export const RightThisRoom = () => {
         },
       })
       .then((result) => {
-        console.log(result.data.room);
+        // console.log(result.data.room);
         setRoom(result.data.room);
         setErrMessage("");
+
+        socket.emit("JOIN_ROOM", result.data.room.id);
+
+        socket.emit("GET_MESSAGES", result.data.room.id);
       })
       .catch((err) => {
         console.log(err.response.data.message);
@@ -78,6 +94,113 @@ export const RightThisRoom = () => {
       getRoomById();
     }
   }, [id, renderPage]); //the reason the i added the renderPage is because the get room by id came from the backend and it does not have a action in redux so it only have local state thats why i added the renderPage in order to make useEffect rerender the page again on update or delete
+
+  // socket io for messages
+  //this useEffect is used to bring any data when the emit event is triggered from the backend
+  useEffect(() => {
+    socket.on("SEND_MESSAGE_TO_FRONT", (allMessages) => {
+      setMessageList(allMessages);
+    });
+  });
+
+  const sendMessage = (e) => {
+    e.preventDefault();
+    const messageContent = {
+      room_id: room.id,
+      content: {
+        user_id: user.id,
+        username: user.username,
+        description: messageContentState,
+      },
+    };
+
+    socket.emit("SEND_MESSAGE_TO_BACKEND", messageContent);
+
+    socket.on("SEND_NEW_MESSAGE_TO_FRONT", (allMessages) => {
+      setMessageList(allMessages);
+    });
+  };
+
+  const sendImage = (imgURL) => {
+    console.log("the image url is this one", imgURL);
+    const messageContent = {
+      room_id: room.id,
+      content: {
+        user_id: user.id,
+        username: user.username,
+        message_image: imgURL,
+      },
+    };
+
+    socket.emit("SEND_IMAGE_TO_BACKEND", messageContent);
+
+    socket.on("SEND_MESSAGE_TO_FRONT", (allMessages) => {
+      setMessageList(allMessages);
+    });
+  };
+
+  const sendFile = (fileURL) => {
+    console.log("the file url is this one", fileURL);
+    const messageContent = {
+      room_id: room.id,
+      content: {
+        user_id: user.id,
+        username: user.username,
+        document: fileURL,
+      },
+    };
+
+    socket.emit("SEND_File_TO_BACKEND", messageContent);
+
+    socket.on("SEND_MESSAGE_TO_FRONT", (allMessages) => {
+      setMessageList(allMessages);
+    });
+  };
+
+  const deleteMessage = (messageId, roomId) => {
+    socket.emit("DELETE_MESSAGE", messageId, roomId);
+  };
+
+  const updateMessage = (e, messageId, roomId) => {
+    e.preventDefault();
+    console.log(updatedMessage);
+    socket.emit("UPDATE_MESSAGE", messageId, roomId, updatedMessage);
+  };
+
+  //this function is for uploading images on my account on cloudinary server
+  const uploadImage = (imgData) => {
+    const data = new FormData();
+    data.append("file", imgData); //adding the image to the state
+    data.append("upload_preset", "merakie");
+    data.append("cloud_name", "dkqqtkt3b");
+    fetch("https://api.cloudinary.com/v1_1/dkqqtkt3b/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        console.log(data.url);
+        sendImage(data.url);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //this function is for uploading files on my account on cloudinary server
+  const uploadFile = (fileData) => {
+    const data = new FormData();
+    data.append("file", fileData); //adding the file to the state
+    data.append("upload_preset", "merakie");
+    data.append("cloud_name", "dkqqtkt3b");
+    fetch("https://api.cloudinary.com/v1_1/dkqqtkt3b/raw/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        sendFile(data.url);
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <>
@@ -142,6 +265,160 @@ export const RightThisRoom = () => {
           </div>
 
           <div className="centerSide">
+            {/* <div className="messages"> */}
+            {messageList.map((element, index) => {
+              return (
+                <div className="messages" key={index}>
+                  {element.description && (
+                    <>
+                      <div className="sendImage">
+                        <img
+                          src={element.profile_image}
+                          alt="user image"
+                          className="sendImageProfile"
+                        />
+                      </div>
+
+                      <div className="sendName">
+                        <div className="userInfoContainer">
+                          <p className="userNameSend">{element.username}</p>
+
+                          <span className="date">
+                            {new Date(element.created_at)
+                              .toString()
+                              .substring(4, 10) +
+                              "-" +
+                              new Date(element.created_at)
+                                .toString()
+                                .substring(16, 21)}
+                          </span>
+                        </div>
+
+                        <div className="messageTextContainer">
+                          {updateInput && messageIndex === index ? (
+                            <form
+                              onSubmit={(e) => {
+                                updateMessage(e, element.id, room.id);
+                                setUpdateInput(!updateInput);
+                              }}
+                            >
+                              <input
+                                defaultValue={element.description}
+                                onChange={(e) =>
+                                  setUpdatedMessage(e.target.value)
+                                }
+                              />
+                            </form>
+                          ) : (
+                            <span className="messageText">
+                              <p> {element.description}</p>
+                            </span>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="menuContainer"></div>
+                      {element.user_id === user.id && (
+                        <>
+                          <IoMdCreate
+                            className="updateRoom"
+                            onClick={() => {
+                              setUpdateInput(!updateInput);
+                              console.log(index);
+                              setMessageIndex(index);
+                            }}
+                          />
+
+                          <MdDelete
+                            className="deleteMessage"
+                            onClick={() => {
+                              deleteMessage(element.id, room.id);
+                            }}
+                          />
+                        </>
+                      )}
+                    </>
+                  )}
+
+                  {element.message_image && (
+                    <div>
+                      <img
+                        src={element.message_image}
+                        alt="messuage image"
+                        style={{ height: "50px", width: "50px" }}
+                      />
+                      <p>user: {element.username}</p>
+
+                      <img
+                        src={element.profile_image}
+                        alt="messuage image"
+                        style={{ height: "50px", width: "50px" }}
+                      />
+
+                      <p>
+                        Date:
+                        {new Date(element.created_at)
+                          .toString()
+                          .substring(4, 10) +
+                          "-" +
+                          new Date(element.created_at)
+                            .toString()
+                            .substring(16, 21)}
+                      </p>
+
+                      {element.user_id === user.id && (
+                        <button
+                          onClick={() => {
+                            deleteMessage(element.id, room.id);
+                          }}
+                        >
+                          delete
+                        </button>
+                      )}
+                      <hr></hr>
+                    </div>
+                  )}
+
+                  {/* {element.document && (
+                    <div>
+                      <p>{"this is a old File File file" + element.document}</p>
+                      <p>user: {element.username}</p>
+
+                      <img
+                        src={element.profile_image}
+                        alt="messuage image"
+                        style={{ height: "50px", width: "50px" }}
+                      />
+
+                      <p>
+                        Date:
+                        {new Date(element.created_at)
+                          .toString()
+                          .substring(4, 10) +
+                          "-" +
+                          new Date(element.created_at)
+                            .toString()
+                            .substring(16, 21)}
+                      </p>
+
+                      {element.user_id === user.id && (
+                        <button
+                          onClick={() => {
+                            deleteMessage(element.id, room.id);
+                          }}
+                        >
+                          delete
+                        </button>
+                      )}
+                      <hr></hr>
+                    </div>
+                  )} */}
+                </div>
+              );
+            })}
+            {/* </div> */}
+
+            {/* //////////////////////////////////////////////// */}
             <div className="messages">
               <div className="sendImage">
                 <img
@@ -169,6 +446,8 @@ export const RightThisRoom = () => {
                 <IoMdCreate className="updateRoom" />
               </div>
             </div>
+
+            {/* //////////////////////////////////////////////// */}
             <div className="messagesDocument">
               <div className="sendImage">
                 <img
@@ -222,18 +501,25 @@ export const RightThisRoom = () => {
               </div>
             </div>
           </div>
+
           <div className="buttomSide">
             <div className="InputFelid">
+              {/* <form> </form> */}
               <input
                 className="inputMessage"
                 type={"text"}
                 placeholder={`Message The ${room.name}`}
+                onChange={(e) => {
+                  setMessageContentState(e.target.value);
+                }}
               />
             </div>
+
             <div className="buttomIcons">
               <div className="sendReactIcon">
-                <IoSend className="sendIconTow" />
+                <IoSend className="sendIconTow" onClick={sendMessage} />
               </div>
+
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload File</span>
                 <input type={"file"} className="update-account" id="file" />
@@ -241,6 +527,7 @@ export const RightThisRoom = () => {
                   <TbFileUpload className="sendIconTow" />
                 </label>
               </div>
+
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload Image</span>
                 <input type={"image"} className="update-account" id="file" />
