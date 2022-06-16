@@ -9,14 +9,7 @@ import { RiCloseLine } from "react-icons/ri";
 import { BsTrashFill } from "react-icons/bs";
 
 const DeleteCategoryModal = (props) => {
-  const {
-    deleteCategoryFun,
-    id,
-    name,
-    // setRenderPage,
-    setIsOpenDelete,
-    // renderPage,
-  } = props;
+  const { deleteCategoryFun, id, name, setIsOpenDelete } = props;
 
   const navigate = useNavigate();
 
