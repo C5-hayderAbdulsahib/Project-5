@@ -150,6 +150,45 @@ const RightThisCategory = () => {
         <>
           {/* the model component for update category */}
           {/* we make a condition if the state is false then don't show the model else show it */}
+
+          <div>
+            <div className="categoryelemntNav">
+              <div className="categoryNavName">{category.name}</div>
+              <div className="categoryBtn">
+                <button
+                  onClick={() => setIsOpen(true)}
+                  className="UpdateCategoryBtn"
+                >
+                  Update <IoIosCreate />
+                </button>
+
+                <button
+                  onClick={() => setIsOpenDelete(true)}
+                  className="DeleteCategoryBtn"
+                >
+                  Delete <BsTrashFill />
+                </button>
+              </div>
+            </div>
+            <div className="superAdminRoomContainer">
+              {roomsCategory?.map((element) => {
+                return (
+                  <div className="categoryContainer" key={element.id}>
+                    <p className="categoryRoomName">{element.name}</p>
+
+                    <button
+                      className="DeleteCategoryBtnRoom"
+                      onClick={() => {
+                        deleteRoomFun(element.id);
+                      }}
+                    >
+                      Delete Room
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
           {isOpen && (
             <UpdateCategoryModal
               name={category.name}
@@ -171,46 +210,6 @@ const RightThisCategory = () => {
               setIsOpenDelete={setIsOpenDelete} //the reason that we send this state is to be able to close the model in the model component
             />
           )}
-          <div>
-            <div className="categoryelemntNav">
-              <div className="categoryBtn">
-                <div>{category.name}</div>
-
-                <button
-                  onClick={() => setIsOpen(true)}
-                  className="UpdateCategoryBtn"
-                >
-                  Update <IoIosCreate />
-                </button>
-
-                <button
-                  onClick={() => setIsOpenDelete(true)}
-                  className="DeleteCategoryBtn"
-                >
-                  Delete <BsTrashFill />
-                </button>
-              </div>
-            </div>
-
-            <div className="superAdminRoomContainer">
-              {roomsCategory?.map((element) => {
-                return (
-                  <div className="categoryContainer" key={element.id}>
-                    <p className="categoryRoomName">{element.name}</p>
-
-                    <button
-                    className="categoryRoomDeleteBtn"
-                      onClick={() => {
-                        deleteRoomFun(element.id);
-                      }}
-                    >
-                      delete Room
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </>
       ) : (
         <div>{errMessage && <p>{errMessage}</p>}</div>

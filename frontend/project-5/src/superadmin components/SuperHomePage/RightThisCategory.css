@@ -11,6 +11,10 @@
   border-bottom: 0.5px solid black;
 }
 
+.UpdateCategoryBtn {
+  margin-right: 10px;
+}
+
 .superAdminRoomContainer {
   display: flex;
   flex-direction: column;
@@ -40,14 +44,40 @@
   background-color: rgb(42, 43, 46);
 }
 
-.categoryRoomName{
+.categoryRoomName {
   margin-left: 10px;
   color: white;
   font-size: 20px;
   font-weight: 300;
 }
 
-.categoryRoomDeleteBtn{
+.categoryRoomDeleteBtn {
   margin-right: 10px;
   height: 30px;
+}
+
+.DeleteCategoryBtnRoom {
+  width: 130px;
+  font-size: 15px;
+  font-weight: bold;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+  background-color: #a94442;
+  color: white;
+  cursor: pointer;
+  font-family: "Whitney", sans-serif;
+}
+
+.DeleteCategoryBtnRoom:hover {
+  background-color: white;
+  color: #a94442;
+}
+
+.categoryNavName {
+  color: aliceblue;
+  font-size: 27px;
+  margin-left: 10px;
 }
