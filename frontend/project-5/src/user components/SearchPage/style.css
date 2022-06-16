@@ -74,8 +74,8 @@
 
 /* userRoom-image */
 .result-Room .result-image {
-  width: 12rem;
-  height: 12rem;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
 }
 
@@ -236,7 +236,7 @@
 
   color: #7289d9;
   background: white;
-  padding: 15px 6px;
+  padding: 15px 30px;
 border-radius: 5px;
  margin: 10px 10px;
  
@@ -249,7 +249,7 @@ border-radius: 5px;
 
   color: #42464D;
   background: white;
-  padding: 15px 20px;
+  padding: 15px 35px;
 border-radius: 5px;
  margin: 10px 15px;
  
@@ -330,6 +330,7 @@ border-radius: 5px;
 
   .SingleSearchResult .room-type {
     font-size: 13px;
+    width: 150px;
   }
 
   .result-button .follow-btn {
