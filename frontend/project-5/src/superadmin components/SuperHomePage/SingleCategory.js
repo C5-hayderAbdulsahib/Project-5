@@ -13,6 +13,7 @@ const SingleCategory = (props) => {
     <>
       <div className="categoryelemnt">
         <div>
+          <h1>Mosa</h1>
           <p
             className="categoryName"
             onClick={() => {
