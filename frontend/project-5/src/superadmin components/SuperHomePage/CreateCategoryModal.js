@@ -10,7 +10,7 @@ import axios from "axios";
 import "./CreateCategoryModal.css";
 
 //import icons
-import { IoMdAdd   } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 
 const CreateCategoryModal = (props) => {
   const dispatch = useDispatch("");
@@ -21,7 +21,7 @@ const CreateCategoryModal = (props) => {
   });
   //======================================================================================================
 
-  const { setIsOpen } = props;
+  const { setIsOpenCreateCategory } = props;
   const [name, setName] = useState("");
 
   //======================================================================================================
@@ -42,7 +42,7 @@ const CreateCategoryModal = (props) => {
       .then((result) => {
         if (result.data.success) {
           dispatch(addCategory(result.data.category));
-          setIsOpen(false);
+          setIsOpenCreateCategory(false);
         }
       })
       .catch((err) => {
@@ -56,13 +56,19 @@ const CreateCategoryModal = (props) => {
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
       <div className="CreateCategoryModal">
-        <div className="darkBG" onClick={() => setIsOpen(false)} />
+        <div
+          className="darkBG"
+          onClick={() => setIsOpenCreateCategory(false)}
+        />
         <div className="centered">
           <div className="modal">
             <div className="modalHeader">
               <h5 className="heading">Create a category</h5>
             </div>
-            <button className="closeBtn" onClick={() => setIsOpen(false)}>
+            <button
+              className="closeBtn"
+              onClick={() => setIsOpenCreateCategory(false)}
+            >
               <RiCloseLine style={{ marginBottom: "-3px" }} />
             </button>
 
@@ -84,14 +90,14 @@ const CreateCategoryModal = (props) => {
                   {/* the update button */}
                   <div className="shiftingToLeft">
                     <button className="createBtn" onClick={createCategory}>
-                      Create Category  < IoMdAdd />
+                      Create Category <IoMdAdd />
                     </button>
 
                     {/* the cancel model button */}
                     <button
                       className="cancelBtn"
                       onClick={() => {
-                        setIsOpen(false);
+                        setIsOpenCreateCategory(false);
                       }}
                     >
                       Cancel

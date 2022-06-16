@@ -1,11 +1,15 @@
-
-
 /* Super Admin Page */
 
 .superadminMain {
   background-color: #2a2b38;
   width: 100vw;
   height: 100vh;
+}
+
+.superadminMain .display-grid-super-admin {
+  display: grid;
+  grid-template-columns: 300px auto;
+  height: 94.6vh;
 }
 
 .superTitle {
@@ -55,29 +59,20 @@
   color: white;
 }
 
-
-
-.superNav{
- display: flex;
-justify-content: space-between;
- align-items: center;
-
+.superNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-
 
 .superNav .superTitle {
   margin-left: 50px;
-
-
-
 }
 
-
 .superNav .logOut {
-
   margin-right: 50px;
   font-size: 20px;
-  
+
   padding: 5px 25px;
   font-family: "Whitney", sans-serif;
   font-weight: 900;
@@ -85,5 +80,4 @@ justify-content: space-between;
   background-color: #7289d9;
   color: white;
   cursor: pointer;
-  
 }
