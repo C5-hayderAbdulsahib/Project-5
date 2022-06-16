@@ -52,7 +52,10 @@ const CreateNewAdminModel = (props) => {
               <h5 className="heading">Create A Super Admin</h5>
             </div>
             <button className="closeBtn" onClick={() => setIsOpenAdmin(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine
+                className="exitIcon"
+                style={{ marginBottom: "-3px" }}
+              />
             </button>
 
             {/*  <div className="superAdmin"    > */}

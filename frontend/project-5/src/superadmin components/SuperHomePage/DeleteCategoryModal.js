@@ -7,6 +7,7 @@ import "./DeleteCategoryModal.css";
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 import { BsTrashFill } from "react-icons/bs";
+import "./DeleteCategoryModal.css";
 
 const DeleteCategoryModal = (props) => {
   const { deleteCategoryFun, id, name, setIsOpenDelete } = props;
@@ -24,7 +25,10 @@ const DeleteCategoryModal = (props) => {
               <h5 className="heading">Delete a category </h5>
             </div>
             <button className="closeBtn" onClick={() => setIsOpenDelete(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine
+                className="exitIcon"
+                style={{ marginBottom: "-3px" }}
+              />
             </button>
             <div className="superAdmin">
               <div className="modalContent">

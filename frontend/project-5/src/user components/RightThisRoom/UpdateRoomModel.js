@@ -106,31 +106,32 @@ export const UpdateRoomModel = (props) => {
                   className="inputFieldUpdate"
                   onChange={(e) => setUpdateName(e.target.value)}
                 />
-                <div className="push-down"></div>
-                {/* the update button */}
-                <input
-                  type={"file"}
-                  onChange={(e) => {
-                    uploadImage(e.target.files[0]);
-                  }}
-                  className="update-account"
-                  id="file1"
-                />
-                <label htmlFor="file1" className="chooseRoomBtn">
-                  Choose a photo
-                </label>
-                <button
-                  className="updateRoomBtn"
-                  // onClick={(e) => {
-                  //   UpdateRoomFun(e, id);
-                  //   setIsOpenUpdate(false);
-                  // }}
-                >
-                  Update Room
-                </button>
+                <div className="push-down">
+                  {/* the update button */}
+                  <input
+                    type={"file"}
+                    onChange={(e) => {
+                      uploadImage(e.target.files[0]);
+                    }}
+                    className="update-account"
+                    id="file1"
+                  />
+                  <label htmlFor="file1" className="chooseRoomBtn">
+                    Choose a photo
+                  </label>
+                  <button
+                    className="updateRoomBtn"
+                    // onClick={(e) => {
+                    //   UpdateRoomFun(e, id);
+                    //   setIsOpenUpdate(false);
+                    // }}
+                  >
+                    Update Room
+                  </button>
+                </div>
                 {/* the cancel model button */}
                 <button
-                  className="cancelBtn"
+                  className="cancelBtnUpdate"
                   onClick={() => setIsOpenUpdate(false)}
                 >
                   Cancel

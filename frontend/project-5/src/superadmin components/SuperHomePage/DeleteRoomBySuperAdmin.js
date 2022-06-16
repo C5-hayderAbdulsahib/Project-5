@@ -27,7 +27,10 @@ const DeleteRoomBySuperAdmin = (props) => {
               className="closeBtn"
               onClick={() => setIsOpenDeleteRoom(false)}
             >
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine
+                className="exitIcon"
+                style={{ marginBottom: "-3px" }}
+              />
             </button>
             <div className="superAdmin">
               <div className="modalContent">
