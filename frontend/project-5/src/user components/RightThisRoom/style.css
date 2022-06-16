@@ -25,7 +25,7 @@
 .messages {
   display: flex;
   gap: 20px;
-    height: 150px;
+  height: 80px;
   width: 73vw;
   align-items: center;
   gap: 20px;
@@ -35,7 +35,7 @@
   padding: -10px;
   margin-left: 20px;
   border-radius: 5px;
-    background-color: rgb(55, 57, 63)
+  background-color: rgb(55, 57, 63);
 }
 
 .messages:hover {
@@ -407,9 +407,8 @@
   width: 30px;
   cursor: pointer;
 }
-.deleteMessage:hover{
+.deleteMessage:hover {
   color: rgb(202, 104, 104);
- ;
 }
 
 .buttomIcons {
@@ -494,22 +493,20 @@
   cursor: pointer;
 }
 
-.deleteDocumentMessage:hover{
-    color: rgb(202, 104, 104);
-
+.deleteDocumentMessage:hover {
+  color: rgb(202, 104, 104);
 }
 
-.DownloadDocumentMessage{
-   color: rgb(185, 187, 190);
+.DownloadDocumentMessage {
+  color: rgb(185, 187, 190);
   height: 30px;
   width: 30px;
   margin-left: 30px;
   cursor: pointer;
 }
 
-
-.DownloadDocumentMessage:hover{
-   color: white;
+.DownloadDocumentMessage:hover {
+  color: white;
 }
 
 .documentcontainer {
@@ -522,7 +519,7 @@
   height: 400px;
   width: 500px;
   margin-left: 20px;
-   background-color: rgb(55, 57, 63);
+  background-color: rgb(55, 57, 63);
 }
 
 .messagesImage:hover {
@@ -545,15 +542,13 @@
   margin-left: 20px;
 }
 
-
 .dateImage {
   margin-left: 30px;
   color: rgb(185, 187, 190);
 }
 
-.iconContainer{
+.iconContainer {
   display: flex;
   width: 200px;
   margin-left: 100px;
 }
-
