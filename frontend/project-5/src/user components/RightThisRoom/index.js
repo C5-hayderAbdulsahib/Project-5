@@ -221,6 +221,32 @@ export const RightThisRoom = () => {
                 </div>
               </div>
             </div>
+            <div className="messagesImage">
+              <div className="sendImage">
+                <img
+                  className="sendImageProfile"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkTQ8DFOgujidIRil33r2QnSZ2Y_ZHahrUlw&usqp=CAU"
+                  alt="user image"
+                />
+              </div>
+              <div className="sendName">
+                <div className="userInfoContainerImage">
+                  <p className="userNameSend">Mosa saleh</p>
+                  <span className="dateImage">data</span>
+                  <div className="iconContainer">
+                    <MdDelete className="deleteDocumentMessage" />
+                    <AiOutlineDownload className="DownloadDocumentMessage" />
+                  </div>
+                </div>
+                <div className="messageTextContainerDocument">
+                  <img
+                    className="imageDocument"
+                    src="https://techcrunch.com/wp-content/uploads/2021/05/Discord_IAP_KeyVisuals_Header_02.jpeg"
+                  />
+                  <div className="documentcontainer"></div>
+                </div>
+              </div>
+            </div>
           </div>
           <div className="buttomSide">
             <div className="InputFelid">

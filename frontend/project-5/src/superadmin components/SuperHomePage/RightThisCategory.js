@@ -19,6 +19,10 @@ import {
 } from "../../redux/reducers/categories";
 import { deleteRoom } from "../../redux/reducers/rooms";
 
+// import css
+
+import "./RightThisCategory.css";
+
 const RightThisCategory = () => {
   const dispatch = useDispatch("");
   const { token } = useSelector((state) => {
@@ -167,42 +171,46 @@ const RightThisCategory = () => {
               setIsOpenDelete={setIsOpenDelete} //the reason that we send this state is to be able to close the model in the model component
             />
           )}
-
-          <div className="categoryelemnt">
-            <div className="categoryBtn">
-              <button
-                onClick={() => setIsOpen(true)}
-                className="UpdateCategoryBtn"
-              >
-                Update <IoIosCreate />
-              </button>
-
-              <button
-                onClick={() => setIsOpenDelete(true)}
-                className="DeleteCategoryBtn"
-              >
-                Delete <BsTrashFill />
-              </button>
-            </div>
-          </div>
-
-          <div>{category.name}</div>
-
-          {roomsCategory?.map((element) => {
-            return (
-              <div key={element.id}>
-                <p>{element.name}</p>
+          <div>
+            <div className="categoryelemntNav">
+              <div className="categoryBtn">
+                <div>{category.name}</div>
 
                 <button
-                  onClick={() => {
-                    deleteRoomFun(element.id);
-                  }}
+                  onClick={() => setIsOpen(true)}
+                  className="UpdateCategoryBtn"
                 >
-                  delete Room
+                  Update <IoIosCreate />
+                </button>
+
+                <button
+                  onClick={() => setIsOpenDelete(true)}
+                  className="DeleteCategoryBtn"
+                >
+                  Delete <BsTrashFill />
                 </button>
               </div>
-            );
-          })}
+            </div>
+
+            <div className="superAdminRoomContainer">
+              {roomsCategory?.map((element) => {
+                return (
+                  <div className="categoryContainer" key={element.id}>
+                    <p className="categoryRoomName">{element.name}</p>
+
+                    <button
+                    className="categoryRoomDeleteBtn"
+                      onClick={() => {
+                        deleteRoomFun(element.id);
+                      }}
+                    >
+                      delete Room
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </>
       ) : (
         <div>{errMessage && <p>{errMessage}</p>}</div>
