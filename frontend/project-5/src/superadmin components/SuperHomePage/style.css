@@ -1,9 +1,8 @@
 /* Super Admin Page */
 
 .superadminMain {
-  background-color: #2a2b38;
   width: 100vw;
-  height: 100vh;
+  height: 93vh;
 }
 
 .superadminMain .display-grid-super-admin {
@@ -20,26 +19,29 @@
 
 .CreateCategoryBtn {
   font-size: 20px;
-  margin-top: 35px;
-  padding: 5px 23px;
+  padding: 5px;
   font-family: "Whitney", sans-serif;
-  font-weight: 900;
+  font-weight: 600;
   margin-left: 10px;
-  background-color: #7289d9;
+  background-color: #7e8ab6;
   color: white;
   cursor: pointer;
+  width: 250px;
+  margin-top: 8px;
+  border-radius: 3px;
 }
 
 .CreateCategoryAdminBtn {
   font-size: 20px;
-  margin-top: 30px;
-  padding: 5px 11px;
   font-family: "Whitney", sans-serif;
-  font-weight: 900;
+  font-weight: 600;
   margin-left: 10px;
-  background-color: #7289d9;
+  background-color: #7e8ab6;
   color: white;
   cursor: pointer;
+  margin-bottom: 8px;
+  padding: 5px;
+  border-radius: 3px;
 }
 
 .categoryelemnt {
@@ -50,11 +52,9 @@
 }
 
 .categoryName {
-  font-size: 26px;
-  margin-top: 25px;
-  font-weight: bold;
+  font-size: 23px;
+  font-weight: 600;
   text-align: center;
-  margin-left: 10px;
   font-family: "Whitney", sans-serif;
   color: white;
 }
@@ -72,7 +72,6 @@
 .superNav .logOut {
   margin-right: 50px;
   font-size: 20px;
-
   padding: 5px 25px;
   font-family: "Whitney", sans-serif;
   font-weight: 900;
@@ -83,3 +82,49 @@
 }
 
 /*-----------------------------------------------------------------------------------------------------------*/
+
+.superLeftSide {
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: rgb(47, 49, 54);
+  border-right: 0.5px solid black;
+  height: 94.5vh;
+}
+
+.superNav {
+  background-color: rgb(47, 49, 54);
+  border-bottom: 0.5px solid black;
+}
+
+.categoryButtonMain {
+  display: grid;
+  border-bottom: 0.5px solid black;
+  gap: 2px;
+  justify-content: center;
+  position: sticky;
+}
+
+.categoryelemnt {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #919296;
+  margin-top: 8px;
+  margin-left: 9px;
+  user-select: none;
+  cursor: pointer;
+  width: 280px;
+  background-color: rgb(66, 70, 77);
+  border-radius: 3px;
+}
+
+.categoryelemnt:hover {
+  background-color: rgb(54, 57, 63);
+}
+
+.CategoryBody{
+  display: grid;
+justify-content: center;
+gap: 5px
+;}
