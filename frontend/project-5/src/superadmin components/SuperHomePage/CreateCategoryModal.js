@@ -69,7 +69,7 @@ const CreateCategoryModal = (props) => {
               className="closeBtn"
               onClick={() => setIsOpenCreateCategory(false)}
             >
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine className="exitIcon" style={{ marginBottom: "-3px" }} />
             </button>
 
             <div className="modalContent">
@@ -89,7 +89,10 @@ const CreateCategoryModal = (props) => {
                   />
                   {/* the update button */}
                   <div className="shiftingToLeft">
-                    <button className="createBtn" onClick={createCategory}>
+                    <button className="createBtn" onClick={(e)=>{
+                      console.log(10);
+                      createCategory(e);
+                    }}>
                       Create Category <IoMdAdd />
                     </button>
 

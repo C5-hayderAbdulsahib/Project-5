@@ -21,7 +21,6 @@ body {
   font-family: "Whitney", sans-serif;
   text-rendering: optimizeLegibility;
   /*use this proparity to prevent the user from blurring the speech*/
-  user-select: none;
   background-size: cover;
 }
 

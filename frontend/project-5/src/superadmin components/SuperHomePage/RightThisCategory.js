@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 //import components
 import UpdateCategoryModal from "./UpdateCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
+import DeleteRoomBySuperAdmin from "./DeleteRoomBySuperAdmin";
 
 //import icons
 import { IoIosCreate } from "react-icons/io";
@@ -37,8 +38,10 @@ const RightThisCategory = () => {
 
   const [isOpen, setIsOpen] = useState(false); //the reason that we created this state is for showing or hiding the model
   const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenDeleteRoom, setIsOpenDeleteRoom] = useState(false);
   const [updateName, setUpdateName] = useState("");
-
+  const [roomId, setRoomId] = useState("");
+  const [roomName, setRoomName] = useState("");
   const [renderPage, setRenderPage] = useState(false);
 
   // `useParams` returns an object that contains the URL parameters
@@ -173,18 +176,22 @@ const RightThisCategory = () => {
             <div className="superAdminRoomContainer">
               {roomsCategory?.map((element) => {
                 return (
-                  <div className="categoryContainer" key={element.id}>
-                    <p className="categoryRoomName">{element.name}</p>
+                  <>
+                    <div className="categoryContainer" key={element.id}>
+                      <p className="categoryRoomName">{element.name}</p>
 
-                    <button
-                      className="DeleteCategoryBtnRoom"
-                      onClick={() => {
-                        deleteRoomFun(element.id);
-                      }}
-                    >
-                      Delete Room
-                    </button>
-                  </div>
+                      <button
+                        className="DeleteCategoryBtnRoom"
+                        onClick={() => {
+                          setIsOpenDeleteRoom(true);
+                          setRoomId(element.id);
+                          setRoomName(element.name);
+                        }}
+                      >
+                        Delete Room
+                      </button>
+                    </div>
+                  </>
                 );
               })}
             </div>
@@ -208,6 +215,14 @@ const RightThisCategory = () => {
               id={id}
               name={category.name}
               setIsOpenDelete={setIsOpenDelete} //the reason that we send this state is to be able to close the model in the model component
+            />
+          )}
+          {isOpenDeleteRoom && (
+            <DeleteRoomBySuperAdmin
+              setIsOpenDeleteRoom={setIsOpenDeleteRoom}
+              id={roomId}
+              deleteRoomFun={deleteRoomFun}
+              name={roomName}
             />
           )}
         </>

@@ -149,7 +149,7 @@
 }
 
 .groupIcon {
-  color: rgb(185, 187, 190);
+  color: rgb(211, 214, 219);
   margin-left: 10px;
   height: 30px;
   width: 30px;
@@ -164,28 +164,38 @@
 }
 
 .listIcon {
-  color: rgb(185, 187, 190);
+  color: rgb(211, 214, 219);
   height: 30px;
   width: 30px;
   cursor: pointer;
 }
 
 .FollowRequestList {
-  color: rgb(185, 187, 190);
+  color: rgb(211, 214, 219);
   height: 28px;
   width: 28px;
   cursor: pointer;
 }
 
 .deleteRoom {
-  color: rgb(185, 187, 190);
+  color: rgb(202, 104, 104);
   height: 30px;
   width: 30px;
   cursor: pointer;
 }
 
+.leaveIcon {
+  color: rgb(202, 104, 104);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.leaveIcon:hover {
+  color: rgb(230, 65, 65);
+}
 .updateRoom {
-  color: rgb(185, 187, 190);
+  color: rgb(211, 214, 219);
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -197,7 +207,7 @@
   color: rgb(255, 255, 226);
 }
 .deleteRoom:hover {
-  color: rgb(202, 104, 104);
+  color: rgb(230, 65, 65);
 }
 
 .FollowRequestList:hover {
