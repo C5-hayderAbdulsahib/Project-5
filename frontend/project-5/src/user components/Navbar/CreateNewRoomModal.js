@@ -149,58 +149,57 @@ export const CreateNewRoomModal = (props) => {
                       placeholder="Create Room"
                       onChange={(e) => setName(e.target.value)}
                     />
-                    <div className="push-down"></div>
+
                     {categoriesList && (
                       <div>
-                        <label htmlFor="categories">
+                        <label className="NameCategory" htmlFor="categories">
                           Choose a Category Type And a Photo:
                         </label>
+                        <div className="push-downSelect">
+                          <select
+                            id="categories"
+                            className="selector"
+                            onChange={(e) => setChooseCategory(e.target.value)}
+                          >
+                            <option value="">Choose A Category</option>
 
-                        <select
-                          id="categories"
-                          className="selector"
-                          onChange={(e) => setChooseCategory(e.target.value)}
-                        >
-                          <option value="">Choose A Category</option>
-
-                          {categoriesList}
-                        </select>
-                        <input
-                          type={"file"}
-                          onChange={(e) => {
-                            console.log(
-                              "asdffffffffffffffffffffffffffffffffffffffffadsfkngioadfongadfongodsfjgjnjdsfjg"
-                            );
-                            uploadImage(e.target.files[0]);
-                          }}
-                          className="update-account"
-                          id="file"
-                        />
-                        <label htmlFor="file" className="chooseRoomBtnCreate">
-                          Choose a photo
-                        </label>
+                            {categoriesList}
+                          </select>
+                          <input
+                            type={"file"}
+                            onChange={(e) => {
+                              uploadImage(e.target.files[0]);
+                            }}
+                            className="update-account"
+                            id="file"
+                          />
+                          <label htmlFor="file" className="chooseRoomBtnCreate">
+                            Choose a photo
+                          </label>
+                        </div>
                       </div>
                     )}
-                    <div className="push-down"></div>
-                    {/* the create button */}
-                    <button
-                      className="createBtn"
-                      onClick={(e) => {
-                        createRoom(e, chooseCategory);
-                      }}
-                    >
-                      Create New Room
-                    </button>
-                    {/* the cancel model button */}
-                    <button
-                      className="cancelBtn"
-                      onClick={() => {
-                        setMessage("");
-                        setIsOpen(false);
-                      }}
-                    >
-                      Cancel
-                    </button>
+                    <div className="push-downCreate">
+                      {/* the create button */}
+                      <button
+                        className="createBtnRoom"
+                        onClick={(e) => {
+                          createRoom(e, chooseCategory);
+                        }}
+                      >
+                        Create New Room
+                      </button>
+                      {/* the cancel model button */}
+                      <button
+                        className="cancelBtnRoom"
+                        onClick={() => {
+                          setMessage("");
+                          setIsOpen(false);
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </div>
                     <p>{message}</p>
                   </form>
                 </div>

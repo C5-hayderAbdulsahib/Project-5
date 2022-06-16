@@ -14,8 +14,6 @@
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
 }
 
-
-
 .CreateCategoryModal .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
   width: 100vw;
@@ -113,7 +111,7 @@
 
 /* create button */
 
-.CreateCategoryModal .createBtn {
+.CreateCategoryModal {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -126,7 +124,26 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .createBtn:hover {
+.createBtnRoom {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 9px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: gray;
+  transition: all 0.25s ease;
+  width: 160px;
+}
+
+.CreateCategoryModal:hover {
+  box-shadow: 0 10px 20px -10px #4f545c;
+
+  background-color: #4f545c;
+}
+.createBtnRoom:hover {
   box-shadow: 0 10px 20px -10px #4f545c;
 
   background-color: #4f545c;
@@ -134,7 +151,7 @@
 
 /* cancel button */
 
-.CreateCategoryModal .cancelBtn {
+.CreateCategoryModal {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -143,23 +160,44 @@
   font-size: 0.8rem;
   border: none;
   color: white;
-  background: red;
+  background: rgb(223, 97, 97);
   transition: all 0.25s ease;
 }
+.cancelBtnRoom {
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 9px 38px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  border: none;
+  color: white;
+  background: rgb(223, 97, 97);
+  transition: all 0.25s ease;
+  width: 160px;
+}
 
-.CreateCategoryModal .cancelBtn:hover {
+.CreateCategoryModal:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  background-color: #4f545c;
+  background-color: red;
+  color: white;
+}
+
+.cancelBtnRoom:hover {
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
+  background-color: red;
   color: white;
 }
 
 .selector {
+  padding: 5.5px;
   margin-top: 10px;
   background-color: #646973;
   color: #fff;
   width: 161px;
   font-size: 15px;
   outline: none;
+  border-radius: 3px;
 }
 
 .createBtn {
@@ -183,7 +221,7 @@
 
 .createField {
   height: 30px;
-  width: 220px;
+  width: 330px;
   outline: none;
   transition: border-color 0.2s ease-in-out;
   border-radius: 3px;
@@ -195,27 +233,43 @@
   border-color: #8da2ec;
 }
 
-.contain{
+.contain {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.chooseRoomBtnCreate{
+.chooseRoomBtnCreate {
+  margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
-  padding: 2px 15px;
+  padding: 9px 28px;
+  border-radius: 3px;
   font-size: 0.8rem;
   border: none;
   color: white;
   background: #7289d9;
-  margin-left: 10px;
-  border-radius: 3px;
+  transition: all 0.25s ease;
+ 
 }
-
 
 .chooseRoomBtnCreate:hover {
   /* background: #ff3e4e; */
-    background: #4a6deb;
+  background: #4a6deb;
+}
 
+.push-downCreate {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  gap: 10px;
+}
+
+.push-downSelect{
+  display: flex;
+justify-content: space-between;
+}
+
+.NameCategory{
+  margin-top: 30px;
 }

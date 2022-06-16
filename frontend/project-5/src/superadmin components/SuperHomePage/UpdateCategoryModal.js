@@ -26,7 +26,10 @@ const UpdateCategoryModal = (props) => {
               <h5 className="heading">Update a category</h5>
             </div>
             <button className="closeBtn" onClick={() => setIsOpen(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine
+                className="exitIcon"
+                style={{ marginBottom: "-3px" }}
+              />
             </button>
 
             <div className="modalContent">
