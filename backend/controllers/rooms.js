@@ -646,7 +646,7 @@ const addUserToTheRoom = (req, res) => {
 const getAllRoomsForCategory = (req, res) => {
   const id = req.params.id;
 
-  const command = `SELECT * FROM rooms   WHERE category_id =?`;
+  const command = `SELECT * FROM rooms  WHERE category_id =? AND is_deleted = 0`;
 
   const data = [id];
 
