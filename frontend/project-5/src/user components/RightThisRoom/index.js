@@ -24,7 +24,9 @@ import { TbFileUpload } from "react-icons/tb";
 import { MdAddPhotoAlternate } from "react-icons/md";
 import { ImExit } from "react-icons/im";
 import { IoCreateOutline } from "react-icons/io5";
-import { BsFileEarmarkPdfFill } from "react-icons/bs";
+import { AiFillFile } from "react-icons/ai";
+import { AiOutlineDownload } from "react-icons/ai";
+
 //since we used export directly then when we import we have to add the {} or an error will occur
 export const RightThisRoom = () => {
   const { token, user } = useSelector((state) => {
@@ -161,14 +163,10 @@ export const RightThisRoom = () => {
                 </div>
               </div>
               <div className="menuContainer">
-                <div className="toolTip">
-                  <span className="toolTipText">Delete Message</span>
-                  <MdDelete className="deleteMessage" />
-                </div>
-                <div className="toolTip">
-                  <span className="toolTipText">Update Message</span>
-                  <IoMdCreate className="updateRoom" />
-                </div>
+                <span className="toolTipText">Delete Message</span>
+                <MdDelete className="deleteMessage" />
+                <span className="toolTipText">Update Message</span>
+                <IoMdCreate className="updateRoom" />
               </div>
             </div>
             <div className="messagesDocument">
@@ -185,15 +183,14 @@ export const RightThisRoom = () => {
                   <span className="date">data</span>
                 </div>
                 <div className="messageTextContainerDocument">
-                  <BsFileEarmarkPdfFill className="documentIcon" />
+                  <AiFillFile className="documentIcon" />
                   <a href="#" className="">
                     mosa SAleh
                   </a>
                   <div className="documentcontainer">
-                    <div className="toolTip">
-                      <span className="toolTipText">Delete Message</span>
-                      <MdDelete className="deleteDocumentMessage" />
-                    </div>
+                    <MdDelete className="deleteDocumentMessage" />
+
+                    <AiOutlineDownload className="DownloadDocumentMessage" />
                   </div>
                 </div>
               </div>
@@ -209,12 +206,10 @@ export const RightThisRoom = () => {
               <div className="sendName">
                 <div className="userInfoContainerImage">
                   <p className="userNameSend">Mosa saleh</p>
-                  <span className="date">data</span>
-                  <div className="deleteDocumentMessageDiv">
-                    <div className="toolTip">
-                      <span className="toolTipText">Delete Message</span>
-                      <MdDelete className="deleteDocumentMessage" />
-                    </div>
+                  <span className="dateImage">data</span>
+                  <div className="iconContainer">
+                    <MdDelete className="deleteDocumentMessage" />
+                    <AiOutlineDownload className="DownloadDocumentMessage" />
                   </div>
                 </div>
                 <div className="messageTextContainerDocument">
