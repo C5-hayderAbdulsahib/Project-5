@@ -75,66 +75,68 @@ export const UpdateRoomModel = (props) => {
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="darkBG" onClick={() => setIsOpenUpdate(false)} />
-      <div className="centered">
-        <div className="modal">
-          <div className="modalHeader">
-            <h5 className="heading">Dialog</h5>
-          </div>
-          <button className="closeBtn" onClick={() => setIsOpenUpdate(false)}>
-            <RiCloseLine
-              className="closeIcon"
-              style={{ marginBottom: "-3px" }}
-            />
-          </button>
+      <div className="UpdateRoomFun">
+        <div className="darkBG" onClick={() => setIsOpenUpdate(false)} />
+        <div className="centered">
+          <div className="modal">
+            <div className="modalHeader">
+              <h5 className="heading">Dialog</h5>
+            </div>
+            <button className="closeBtn" onClick={() => setIsOpenUpdate(false)}>
+              <RiCloseLine
+                className="closeIcon"
+                style={{ marginBottom: "-3px" }}
+              />
+            </button>
 
-          <div className="modalContent">
-            {/* ///////////////////////////////the body f the model */}
-            Are you sure you want to update the name of this Room?
-            <div className="push-down"></div>
-            <form
-              onSubmit={(e) => {
-                UpdateRoomFun(e, id);
-                setIsOpenUpdate(false);
-              }}
-            >
-              <input
-                type={"text"}
-                placeholder="Update Room"
-                defaultValue={roomName}
-                className="inputFieldUpdate"
-                onChange={(e) => setUpdateName(e.target.value)}
-              />
+            <div className="modalContent">
+              {/* ///////////////////////////////the body f the model */}
+              Are you sure you want to update the name of this Room?
               <div className="push-down"></div>
-              {/* the update button */}
-              <input
-                type={"file"}
-                onChange={(e) => {
-                  uploadImage(e.target.files[0]);
+              <form
+                onSubmit={(e) => {
+                  UpdateRoomFun(e, id);
+                  setIsOpenUpdate(false);
                 }}
-                className="update-account"
-                id="file1"
-              />
-              <label htmlFor="file1" className="chooseRoomBtn">
-                Choose a photo
-              </label>
-              <button
-                className="updateRoomBtn"
-                // onClick={(e) => {
-                //   UpdateRoomFun(e, id);
-                //   setIsOpenUpdate(false);
-                // }}
               >
-                Update Room
-              </button>
-              {/* the cancel model button */}
-              <button
-                className="cancelBtn"
-                onClick={() => setIsOpenUpdate(false)}
-              >
-                Cancel
-              </button>
-            </form>
+                <input
+                  type={"text"}
+                  placeholder="Update Room"
+                  defaultValue={roomName}
+                  className="inputFieldUpdate"
+                  onChange={(e) => setUpdateName(e.target.value)}
+                />
+                <div className="push-down"></div>
+                {/* the update button */}
+                <input
+                  type={"file"}
+                  onChange={(e) => {
+                    uploadImage(e.target.files[0]);
+                  }}
+                  className="update-account"
+                  id="file1"
+                />
+                <label htmlFor="file1" className="chooseRoomBtn">
+                  Choose a photo
+                </label>
+                <button
+                  className="updateRoomBtn"
+                  // onClick={(e) => {
+                  //   UpdateRoomFun(e, id);
+                  //   setIsOpenUpdate(false);
+                  // }}
+                >
+                  Update Room
+                </button>
+                {/* the cancel model button */}
+                <button
+                  className="cancelBtn"
+                  onClick={() => setIsOpenUpdate(false)}
+                >
+                  Cancel
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>

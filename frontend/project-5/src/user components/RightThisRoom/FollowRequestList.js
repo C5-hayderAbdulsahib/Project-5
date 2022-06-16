@@ -99,7 +99,7 @@ const FollowRequestList = (props) => {
 
   return (
     <>
-      <div>
+      <div className="FollowRequestList">
         <div>
           <>
             {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
@@ -136,7 +136,8 @@ const FollowRequestList = (props) => {
                       <div className="requestContainer" key={element.user_id}>
                         <p className="userInfoName">{element.username}</p>
 
-                        <button className="acceptRequest"
+                        <button
+                          className="acceptRequest"
                           onClick={() =>
                             addUserToGroupFun(roomId, element.user_id)
                           }
@@ -144,7 +145,7 @@ const FollowRequestList = (props) => {
                           Accept Request
                         </button>
                         <button
-                        className="removeRequest"
+                          className="removeRequest"
                           onClick={() =>
                             removeFollowRequestFun(roomId, element.user_id)
                           }

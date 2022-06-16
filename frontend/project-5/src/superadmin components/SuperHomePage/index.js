@@ -42,7 +42,7 @@ const SuperHomePage = () => {
   });
 
   const [message, setMessage] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenCreateCategory, setIsOpenCreateCategory] = useState(false);
   const [isOpenAdmin, setIsOpenAdmin] = useState(false);
   //======================================================================================================
   /////////getAllCategories/////////////
@@ -85,7 +85,11 @@ const SuperHomePage = () => {
     <>
       <div className="superadminMain">
         <div className="left-all-categories">
-          {isOpen && <CreateCategoryModal setIsOpen={setIsOpen} />}
+          {isOpenCreateCategory && (
+            <CreateCategoryModal
+              setIsOpenCreateCategory={setIsOpenCreateCategory}
+            />
+          )}
           {isOpenAdmin && (
             <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />
           )}
@@ -104,12 +108,12 @@ const SuperHomePage = () => {
             </Link>
           </div>
 
-          <div className="display-grid">
+          <div className="display-grid-super-admin">
             <div>
               <div>
                 <button
                   onClick={() => {
-                    setIsOpen(true);
+                    setIsOpenCreateCategory(true);
                   }}
                   className="CreateCategoryBtn"
                 >
