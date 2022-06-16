@@ -44,7 +44,12 @@ const DeleteCategoryModal = (props) => {
                     Delete Category <BsTrashFill />
                   </button>
                   {/* the cancel model button */}
-                  <button className="cancelBtn">Cancel</button>
+                  <button
+                    className="cancelBtn"
+                    onClick={() => setIsOpenDelete(false)}
+                  >
+                    Cancel
+                  </button>
                 </div>
               </div>
             </div>
