@@ -31,7 +31,7 @@ const AllUsersInThisRoomList = (props) => {
         },
       })
       .then((result) => {
-        console.log(result.data.roomUsers);
+        console.log("all the users in room", result.data.roomUsers);
         setUsersInRoom(result.data.roomUsers);
       })
       .catch((err) => {

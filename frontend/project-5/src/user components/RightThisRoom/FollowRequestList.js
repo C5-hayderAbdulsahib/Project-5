@@ -31,7 +31,7 @@ const FollowRequestList = (props) => {
         },
       })
       .then((result) => {
-        console.log(result.data.follow_requests);
+        console.log("all the follow request", result.data.follow_requests);
         setFollowRequestList(result.data.follow_requests);
       })
       .catch((err) => {
@@ -129,7 +129,10 @@ const FollowRequestList = (props) => {
                 <div className="modalContent">
                   {/* ///////////////////////////////the body f the model */}
                   <div className="titleOfHeader">
-                    <p> These are all the users in the room</p>
+                    <p>
+                      These Are All the Follow Requests That Are Send To This
+                      Room
+                    </p>
                   </div>
                   {followRequestList?.map((element) => {
                     return (
