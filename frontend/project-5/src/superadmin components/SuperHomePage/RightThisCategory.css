@@ -1,0 +1,53 @@
+.right-side-this-Category {
+  display: grid;
+}
+.categoryelemntNav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #919296;
+  background-color: rgb(47, 49, 54);
+  height: 70px;
+  border-bottom: 0.5px solid black;
+}
+
+.superAdminRoomContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 40vw;
+  width: 97%;
+  background-color: rgb(64, 68, 75);
+  border-radius: 5px;
+  overflow: hidden;
+  overflow-y: scroll;
+  justify-content: start;
+  align-items: center;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  width: 900px;
+  margin-top: 10px;
+  background-color: rgb(47, 49, 54);
+  border-radius: 3px;
+}
+
+.categoryContainer:hover {
+  background-color: rgb(42, 43, 46);
+}
+
+.categoryRoomName{
+  margin-left: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.categoryRoomDeleteBtn{
+  margin-right: 10px;
+  height: 30px;
+}
