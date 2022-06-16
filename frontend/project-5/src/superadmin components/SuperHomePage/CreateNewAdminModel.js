@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import { RiCloseLine } from "react-icons/ri";
 
-
-
 // import style
 import "./CreateNewAdminModel.css";
 
-
 //import icons
-import { BsFillPersonPlusFill  } from "react-icons/bs";
- 
+import { BsFillPersonPlusFill } from "react-icons/bs";
 
 const CreateNewAdminModel = (props) => {
   const { setIsOpenAdmin } = props;
@@ -64,11 +60,7 @@ const CreateNewAdminModel = (props) => {
               {/* ///////////////////////////////the body f the model */}
               You Can Create A New Super Admin
               <div className="push-down"></div>
-              <form
-              // onSubmit={(e) => {
-              //   createNewAdmin();
-              // }}
-              >
+              <form>
                 <input
                   className="admin-input"
                   type={"text"}
@@ -118,7 +110,7 @@ const CreateNewAdminModel = (props) => {
                 {/* the update button */}
                 <div className="shiftingToLeft">
                   <button onClick={createNewAdmin} className="create-admin-Btn">
-                    Create New Admin < BsFillPersonPlusFill />
+                    Create New Admin <BsFillPersonPlusFill />
                   </button>
 
                   {/* the cancel model button */}

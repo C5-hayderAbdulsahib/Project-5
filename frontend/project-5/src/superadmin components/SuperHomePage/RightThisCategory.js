@@ -11,7 +11,6 @@ import DeleteCategoryModal from "./DeleteCategoryModal";
 //import icons
 import { IoIosCreate } from "react-icons/io";
 import { BsTrashFill } from "react-icons/bs";
-import { BsFillPersonPlusFill } from "react-icons/bs";
 
 //import actions
 import {
@@ -44,7 +43,6 @@ const RightThisCategory = () => {
   const navigate = useNavigate();
 
   const getCategoryByIdFun = () => {
-    // console.log();
     axios
       .get(`http://localhost:5000/categories/${id}`, {
         headers: {
@@ -167,8 +165,6 @@ const RightThisCategory = () => {
               id={id}
               name={category.name}
               setIsOpenDelete={setIsOpenDelete} //the reason that we send this state is to be able to close the model in the model component
-              //   setRenderPage={setRenderPage}
-              //   renderPage={renderPage}
             />
           )}
 
