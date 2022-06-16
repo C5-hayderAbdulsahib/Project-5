@@ -1,10 +1,9 @@
-.CreateCategoryModal {
+/* .FollowRequestList {
   background-color: white;
   border-radius: 4px;
-  /*   display: flex; */
-}
+} */
 
-.CreateCategoryModal {
+/* .FollowRequestList {
   width: 350px;
   height: 250px;
   background: white;
@@ -12,7 +11,7 @@
   z-index: 10;
   border-radius: 3px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
-}
+} */
 
 .modalFollow {
   width: 400px;
@@ -25,7 +24,7 @@
   overflow-y: scroll;
 }
 
-.CreateCategoryModal .darkBG {
+.FollowRequestList .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
   width: 100vw;
   height: 100vh;
@@ -37,7 +36,7 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
-.CreateCategoryModal .centered {
+.FollowRequestList .centered {
   position: fixed;
   top: 35%;
   left: 50%;
@@ -46,7 +45,7 @@
 
 /* heading */
 
-.CreateCategoryModal .heading {
+.FollowRequestList .heading {
   margin: 0;
   padding: 20px;
   color: black;
@@ -60,7 +59,7 @@
 
 /* modalContent-paragraph */
 
-.CreateCategoryModal .modalContent {
+.FollowRequestList .modalContent {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -69,19 +68,19 @@
   width: 100%;
 }
 
-.CreateCategoryModal .fixed-width {
+.FollowRequestList .fixed-width {
   width: 250px;
 }
 
 /* Category-label */
-.CreateCategoryModal .Category-label {
+.FollowRequestList .Category-label {
   font-weight: bold;
   justify-self: start;
 }
 
 /* modalContent-input */
 
-.CreateCategoryModal .Create-Category {
+.FollowRequestList .Create-Category {
   position: relative;
   padding: 10px;
   height: 40px;
@@ -100,7 +99,7 @@
   transition: border-color 0.2s ease-in-out;
 }
 
-/* .CreateCategoryModal .Create-Category:focus,
+/* .FollowRequestList .Create-Category:focus,
 
 .Create-Category:active {
   border: none;
@@ -110,7 +109,7 @@
 
 /* .shiftingToLeft */
 
-.CreateCategoryModal .shiftingToLeft {
+.FollowRequestList .shiftingToLeft {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -121,7 +120,7 @@
 
 /* create button */
 
-.CreateCategoryModal .createBtn {
+.FollowRequestList .createBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -134,7 +133,7 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .createBtn:hover {
+.FollowRequestList .createBtn:hover {
   box-shadow: 0 10px 20px -10px #4f545c;
 
   background-color: #4f545c;
@@ -142,7 +141,7 @@
 
 /* cancel button */
 
-.CreateCategoryModal .cancelBtn {
+.FollowRequestList .cancelBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -155,7 +154,7 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .cancelBtn:hover {
+.FollowRequestList .cancelBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
   background-color: #4f545c;
   color: white;

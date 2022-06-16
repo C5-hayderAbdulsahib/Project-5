@@ -1,12 +1,12 @@
-.CreateCategoryModal {
+.DeleteRoomModal {
   background-color: white;
   border-radius: 4px;
   /*   display: flex; */
 }
 
-.CreateCategoryModal .modal {
+.DeleteRoomModal .modal {
   width: 350px;
-  height: 250px;
+  height: 330px;
   background: white;
   color: white;
   z-index: 10;
@@ -25,7 +25,7 @@
   overflow-y: scroll;
 }
 
-.CreateCategoryModal .darkBG {
+.DeleteRoomModal .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
   width: 100vw;
   height: 100vh;
@@ -37,7 +37,7 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
-.CreateCategoryModal .centered {
+.DeleteRoomModal .centered {
   position: fixed;
   top: 35%;
   left: 50%;
@@ -46,7 +46,7 @@
 
 /* heading */
 
-.CreateCategoryModal .heading {
+.DeleteRoomModal .heading {
   margin: 0;
   padding: 20px;
   color: black;
@@ -56,18 +56,16 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-
 /* modalContent */
 
 /* modalContent-paragraph */
 
-.CreateCategoryModal  {
+.DeleteRoomModal {
   display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
-margin-top: 50px;
+  margin-top: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
   overflow: hidden;
@@ -78,25 +76,25 @@ margin-top: 50px;
   justify-content: center;
   align-items: center;
   text-align: center;
-margin-top: 50px;
+  margin-top: 50px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   width: 100%;
   overflow: hidden;
   overflow-y: scroll;
 }
-.CreateCategoryModal .fixed-width {
+.DeleteRoomModal .fixed-width {
   width: 250px;
 }
 
 /* Category-label */
-.CreateCategoryModal .Category-label {
+.DeleteRoomModal .Category-label {
   font-weight: bold;
   justify-self: start;
 }
 
 /* modalContent-input */
 
-.CreateCategoryModal .Create-Category {
+.DeleteRoomModal .Create-Category {
   position: relative;
   padding: 10px;
   height: 40px;
@@ -115,7 +113,7 @@ margin-top: 50px;
   transition: border-color 0.2s ease-in-out;
 }
 
-/* .CreateCategoryModal .Create-Category:focus,
+/* .DeleteRoomModal .Create-Category:focus,
 
 .Create-Category:active {
   border: none;
@@ -125,7 +123,7 @@ margin-top: 50px;
 
 /* .shiftingToLeft */
 
-.CreateCategoryModal .shiftingToLeft {
+.DeleteRoomModal .shiftingToLeft {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,7 +134,7 @@ margin-top: 50px;
 
 /* create button */
 
-.CreateCategoryModal .createBtn {
+.DeleteRoomModal .createBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -149,7 +147,7 @@ margin-top: 50px;
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .createBtn:hover {
+.DeleteRoomModal .createBtn:hover {
   box-shadow: 0 10px 20px -10px #4f545c;
 
   background-color: #4f545c;
@@ -161,7 +159,7 @@ margin-top: 50px;
 
 /* cancel button */
 
- .cancelButton {
+.cancelButton {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -197,7 +195,6 @@ margin-top: 50px;
 }
 .DeleteButton:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);
-  background-color: rgb(231, 18, 18);;
+  background-color: rgb(231, 18, 18);
   color: white;
 }
-

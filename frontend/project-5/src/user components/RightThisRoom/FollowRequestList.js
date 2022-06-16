@@ -31,7 +31,7 @@ const FollowRequestList = (props) => {
         },
       })
       .then((result) => {
-        console.log(result.data.follow_requests);
+        console.log("all the follow request", result.data.follow_requests);
         setFollowRequestList(result.data.follow_requests);
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ const FollowRequestList = (props) => {
 
   return (
     <>
-      <div>
+      <div className="FollowRequestList">
         <div>
           <>
             {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
@@ -129,14 +129,18 @@ const FollowRequestList = (props) => {
                 <div className="modalContent">
                   {/* ///////////////////////////////the body f the model */}
                   <div className="titleOfHeader">
-                    <p> These are all the users in the room</p>
+                    <p>
+                      These Are All the Follow Requests That Are Send To This
+                      Room
+                    </p>
                   </div>
                   {followRequestList?.map((element) => {
                     return (
                       <div className="requestContainer" key={element.user_id}>
                         <p className="userInfoName">{element.username}</p>
 
-                        <button className="acceptRequest"
+                        <button
+                          className="acceptRequest"
                           onClick={() =>
                             addUserToGroupFun(roomId, element.user_id)
                           }
@@ -144,7 +148,7 @@ const FollowRequestList = (props) => {
                           Accept Request
                         </button>
                         <button
-                        className="removeRequest"
+                          className="removeRequest"
                           onClick={() =>
                             removeFollowRequestFun(roomId, element.user_id)
                           }

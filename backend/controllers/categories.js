@@ -130,7 +130,7 @@ const deleteCategoryById = (req, res) => {
 const getCategoryById = (req, res) => {
   const id = req.params.id;
 
-  const command = `SELECT * FROM categories WHERE id = ? ;`;
+  const command = `SELECT * FROM categories WHERE id = ? AND is_deleted = 0 ;`;
 
   const data = [id];
 

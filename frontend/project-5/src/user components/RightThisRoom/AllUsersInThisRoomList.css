@@ -1,12 +1,12 @@
-.CreateCategoryModal {
+.allUsersInThisRoomFun {
   background-color: white;
   border-radius: 4px;
   /*   display: flex; */
 }
 
-.CreateCategoryModal .modal {
+.allUsersInThisRoomFun .modal {
   width: 350px;
-  height: 250px;
+  height: 350px;
   background: white;
   color: white;
   z-index: 10;
@@ -25,7 +25,7 @@
   overflow-y: scroll;
 }
 
-.CreateCategoryModal .darkBG {
+.allUsersInThisRoomFun .darkBG {
   background-color: rgba(0, 0, 0, 0.8);
   width: 100vw;
   height: 100vh;
@@ -37,7 +37,7 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
-.CreateCategoryModal .centered {
+.allUsersInThisRoomFun .centered {
   position: fixed;
   top: 35%;
   left: 50%;
@@ -46,7 +46,7 @@
 
 /* heading */
 
-.CreateCategoryModal .heading {
+.allUsersInThisRoomFun .heading {
   margin: 0;
   padding: 20px;
   color: black;
@@ -56,13 +56,11 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-
-
 /* modalContent */
 
 /* modalContent-paragraph */
 
-.CreateCategoryModal .modalContent {
+.allUsersInThisRoomFun .modalContent {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -74,19 +72,19 @@
   overflow-y: scroll;
 }
 
-.CreateCategoryModal .fixed-width {
+.allUsersInThisRoomFun .fixed-width {
   width: 250px;
 }
 
 /* Category-label */
-.CreateCategoryModal .Category-label {
+.allUsersInThisRoomFun .Category-label {
   font-weight: bold;
   justify-self: start;
 }
 
 /* modalContent-input */
 
-.CreateCategoryModal .Create-Category {
+.allUsersInThisRoomFun .Create-Category {
   position: relative;
   padding: 10px;
   height: 40px;
@@ -105,7 +103,7 @@
   transition: border-color 0.2s ease-in-out;
 }
 
-/* .CreateCategoryModal .Create-Category:focus,
+/* .allUsersInThisRoomFun .Create-Category:focus,
 
 .Create-Category:active {
   border: none;
@@ -115,7 +113,7 @@
 
 /* .shiftingToLeft */
 
-.CreateCategoryModal .shiftingToLeft {
+.allUsersInThisRoomFun .shiftingToLeft {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,7 +124,7 @@
 
 /* create button */
 
-.CreateCategoryModal .createBtn {
+.allUsersInThisRoomFun .createBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -139,7 +137,7 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal .createBtn:hover {
+.allUsersInThisRoomFun .createBtn:hover {
   box-shadow: 0 10px 20px -10px #4f545c;
 
   background-color: #4f545c;
@@ -151,7 +149,7 @@
 
 /* cancel button */
 
-.CreateCategoryModal .cancelBtn {
+.allUsersInThisRoomFun .cancelBtn {
   margin-top: 10px;
   cursor: pointer;
   font-weight: 500;
@@ -164,7 +162,7 @@
   transition: all 0.25s ease;
 }
 
-.CreateCategoryModal:hover {
+.allUsersInThisRoomFun:hover {
 }
 .cancelBtn:hover {
   box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.04);

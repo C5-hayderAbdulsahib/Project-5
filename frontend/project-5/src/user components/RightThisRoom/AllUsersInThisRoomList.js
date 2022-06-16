@@ -31,7 +31,7 @@ const AllUsersInThisRoomList = (props) => {
         },
       })
       .then((result) => {
-        console.log(result.data.roomUsers);
+        console.log("all the users in room", result.data.roomUsers);
         setUsersInRoom(result.data.roomUsers);
       })
       .catch((err) => {
@@ -99,7 +99,7 @@ const AllUsersInThisRoomList = (props) => {
 
   return (
     <>
-      <div>
+      <div className="allUsersInThisRoomFun">
         <div>
           <>
             {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
@@ -120,7 +120,10 @@ const AllUsersInThisRoomList = (props) => {
                     setIsOpenUsersList(false);
                   }}
                 >
-                  <RiCloseLine className="closeIcon" style={{ marginBottom: "-3px" }} />
+                  <RiCloseLine
+                    className="closeIcon"
+                    style={{ marginBottom: "-3px" }}
+                  />
                 </button>
 
                 <div className="modalContent">

@@ -646,7 +646,7 @@ const addUserToTheRoom = (req, res) => {
 const getAllRoomsForCategory = (req, res) => {
   const id = req.params.id;
 
-  const command = `SELECT * FROM rooms   WHERE category_id =?`;
+  const command = `SELECT * FROM rooms  WHERE category_id =? AND is_deleted = 0`;
 
   const data = [id];
 
@@ -767,7 +767,7 @@ const deleteRoomByIdForAdmin = (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId;
 
-  const command = `UPDATE rooms SET is_deleted = 1 where id = ? AND admin_id=?`;
+  const command = `UPDATE rooms SET is_deleted = 1 where id = ?`;
   const data = [id, userId];
 
   connection.query(command, data, (err, result) => {
