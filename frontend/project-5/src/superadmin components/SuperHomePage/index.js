@@ -109,7 +109,7 @@ const SuperHomePage = () => {
           </div>
 
           <div className="display-grid-super-admin">
-            <div>
+            <div className="superLeftSide">
               <div>
                 <button
                   onClick={() => {
