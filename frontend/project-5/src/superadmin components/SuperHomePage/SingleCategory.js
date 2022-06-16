@@ -11,9 +11,13 @@ const SingleCategory = (props) => {
   const navigate = useNavigate();
   return (
     <>
-      <div className="categoryelemnt">
+      <div
+        className="categoryelemnt"
+        onClick={() => {
+          navigate(`/super_admin/home/categories/${id}`);
+        }}
+      >
         <div>
-          <h1>Mosa</h1>
           <p
             className="categoryName"
             onClick={() => {
@@ -24,7 +28,6 @@ const SingleCategory = (props) => {
           </p>
         </div>
       </div>
-      <hr></hr>
     </>
   );
 };

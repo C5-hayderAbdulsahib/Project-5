@@ -110,7 +110,7 @@ const SuperHomePage = () => {
 
           <div className="display-grid-super-admin">
             <div className="superLeftSide">
-              <div>
+              <div className="categoryButtonMain">
                 <button
                   onClick={() => {
                     setIsOpenCreateCategory(true);
@@ -120,8 +120,6 @@ const SuperHomePage = () => {
                   Create Category <IoMdAdd />
                 </button>
                 <br></br>
-              </div>
-              <div>
                 <button
                   onClick={() => {
                     setIsOpenAdmin(true);
