@@ -1,10 +1,9 @@
-.FollowRequestList {
+/* .FollowRequestList {
   background-color: white;
   border-radius: 4px;
-  /*   display: flex; */
-}
+} */
 
-.FollowRequestList {
+/* .FollowRequestList {
   width: 350px;
   height: 250px;
   background: white;
@@ -12,7 +11,7 @@
   z-index: 10;
   border-radius: 3px;
   box-shadow: 0 5px 20px 0 rgb(0 0 0 / 4%);
-}
+} */
 
 .modalFollow {
   width: 400px;
