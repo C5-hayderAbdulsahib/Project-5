@@ -2,6 +2,7 @@ body {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+  background-color: #42464d;
 }
 
 .display-grid {
@@ -9,3 +10,5 @@ body {
   grid-template-columns: 200px auto;
   height: 94vh;
 }
+
+ 

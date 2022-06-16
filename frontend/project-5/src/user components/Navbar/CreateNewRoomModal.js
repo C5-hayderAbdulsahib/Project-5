@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
 //import actions
-import { addRoom } from "../../redux/reducers/rooms";
+import rooms, { addRoom } from "../../redux/reducers/rooms";
 import { setCategories } from "../../redux/reducers/categories";
 
 //import styling
@@ -16,6 +16,8 @@ import SingleCategory from "./SingleCategory";
 
 export const CreateNewRoomModal = (props) => {
   const { setIsOpen } = props;
+
+  const [imgUrl, setImgUrl] = useState("");
 
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
@@ -35,7 +37,7 @@ export const CreateNewRoomModal = (props) => {
     axios
       .post(
         `http://localhost:5000/categories/${categoryId}/rooms`,
-        { name },
+        { name, room_image: imgUrl },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -88,6 +90,25 @@ export const CreateNewRoomModal = (props) => {
 
   //*=================================================================================
 
+  const uploadImage = (image_data) => {
+    console.log("asdasd ASDAS ASD ASD " ,image_data );
+    const data = new FormData();
+    data.append("file", image_data);
+    data.append("upload_preset", "merakie");
+    data.append("cloud_name", "dkqqtkt3b");
+    fetch("https://api.cloudinary.com/v1_1/dkqqtkt3b/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setImgUrl(data.url);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  //*=================================================================================
+
   return (
     <>
       <div>
@@ -123,16 +144,16 @@ export const CreateNewRoomModal = (props) => {
                   <div className="push-down"></div>
                   <form>
                     <input
-                    className="createField"
+                      className="createField"
                       type={"text"}
                       placeholder="Create Room"
                       onChange={(e) => setName(e.target.value)}
                     />
                     <div className="push-down"></div>
                     {categoriesList && (
-                      <>
+                      <div>
                         <label htmlFor="categories">
-                          Choose a Category Type:
+                          Choose a Category Type And a Photo:
                         </label>
 
                         <select
@@ -144,7 +165,21 @@ export const CreateNewRoomModal = (props) => {
 
                           {categoriesList}
                         </select>
-                      </>
+                        <input
+                          type={"file"}
+                          onChange={(e) => {
+                            console.log(
+                              "asdffffffffffffffffffffffffffffffffffffffffadsfkngioadfongadfongodsfjgjnjdsfjg"
+                            );
+                            uploadImage(e.target.files[0]);
+                          }}
+                          className="update-account"
+                          id="file"
+                        />
+                        <label htmlFor="file" className="chooseRoomBtnCreate">
+                          Choose a photo
+                        </label>
+                      </div>
                     )}
                     <div className="push-down"></div>
                     {/* the create button */}

@@ -16,6 +16,7 @@ export const UpdateRoomModel = (props) => {
   const {
     roomName,
     id,
+
     // logout,
     setIsOpenUpdate,
     renderPage,
@@ -23,6 +24,7 @@ export const UpdateRoomModel = (props) => {
     // token,
   } = props;
 
+  const [imgUrl, setImgUrl] = useState("");
   const [updateName, setUpdateName] = useState("");
   const dispatch = useDispatch("");
 
@@ -37,7 +39,7 @@ export const UpdateRoomModel = (props) => {
     axios
       .put(
         `http://localhost:5000/rooms/${id}`,
-        { name: updateName },
+        { name: updateName, room_image: imgUrl },
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,12 +47,29 @@ export const UpdateRoomModel = (props) => {
         }
       )
       .then((result) => {
-        dispatch(updateRoom({ id, name: updateName }));
+        dispatch(updateRoom({ id, name: updateName, room_image: imgUrl }));
         setRenderPage(!renderPage);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const uploadImage = (image_data) => {
+    console.log("this is image", image_data);
+    const data = new FormData();
+    data.append("file", image_data);
+    data.append("upload_preset", "merakie");
+    data.append("cloud_name", "dkqqtkt3b");
+    fetch("https://api.cloudinary.com/v1_1/dkqqtkt3b/image/upload", {
+      method: "post",
+      body: data,
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        setImgUrl(data.url);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -88,10 +107,21 @@ export const UpdateRoomModel = (props) => {
               />
               <div className="push-down"></div>
               {/* the update button */}
+              <input
+                type={"file"}
+                onChange={(e) => {
+                  uploadImage(e.target.files[0]);
+                }}
+                className="update-account"
+                id="file1"
+              />
+              <label htmlFor="file1" className="chooseRoomBtn">
+                Choose a photo
+              </label>
               <button
                 className="updateRoomBtn"
-                // onClick={() => {
-                //   UpdateRoomFun(id);
+                // onClick={(e) => {
+                //   UpdateRoomFun(e, id);
                 //   setIsOpenUpdate(false);
                 // }}
               >

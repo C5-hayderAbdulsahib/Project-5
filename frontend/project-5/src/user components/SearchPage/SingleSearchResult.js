@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -24,11 +24,7 @@ const SingleSearchResult = (props) => {
 
   const [renderSinglePage, setRenderSinglePage] = useState(false);
 
-  // console.log("this is me", user.id);
-
-  console.log("the room id is", search);
-
-  const dispatch = useDispatch();
+  // console.log("the room id is", search);
 
   const usersRoomsRelationsFun = () => {
     axios
@@ -39,7 +35,6 @@ const SingleSearchResult = (props) => {
       })
       .then((result) => {
         setUserRoomRelation(result.data.users_rooms_relation);
-        // console.log(result);
       })
       .catch((err) => {
         throw err;
@@ -47,7 +42,6 @@ const SingleSearchResult = (props) => {
   };
 
   const createPrivateRoom = (userId) => {
-    console.log(userId);
     axios
       .post(
         `http://localhost:5000/rooms/individual_room`,
@@ -60,7 +54,6 @@ const SingleSearchResult = (props) => {
       )
       .then((result) => {
         setRenderPage(!renderPage);
-        console.log(result);
       })
       .catch((err) => {
         throw err;
@@ -79,7 +72,6 @@ const SingleSearchResult = (props) => {
         }
       )
       .then((result) => {
-        console.log(result);
         setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
@@ -88,7 +80,6 @@ const SingleSearchResult = (props) => {
   };
 
   const unFollowRoom = (roomId) => {
-    console.log("the id is", roomId);
     axios
       .put(
         `http://localhost:5000/rooms/${roomId}/unfollow`,
@@ -100,15 +91,12 @@ const SingleSearchResult = (props) => {
         }
       )
       .then((result) => {
-        console.log(result);
         setRenderSinglePage(!renderSinglePage);
       })
       .catch((err) => {
         throw err;
       });
   };
-
-  // console.log(userRoomRelation);
 
   useEffect(() => {
     usersRoomsRelationsFun();
@@ -127,7 +115,9 @@ const SingleSearchResult = (props) => {
             <img className="result-image" src={search.profile_image} />
 
             <h1>{search.username}</h1>
-            <p>this is user</p>
+            <div>
+              <p className="this-is-user">User</p>
+            </div>
 
             {rooms?.forEach((element) => {
               if (
@@ -141,10 +131,13 @@ const SingleSearchResult = (props) => {
 
             {alreadyTalking ? (
               <Link to={`/rooms/${roomId}`}>
-                <button>view Conversation</button>
+                <button className="view-Conversation">view Conversation</button>
               </Link>
             ) : (
-              <button onClick={() => createPrivateRoom(search.id)}>
+              <button
+                className=" start-new-Conversation"
+                onClick={() => createPrivateRoom(search.id)}
+              >
                 start new Conversation
               </button>
             )}
@@ -161,55 +154,58 @@ const SingleSearchResult = (props) => {
               <img className="result-image" src={search.room_image} />
             </div>
 
-         {/*    <div className="room-info"> */}
-              {/* <div className="result-text"> */}
-              <div className="room-name">   <h1>{search.name}</h1></div>
-              <div className="room-type">  <p>Group</p></div>
+            {/*    <div className="room-info"> */}
+            {/* <div className="result-text"> */}
+            <div className="room-name">
+              <h1>{search.name}</h1>
+            </div>
+            <div className="room-type">
+              <p className="this-is-room">Group</p>
+            </div>
 
-                {userRoomRelation?.forEach((element) => {
-                  console.log(element);
-                  if (
-                    element.room_id === search.id &&
-                    element.user_id === user.id &&
-                    element.is_member === 1
-                  ) {
-                    inRoom = true;
-                  }
-                  if (
-                    element.room_id === search.id &&
-                    element.user_id === user.id &&
-                    element.send_follow_request === 1
-                  ) {
-                    alreadyFollowed = true;
-                  }
-                })}
-           {/*    </div> */}
+            {userRoomRelation?.forEach((element) => {
+              if (
+                element.room_id === search.id &&
+                element.user_id === user.id &&
+                element.is_member === 1
+              ) {
+                inRoom = true;
+              }
+              if (
+                element.room_id === search.id &&
+                element.user_id === user.id &&
+                element.send_follow_request === 1
+              ) {
+                alreadyFollowed = true;
+              }
+            })}
+            {/*    </div> */}
 
-              <div className="result-button">
-                {inRoom ? (
-                  <Link to={`/rooms/${search.id}`}>
-                    <button>view Room</button>
-                  </Link>
-                ) : alreadyFollowed ? (
-                  <button
-                    className="unfollow-btn"
-                    onClick={() => unFollowRoom(search.id)}
-                  >
-                    unfollow room
-                  </button>
-                ) : (
-                  <button
-                    className="follow-btn"
-                    onClick={() => {
-                      FollowRoom(search.id);
-                      usersRoomsRelationsFun();
-                    }}
-                  >
-                    follow room
-                  </button>
-                )}
-              </div>
-           {/*  </div> */}
+            <div className="result-button">
+              {inRoom ? (
+                <Link to={`/rooms/${search.id}`}>
+                  <button className="view-Room">View Room</button>
+                </Link>
+              ) : alreadyFollowed ? (
+                <button
+                  className="unfollow-btn"
+                  onClick={() => unFollowRoom(search.id)}
+                >
+                  unfollow room
+                </button>
+              ) : (
+                <button
+                  className="follow-btn"
+                  onClick={() => {
+                    FollowRoom(search.id);
+                    usersRoomsRelationsFun();
+                  }}
+                >
+                  follow room
+                </button>
+              )}
+            </div>
+            {/*  </div> */}
           </div>
         </>
       ) : (
