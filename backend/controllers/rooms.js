@@ -767,7 +767,7 @@ const deleteRoomByIdForAdmin = (req, res) => {
   const id = req.params.id;
   const userId = req.token.userId;
 
-  const command = `UPDATE rooms SET is_deleted = 1 where id = ? AND admin_id=?`;
+  const command = `UPDATE rooms SET is_deleted = 1 where id = ?`;
   const data = [id, userId];
 
   connection.query(command, data, (err, result) => {

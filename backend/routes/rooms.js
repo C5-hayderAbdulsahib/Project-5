@@ -76,7 +76,7 @@ roomRouter.put("/:id/add_user", authentication, addUserToTheRoom);
 
 roomRouter.put("/:id/leave_room", authentication, leaveRoom); //
 roomRouter.delete(
-  "/:id",
+  "/:id/admin",
   authentication,
   authorization(`DELETE_ROOMS_ADMIN`),
   deleteRoomByIdForAdmin
