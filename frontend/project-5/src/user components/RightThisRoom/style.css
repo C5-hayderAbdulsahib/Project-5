@@ -485,6 +485,12 @@
   width: 30vw;
 }
 
+.document-name {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #18aff4;
+}
 .deleteDocumentMessage {
   color: rgb(185, 187, 190);
   height: 30px;

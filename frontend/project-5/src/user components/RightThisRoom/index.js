@@ -387,47 +387,63 @@ export const RightThisRoom = () => {
                       </div>
                     </div>
                   )}
-                  {/* {element.document && (
-                    <div>
-                      <p>{"this is a old File File file" + element.document}</p>
-                      <p>user: {element.username}</p>
+                  {element.document && (
+                    <div className="messagesDocument">
+                      <div className="sendImage">
+                        <img
+                          src={element.profile_image}
+                          alt="user image"
+                          className="sendImageProfile"
+                        />
+                      </div>
 
-                      <img
-                        src={element.profile_image}
-                        alt="messuage image"
-                        style={{ height: "50px", width: "50px" }}
-                      />
+                      <div className="sendName">
+                        <div className="userInfoContainer">
+                          <p className="userNameSend">{element.username}</p>
 
-                      <p>
-                        Date:
-                        {new Date(element.created_at)
-                          .toString()
-                          .substring(4, 10) +
-                          "-" +
-                          new Date(element.created_at)
-                            .toString()
-                            .substring(16, 21)}
-                      </p>
+                          <span className="date">
+                            {new Date(element.created_at)
+                              .toString()
+                              .substring(4, 10) +
+                              "-" +
+                              new Date(element.created_at)
+                                .toString()
+                                .substring(16, 21)}
+                          </span>
+                        </div>
 
-                      {element.user_id === user.id && (
-                        <button
-                          onClick={() => {
-                            deleteMessage(element.id, room.id);
-                          }}
-                        >
-                          delete
-                        </button>
-                      )}
-                      <hr></hr>
+                        <div className="messageTextContainerDocument">
+                          <AiFillFile className="documentIcon" />
+
+                          <a href="#" className="document-name">
+                            {"this is a old File File file" +
+                              "element.document"}
+                          </a>
+
+                          <div className="documentcontainer">
+                            <AiOutlineDownload className="DownloadDocumentMessage" />
+
+                            {element.user_id === user.id && (
+                              <MdDelete
+                                className="deleteDocumentMessage"
+                                onClick={() => {
+                                  deleteMessage(element.id, room.id);
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  )} */}
+                  )}
                 </div>
               );
             })}
+          </div>
 
-            {/* //////////////////////////////////////////////// */}
-            {/* static data by mosa */}
-            <div className="messages">
+          {/* //////////////////////////////////////////////// */}
+          {/* static data by mosa */}
+          {/* <div className="messages">
               <div className="sendImage">
                 <img
                   className="sendImageProfile"
@@ -453,11 +469,11 @@ export const RightThisRoom = () => {
                 <span className="toolTipText">Update Message</span>
                 <IoMdCreate className="updateRoom" />
               </div>
-            </div>
+            </div> */}
 
-            {/* //////////////////////////////////////////////// */}
-            {/* message document styling */}
-            <div className="messagesDocument">
+          {/* //////////////////////////////////////////////// */}
+          {/* message document styling */}
+          {/* <div className="messagesDocument">
               <div className="sendImage">
                 <img
                   className="sendImageProfile"
@@ -482,10 +498,10 @@ export const RightThisRoom = () => {
                   </div>
                 </div>
               </div>
-            </div>
-            {/* ///////////////////////////////////////////////// */}
-            {/* message image styling */}
-            <div className="messagesImage">
+            </div> */}
+          {/* ///////////////////////////////////////////////// */}
+          {/* message image styling */}
+          {/* <div className="messagesImage">
               <div className="sendImage">
                 <img
                   className="sendImageProfile"
@@ -536,8 +552,7 @@ export const RightThisRoom = () => {
                   <div className="documentcontainer"></div>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
 
           <div className="buttomSide">
             <div className="InputFelid">
@@ -559,8 +574,15 @@ export const RightThisRoom = () => {
 
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload File</span>
-                <input type={"file"} className="update-account" id="file" />
-                <label htmlFor="file">
+                <input
+                  type={"file"}
+                  className="update-account"
+                  id="uploadFile"
+                  onChange={(e) => {
+                    uploadFile(e.target.files[0]);
+                  }}
+                />
+                <label htmlFor="uploadFile">
                   <TbFileUpload className="sendIconTow" />
                 </label>
               </div>
