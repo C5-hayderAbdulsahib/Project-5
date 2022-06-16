@@ -265,12 +265,11 @@ export const RightThisRoom = () => {
           </div>
 
           <div className="centerSide">
-            {/* <div className="messages"> */}
             {messageList.map((element, index) => {
               return (
-                <div className="messages" key={index}>
+                <div key={index}>
                   {element.description && (
-                    <>
+                    <div className="messages">
                       <div className="sendImage">
                         <img
                           src={element.profile_image}
@@ -317,9 +316,8 @@ export const RightThisRoom = () => {
                         </div>
                       </div>
 
-                      <div className="menuContainer"></div>
                       {element.user_id === user.id && (
-                        <>
+                        <div className="menuContainer">
                           <IoMdCreate
                             className="updateRoom"
                             onClick={() => {
@@ -335,50 +333,60 @@ export const RightThisRoom = () => {
                               deleteMessage(element.id, room.id);
                             }}
                           />
-                        </>
+                        </div>
                       )}
-                    </>
-                  )}
-
-                  {element.message_image && (
-                    <div>
-                      <img
-                        src={element.message_image}
-                        alt="messuage image"
-                        style={{ height: "50px", width: "50px" }}
-                      />
-                      <p>user: {element.username}</p>
-
-                      <img
-                        src={element.profile_image}
-                        alt="messuage image"
-                        style={{ height: "50px", width: "50px" }}
-                      />
-
-                      <p>
-                        Date:
-                        {new Date(element.created_at)
-                          .toString()
-                          .substring(4, 10) +
-                          "-" +
-                          new Date(element.created_at)
-                            .toString()
-                            .substring(16, 21)}
-                      </p>
-
-                      {element.user_id === user.id && (
-                        <button
-                          onClick={() => {
-                            deleteMessage(element.id, room.id);
-                          }}
-                        >
-                          delete
-                        </button>
-                      )}
-                      <hr></hr>
                     </div>
                   )}
+                  {element.message_image && (
+                    <div className="messagesImage">
+                      <div className="sendImage">
+                        <img
+                          className="sendImageProfile"
+                          src={element.profile_image}
+                          alt="user profile image"
+                        />
+                      </div>
 
+                      <div className="sendName">
+                        <div className="userInfoContainerImage">
+                          <p className="userNameSend"> {element.username}</p>
+
+                          <span className="dateImage">
+                            Date:
+                            {new Date(element.created_at)
+                              .toString()
+                              .substring(4, 10) +
+                              "-" +
+                              new Date(element.created_at)
+                                .toString()
+                                .substring(16, 21)}
+                          </span>
+
+                          <div className="iconContainer">
+                            <AiOutlineDownload className="DownloadDocumentMessage" />
+
+                            {element.user_id === user.id && (
+                              <MdDelete
+                                className="deleteDocumentMessage"
+                                onClick={() => {
+                                  deleteMessage(element.id, room.id);
+                                }}
+                              />
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="messageTextContainerDocument">
+                          <img
+                            className="imageDocument"
+                            src={element.message_image}
+                            alt="user send image"
+                          />
+                          <div className="documentcontainer"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   {/* {element.document && (
                     <div>
                       <p>{"this is a old File File file" + element.document}</p>
@@ -416,9 +424,9 @@ export const RightThisRoom = () => {
                 </div>
               );
             })}
-            {/* </div> */}
 
             {/* //////////////////////////////////////////////// */}
+            {/* static data by mosa */}
             <div className="messages">
               <div className="sendImage">
                 <img
@@ -448,6 +456,7 @@ export const RightThisRoom = () => {
             </div>
 
             {/* //////////////////////////////////////////////// */}
+            {/* message document styling */}
             <div className="messagesDocument">
               <div className="sendImage">
                 <img
@@ -474,6 +483,8 @@ export const RightThisRoom = () => {
                 </div>
               </div>
             </div>
+            {/* ///////////////////////////////////////////////// */}
+            {/* message image styling */}
             <div className="messagesImage">
               <div className="sendImage">
                 <img
@@ -530,8 +541,16 @@ export const RightThisRoom = () => {
 
               <div className="toolTipButtom">
                 <span className="toolTipTextBottom">Upload Image</span>
-                <input type={"image"} className="update-account" id="file" />
-                <label htmlFor="file">
+                <input
+                  type={"file"}
+                  className="update-account"
+                  id="ImageUpload"
+                  onChange={(e) => {
+                    console.log(e.target.files[0]);
+                    uploadImage(e.target.files[0]);
+                  }}
+                />
+                <label htmlFor="ImageUpload">
                   <MdAddPhotoAlternate className="sendIconTow" />
                 </label>
               </div>
