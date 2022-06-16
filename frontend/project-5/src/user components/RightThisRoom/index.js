@@ -207,21 +207,22 @@ export const RightThisRoom = () => {
                 />
               </div>
               <div className="sendName">
-                <div className="userInfoContainer">
+                <div className="userInfoContainerImage">
                   <p className="userNameSend">Mosa saleh</p>
                   <span className="date">data</span>
+                  <div className="deleteDocumentMessageDiv">
+                    <div className="toolTip">
+                      <span className="toolTipText">Delete Message</span>
+                      <MdDelete className="deleteDocumentMessage" />
+                    </div>
+                  </div>
                 </div>
                 <div className="messageTextContainerDocument">
                   <img
                     className="imageDocument"
                     src="https://techcrunch.com/wp-content/uploads/2021/05/Discord_IAP_KeyVisuals_Header_02.jpeg"
                   />
-                  <div className="documentcontainer">
-                    <div className="toolTip">
-                      <span className="toolTipText">Delete Message</span>
-                      <MdDelete className="deleteDocumentMessage" />
-                    </div>
-                  </div>
+                  <div className="documentcontainer"></div>
                 </div>
               </div>
             </div>
