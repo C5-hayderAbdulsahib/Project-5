@@ -65,6 +65,7 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  margin-top: 10px;
 }
 .buttomSide {
   display: flex;
@@ -412,13 +413,24 @@
 }
 
 .deleteMessage {
-  color: rgb(185, 187, 190);
+  color: rgb(202,104,104);
   height: 30px;
   width: 30px;
   cursor: pointer;
 }
 .deleteMessage:hover {
-  color: rgb(202, 104, 104);
+  color: rgb(227, 64, 64);
+}
+
+.updateMessage{
+    color: rgb(126,138,182);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.updateMessage:hover {
+  color: rgb(75, 108, 226);
 }
 
 .buttomIcons {
@@ -475,7 +487,7 @@
   margin-top: 10px;
   padding: -10px;
   margin-left: 20px;
-  background-color: rgb(55, 57, 63);
+  background-color: rgb(47,49,54);
 }
 
 .messagesDocument:hover {
@@ -533,9 +545,9 @@
 .messagesImage {
   display: flex;
   height: 400px;
-  width: 500px;
+  width: 75vw;
   margin-left: 20px;
-  background-color: rgb(55, 57, 63);
+  background-color: rgb(47,49,54);
 }
 
 .messagesImage:hover {
@@ -554,15 +566,20 @@
 
 .userInfoContainerImage {
   display: flex;
-  width: 500px;
-  margin-left: 20px;
+  width: 75vw;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dateImage {
-  margin-left: 30px;
+  margin-left: 50px;
   color: rgb(185, 187, 190);
 }
 
+.dateImageDiv{
+  width: 300px;
+}
 .iconContainer {
   display: flex;
   width: 200px;
