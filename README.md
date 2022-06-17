@@ -104,6 +104,22 @@ that he have with his friend
 
 <img width=800px height=600px src="assest/group room.png" alt="group room"></a>
 
+
+-4 the user can create a group room where other users can join that room 
+
+-5 after the user create a room only he will e able to update or delete that room and also only he can add new users to room and he can block or unblock a member of that room 
+
+-6 the user can send text massages , images and other files inside the chat room ad only he can update or delete his massages but other members of the room can download or images or files 
+
+-7 the user can leave any joined group room or private chat at any time he want 
+
+-8 the user can update his account info where he can change his email,first name , last name and his profile image or his password 
+
+9- the user can search all the available a group rooms or user name of the entire app where he can start anew conversation or he can follow or unfollow any group room  and he can also view 
+all of the group rooms that he is a member and he can also view all his  private chat 
+
+
+
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [MySQL](https://www.mysql.com/) - Database
