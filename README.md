@@ -3,11 +3,11 @@
  <img width=200px height=200px src="https://sparkcdnwus2.azureedge.net/sparkimageassets/XPDC2RH70K22MN-08afd558-a61c-4a63-9171-d3f199738e9f"></a>
 </p>
 
-<h3 align="center" style ={{color :rgb(88,101,242) }}>Discord</h3>
+<h3 align="center" style ={{color :rgb(88,101,242) }}>Discord clone</h3>
 
 ---
 
-<p align="center"> An awesome Project to descripe README 
+<p align="center"> ...where you can belong to a developer group, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.
     <br> 
 <a href=''>Demo</a>
     <br> 
@@ -25,9 +25,8 @@
 
 ## 🧐 About <a name = "about"></a>
 
-Write about 1-2 paragraphs describing the purpose of your project.
 
-Ex. Are you looking for a quick and easy way to action, action, and action? The **(name of application)** is the greatest and most accurate application to do this for you. It helps you to **(list of activities)**. The **(name of application)** provides a simple design to ensure having the best user experience.
+Are you looking for a quick and easy way to communicate with your friends ? Then **Discord** is the greatest application to do this for you. It helps you to create a place where you can gather with people who have a similar interests as you. **Discord** provides a simple design to ensure having the best user experience.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
@@ -46,7 +45,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repo to your local machine using git bash.
 
 ```
-git clone [https://github.com/your_username_/Project-Name.git](https://github.com/PiratesC5/Project-5)
+git clone [https://github.com/your_username_/Project-Name.git](https://github.com/PiratesC5/Project-5)]
 ```
 
 2. Install packeges repeat this step in backend and frontend folder
@@ -71,12 +70,9 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+- Our Web site is divided by tow parts the first part for the employee and the second part to help them mange the categories of the room and  this part is only   available for them.
 
-Ex.
-- You don't have to register to navigate our web app
-- You can click on the **Home** tab provided in the navigation bar to view the home section
-- You can click on the **Add to cart** button to add this product to your cart but you have to be one of our users, so you should create an account 
+- 1 the login page: 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
