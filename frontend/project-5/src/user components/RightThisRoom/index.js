@@ -336,7 +336,7 @@ export const RightThisRoom = () => {
                       {element.user_id === user.id && (
                         <div className="menuContainer">
                           <IoMdCreate
-                            className="updateRoom"
+                            className="updateMessage"
                             onClick={() => {
                               setUpdateInput(!updateInput);
                               console.log(index);
@@ -356,29 +356,30 @@ export const RightThisRoom = () => {
                   )}
                   {element.message_image && (
                     <div className="messagesImage">
-                      <div className="sendImage">
-                        <img
-                          className="sendImageProfile"
-                          src={element.profile_image}
-                          alt="user profile image"
-                        />
-                      </div>
-
                       <div className="sendName">
                         <div className="userInfoContainerImage">
-                          <p className="userNameSend"> {element.username}</p>
-
-                          <span className="dateImage">
-                            Date:
-                            {new Date(element.created_at)
-                              .toString()
-                              .substring(4, 10) +
-                              "-" +
-                              new Date(element.created_at)
+                          <div>
+                            <img
+                              className="sendImageProfile"
+                              src={element.profile_image}
+                              alt="user profile image"
+                            />
+                          </div>
+                          <div>
+                            <p className="userNameSend"> {element.username}</p>
+                          </div>
+                          <div className="dateImageDiv">
+                            <span className="dateImage">
+                              Date:
+                              {new Date(element.created_at)
                                 .toString()
-                                .substring(16, 21)}
-                          </span>
-
+                                .substring(4, 10) +
+                                "-" +
+                                new Date(element.created_at)
+                                  .toString()
+                                  .substring(16, 21)}
+                            </span>
+                          </div>
                           <div className="iconContainer">
                             <AiOutlineDownload
                               className="DownloadDocumentMessage"
@@ -389,7 +390,7 @@ export const RightThisRoom = () => {
 
                             {element.user_id === user.id && (
                               <MdDelete
-                                className="deleteDocumentMessage"
+                                className="deleteMessage"
                                 onClick={() => {
                                   deleteMessage(element.id, room.id);
                                 }}
@@ -452,7 +453,7 @@ export const RightThisRoom = () => {
 
                             {element.user_id === user.id && (
                               <MdDelete
-                                className="deleteDocumentMessage"
+                                className="deleteMessage"
                                 onClick={() => {
                                   deleteMessage(element.id, room.id);
                                 }}
