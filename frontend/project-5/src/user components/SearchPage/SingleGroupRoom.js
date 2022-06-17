@@ -91,8 +91,8 @@ const SingleRoom = (props) => {
               <img className="result-image" src={room.room_image} />
             </div>
 
-            <div className="room-name">
-              <h1>{room.name}</h1>
+            <div>
+              <h1 className="room-name">{room.name}</h1>
             </div>
             <div className="room-type">
               <p className="this-is-room">Group</p>

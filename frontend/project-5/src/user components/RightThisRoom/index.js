@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { io } from "socket.io-client";
+import fileDownload from "js-file-download";
 
 //importing css
 import "./style.css";
@@ -202,6 +203,22 @@ export const RightThisRoom = () => {
       .catch((err) => console.log(err));
   };
 
+  //this function is for downloading the cv
+  const downloadFile = (fileUrl) => {
+    let filePath = fileUrl;
+    axios
+      .get(`${filePath}`, {
+        responseType: "blob",
+      })
+      .then((res) => {
+        let filename = filePath.replace(/^.*[\\\/]/, "");
+        let fileExtension;
+        fileExtension = filePath.split(".");
+        fileExtension = fileExtension[fileExtension.length - 1];
+        fileDownload(res.data, `${filename}.${fileExtension}`);
+      });
+  };
+
   return (
     <>
       {!errMessage ? (
@@ -255,7 +272,7 @@ export const RightThisRoom = () => {
                     <ImExit
                       className="leaveIcon"
                       onClick={() => {
-                        setIsOpenFollowRequest(true);
+                        // setIsOpenFollowRequest(true);
                       }}
                     />
                   </div>
@@ -364,7 +381,12 @@ export const RightThisRoom = () => {
                             </span>
                           </div>
                           <div className="iconContainer">
-                            <AiOutlineDownload className="DownloadDocumentMessage" />
+                            <AiOutlineDownload
+                              className="DownloadDocumentMessage"
+                              onClick={() => {
+                                downloadFile(element.message_image);
+                              }}
+                            />
 
                             {element.user_id === user.id && (
                               <MdDelete
@@ -422,7 +444,12 @@ export const RightThisRoom = () => {
                           </a>
 
                           <div className="documentcontainer">
-                            <AiOutlineDownload className="DownloadDocumentMessage" />
+                            <AiOutlineDownload
+                              className="DownloadDocumentMessage"
+                              onClick={() => {
+                                downloadFile(element.document);
+                              }}
+                            />
 
                             {element.user_id === user.id && (
                               <MdDelete

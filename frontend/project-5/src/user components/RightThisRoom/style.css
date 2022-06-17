@@ -11,16 +11,16 @@
 }
 .centerSide {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 30px;
   margin-top: 20px;
-  height: 570px;
+  height: 560px;
   width: 97%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
   overflow: hidden;
   overflow-y: scroll;
-  justify-content: start;
+  /* justify-content: start; */
 }
 .messages {
   display: flex;
@@ -32,6 +32,7 @@
   left: 10px;
   bottom: 10px;
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: -10px;
   margin-left: 20px;
   border-radius: 5px;
@@ -480,12 +481,14 @@
   gap: 20px;
   width: 40vw;
   align-items: center;
-  height: 100px;
+  height: 80px;
   gap: 20px;
   left: 10px;
   bottom: 10px;
   margin-top: 10px;
-  padding: -10px;
+  margin-bottom: 10px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   margin-left: 20px;
   background-color: rgb(47,49,54);
 }
@@ -548,6 +551,8 @@
   width: 75vw;
   margin-left: 20px;
   background-color: rgb(47,49,54);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .messagesImage:hover {
