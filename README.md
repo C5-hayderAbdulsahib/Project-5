@@ -74,7 +74,7 @@ Now app ready to use
 
 - 1 the Sign in  page: you can only sign in employee account ad this is the only way to enter the employee section 
  
-<img width=200px height=200px src="assest/login superadmin.png" alt="Diagram"></a>
+<img width=700px height=700px src="assest/login superadmin.png" alt="Diagram"></a>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
