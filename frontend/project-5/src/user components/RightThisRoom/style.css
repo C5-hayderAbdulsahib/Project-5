@@ -548,7 +548,7 @@
 .messagesImage {
   display: flex;
   height: 400px;
-  width: 75vw;
+  width: 45vw;
   margin-left: 20px;
   background-color: rgb(47,49,54);
   margin-top: 10px;
@@ -560,8 +560,9 @@
 }
 
 .imageDocument {
-  margin-top: 30px;
-  height: 300px;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 296px;
   width: 400px;
 }
 
@@ -571,7 +572,7 @@
 
 .userInfoContainerImage {
   display: flex;
-  width: 75vw;
+  width: 50vw;
   margin-top: 20px;
   align-items: center;
   justify-content: space-between;
