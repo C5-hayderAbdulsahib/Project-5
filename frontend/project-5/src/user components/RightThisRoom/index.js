@@ -272,7 +272,7 @@ export const RightThisRoom = () => {
                     <ImExit
                       className="leaveIcon"
                       onClick={() => {
-                        setIsOpenFollowRequest(true);
+                        // setIsOpenFollowRequest(true);
                       }}
                     />
                   </div>
