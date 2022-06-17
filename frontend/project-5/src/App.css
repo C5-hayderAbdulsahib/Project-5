@@ -5,10 +5,6 @@ body {
   background-color: #42464d;
 }
 
-.display-grid {
-  display: grid;
-  grid-template-columns: 200px auto;
-  height: 94vh;
-}
-
- 
+/* .App {
+  height: 20vh;
+} */

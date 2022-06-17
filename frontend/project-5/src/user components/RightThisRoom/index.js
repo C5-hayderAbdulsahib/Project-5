@@ -220,9 +220,9 @@ export const RightThisRoom = () => {
   };
 
   return (
-    <>
+    <div className="RightThisRoom">
       {!errMessage ? (
-        <>
+        <div className="">
           <div className="room-navbar">
             <div className="roomName-tow">
               <MdGroup className="groupIcon" />
@@ -661,10 +661,10 @@ export const RightThisRoom = () => {
               roomId={id}
             />
           )}
-        </>
+        </div>
       ) : (
         <div>{errMessage && <p>{errMessage}</p>}</div>
       )}
-    </>
+    </div>
   );
 };
