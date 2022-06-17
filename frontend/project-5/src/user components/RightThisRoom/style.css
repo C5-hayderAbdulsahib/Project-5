@@ -2,8 +2,9 @@
   background-color: rgb(54, 57, 63);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   background-image: url("https://support.discord.com/hc/user_images/-tSbfgDFQxmpAJamqqO8Mg.png");
+  /* height: 94.5vh; */
 }
 
 .homeImg {
@@ -11,11 +12,11 @@
 }
 .centerSide {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 30px;
-  margin-top: 20px;
-  height: 570px;
-  width: 97%;
+  /* margin-top: 20px; */
+  height: 82vh;
+  width: 100%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
   overflow: hidden;
@@ -32,6 +33,7 @@
   left: 10px;
   bottom: 10px;
   margin-top: 10px;
+  margin-bottom: 10px;
   padding: -10px;
   margin-left: 20px;
   border-radius: 5px;
@@ -65,12 +67,13 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  margin-top: 10px;
 }
 .buttomSide {
   display: flex;
   margin-top: 10px;
   height: 50px;
-  width: 97%;
+  width: 100%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
   align-items: center;
@@ -412,13 +415,24 @@
 }
 
 .deleteMessage {
-  color: rgb(185, 187, 190);
+  color: rgb(202,104,104);
   height: 30px;
   width: 30px;
   cursor: pointer;
 }
 .deleteMessage:hover {
-  color: rgb(202, 104, 104);
+  color: rgb(227, 64, 64);
+}
+
+.updateMessage{
+    color: rgb(126,138,182);
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.updateMessage:hover {
+  color: rgb(75, 108, 226);
 }
 
 .buttomIcons {
@@ -468,14 +482,16 @@
   gap: 20px;
   width: 40vw;
   align-items: center;
-  height: 100px;
+  height: 80px;
   gap: 20px;
   left: 10px;
   bottom: 10px;
   margin-top: 10px;
-  padding: -10px;
+  margin-bottom: 10px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   margin-left: 20px;
-  background-color: rgb(55, 57, 63);
+  background-color: rgb(47,49,54);
 }
 
 .messagesDocument:hover {
@@ -533,9 +549,11 @@
 .messagesImage {
   display: flex;
   height: 400px;
-  width: 500px;
+  width: 45vw;
   margin-left: 20px;
-  background-color: rgb(55, 57, 63);
+  background-color: rgb(47,49,54);
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .messagesImage:hover {
@@ -543,8 +561,9 @@
 }
 
 .imageDocument {
-  margin-top: 30px;
-  height: 300px;
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 296px;
   width: 400px;
 }
 
@@ -554,15 +573,20 @@
 
 .userInfoContainerImage {
   display: flex;
-  width: 500px;
-  margin-left: 20px;
+  width: 50vw;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dateImage {
-  margin-left: 30px;
+  margin-left: 50px;
   color: rgb(185, 187, 190);
 }
 
+.dateImageDiv{
+  width: 300px;
+}
 .iconContainer {
   display: flex;
   width: 200px;

@@ -10,8 +10,7 @@ const {
   deleteMessageById,
 } = require("../controllers/messages");
 
-messagesRouter.get("/", authentication, getAllMessages);
-messagesRouter.get("/", authentication, getAllMessages);
+messagesRouter.get("/:id", authentication, getAllMessages);
 messagesRouter.put("/:id", authentication, updateMessageById);
 
 messagesRouter.delete("/:id", authentication, deleteMessageById);
