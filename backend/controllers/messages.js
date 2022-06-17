@@ -46,10 +46,21 @@ const createNewMessage = (req, res) => {
 //////////getAllMessages///////////////////////////////////////
 
 const getAllMessages = (req, res) => {
-  const command = `SELECT * FROM messages WHERE is_deleted=0 `;
+  const roomId = req.params.id;
 
-  connection.query(command, (err, result) => {
-    if (result.length > 0) {
+  const command = `SELECT * FROM messages WHERE is_deleted=0 AND room_id = ? ORDER BY created_at DESC `;
+  const data = [roomId];
+
+  connection.query(command, data, (err, result) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        message: "Server Error",
+        err: err,
+      });
+    }
+
+    if (result?.length > 0) {
       res.status(200).json({
         success: true,
         message: "All The Messages",
@@ -59,14 +70,6 @@ const getAllMessages = (req, res) => {
       res.status(200).json({
         success: false,
         message: "No Message Has Been Send Yet",
-      });
-    }
-
-    if (err) {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        err: err,
       });
     }
   });
