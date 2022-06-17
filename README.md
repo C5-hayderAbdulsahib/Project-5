@@ -74,7 +74,12 @@ Now app ready to use
 
 - 1 the Sign in  page: you can only sign in employee account ad this is the only way to enter the employee section 
  
-<img width=700px height=700px src="assest/login superadmin.png" alt="Diagram"></a>
+<img width=800px height=600px src="assest/login superadmin.png" alt="superadmin"></a>
+
+
+- 2 The home page contains all the categories for the rooms  and all the created categories will be displayed at the left corner of the page  
+
+<img width=800px height=600px src="assest/super admin home.png" alt="super admin home"></a>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -83,7 +88,7 @@ Now app ready to use
 - [React JS](https://https://reactjs.org/) - Web Framework
 - [Node JS](https://nodejs.org/en/) - Server Environment
 - [Sokit io](https://socket.io/) - JavaScript library for real-time web applications.
-- [Redux](https://redux.js.org/) - JavaScript library for maneging the states in our application.
+- [Redux](https://redux.js.org/) - JavaScript library for managing the states in our application.
 
 ## User Story <a name = "#user_story"></a>
 
