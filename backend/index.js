@@ -80,7 +80,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("GET_MESSAGES", async (roomId) => {
-    const command = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data = [roomId];
     const asyncConnection = await mysql.createConnection({
       host: process.env.DB_HOST,
@@ -109,7 +109,7 @@ io.on("connection", (socket) => {
     });
     const [rows, fields] = await asyncConnection.execute(command, data);
 
-    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data2 = [messageContent.room_id];
 
     const [rows2, fields2] = await asyncConnection.execute(command2, data2);
@@ -133,7 +133,7 @@ io.on("connection", (socket) => {
     });
     const [rows, fields] = await asyncConnection.execute(command, data);
 
-    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data2 = [messageContent.room_id];
 
     const [rows2, fields2] = await asyncConnection.execute(command2, data2);
@@ -157,7 +157,7 @@ io.on("connection", (socket) => {
     });
     const [rows, fields] = await asyncConnection.execute(command, data);
 
-    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data2 = [messageContent.room_id];
 
     const [rows2, fields2] = await asyncConnection.execute(command2, data2);
@@ -177,7 +177,7 @@ io.on("connection", (socket) => {
     });
     const [rows, fields] = await asyncConnection.execute(command, data);
 
-    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data2 = [roomId];
 
     const [rows2, fields2] = await asyncConnection.execute(command2, data2);
@@ -197,7 +197,7 @@ io.on("connection", (socket) => {
     });
     const [rows, fields] = await asyncConnection.execute(command, data);
 
-    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ?`;
+    const command2 = `SELECT * FROM users INNER JOIN messages on users.id = messages.user_id WHERE messages.is_deleted=0 AND room_id = ? ORDER BY created_at DESC`;
     const data2 = [roomId];
 
     const [rows2, fields2] = await asyncConnection.execute(command2, data2);
