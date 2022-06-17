@@ -114,7 +114,7 @@ const SingleSearchResult = (props) => {
           <div className="result-User">
             <img className="result-image" src={search.profile_image} />
 
-            <h1>{search.username}</h1>
+            <h1 className="user-name">{search.username}</h1>
             <div>
               <p className="this-is-user">User</p>
             </div>
@@ -156,8 +156,8 @@ const SingleSearchResult = (props) => {
 
             {/*    <div className="room-info"> */}
             {/* <div className="result-text"> */}
-            <div className="room-name">
-              <h1>{search.name}</h1>
+            <div>
+              <h1 className="room-name">{search.name}</h1>
             </div>
             <div className="room-type">
               <p className="this-is-room">Group</p>
