@@ -1,9 +1,9 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://www.meraki-academy.org/assets/img/logov02.svg" alt="Project logo"></a>
+ <img width=200px height=200px src="https://sparkcdnwus2.azureedge.net/sparkimageassets/XPDC2RH70K22MN-08afd558-a61c-4a63-9171-d3f199738e9f"></a>
 </p>
 
-<h3 align="center">MERAKI</h3>
+<h3 align="center" style ={{color :rgb(88,101,242) }}>Discord</h3>
 
 ---
 
@@ -35,17 +35,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- Visual Studio Code follow this <a href=''>link</a> to install.
-- Git Bash follow this <a href=''>link</a> to install.
-- MongoDB follow this <a href=''>link</a> to install.
-- Node.js follow this <a href=''>link</a> to install.
+- Visual Studio Code follow this <a href='https://code.visualstudio.com/download'>link</a> to install.
+- Git Bash follow this <a href='https://git-scm.com/downloads
+'>link</a> to install.
+- MySQL follow this <a href='https://dev.mysql.com/downloads/workbench/'>link</a> to install.
+- Node.js follow this <a href='https://nodejs.org/en/download/'>link</a> to install.
 
 ### Installing:
 
 1. Clone the repo to your local machine using git bash.
 
 ```
-git clone https://github.com/your_username_/Project-Name.git
+git clone [https://github.com/your_username_/Project-Name.git](https://github.com/PiratesC5/Project-5)
 ```
 
 2. Install packeges repeat this step in backend and frontend folder
@@ -79,19 +80,21 @@ Ex.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [MongoDB](https://www.mongodb.com/) - Database
+- [MySQL](https://www.mysql.com/) - Database
 - [Express JS](https://expressjs.com/) - Server Framework
 - [React JS](https://https://reactjs.org/) - Web Framework
 - [Node JS](https://nodejs.org/en/) - Server Environment
+- [Sokit io](https://socket.io/) - JavaScript library for real-time web applications.
+- [Redux](https://redux.js.org/) - JavaScript library for maneging the states in our application.
 
 ## User Story <a name = "#user_story"></a>
 
 Your trello board link
-<a href=''>Trello</a>
+<a href='https://trello.com/b/zU6SKUCN/project-5-the-pirates'>Trello</a>
 
 ## Data Flow <a name = "#data_flow"></a>
 
-<img width=200px height=200px src="https://cacoo.com/assets/site/img/templates/screenshots/er-database-diagram.png" alt="Diagram"></a>
+<img width=200px height=200px src="assest/erd.png" alt="Diagram"></a>
 
 ## ⚠️ Guided By <a name = "guided_by"></a>
 
