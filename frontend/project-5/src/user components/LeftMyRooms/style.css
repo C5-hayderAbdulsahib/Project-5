@@ -1,17 +1,22 @@
+.left-my-rooms {
+  height: 94.5vh;
+}
 .left-my-rooms .display-grid {
   display: grid;
   grid-template-columns: 300px auto;
-  height: 94.6vh;
+  /* height: 10%; */
+  height: 94.5vh;
 }
 
 .allMyRooms {
   overflow-y: scroll;
   border-right: 0.5px solid black;
-  border-top: 0.5px solid black ;
+  border-top: 0.5px solid black;
   background-color: rgb(47, 49, 54);
+  height: 95.5vh;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
