@@ -28,6 +28,7 @@ import { ImExit } from "react-icons/im";
 import { IoCreateOutline } from "react-icons/io5";
 import { AiFillFile } from "react-icons/ai";
 import { AiOutlineDownload } from "react-icons/ai";
+import { MdAlternateEmail } from "react-icons/md";
 
 //socket connection
 const ENDPOINT = "http://localhost:5000";
@@ -219,13 +220,20 @@ export const RightThisRoom = () => {
       });
   };
 
+  console.log("this is admin id ", !room.admin_id);
+
   return (
     <div className="RightThisRoom">
       {!errMessage ? (
         <div className="">
           <div className="room-navbar">
             <div className="roomName-tow">
-              <MdGroup className="groupIcon" />
+              {room.is_group === 1 ? (
+                <MdGroup className="groupIcon" />
+              ) : (
+                <MdAlternateEmail className="groupIcon" />
+              )}
+
               <p className="nameRoom">{room.name}</p>
             </div>
             <div className="roomController">
@@ -267,16 +275,18 @@ export const RightThisRoom = () => {
                       }}
                     />
                   </div>
-                  <div className="toolTip">
-                    <span className="toolTipText">Leave Room</span>
-                    <ImExit
-                      className="leaveIcon"
-                      onClick={() => {
-                        // setIsOpenFollowRequest(true);
-                      }}
-                    />
-                  </div>
                 </>
+              )}
+              {room.admin_id !== user.id && (
+                <div className="toolTip">
+                  <span className="toolTipText">Leave Room</span>
+                  <ImExit
+                    className="leaveIcon"
+                    onClick={() => {
+                      // setIsOpenFollowRequest(true);
+                    }}
+                  />
+                </div>
               )}
             </div>
           </div>

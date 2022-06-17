@@ -30,9 +30,9 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="navbar">
-        {state.isLoggedIn ? (
-          <>
+      {
+        state.isLoggedIn && (
+          <div className="navbar">
             <Link className="homeLink" to="/">
               Home
             </Link>
@@ -66,15 +66,11 @@ const Navbar = () => {
               Logout
             </Link>
             {isOpen && <CreateNewRoomModal setIsOpen={setIsOpen} />}
-          </>
-        ) : (
-          ""
-          // <>
-          //   <Link to="/signup">Signup</Link>
-          //   <Link to="/signin">Signin</Link>
-          // </>
-        )}
-      </div>
+          </div>
+        )
+
+      
+      }
     </>
   );
 };
