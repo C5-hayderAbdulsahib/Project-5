@@ -15,7 +15,10 @@
   flex-direction: column-reverse;
   gap: 30px;
   /* margin-top: 20px; */
+
   height: 78vh;
+
+
   width: 100%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
