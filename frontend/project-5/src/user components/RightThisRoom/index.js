@@ -278,14 +278,16 @@ export const RightThisRoom = () => {
                 </>
               )}
               {room.admin_id !== user.id && (
-                <div className="toolTip">
-                  <span className="toolTipText">Leave Room</span>
-                  <ImExit
-                    className="leaveIcon"
-                    onClick={() => {
-                      // setIsOpenFollowRequest(true);
-                    }}
-                  />
+                <div className="leaveDiv">
+                  <div className="toolTip">
+                    <span className="toolTipText">Leave Room</span>
+                    <ImExit
+                      className="leaveIcon"
+                      onClick={() => {
+                        // setIsOpenFollowRequest(true);
+                      }}
+                    />
+                  </div>
                 </div>
               )}
             </div>
