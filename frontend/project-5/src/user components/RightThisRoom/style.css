@@ -20,7 +20,7 @@
   border-radius: 5px;
   overflow: hidden;
   overflow-y: scroll;
-  justify-content: start;
+  /* justify-content: start; */
 }
 .messages {
   display: flex;

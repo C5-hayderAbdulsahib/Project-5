@@ -13,7 +13,7 @@ import SingleSearchResult from "./SingleSearchResult";
 import "./style.css";
 
 // import icons
-import { BsSearch } from "react-icons/bs";
+import { FaSearch } from "react-icons/fa";
 
 //import actions
 import { setCategories } from "../../redux/reducers/categories";
@@ -193,8 +193,8 @@ const SearchPage = () => {
                       setChooseCategory("");
                       setInputSearch(e.target.value);
                     }}
-                  />{" "}
-                  <BsSearch className="BsSearch" />
+                  />
+                  <FaSearch className="BsSearch" />
                 </div>
 
                 <div className="byCategory">
