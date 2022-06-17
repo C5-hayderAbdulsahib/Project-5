@@ -15,7 +15,7 @@
   flex-direction: column-reverse;
   gap: 30px;
   /* margin-top: 20px; */
-  height: 82vh;
+  height: 78vh;
   width: 100%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
@@ -415,7 +415,7 @@
 }
 
 .deleteMessage {
-  color: rgb(202,104,104);
+  color: rgb(202, 104, 104);
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -424,8 +424,8 @@
   color: rgb(227, 64, 64);
 }
 
-.updateMessage{
-    color: rgb(126,138,182);
+.updateMessage {
+  color: rgb(126, 138, 182);
   height: 30px;
   width: 30px;
   cursor: pointer;
@@ -491,7 +491,7 @@
   padding-top: 60px;
   padding-bottom: 60px;
   margin-left: 20px;
-  background-color: rgb(47,49,54);
+  background-color: rgb(47, 49, 54);
 }
 
 .messagesDocument:hover {
@@ -551,7 +551,7 @@
   height: 400px;
   width: 45vw;
   margin-left: 20px;
-  background-color: rgb(47,49,54);
+  background-color: rgb(47, 49, 54);
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -584,7 +584,7 @@
   color: rgb(185, 187, 190);
 }
 
-.dateImageDiv{
+.dateImageDiv {
   width: 300px;
 }
 .iconContainer {
