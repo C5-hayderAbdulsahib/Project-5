@@ -25,7 +25,6 @@
 
 ## 🧐 About <a name = "about"></a>
 
-
 Are you looking for a quick and easy way to communicate with your friends ? Then **Discord** is the greatest application to do this for you. It helps you to create a place where you can gather with people who have a similar interests as you. **Discord** provides a simple design to ensure having the best user experience.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -36,7 +35,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Visual Studio Code follow this <a href='https://code.visualstudio.com/download'>link</a> to install.
 - Git Bash follow this <a href='https://git-scm.com/downloads
-'>link</a> to install.
+  '>link</a> to install.
 - MySQL follow this <a href='https://dev.mysql.com/downloads/workbench/'>link</a> to install.
 - Node.js follow this <a href='https://nodejs.org/en/download/'>link</a> to install.
 
@@ -70,16 +69,40 @@ Now app ready to use
 
 ## 🎈 Usage <a name="usage"></a>
 
-- Our Web site is divided by tow parts the first part for the employee and the second part to help them mange the categories of the room and  this part is only   available for them.
+- Our Web site is divided by tow parts the first part for the employee and the second part to help them mange the categories of the room and this part is only available for them.
 
-- 1 the Sign in  page: you can only sign in employee account ad this is the only way to enter the employee section 
- 
+- 1 the Sign in page: you can only sign in employee account ad this is the only way to enter the employee section
+
 <img width=800px height=600px src="assest/login superadmin.png" alt="superadmin"></a>
 
-
-- 2 The home page contains all the categories for the rooms  and all the created categories will be displayed at the left corner of the page  
+- 2 The home page contains all the categories for the rooms and all the created categories will be displayed at the left corner of the page
 
 <img width=800px height=600px src="assest/super admin home.png" alt="super admin home"></a>
+
+- 3 you can create a new category ,ony the employee of the website ca use this feature ,and he can also update or delete a category 
+
+<img width=800px height=600px src="assest/create category.png" alt="create category"></a>
+
+- 4 the employee can also create accounts for other employee 
+
+<img width=800px height=600px src="assest/create Admin.png" alt="create Admin"></a>
+
+- now for the other part of the application it will be for the users of the app 
+
+- 1 first the user need to create a new account or he can sign in to his account in order to use the application 
+ 
+
+<img width=800px height=600px src="assest/UserSign in.png" alt="UserSign in"></a>
+
+-2 the home page of the website he will see all of the rooms that he have join and also all the private chat 
+that he have with his friend 
+
+<img width=800px height=600px src="assest/rooms for user.png" alt="rooms for user"></a>
+
+-3 if the user clicked on of the rooms on the left side then on the right side tht specific room wil appear 
+
+
+<img width=800px height=600px src="assest/group room.png" alt="group room"></a>
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
