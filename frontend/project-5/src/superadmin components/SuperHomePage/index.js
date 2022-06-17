@@ -85,14 +85,6 @@ const SuperHomePage = () => {
     <>
       <div className="superadminMain">
         <div className="left-all-categories">
-          {isOpenCreateCategory && (
-            <CreateCategoryModal
-              setIsOpenCreateCategory={setIsOpenCreateCategory}
-            />
-          )}
-          {isOpenAdmin && (
-            <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />
-          )}
           <div className="superNav">
             <h1 className="superTitle">super home admin</h1>
 
@@ -142,6 +134,13 @@ const SuperHomePage = () => {
             </div>
           </div>
         </div>
+
+        {isOpenCreateCategory && (
+          <CreateCategoryModal
+            setIsOpenCreateCategory={setIsOpenCreateCategory}
+          />
+        )}
+        {isOpenAdmin && <CreateNewAdminModel setIsOpenAdmin={setIsOpenAdmin} />}
       </div>
     </>
   );
