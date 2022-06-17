@@ -39,7 +39,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/signin" element={<SigninPage />} />
 
-        {/* we put the * because this route has a nested route */}
+        {/* We put the * because this route has a nested route */}
         <Route path="/super_admin/home/*" element={<SuperHomePage />} />
 
         {/* we put the * because this route has a nested route */}
