@@ -112,7 +112,7 @@ const FollowRequestList = (props) => {
             <div className="centered">
               <div className="modalFollow">
                 <div className="modalHeader">
-                  <h5 className="heading">Dialog</h5>
+                  <h5 className="heading">Followers List</h5>
                 </div>
                 <button
                   className="closeBtn"
