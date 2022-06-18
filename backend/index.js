@@ -143,9 +143,10 @@ io.on("connection", (socket) => {
 
   //function for creating file messages
   socket.on("SEND_File_TO_BACKEND", async (messageContent) => {
-    const command = `Insert INTO messages (document,room_id,user_id) VALUES(?,?,?)`;
+    const command = `Insert INTO messages (document,document_name,room_id,user_id) VALUES(?,?,?,?)`;
     const data = [
       messageContent.content.document,
+      messageContent.content.document_name,
       messageContent.room_id,
       messageContent.content.user_id,
     ];
