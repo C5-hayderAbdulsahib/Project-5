@@ -81,23 +81,21 @@ const LeftMyRooms = () => {
               {rooms &&
                 rooms.map((element) => {
                   return (
-                    <>
-                      <div
-                        className="roomInfoContainer"
-                        key={element.id}
-                        onClick={() => {
-                          navigate(`/rooms/${element.id}`);
-                        }}
-                      >
-                        <img
-                          className="roomImage"
-                          src={element.room_image}
-                          alt="room-image"
-                        />
+                    <div
+                      className="roomInfoContainer"
+                      key={element.id}
+                      onClick={() => {
+                        navigate(`/rooms/${element.id}`);
+                      }}
+                    >
+                      <img
+                        className="roomImage"
+                        src={element.room_image}
+                        alt="room-image"
+                      />
 
-                        <p className="roomName">#{element.name}</p>
-                      </div>
-                    </>
+                      <p className="roomName">#{element.name}</p>
+                    </div>
                   );
                 })}
             </div>
@@ -106,7 +104,7 @@ const LeftMyRooms = () => {
           </div>
           <div className="rightSideHomePage">
             {/* the reason that i added this part because the RightThisRoom is nested route of this route   */}
-            
+
             <Routes>
               <Route path="/:id" element={<RightThisRoom />} />
             </Routes>
