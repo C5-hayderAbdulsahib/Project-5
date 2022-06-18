@@ -91,7 +91,7 @@ export const CreateNewRoomModal = (props) => {
   //*=================================================================================
 
   const uploadImage = (image_data) => {
-    console.log("asdasd ASDAS ASD ASD " ,image_data );
+    console.log("asdasd ASDAS ASD ASD ", image_data);
     const data = new FormData();
     data.append("file", image_data);
     data.append("upload_preset", "merakie");
@@ -152,6 +152,7 @@ export const CreateNewRoomModal = (props) => {
 
                     {categoriesList && (
                       <div>
+                        <br></br>
                         <label className="NameCategory" htmlFor="categories">
                           Choose a Category Type And a Photo:
                         </label>

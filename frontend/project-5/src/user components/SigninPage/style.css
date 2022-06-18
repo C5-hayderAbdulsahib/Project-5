@@ -10,7 +10,6 @@ body {
   background-size: cover;
 }
 
-
 .position {
   position: absolute;
   width: 100vw;
@@ -103,7 +102,7 @@ body {
   cursor: default;
 }
 
-.error-message {
+.signin-page .error-message {
   color: #ec4846;
   font-style: italic;
   text-transform: none;
@@ -293,5 +292,3 @@ body {
     padding: 20px;
   }
 }
-
-

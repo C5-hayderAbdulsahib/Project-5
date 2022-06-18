@@ -1,11 +1,11 @@
 import axios from "axios";
-import { useDispatch ,useSelector } from "react-redux";
-import {  useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 //import styling
 import "./DeleteRoomModal.css";
 
-import { getAllMyRooms } from "../../redux/reducers/rooms";
+import { deleteRoom } from "../../redux/reducers/rooms";
 //import icon from react icons
 import { RiCloseLine } from "react-icons/ri";
 
@@ -23,7 +23,7 @@ export const LeaveRoomModel = (props) => {
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //======================================================================================================
 
   const { token } = useSelector((state) => {
@@ -43,7 +43,7 @@ export const LeaveRoomModel = (props) => {
       )
       .then((result) => {
         console.log(result);
-        dispatch(getAllMyRooms());
+        dispatch(deleteRoom(id));
         setRenderPage(!renderPage);
         navigate(`/rooms`);
       })
