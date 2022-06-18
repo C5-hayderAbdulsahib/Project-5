@@ -24,7 +24,7 @@ const UpdatePasswordModal = (props) => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [correct, setCorrect] = useState(false);
+  const [errMessage, setErrMessage] = useState("");
 
   //=============================================================================================================
 
@@ -44,9 +44,10 @@ const UpdatePasswordModal = (props) => {
         }
       );
       setMessage(res.data.message);
-      setCorrect(true);
+      setErrMessage("");
     } catch (err) {
-      setMessage(err.response.data.message);
+      setErrMessage(err.response.data.message);
+      setMessage("");
     }
   };
 
@@ -55,7 +56,7 @@ const UpdatePasswordModal = (props) => {
   return (
     <>
       {/* the onclick event that we add so that if the user click outside the model anywhere in the window it will close the model and we can remove this part if we want to */}
-      <div className="CreateCategoryModalUpdate">
+      <div className="changePasswordModel">
         <div className="darkBG" onClick={() => setIsOpen(false)} />
         <div className="centered">
           <div className="modal">
@@ -63,18 +64,17 @@ const UpdatePasswordModal = (props) => {
               <h5 className="heading">Update Password</h5>
             </div>
             <button className="closeBtn" onClick={() => setIsOpen(false)}>
-              <RiCloseLine style={{ marginBottom: "-3px" }} />
+              <RiCloseLine
+                style={{ marginBottom: "-3px" }}
+                className="closeIcon"
+              />
             </button>
 
             <div className="modalContent">
               <div className="fixed-width">
                 {/* ///////////////////////////////the body f the model */}
                 You can Update Password
-                <div className="push-down"></div>{" "}
-                <div className="Category-label">
-                  {" "}
-                  <label>Update Password</label>
-                </div>
+                <div className="push-down"></div>
                 <input
                   className="Create-Category"
                   type={"password"}
@@ -129,11 +129,13 @@ const UpdatePasswordModal = (props) => {
                     Cancel
                   </button>
                 </div>
-                {correct ? (
+                {/* {correct ? (
                   <p className="CorrectMessage">{message}</p>
                 ) : (
                   <p className="errMessage">{message}</p>
-                )}
+                )} */}
+                {message && <p className="CorrectMessage">{message}</p>}
+                {errMessage && <p className="errMessage">{errMessage}</p>}
               </div>
             </div>
             {/* // ... */}
@@ -144,5 +146,4 @@ const UpdatePasswordModal = (props) => {
   );
 };
 
-
-export default UpdatePasswordModal
+export default UpdatePasswordModal;

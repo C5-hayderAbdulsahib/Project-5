@@ -75,7 +75,7 @@ const AccountPage = () => {
             profile_image: imgUrl || user.profile_image,
           })
         );
-        setMessage(`update information`);
+        setMessage(`Account Have Been Updated`);
       })
       .catch((err) => {
         console.log(err);
