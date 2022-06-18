@@ -15,7 +15,6 @@ body {
   overflow: auto !important;
 }
 
-
 .position-profile-account {
   position: absolute;
   width: 100%;
@@ -110,14 +109,16 @@ body {
 }
 
 .error-message {
-  color: #ec4846;
+  color: #4aaf4b;
+  border-color: #d6e9c6;
+
   font-style: italic;
   text-transform: none;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 100;
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 7px;
+
   vertical-align: baseline;
   transition: all 0.2s linear;
 }
