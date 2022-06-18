@@ -107,17 +107,34 @@ that he have with his friend
 
 -4 the user can create a group room where other users can join that room 
 
--5 after the user create a room only he will e able to update or delete that room and also only he can add new users to room and he can block or unblock a member of that room 
+<img width=800px height=600px src="assest/create-group-room.png" alt="create-group-room"></a>
+
+
+-5 after the user create a room only he will e able to update or delete that room and also only he can add new users to room and he can block or unblock a member of that room  
+
+<img width=800px height=600px src="assest/delete-room.png" alt="delete-room"></a>
+
 
 -6 the user can send text massages , images and other files inside the chat room ad only he can update or delete his massages but other members of the room can download or images or files 
 
--7 the user can leave any joined group room or private chat at any time he want 
+
+<img width=800px height=600px src="assest/send-message.png" alt="send-message"></a>
+
+
+-7 the user can leave any joined group room or private chat at any time he want /leave-Room
+
+<img width=800px height=600px src="assest/leave-Room.png" alt="leave-Room"></a>
+
 
 -8 the user can update his account info where he can change his email,first name , last name and his profile image or his password 
 
-9- the user can search all the available a group rooms or user name of the entire app where he can start anew conversation or he can follow or unfollow any group room  and he can also view 
+
+<img width=800px height=600px src="assest/update-info.png" alt="update-info"></a>
+
+9- the user can search all the available a group rooms or user name of the entire app where he can start a new conversation or he can follow or unfollow any group room  and he can also view 
 all of the group rooms that he is a member and he can also view all his  private chat 
 
+<img width=800px height=600px src="assest/search.png" alt="search"></a>
 
 
 ## ⛏️ Built Using <a name = "built_using"></a>
