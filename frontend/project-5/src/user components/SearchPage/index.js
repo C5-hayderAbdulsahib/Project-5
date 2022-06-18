@@ -214,6 +214,12 @@ const SearchPage = () => {
               </div>
 
               <div className="SingleSearchResult">{roomsList}</div>
+
+              {roomsList.length == 0 && (
+                <h1 className="no-match-search">
+                  Find Or Start A Conversation
+                </h1>
+              )}
             </div>
           </div>
         </>

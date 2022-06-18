@@ -27,6 +27,7 @@ const LeftMyRooms = () => {
   console.log("all my rooms", rooms);
 
   const [message, setMessage] = useState("");
+  const [noRooms, setNoRooms] = useState("");
   const navigate = useNavigate();
 
   //============================================================
@@ -38,9 +39,16 @@ const LeftMyRooms = () => {
         },
       })
       .then((result) => {
+        setNoRooms("");
         dispatch(getAllMyRooms(result.data.rooms));
-        if (result.data.message === "No Room Were Created Yet")
+        if (result.data.message === "No Room Were Created Yet") {
           setMessage(result.data.message);
+        }
+        if (
+          result.data.message === "You Need To Join A Room Or Create A New Room"
+        ) {
+          setNoRooms(result.data.message);
+        }
       });
   };
 
@@ -100,6 +108,11 @@ const LeftMyRooms = () => {
                 })}
             </div>
 
+            {noRooms != "" && (
+              <p className="no-room-created-yet">
+                You Need To Join A Room Or Create A New Room
+              </p>
+            )}
             {message && <p>{message}</p>}
           </div>
           <div className="rightSideHomePage">
