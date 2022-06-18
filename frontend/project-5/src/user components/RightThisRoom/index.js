@@ -352,7 +352,7 @@ export const RightThisRoom = () => {
                               }}
                             >
                               <input
-                              className="updateMessageField"
+                                className="updateMessageField"
                                 defaultValue={element.description}
                                 onChange={(e) =>
                                   setUpdatedMessage(e.target.value)
@@ -433,7 +433,7 @@ export const RightThisRoom = () => {
                           </div>
                         </div>
 
-                        <div className="messageTextContainerDocument">
+                        <div className="messageTextContainerImage">
                           <img
                             className="imageDocument"
                             src={element.message_image}
