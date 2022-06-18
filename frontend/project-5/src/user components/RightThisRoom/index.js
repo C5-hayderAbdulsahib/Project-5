@@ -14,6 +14,7 @@ import { UpdateRoomModel } from "./UpdateRoomModel";
 import { DeleteRoomModal } from "./DeleteRoomModal";
 import AllUsersInThisRoomList from "./AllUsersInThisRoomList";
 import FollowRequestList from "./FollowRequestList";
+import LeaveRoomModel from "./LeaveRoomModel";
 
 // import react icon
 import { TbClipboardList } from "react-icons/tb";
@@ -53,6 +54,7 @@ export const RightThisRoom = () => {
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenUsersList, setIsOpenUsersList] = useState(false);
   const [isOpenFollowRequest, setIsOpenFollowRequest] = useState(false);
+  const [isOpenLeaveRoom, setIsOpenLeaveRoom] = useState(false);
 
   const [renderPage, setRenderPage] = useState(false);
 
@@ -204,7 +206,7 @@ export const RightThisRoom = () => {
       .catch((err) => console.log(err));
   };
 
-  //this function is for downloading the cv
+  //this function is for downloading the file
   const downloadFile = (fileUrl) => {
     let filePath = fileUrl;
     axios
@@ -220,7 +222,24 @@ export const RightThisRoom = () => {
       });
   };
 
-  console.log("this is admin id ", !room.admin_id);
+  //===============================================================
+
+  const leaveRoom = (id) => {
+    axios
+      .put(`http://localhost:5000/rooms/${id}/leave_room`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  console.log(room.id);
 
   return (
     <div className="RightThisRoom">
@@ -284,7 +303,7 @@ export const RightThisRoom = () => {
                     <ImExit
                       className="leaveIcon"
                       onClick={() => {
-                        // setIsOpenFollowRequest(true);
+                       setIsOpenLeaveRoom(true);
                       }}
                     />
                   </div>
@@ -672,6 +691,15 @@ export const RightThisRoom = () => {
             <FollowRequestList
               setIsOpenFollowRequest={setIsOpenFollowRequest}
               roomId={id}
+            />
+          )}
+          {isOpenLeaveRoom && (
+            <LeaveRoomModel
+              setIsOpenLeaveRoom={setIsOpenLeaveRoom}
+              roomId={room.id}
+              roomName={room.name}
+              setRenderPage={setRenderPage}
+              renderPage={renderPage}
             />
           )}
         </div>
