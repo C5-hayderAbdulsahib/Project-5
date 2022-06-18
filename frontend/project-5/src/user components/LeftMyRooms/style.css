@@ -78,3 +78,14 @@
   border-radius: 50%;
   margin-left: 10px;
 }
+
+.no-room-created-yet {
+  font-size: 18px;
+  margin-left: 15px;
+  cursor: default;
+  color: #b6b7bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0px;
+}

@@ -161,7 +161,6 @@ const SearchPage = () => {
         return <SingleGroupRoom key={element.id} room={element} />; //the key has to be named that way and if we tried to change it and give it a name of id an error will appear on the console, and also it value has to be unique or an error will also occur so that why we usually  give it the value of the id, so if there is an array of element in jsx and they all have the same name for example <p> we have to give each one of them a key attribute or an error will appear
       });
   }
-  // console.log(roomsList);
 
   //the reason that i add the navigate because if the user was not logged in then redirect him to the signin page
   useEffect(() => {
@@ -214,6 +213,12 @@ const SearchPage = () => {
               </div>
 
               <div className="SingleSearchResult">{roomsList}</div>
+
+              {roomsList.length == 0 && (
+                <h1 className="no-match-search">
+                  Find Or Start A Conversation
+                </h1>
+              )}
             </div>
           </div>
         </>
