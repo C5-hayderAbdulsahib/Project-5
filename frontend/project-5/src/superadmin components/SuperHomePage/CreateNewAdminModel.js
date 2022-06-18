@@ -18,6 +18,7 @@ const CreateNewAdminModel = (props) => {
   const [last_name, setLast_name] = useState("");
   const [country, setCountry] = useState("");
   const [message, setMessage] = useState("");
+  const [errMessage, setErrMessage] = useState("");
 
   const createNewAdmin = (e) => {
     e.preventDefault();
@@ -32,12 +33,14 @@ const CreateNewAdminModel = (props) => {
       })
       .then((result) => {
         if (result.data.success) {
-          setIsOpenAdmin(false);
+          // setIsOpenAdmin(false);
+          setErrMessage("");
           setMessage(result.data.message);
         }
       })
       .catch((err) => {
-        setMessage(err.response.data.message);
+        setMessage("");
+        setErrMessage(err.response.data.message);
       });
   };
 
@@ -109,7 +112,10 @@ const CreateNewAdminModel = (props) => {
 
                 {/*         <div className="push-down"></div> */}
 
-                {message && <p className="createAdmin-error">{message}</p>}
+                {message && <p className="createAdmin-success">{message}</p>}
+                {errMessage && (
+                  <p className="createAdmin-error">{errMessage}</p>
+                )}
                 {/* the update button */}
                 <div className="shiftingToLeft">
                   <button onClick={createNewAdmin} className="create-admin-Btn">

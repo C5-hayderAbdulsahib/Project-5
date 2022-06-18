@@ -86,7 +86,7 @@ const SuperHomePage = () => {
       <div className="superadminMain">
         <div className="left-all-categories">
           <div className="superNav">
-            <h1 className="superTitle">super home admin</h1>
+            <h1 className="superTitle">Super Admin Home Page</h1>
 
             <Link to="/super_admin/signin">
               <button
