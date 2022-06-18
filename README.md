@@ -129,7 +129,7 @@ that he have with his friend
 -8 the user can update his account info where he can change his email,first name , last name and his profile image or his password 
 
 
-<img width=800px height=600px src="assest/update-info.png" alt="update-info"></a>
+<img width=800px height=600px src="assest/update-info2.png" alt="update-info2"></a>
 
 9- the user can search all the available a group rooms or user name of the entire app where he can start a new conversation or he can follow or unfollow any group room  and he can also view 
 all of the group rooms that he is a member and he can also view all his  private chat 
