@@ -81,8 +81,9 @@ CREATE TABLE users_rooms (
 CREATE TABLE messages(
     id INT AUTO_INCREMENT NOT NULL,
     description VARCHAR(255),
-    message_image  VARCHAR(8000),
-    document VARCHAR(8000),
+    message_image  VARCHAR(7500),
+    document VARCHAR(7500),
+    document_name VARCHAR(1000),
     is_deleted TINYINT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     room_id INT,
