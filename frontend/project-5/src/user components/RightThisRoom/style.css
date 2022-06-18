@@ -18,7 +18,6 @@
 
   height: 78vh;
 
-
   width: 100%;
   background-color: rgb(64, 68, 75);
   border-radius: 5px;
@@ -483,7 +482,7 @@
 .messagesDocument {
   display: flex;
   gap: 20px;
-  width: 40vw;
+  width: 530px;
   align-items: center;
   height: 80px;
   gap: 20px;
@@ -511,7 +510,7 @@
 .messageTextContainerDocument {
   display: flex;
   justify-content: space-between;
-  width: 30vw;
+  width: 418px;
 }
 
 .document-name {
@@ -552,7 +551,7 @@
 .messagesImage {
   display: flex;
   height: 400px;
-  width: 45vw;
+  width: 530px;
   margin-left: 20px;
   background-color: rgb(47, 49, 54);
   margin-top: 10px;
@@ -576,7 +575,7 @@
 
 .userInfoContainerImage {
   display: flex;
-  width: 50vw;
+  width: 500px;
   margin-top: 20px;
   align-items: center;
   justify-content: space-between;
@@ -588,18 +587,16 @@
 }
 
 .dateImageDiv {
-  width: 300px;
+  /* width: 300px; */
 }
 .iconContainer {
   display: flex;
-  width: 200px;
-  margin-left: 100px;
+  /* width: 200px;
+  margin-left: 100px; */
 }
 
-
-.leaveDiv{
-  margin-left: 280px ;
-  
+.leaveDiv {
+  margin-left: 280px;
 }
 
 .toolTip {
@@ -637,9 +634,9 @@
   opacity: 1;
 }
 
-.updateMessageField{
-  background-color: rgb(55,57,63);
-  color: rgb(154,157,161);
+.updateMessageField {
+  background-color: rgb(55, 57, 63);
+  color: rgb(154, 157, 161);
   font-family: "Whitney", sans-serif;
   outline: none;
   border: 0.5px solid #7289d9;
