@@ -350,6 +350,7 @@ export const RightThisRoom = () => {
                               }}
                             >
                               <input
+                              className="updateMessageField"
                                 defaultValue={element.description}
                                 onChange={(e) =>
                                   setUpdatedMessage(e.target.value)
